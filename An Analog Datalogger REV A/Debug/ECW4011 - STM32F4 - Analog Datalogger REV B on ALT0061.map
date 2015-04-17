@@ -443,7 +443,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x279 ./src/interrupts.o
  .debug_macro   0x0000000000000000       0x35 ./src/interrupts.o
  .debug_macro   0x0000000000000000       0x10 ./src/interrupts.o
- .debug_macro   0x0000000000000000      0xae2 ./src/interrupts.o
+ .debug_macro   0x0000000000000000      0xba6 ./src/interrupts.o
  .debug_macro   0x0000000000000000       0x58 ./src/interrupts.o
  .debug_macro   0x0000000000000000       0x35 ./src/interrupts.o
  .debug_macro   0x0000000000000000       0x9c ./src/interrupts.o
@@ -544,7 +544,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x149 ./src/leds.o
  .debug_macro   0x0000000000000000      0x279 ./src/leds.o
  .debug_macro   0x0000000000000000       0x35 ./src/leds.o
- .debug_macro   0x0000000000000000      0xae2 ./src/leds.o
+ .debug_macro   0x0000000000000000      0xba6 ./src/leds.o
  .debug_macro   0x0000000000000000       0x10 ./src/leds.o
  .group         0x0000000000000000        0x8 ./src/main.o
  .group         0x0000000000000000        0x8 ./src/main.o
@@ -661,7 +661,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xbd ./src/main.o
  .debug_macro   0x0000000000000000       0x16 ./src/main.o
  .debug_macro   0x0000000000000000      0x16d ./src/main.o
- .debug_macro   0x0000000000000000      0xae2 ./src/main.o
+ .debug_macro   0x0000000000000000      0xba6 ./src/main.o
  .debug_macro   0x0000000000000000       0x10 ./src/main.o
  COMMON         0x0000000000000000      0x200 ./src/main.o
  .group         0x0000000000000000        0x8 ./src/nvic.o
@@ -1055,7 +1055,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x149 ./src/uart.o
  .debug_macro   0x0000000000000000      0x279 ./src/uart.o
  .debug_macro   0x0000000000000000       0x35 ./src/uart.o
- .debug_macro   0x0000000000000000      0xae2 ./src/uart.o
+ .debug_macro   0x0000000000000000      0xba6 ./src/uart.o
  .debug_macro   0x0000000000000000       0x58 ./src/uart.o
  .debug_macro   0x0000000000000000       0x35 ./src/uart.o
  .debug_macro   0x0000000000000000       0x9c ./src/uart.o
@@ -1240,7 +1240,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x149 ./libs/misc/src/newlib_stubs.o
  .debug_macro   0x0000000000000000      0x279 ./libs/misc/src/newlib_stubs.o
  .debug_macro   0x0000000000000000       0x35 ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x0000000000000000      0xae2 ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x0000000000000000      0xba6 ./libs/misc/src/newlib_stubs.o
  .group         0x0000000000000000        0x8 ./libs/misc/src/trace_impl.o
  .group         0x0000000000000000        0x8 ./libs/misc/src/trace_impl.o
  .text          0x0000000000000000        0x0 ./libs/misc/src/trace_impl.o
@@ -7245,49 +7245,49 @@ END GROUP
  .debug_frame   0x0000000000002bc4       0x34 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_divdi3.o)
  .debug_frame   0x0000000000002bf8       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_udivdi3.o)
 
-.debug_str      0x0000000000000000    0x66630
+.debug_str      0x0000000000000000    0x6734b
  *(.debug_str)
  .debug_str     0x0000000000000000    0x5d9a7 ./src/delay.o
                                       0x5db48 (size before relaxing)
  .debug_str     0x000000000005d9a7      0x2d1 ./src/gpio.o
                                       0x5dd36 (size before relaxing)
- .debug_str     0x000000000005dc78     0x4d73 ./src/initialization.o
-                                      0x622ea (size before relaxing)
- .debug_str     0x00000000000629eb       0xda ./src/interrupts.o
-                                      0x62382 (size before relaxing)
- .debug_str     0x0000000000062ac5       0x70 ./src/leds.o
-                                      0x5f50e (size before relaxing)
- .debug_str     0x0000000000062b35       0x60 ./src/main.o
-                                      0x6232b (size before relaxing)
- .debug_str     0x0000000000062b95       0x55 ./src/nvic.o
+ .debug_str     0x000000000005dc78     0x5a8e ./src/initialization.o
+                                      0x63012 (size before relaxing)
+ .debug_str     0x0000000000063706       0xda ./src/interrupts.o
+                                      0x630aa (size before relaxing)
+ .debug_str     0x00000000000637e0       0x70 ./src/leds.o
+                                      0x60236 (size before relaxing)
+ .debug_str     0x0000000000063850       0x60 ./src/main.o
+                                      0x63053 (size before relaxing)
+ .debug_str     0x00000000000638b0       0x55 ./src/nvic.o
                                       0x5d553 (size before relaxing)
- .debug_str     0x0000000000062bea      0x14a ./src/pushbuttons.o
-                                      0x5f634 (size before relaxing)
- .debug_str     0x0000000000062d34       0x65 ./src/rcc.o
+ .debug_str     0x0000000000063905      0x14a ./src/pushbuttons.o
+                                      0x6035c (size before relaxing)
+ .debug_str     0x0000000000063a4f       0x65 ./src/rcc.o
                                       0x5d5ac (size before relaxing)
- .debug_str     0x0000000000062d99      0x466 ./src/uart.o
-                                      0x62de7 (size before relaxing)
- .debug_str     0x00000000000631ff      0x4d2 ./libs/misc/src/_sbrk.o
+ .debug_str     0x0000000000063ab4      0x466 ./src/uart.o
+                                      0x63b0f (size before relaxing)
+ .debug_str     0x0000000000063f1a      0x4d2 ./libs/misc/src/_sbrk.o
                                        0x4572 (size before relaxing)
- .debug_str     0x00000000000636d1     0x1464 ./libs/misc/src/newlib_stubs.o
-                                      0x6345c (size before relaxing)
- .debug_str     0x0000000000064b35      0x133 ./libs/cmsis/src/startup_cm.o
+ .debug_str     0x00000000000643ec     0x1464 ./libs/misc/src/newlib_stubs.o
+                                      0x64184 (size before relaxing)
+ .debug_str     0x0000000000065850      0x133 ./libs/cmsis/src/startup_cm.o
                                        0x35e2 (size before relaxing)
- .debug_str     0x0000000000064c68      0x1c2 ./libs/cmsis/src/system_stm32f4xx.o
+ .debug_str     0x0000000000065983      0x1c2 ./libs/cmsis/src/system_stm32f4xx.o
                                       0x5d74b (size before relaxing)
- .debug_str     0x0000000000064e2a       0x4b ./libs/cmsis/src/vectors_stm32f4xx.o
+ .debug_str     0x0000000000065b45       0x4b ./libs/cmsis/src/vectors_stm32f4xx.o
                                        0x2606 (size before relaxing)
- .debug_str     0x0000000000064e75      0x123 ./libs/StdPeriph/src/misc.o
+ .debug_str     0x0000000000065b90      0x123 ./libs/StdPeriph/src/misc.o
                                       0x5d734 (size before relaxing)
- .debug_str     0x0000000000064f98      0x109 ./libs/StdPeriph/src/stm32f4xx_exti.o
+ .debug_str     0x0000000000065cb3      0x109 ./libs/StdPeriph/src/stm32f4xx_exti.o
                                       0x5d6aa (size before relaxing)
- .debug_str     0x00000000000650a1      0x168 ./libs/StdPeriph/src/stm32f4xx_gpio.o
+ .debug_str     0x0000000000065dbc      0x168 ./libs/StdPeriph/src/stm32f4xx_gpio.o
                                       0x5d7dc (size before relaxing)
- .debug_str     0x0000000000065209      0xc46 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+ .debug_str     0x0000000000065f24      0xc46 ./libs/StdPeriph/src/stm32f4xx_rcc.o
                                       0x5e298 (size before relaxing)
- .debug_str     0x0000000000065e4f      0x347 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+ .debug_str     0x0000000000066b6a      0x347 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
                                       0x5d837 (size before relaxing)
- .debug_str     0x0000000000066196      0x49a ./libs/StdPeriph/src/stm32f4xx_usart.o
+ .debug_str     0x0000000000066eb1      0x49a ./libs/StdPeriph/src/stm32f4xx_usart.o
                                       0x5daef (size before relaxing)
 
 .debug_loc
@@ -7332,7 +7332,7 @@ OUTPUT(ECW4011 - STM32F4 - Analog Datalogger REV B on ALT0061.elf elf32-littlear
  .debug_ranges  0x0000000000000550       0x40 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
  .debug_ranges  0x0000000000000590       0xf0 ./libs/StdPeriph/src/stm32f4xx_usart.o
 
-.debug_macro    0x0000000000000000    0x14155
+.debug_macro    0x0000000000000000    0x142dd
  .debug_macro   0x0000000000000000      0x1ae ./src/delay.o
  .debug_macro   0x00000000000001ae      0x886 ./src/delay.o
  .debug_macro   0x0000000000000a34       0x5e ./src/delay.o
@@ -7374,59 +7374,59 @@ OUTPUT(ECW4011 - STM32F4 - Analog Datalogger REV B on ALT0061.elf elf32-littlear
  .debug_macro   0x000000000000e49a      0x1bc ./src/gpio.o
  .debug_macro   0x000000000000e656      0x2d1 ./src/initialization.o
  .debug_macro   0x000000000000e927       0x10 ./src/initialization.o
- .debug_macro   0x000000000000e937      0xae2 ./src/initialization.o
- .debug_macro   0x000000000000f419       0x58 ./src/initialization.o
- .debug_macro   0x000000000000f471       0x35 ./src/initialization.o
- .debug_macro   0x000000000000f4a6       0x9c ./src/initialization.o
- .debug_macro   0x000000000000f542       0x16 ./src/initialization.o
- .debug_macro   0x000000000000f558       0x97 ./src/initialization.o
- .debug_macro   0x000000000000f5ef      0x27a ./src/initialization.o
- .debug_macro   0x000000000000f869       0xf6 ./src/initialization.o
- .debug_macro   0x000000000000f95f       0x10 ./src/initialization.o
- .debug_macro   0x000000000000f96f       0x52 ./src/initialization.o
- .debug_macro   0x000000000000f9c1       0x16 ./src/initialization.o
- .debug_macro   0x000000000000f9d7       0x43 ./src/initialization.o
- .debug_macro   0x000000000000fa1a      0x180 ./src/initialization.o
- .debug_macro   0x000000000000fb9a       0x10 ./src/initialization.o
- .debug_macro   0x000000000000fbaa       0x22 ./src/initialization.o
- .debug_macro   0x000000000000fbcc       0xbd ./src/initialization.o
- .debug_macro   0x000000000000fc89       0x16 ./src/initialization.o
- .debug_macro   0x000000000000fc9f      0x16d ./src/initialization.o
- .debug_macro   0x000000000000fe0c      0x2d1 ./src/interrupts.o
- .debug_macro   0x00000000000100dd      0x1d8 ./src/leds.o
- .debug_macro   0x00000000000102b5      0x329 ./src/main.o
- .debug_macro   0x00000000000105de      0x1a8 ./src/nvic.o
- .debug_macro   0x0000000000010786      0x1e8 ./src/pushbuttons.o
- .debug_macro   0x000000000001096e      0xadc ./src/pushbuttons.o
- .debug_macro   0x000000000001144a      0x1a8 ./src/rcc.o
- .debug_macro   0x00000000000115f2      0x2aa ./src/uart.o
- .debug_macro   0x000000000001189c       0xd1 ./libs/misc/src/_sbrk.o
- .debug_macro   0x000000000001196d       0x4a ./libs/misc/src/_sbrk.o
- .debug_macro   0x00000000000119b7       0x19 ./libs/misc/src/_sbrk.o
- .debug_macro   0x00000000000119d0      0x16d ./libs/misc/src/_sbrk.o
- .debug_macro   0x0000000000011b3d       0x10 ./libs/misc/src/_sbrk.o
- .debug_macro   0x0000000000011b4d      0x23b ./libs/misc/src/_sbrk.o
- .debug_macro   0x0000000000011d88      0x2ca ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x0000000000012052       0x10 ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x0000000000012062       0x35 ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x0000000000012097       0x10 ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x00000000000120a7       0x10 ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x00000000000120b7       0x35 ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x00000000000120ec      0x121 ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x000000000001220d       0x16 ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x0000000000012223      0x48e ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x00000000000126b1      0x21d ./libs/misc/src/newlib_stubs.o
- .debug_macro   0x00000000000128ce       0xa6 ./libs/cmsis/src/startup_cm.o
- .debug_macro   0x0000000000012974      0x1c2 ./libs/cmsis/src/system_stm32f4xx.o
- .debug_macro   0x0000000000012b36       0x11 ./libs/cmsis/src/vectors_stm32f4xx.o
- .debug_macro   0x0000000000012b47      0x1ae ./libs/StdPeriph/src/misc.o
- .debug_macro   0x0000000000012cf5       0x7c ./libs/StdPeriph/src/misc.o
- .debug_macro   0x0000000000012d71      0x1ae ./libs/StdPeriph/src/stm32f4xx_exti.o
- .debug_macro   0x0000000000012f1f       0xa8 ./libs/StdPeriph/src/stm32f4xx_exti.o
- .debug_macro   0x0000000000012fc7      0x1a8 ./libs/StdPeriph/src/stm32f4xx_gpio.o
- .debug_macro   0x000000000001316f      0x2b6 ./libs/StdPeriph/src/stm32f4xx_gpio.o
- .debug_macro   0x0000000000013425      0x272 ./libs/StdPeriph/src/stm32f4xx_rcc.o
- .debug_macro   0x0000000000013697      0x629 ./libs/StdPeriph/src/stm32f4xx_rcc.o
- .debug_macro   0x0000000000013cc0      0x1e4 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
- .debug_macro   0x0000000000013ea4       0xf1 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
- .debug_macro   0x0000000000013f95      0x1c0 ./libs/StdPeriph/src/stm32f4xx_usart.o
+ .debug_macro   0x000000000000e937      0xba6 ./src/initialization.o
+ .debug_macro   0x000000000000f4dd       0x58 ./src/initialization.o
+ .debug_macro   0x000000000000f535       0x35 ./src/initialization.o
+ .debug_macro   0x000000000000f56a       0x9c ./src/initialization.o
+ .debug_macro   0x000000000000f606       0x16 ./src/initialization.o
+ .debug_macro   0x000000000000f61c       0x97 ./src/initialization.o
+ .debug_macro   0x000000000000f6b3      0x27a ./src/initialization.o
+ .debug_macro   0x000000000000f92d       0xf6 ./src/initialization.o
+ .debug_macro   0x000000000000fa23       0x10 ./src/initialization.o
+ .debug_macro   0x000000000000fa33       0x52 ./src/initialization.o
+ .debug_macro   0x000000000000fa85       0x16 ./src/initialization.o
+ .debug_macro   0x000000000000fa9b       0x43 ./src/initialization.o
+ .debug_macro   0x000000000000fade      0x180 ./src/initialization.o
+ .debug_macro   0x000000000000fc5e       0x10 ./src/initialization.o
+ .debug_macro   0x000000000000fc6e       0x22 ./src/initialization.o
+ .debug_macro   0x000000000000fc90       0xbd ./src/initialization.o
+ .debug_macro   0x000000000000fd4d       0x16 ./src/initialization.o
+ .debug_macro   0x000000000000fd63      0x16d ./src/initialization.o
+ .debug_macro   0x000000000000fed0      0x2d1 ./src/interrupts.o
+ .debug_macro   0x00000000000101a1      0x1d8 ./src/leds.o
+ .debug_macro   0x0000000000010379      0x329 ./src/main.o
+ .debug_macro   0x00000000000106a2      0x1a8 ./src/nvic.o
+ .debug_macro   0x000000000001084a      0x1e8 ./src/pushbuttons.o
+ .debug_macro   0x0000000000010a32      0xba0 ./src/pushbuttons.o
+ .debug_macro   0x00000000000115d2      0x1a8 ./src/rcc.o
+ .debug_macro   0x000000000001177a      0x2aa ./src/uart.o
+ .debug_macro   0x0000000000011a24       0xd1 ./libs/misc/src/_sbrk.o
+ .debug_macro   0x0000000000011af5       0x4a ./libs/misc/src/_sbrk.o
+ .debug_macro   0x0000000000011b3f       0x19 ./libs/misc/src/_sbrk.o
+ .debug_macro   0x0000000000011b58      0x16d ./libs/misc/src/_sbrk.o
+ .debug_macro   0x0000000000011cc5       0x10 ./libs/misc/src/_sbrk.o
+ .debug_macro   0x0000000000011cd5      0x23b ./libs/misc/src/_sbrk.o
+ .debug_macro   0x0000000000011f10      0x2ca ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x00000000000121da       0x10 ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x00000000000121ea       0x35 ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x000000000001221f       0x10 ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x000000000001222f       0x10 ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x000000000001223f       0x35 ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x0000000000012274      0x121 ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x0000000000012395       0x16 ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x00000000000123ab      0x48e ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x0000000000012839      0x21d ./libs/misc/src/newlib_stubs.o
+ .debug_macro   0x0000000000012a56       0xa6 ./libs/cmsis/src/startup_cm.o
+ .debug_macro   0x0000000000012afc      0x1c2 ./libs/cmsis/src/system_stm32f4xx.o
+ .debug_macro   0x0000000000012cbe       0x11 ./libs/cmsis/src/vectors_stm32f4xx.o
+ .debug_macro   0x0000000000012ccf      0x1ae ./libs/StdPeriph/src/misc.o
+ .debug_macro   0x0000000000012e7d       0x7c ./libs/StdPeriph/src/misc.o
+ .debug_macro   0x0000000000012ef9      0x1ae ./libs/StdPeriph/src/stm32f4xx_exti.o
+ .debug_macro   0x00000000000130a7       0xa8 ./libs/StdPeriph/src/stm32f4xx_exti.o
+ .debug_macro   0x000000000001314f      0x1a8 ./libs/StdPeriph/src/stm32f4xx_gpio.o
+ .debug_macro   0x00000000000132f7      0x2b6 ./libs/StdPeriph/src/stm32f4xx_gpio.o
+ .debug_macro   0x00000000000135ad      0x272 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+ .debug_macro   0x000000000001381f      0x629 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+ .debug_macro   0x0000000000013e48      0x1e4 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+ .debug_macro   0x000000000001402c       0xf1 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+ .debug_macro   0x000000000001411d      0x1c0 ./libs/StdPeriph/src/stm32f4xx_usart.o
