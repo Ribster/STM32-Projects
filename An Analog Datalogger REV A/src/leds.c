@@ -88,26 +88,26 @@ leds_ledTest(void){
 void
 leds_ledEncoderExample(void){
 	// read the encoders
-	uint32_t valOne = TIM_GetCounter(ENC_1_TIMER);
-	printf("value One: %ld, value Two: %ld", TIM_GetCounter(ENC_1_TIMER), TIM_GetCounter(ENC_2_TIMER));
+	int16_t valOne = encoder_getEncoderOneValue()*400;
+	printf("Encoder value One: %d", encoder_getEncoderOneValue());
 	leds_setLed(ledList_White1, DISABLE);
 	leds_setLed(ledList_Blue, DISABLE);
 	leds_setLed(ledList_Orange, DISABLE);
 	leds_setLed(ledList_Green, DISABLE);
 	leds_setLed(ledList_White2, DISABLE);
 
-	if(valOne == 0){
+	if(valOne <= 0){
 
-	} else if ( (valOne > 0) && ( valOne < (0x3FFF/65)) ) {
+	} else if ( (valOne > 0) && ( valOne < (8175)) ) {
 		leds_setLed(ledList_White2, ENABLE);
-	} else if ( (valOne >= (0x3FFF/65)) && ( valOne < (0x7FFE/65)) ) {
+	} else if ( (valOne >= (8175)) && ( valOne < (16350)) ) {
 		leds_setLed(ledList_White2, ENABLE);
 		leds_setLed(ledList_Green, ENABLE);
-	} else if ( (valOne >= (0x7FFE/65)) && ( valOne < (0xBFFD/65)) ) {
+	} else if ( (valOne >= (16350)) && ( valOne < (24525)) ) {
 		leds_setLed(ledList_White2, ENABLE);
 		leds_setLed(ledList_Green, ENABLE);
 		leds_setLed(ledList_Orange, ENABLE);
-	} else if ( (valOne >= (0xBFFD/65)) && ( valOne < (0xFFFF/65)) ) {
+	} else if ( (valOne >= (24525)) && ( valOne < (32000)) ) {
 		leds_setLed(ledList_White2, ENABLE);
 		leds_setLed(ledList_Green, ENABLE);
 		leds_setLed(ledList_Orange, ENABLE);

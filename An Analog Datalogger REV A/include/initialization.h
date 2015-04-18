@@ -18,15 +18,10 @@
 #include "pushbuttons.h"
 #include "projectconfig.h"
 #include "encoders.h"
+#include "rtc.h"
 
 // prototype
 void
 initialization(void);
-
-
-
-
-
-
 
 #endif /* INITIALIZATION_H_ */

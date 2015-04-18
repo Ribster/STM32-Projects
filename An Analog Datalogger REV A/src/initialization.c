@@ -22,7 +22,10 @@ initialization(void){
 
 	// do the initialization of the encoders
 	initialize_encoderOne();
-	initialize_encoderTwo();
+	// initialize_encoderTwo(); -- Encoder 2 not working
+
+	// do the initialization of the RTC
+	initialize_RTC();
 
 	// do the initialization of the systick timer
 	delay_setup();

@@ -515,19 +515,11 @@
 /*
 8	PC14-OSC32_IN	I/O	RCC_OSC32_IN
 9	PC15-OSC32_OUT	I/O	RCC_OSC32_OUT*/
-#define OSC32_IN_PORT GPIOC
-#define OSC32_IN_PIN 14
-#define OSC32_IN_MODE
-#define OSC32_IN_PULL
-#define OSC32_IN_OTYPE
-#define OSC32_IN_SPEED
-
-#define OSC32_OUT_PORT GPIOC
-#define OSC32_OUT_PIN 15
-#define OSC32_OUT_MODE
-#define OSC32_OUT_PULL
-#define OSC32_OUT_OTYPE
-#define OSC32_OUT_SPEED
+	#define RTC_CLOCK_SOURCE_LSE          /* LSE used as RTC source clock */
+	//#define RTC_CLOCK_SOURCE_LSI     /* LSI used as RTC source clock. The RTC Clock */
+	#define RTC_EXTI_Line EXTI_Line17
+	#define RTC_EXTI_Mode EXTI_Mode_Interrupt
+	#define RTC_EXTI_Trigger EXTI_Trigger_Rising
 
 // Crystal
 /*

@@ -3158,7 +3158,7 @@ void TIM_SelectHallSensor(TIM_TypeDef* TIMx, FunctionalState NewState)
   * @param  TIM_Remap: specifies the TIM input remapping source.
   *          This parameter can be one of the following values:
   *            @arg TIM2_TIM8_TRGO: TIM2 ITR1 input is connected to TIM8 Trigger output(default)
-  *            @arg TIM2_ETH_PTP:   TIM2 ITR1 input is connected to ETH PTP trogger output.
+  *            @arg TIM2_ETH_PTP:   TIM2 ITR1 input is connected to ETH PTP trigger output.
   *            @arg TIM2_USBFS_SOF: TIM2 ITR1 input is connected to USB FS SOF. 
   *            @arg TIM2_USBHS_SOF: TIM2 ITR1 input is connected to USB HS SOF. 
   *            @arg TIM5_GPIO:      TIM5 CH4 input is connected to dedicated Timer pin(default)

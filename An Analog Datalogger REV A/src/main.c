@@ -41,6 +41,8 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 			// loop
 			//leds_ledTest();
 			leds_ledEncoderExample();
+			printf(" - ");
+			rtc_printTimeTerminal();
 			delay_milli(200);
 			printf(" -- loop nr %ld \r\n", counter++);
 		}
