@@ -1,0 +1,46 @@
+Change Component Designator: OldDesignator=K? NewDesignator=K11
+Added Component: Designator=K10(Header_Male_2.54 4x1)
+Added Component: Designator=M1(MOUNTING)
+Added Component: Designator=M2(MOUNTING)
+Added Component: Designator=M3(MOUNTING)
+Added Component: Designator=M4(MOUNTING)
+Added Pin To Net: NetName=3V3 Pin=K10-3
+Added Pin To Net: NetName=GND Pin=K10-4
+Added Pin To Net: NetName=GND Pin=M1-1
+Added Pin To Net: NetName=GND Pin=M1-2
+Added Pin To Net: NetName=GND Pin=M1-3
+Added Pin To Net: NetName=GND Pin=M1-4
+Added Pin To Net: NetName=GND Pin=M1-5
+Added Pin To Net: NetName=GND Pin=M1-6
+Added Pin To Net: NetName=GND Pin=M1-7
+Added Pin To Net: NetName=GND Pin=M2-1
+Added Pin To Net: NetName=GND Pin=M2-2
+Added Pin To Net: NetName=GND Pin=M2-3
+Added Pin To Net: NetName=GND Pin=M2-4
+Added Pin To Net: NetName=GND Pin=M2-5
+Added Pin To Net: NetName=GND Pin=M2-6
+Added Pin To Net: NetName=GND Pin=M2-7
+Added Pin To Net: NetName=GND Pin=M3-1
+Added Pin To Net: NetName=GND Pin=M3-2
+Added Pin To Net: NetName=GND Pin=M3-3
+Added Pin To Net: NetName=GND Pin=M3-4
+Added Pin To Net: NetName=GND Pin=M3-5
+Added Pin To Net: NetName=GND Pin=M3-6
+Added Pin To Net: NetName=GND Pin=M3-7
+Added Pin To Net: NetName=GND Pin=M4-1
+Added Pin To Net: NetName=GND Pin=M4-2
+Added Pin To Net: NetName=GND Pin=M4-3
+Added Pin To Net: NetName=GND Pin=M4-4
+Added Pin To Net: NetName=GND Pin=M4-5
+Added Pin To Net: NetName=GND Pin=M4-6
+Added Pin To Net: NetName=GND Pin=M4-7
+Added Pin To Net: NetName=USART2_RX Pin=K10-2
+Added Pin To Net: NetName=USART2_RX Pin=U1-87
+Added Net: Name=USART2_RX
+Added Pin To Net: NetName=USART2_TX Pin=K10-1
+Added Pin To Net: NetName=USART2_TX Pin=U1-86
+Added Net: Name=USART2_TX
+Added Member To Class: ClassName=General Overview Member=Component K10 Connector_Headers_SMD_M_4x1
+Added Member To Class: ClassName=General Overview Member=Component M2 M
+Added Member To Class: ClassName=General Overview Member=Component M3 M
+Added Member To Class: ClassName=General Overview Member=Component M4 M

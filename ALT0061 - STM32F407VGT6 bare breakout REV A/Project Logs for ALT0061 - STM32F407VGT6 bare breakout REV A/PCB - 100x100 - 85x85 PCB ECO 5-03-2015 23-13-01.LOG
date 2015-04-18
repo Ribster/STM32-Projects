@@ -1,0 +1,88 @@
+Removed Pin From Net: NetName=NRF_CE Pin=M1-3
+Removed Pin From Net: NetName=NRF_SS Pin=M1-4
+Removed Pin From Net: NetName=NRF_SCK Pin=M1-5
+Removed Pin From Net: NetName=NRF_MOSI Pin=M1-6
+Removed Pin From Net: NetName=NRF_MISO Pin=M1-7
+Removed Pin From Net: NetName=NRF_IRQ Pin=M1-8
+Change Component Comment : Designator=J1 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=
+Change Component Comment : Designator=J2 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=
+Change Component Comment : Designator=J3 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=
+Change Component Comment : Designator=J4 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=
+Change Component Comment : Designator=J5 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=
+Change Component Comment : Designator=J6 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=
+Added Component: Designator=J7(BYPASS-CLOSED)
+Added Component: Designator=J8(BYPASS-CLOSED)
+Added Component: Designator=J9(BYPASS-CLOSED)
+Added Component: Designator=J10(BYPASS-CLOSED)
+Added Component: Designator=J11(BYPASS-CLOSED)
+Added Component: Designator=J12(BYPASS-CLOSED)
+Added Component: Designator=J13(BYPASS-CLOSED)
+Added Component: Designator=J14(BYPASS-CLOSED)
+Added Component: Designator=J15(BYPASS-CLOSED)
+Added Component: Designator=J16(BYPASS-CLOSED)
+Added Component: Designator=J17(BYPASS-CLOSED)
+Added Pin To Net: NetName=NRF_CE Pin=J7-1
+Added Pin To Net: NetName=NRF_SS Pin=J8-2
+Added Pin To Net: NetName=NRF_SCK Pin=J9-1
+Added Pin To Net: NetName=NRF_MOSI Pin=J10-2
+Added Pin To Net: NetName=NRF_MISO Pin=J11-1
+Added Pin To Net: NetName=NRF_IRQ Pin=J12-2
+Added Pin To Net: NetName=NetCN1_13 Pin=CN1-13
+Added Pin To Net: NetName=NetCN1_13 Pin=J13-2
+Added Net: Name=NetCN1_13
+Added Pin To Net: NetName=NetCN1_14 Pin=CN1-14
+Added Pin To Net: NetName=NetCN1_14 Pin=J14-2
+Added Net: Name=NetCN1_14
+Added Pin To Net: NetName=NetCN1_15 Pin=CN1-15
+Added Pin To Net: NetName=NetCN1_15 Pin=J15-2
+Added Net: Name=NetCN1_15
+Added Pin To Net: NetName=NetCN1_18 Pin=CN1-18
+Added Pin To Net: NetName=NetCN1_18 Pin=J16-2
+Added Net: Name=NetCN1_18
+Added Pin To Net: NetName=NetCN1_19 Pin=CN1-19
+Added Pin To Net: NetName=NetCN1_19 Pin=J17-2
+Added Net: Name=NetCN1_19
+Added Pin To Net: NetName=NetJ7_2 Pin=J7-2
+Added Pin To Net: NetName=NetJ7_2 Pin=M1-3
+Added Net: Name=NetJ7_2
+Added Pin To Net: NetName=NetJ8_1 Pin=J8-1
+Added Pin To Net: NetName=NetJ8_1 Pin=M1-4
+Added Net: Name=NetJ8_1
+Added Pin To Net: NetName=NetJ9_2 Pin=J9-2
+Added Pin To Net: NetName=NetJ9_2 Pin=M1-5
+Added Net: Name=NetJ9_2
+Added Pin To Net: NetName=NetJ10_1 Pin=J10-1
+Added Pin To Net: NetName=NetJ10_1 Pin=M1-6
+Added Net: Name=NetJ10_1
+Added Pin To Net: NetName=NetJ11_2 Pin=J11-2
+Added Pin To Net: NetName=NetJ11_2 Pin=M1-7
+Added Net: Name=NetJ11_2
+Added Pin To Net: NetName=NetJ12_1 Pin=J12-1
+Added Pin To Net: NetName=NetJ12_1 Pin=M1-8
+Added Net: Name=NetJ12_1
+Added Pin To Net: NetName=OLED_DC Pin=J15-1
+Added Pin To Net: NetName=OLED_DC Pin=U1-92
+Added Net: Name=OLED_DC
+Added Pin To Net: NetName=OLED_MOSI Pin=J17-1
+Added Pin To Net: NetName=OLED_MOSI Pin=U1-91
+Added Net: Name=OLED_MOSI
+Added Pin To Net: NetName=OLED_RST Pin=J14-1
+Added Pin To Net: NetName=OLED_RST Pin=U1-93
+Added Net: Name=OLED_RST
+Added Pin To Net: NetName=OLED_SCK Pin=J16-1
+Added Pin To Net: NetName=OLED_SCK Pin=U1-89
+Added Net: Name=OLED_SCK
+Added Pin To Net: NetName=OLED_SS Pin=J13-1
+Added Pin To Net: NetName=OLED_SS Pin=U1-77
+Added Net: Name=OLED_SS
+Added Member To Class: ClassName=General Overview Member=Component J7 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J8 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J9 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J10 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J11 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J12 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J13 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J14 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J15 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J16 Connector_Production Connectors_SMD_BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J17 Connector_Production Connectors_SMD_BYPASS-CLOSED

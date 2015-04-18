@@ -1,0 +1,6 @@
+Added Component: Designator=K9(Header_Male_2.54 2x1)
+Added Component: Designator=K16(Header_Male_2.54 4x2)
+Added Pin To Net: NetName=EXT_SYNC Pin=K9-1
+Added Pin To Net: NetName=GND Pin=K9-2
+Added Member To Class: ClassName=General Overview Member=Component K9 Connector_Headers_SMD_M_2x1
+Added Member To Class: ClassName=General Overview Member=Component K16 Connector_Headers_SMD_M_4x2

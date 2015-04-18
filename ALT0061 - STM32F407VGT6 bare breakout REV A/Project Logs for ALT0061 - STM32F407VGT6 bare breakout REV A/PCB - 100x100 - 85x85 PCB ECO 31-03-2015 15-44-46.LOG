@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=SD_DAT0 Pin=R17-1
+Added Pin To Net: NetName=SD_DAT0 Pin=R17-2
+Added Pin To Net: NetName=SD_DAT1 Pin=R21-1
+Added Pin To Net: NetName=SD_DAT1 Pin=R21-2

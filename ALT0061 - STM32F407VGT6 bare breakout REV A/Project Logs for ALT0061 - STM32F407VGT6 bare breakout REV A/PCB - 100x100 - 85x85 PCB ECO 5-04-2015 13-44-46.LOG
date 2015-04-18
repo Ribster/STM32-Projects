@@ -1,0 +1,15 @@
+Added Pin To Net: NetName=3V3 Pin=R4-1
+Added Pin To Net: NetName=3V3 Pin=R4-2
+Added Member To Class: ClassName=General Overview Member=Component C37 TBD
+Added Member To Class: ClassName=General Overview Member=Component R36 100K
+Added Member To Class: ClassName=General Overview Member=Component R37 0805-0R
+Added Member To Class: ClassName=General Overview Member=Component R45 330R
+Added Member To Class: ClassName=General Overview Member=Component R48 100R
+Added Member To Class: ClassName=General Overview Member=Component R51 10K
+Added Member To Class: ClassName=General Overview Member=Component R52 10K
+Added Member To Class: ClassName=General Overview Member=Component R53 10K
+Added Member To Class: ClassName=General Overview Member=Component R55 10K
+Added Member To Class: ClassName=General Overview Member=Component R56 10K
+Added Member To Class: ClassName=General Overview Member=Component R60 10K
+Added Member To Class: ClassName=General Overview Member=Component R61 10K
+Added Member To Class: ClassName=General Overview Member=Component R63 10K

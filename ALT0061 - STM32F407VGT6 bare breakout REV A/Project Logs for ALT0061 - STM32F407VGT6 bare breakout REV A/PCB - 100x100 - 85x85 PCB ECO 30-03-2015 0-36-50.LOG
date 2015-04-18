@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=GND Pin=U1-94
+Added Component: Designator=R21(0805R-10K)
+Added Component: Designator=R22(0805R-560)
+Added Pin To Net: NetName=3V3 Pin=R21-1
+Added Pin To Net: NetName=GND Pin=R22-2
+Added Pin To Net: NetName=NetR21_2 Pin=R21-2
+Added Pin To Net: NetName=NetR21_2 Pin=R22-1
+Added Pin To Net: NetName=NetR21_2 Pin=U1-94
+Added Net: Name=NetR21_2
+Added Member To Class: ClassName=General Overview Member=Component R21 10K
+Added Member To Class: ClassName=General Overview Member=Component R22 560R

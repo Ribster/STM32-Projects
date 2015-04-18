@@ -1,0 +1,12 @@
+Added Component: Designator=R67(1206R-GENERIC)
+Added Component: Designator=R68(1206R-GENERIC)
+Added Component: Designator=R69(1206R-GENERIC)
+Added Pin To Net: NetName=3V3 Pin=R67-1
+Added Pin To Net: NetName=3V3 Pin=R67-2
+Added Pin To Net: NetName=3V3 Pin=R68-1
+Added Pin To Net: NetName=3V3 Pin=R68-2
+Added Pin To Net: NetName=3V3 Pin=R69-1
+Added Pin To Net: NetName=3V3 Pin=R69-2
+Added Member To Class: ClassName=General Overview Member=Component R67 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R68 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R69 1206R-0R

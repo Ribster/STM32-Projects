@@ -1,0 +1,16 @@
+Added Component: Designator=R29(0805R-GENERIC)
+Added Component: Designator=R32(0805R-GENERIC)
+Added Component: Designator=R35(0805R-GENERIC)
+Added Component: Designator=R38(0805R-GENERIC)
+Added Pin To Net: NetName=PMOD_INT Pin=R29-1
+Added Pin To Net: NetName=PMOD_INT Pin=R29-2
+Added Pin To Net: NetName=PMOD_INT Pin=R32-1
+Added Pin To Net: NetName=PMOD_INT Pin=R32-2
+Added Pin To Net: NetName=PMOD_MOSI Pin=R35-1
+Added Pin To Net: NetName=PMOD_MOSI Pin=R35-2
+Added Pin To Net: NetName=PMOD_MISO Pin=R38-1
+Added Pin To Net: NetName=PMOD_MISO Pin=R38-2
+Added Member To Class: ClassName=General Overview Member=Component R29 0805-0R
+Added Member To Class: ClassName=General Overview Member=Component R32 0805-0R
+Added Member To Class: ClassName=General Overview Member=Component R35 0805-0R
+Added Member To Class: ClassName=General Overview Member=Component R38 0805-0R

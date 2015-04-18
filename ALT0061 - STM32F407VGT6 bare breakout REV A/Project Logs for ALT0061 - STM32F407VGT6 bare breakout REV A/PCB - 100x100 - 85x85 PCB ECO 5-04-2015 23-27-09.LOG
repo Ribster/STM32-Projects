@@ -1,0 +1,6 @@
+Added Component: Designator=TP1(TESTPOINT)
+Added Component: Designator=TP2(TESTPOINT)
+Added Pin To Net: NetName=NetTP1_1 Pin=TP1-1
+Added Pin To Net: NetName=NetTP2_1 Pin=TP2-1
+Added Member To Class: ClassName=General Overview Member=Component TP1 Connector_Production Connectors_SMD_TESTPOINT
+Added Member To Class: ClassName=General Overview Member=Component TP2 Connector_Production Connectors_SMD_TESTPOINT

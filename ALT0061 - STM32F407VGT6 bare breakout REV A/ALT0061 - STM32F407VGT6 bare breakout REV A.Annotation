@@ -1,0 +1,19 @@
+[DesignatorManager]
+
+[SheetNumberManager]
+SheetNumberOrder=Display Order
+SheetNumberMethod=Increasing
+DocumentName0=Mechanical + Bridges + AFE.SchDoc
+UniqueIDPath0=
+SheetNumber0=1
+DocumentName1=Microcontroller.SchDoc
+UniqueIDPath1=
+SheetNumber1=2
+DocumentName2=Peripheral.SchDoc
+UniqueIDPath2=
+SheetNumber2=3
+DocumentName3=Power management + OLED.SchDoc
+UniqueIDPath3=
+SheetNumber3=4
+
+

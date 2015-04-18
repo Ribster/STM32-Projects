@@ -1,0 +1,11 @@
+Added Component: Designator=C36(1210C-GENERIC)
+Added Pin To Net: NetName=3V3 Pin=C36-1
+Added Pin To Net: NetName=GND Pin=C36-2
+Added Member To Class: ClassName=General Overview Member=Component C18 1206 10u16V TANT
+Added Member To Class: ClassName=General Overview Member=Component C19 100nF
+Added Member To Class: ClassName=General Overview Member=Component C20 TBD
+Added Member To Class: ClassName=General Overview Member=Component C36 TBD
+Added Member To Class: ClassName=General Overview Member=Component R10 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R12 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R30 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R39 1206R-0R

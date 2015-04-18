@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=ENC2_B Pin=R29-1
+Removed Pin From Net: NetName=ENC2_B Pin=R29-2
+Removed Member From Class: ClassName=General Overview Member=R28
+Removed Member From Class: ClassName=General Overview Member=R29
+Change Component DesignItemId : Designator=R24 Old DesignItemId=0805R-0R New DesignItemId=1206R-0R
+Change Component DesignItemId : Designator=R26 Old DesignItemId=0805R-0R New DesignItemId=1206R-0R
+Change Component Footprint: Designator=R24 Old Footprint=0805R-GENERIC New Footprint=1206R-GENERIC
+Change Component Footprint: Designator=R26 Old Footprint=0805R-GENERIC New Footprint=1206R-GENERIC
+Change Component Comment : Designator=R24 Old Comment=0805-0R New Comment=1206R-0R
+Change Component Comment : Designator=R26 Old Comment=0805-0R New Comment=1206R-0R
+Added Pin To Net: NetName=ENC2_B Pin=R26-1
+Added Pin To Net: NetName=ENC2_B Pin=R26-2
+Added Member To Class: ClassName=General Overview Member=Component R37 10K

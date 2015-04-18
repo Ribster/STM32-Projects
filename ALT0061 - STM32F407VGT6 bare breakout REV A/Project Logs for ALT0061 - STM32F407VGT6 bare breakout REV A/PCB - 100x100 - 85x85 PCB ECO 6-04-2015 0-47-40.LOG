@@ -1,0 +1,4 @@
+Added Component: Designator=R71(1206R-GENERIC)
+Added Pin To Net: NetName=GND Pin=R71-1
+Added Pin To Net: NetName=GND Pin=R71-2
+Added Member To Class: ClassName=General Overview Member=Component R71 1206R-0R

@@ -1,0 +1,25 @@
+Added Component: Designator=K?(Header_Male_2.54 9x1)
+Added Pin To Net: NetName=3V3 Pin=K?-8
+Added Pin To Net: NetName=GND Pin=K?-9
+Added Pin To Net: NetName=AFE_CS Pin=K?-1
+Added Pin To Net: NetName=AFE_CS Pin=U1-29
+Added Net: Name=AFE_CS
+Added Pin To Net: NetName=AFE_DONE Pin=K?-5
+Added Pin To Net: NetName=AFE_DONE Pin=U1-33
+Added Net: Name=AFE_DONE
+Added Pin To Net: NetName=AFE_MISO Pin=K?-3
+Added Pin To Net: NetName=AFE_MISO Pin=U1-31
+Added Net: Name=AFE_MISO
+Added Pin To Net: NetName=AFE_MOSI Pin=K?-4
+Added Pin To Net: NetName=AFE_MOSI Pin=U1-32
+Added Net: Name=AFE_MOSI
+Added Pin To Net: NetName=AFE_SCK Pin=K?-2
+Added Pin To Net: NetName=AFE_SCK Pin=U1-30
+Added Net: Name=AFE_SCK
+Added Pin To Net: NetName=AFE_SYNC Pin=K?-6
+Added Pin To Net: NetName=AFE_SYNC Pin=U1-34
+Added Net: Name=AFE_SYNC
+Added Pin To Net: NetName=EXT_SYNC Pin=K?-7
+Added Pin To Net: NetName=EXT_SYNC Pin=U1-35
+Added Net: Name=EXT_SYNC
+Added Member To Class: ClassName=General Overview Member=Component K? Connector_Headers_SMD_M_9x1

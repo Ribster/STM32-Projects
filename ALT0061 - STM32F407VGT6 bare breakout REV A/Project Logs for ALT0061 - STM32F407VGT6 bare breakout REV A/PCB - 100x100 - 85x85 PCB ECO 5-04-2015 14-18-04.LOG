@@ -1,0 +1,20 @@
+Added Component: Designator=R19(1206R-GENERIC)
+Added Component: Designator=R20(1206R-GENERIC)
+Added Component: Designator=R22(1206R-GENERIC)
+Added Component: Designator=R23(1206R-GENERIC)
+Added Component: Designator=R25(1206R-GENERIC)
+Added Component: Designator=R26(1206R-GENERIC)
+Added Pin To Net: NetName=NRF_MISO Pin=R19-1
+Added Pin To Net: NetName=NRF_MISO Pin=R19-2
+Added Pin To Net: NetName=NRF_SS Pin=R20-1
+Added Pin To Net: NetName=NRF_SS Pin=R20-2
+Added Pin To Net: NetName=NRF_SS Pin=R22-1
+Added Pin To Net: NetName=NRF_SS Pin=R22-2
+Added Pin To Net: NetName=NRF_IRQ Pin=R23-1
+Added Pin To Net: NetName=NRF_IRQ Pin=R23-2
+Added Member To Class: ClassName=General Overview Member=Component R19 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R20 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R22 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R23 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R25 1206R-0R
+Added Member To Class: ClassName=General Overview Member=Component R26 1206R-0R

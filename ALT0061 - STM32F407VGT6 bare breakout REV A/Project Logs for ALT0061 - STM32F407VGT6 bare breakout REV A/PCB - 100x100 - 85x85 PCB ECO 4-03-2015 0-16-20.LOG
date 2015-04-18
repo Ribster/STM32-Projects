@@ -1,0 +1,10 @@
+Added Component: Designator=J1(BYPASS-CLOSED)
+Added Component: Designator=J2(BYPASS-CLOSED)
+Added Component: Designator=J3(BYPASS-CLOSED)
+Added Component: Designator=J4(BYPASS-CLOSED)
+Added Component: Designator=Y1(XTAL MC-306)
+Added Member To Class: ClassName=General Overview Member=Component J1 BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J2 BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J3 BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component J4 BYPASS-CLOSED
+Added Member To Class: ClassName=General Overview Member=Component Y1 MC-306

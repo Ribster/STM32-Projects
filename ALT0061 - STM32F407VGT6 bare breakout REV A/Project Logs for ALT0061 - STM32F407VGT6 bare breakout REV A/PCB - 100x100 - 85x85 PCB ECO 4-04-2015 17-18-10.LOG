@@ -1,0 +1,6 @@
+Added Pin To Net: NetName=USB_N Pin=R40-1
+Added Pin To Net: NetName=USB_N Pin=R40-2
+Added Pin To Net: NetName=USB_P Pin=R43-1
+Added Pin To Net: NetName=USB_P Pin=R43-2
+Added Member To Class: ClassName=General Overview Member=Component R13 100K
+Added Member To Class: ClassName=General Overview Member=Component R18 100K

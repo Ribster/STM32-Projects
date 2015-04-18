@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=NetJ19_2 Pin=K9-1
+Removed Pin From Net: NetName=NetJ17_2 Pin=K9-2
+Removed Pin From Net: NetName=NetJ14_2 Pin=K9-3
+Removed Pin From Net: NetName=NetJ12_2 Pin=K9-4
+Removed Pin From Net: NetName=NetJ10_2 Pin=K9-5
+Removed Pin From Net: NetName=NetJ9_2 Pin=K9-6
+Removed Member From Class: ClassName=General Overview Member=K9
+Added Pin To Net: NetName=SD_CLK Pin=R34-1
+Added Pin To Net: NetName=SD_CLK Pin=R34-2

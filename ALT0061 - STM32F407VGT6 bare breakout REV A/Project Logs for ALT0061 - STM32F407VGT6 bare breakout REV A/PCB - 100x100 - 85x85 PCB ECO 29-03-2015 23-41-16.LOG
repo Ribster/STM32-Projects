@@ -1,0 +1,96 @@
+Removed Pin From Net: NetName=AFE_CS Pin=K11-1
+Removed Pin From Net: NetName=AFE_SCK Pin=K11-2
+Removed Pin From Net: NetName=AFE_MISO Pin=K11-3
+Removed Pin From Net: NetName=AFE_MOSI Pin=K11-4
+Removed Pin From Net: NetName=AFE_DONE Pin=K11-5
+Removed Pin From Net: NetName=AFE_SYNC Pin=K11-6
+Removed Pin From Net: NetName=EXT_SYNC Pin=K11-7
+Removed Pin From Net: NetName=3V3 Pin=K11-8
+Removed Pin From Net: NetName=GND Pin=K11-9
+Change Component DesignItemId : Designator=K11 Old DesignItemId=Connector_Headers_SMD_M_9x1 New DesignItemId=Connector_USB_SMD_USB_F_MINI
+Change Component Footprint: Designator=K11 Old Footprint=Header_Male_2.54 9x1 New Footprint=USB_F_MINI
+Change Component Comment : Designator=K11 Old Comment=Connector_Headers_SMD_M_9x1 New Comment=Connector_USB_SMD_USB_F_MINI
+Change Component Designator: OldDesignator=M1 NewDesignator=M5
+Added Component: Designator=D8(0805LED)
+Added Component: Designator=J22(BYPASS)
+Added Component: Designator=J23(BYPASS)
+Added Component: Designator=J24(BYPASS)
+Added Component: Designator=J25(BYPASS)
+Added Component: Designator=J26(BYPASS)
+Added Component: Designator=J27(BYPASS)
+Added Component: Designator=J28(BYPASS)
+Added Component: Designator=J29(BYPASS)
+Added Component: Designator=K12(53261-1071)
+Added Component: Designator=R20(0805R-330)
+Added Pin To Net: NetName=GND Pin=D8-K
+Added Pin To Net: NetName=AFE_SCK Pin=J23-1
+Added Pin To Net: NetName=AFE_MISO Pin=J24-1
+Added Pin To Net: NetName=AFE_MOSI Pin=J25-1
+Added Pin To Net: NetName=AFE_CS Pin=J28-1
+Added Pin To Net: NetName=GND Pin=K11-5
+Added Pin To Net: NetName=GND Pin=K11-M1
+Added Pin To Net: NetName=GND Pin=K11-M2
+Added Pin To Net: NetName=GND Pin=K11-M3
+Added Pin To Net: NetName=GND Pin=K11-M4
+Added Pin To Net: NetName=GND Pin=K12-9
+Added Pin To Net: NetName=5V0 Pin=K12-10
+Added Pin To Net: NetName=AFE_INT Pin=J29-1
+Added Net: Name=AFE_INT
+Added Pin To Net: NetName=AFE_SYNC1 Pin=J27-1
+Added Net: Name=AFE_SYNC1
+Added Pin To Net: NetName=AFE_SYNC2 Pin=J22-1
+Added Net: Name=AFE_SYNC2
+Added Pin To Net: NetName=AFE_SYNC3 Pin=J26-1
+Added Net: Name=AFE_SYNC3
+Added Pin To Net: NetName=NetD8_A Pin=D8-A
+Added Pin To Net: NetName=NetD8_A Pin=R20-2
+Added Net: Name=NetD8_A
+Added Pin To Net: NetName=NetJ22_2 Pin=J22-2
+Added Pin To Net: NetName=NetJ22_2 Pin=K12-1
+Added Net: Name=NetJ22_2
+Added Pin To Net: NetName=NetJ23_2 Pin=J23-2
+Added Pin To Net: NetName=NetJ23_2 Pin=K12-2
+Added Net: Name=NetJ23_2
+Added Pin To Net: NetName=NetJ24_2 Pin=J24-2
+Added Pin To Net: NetName=NetJ24_2 Pin=K12-3
+Added Net: Name=NetJ24_2
+Added Pin To Net: NetName=NetJ25_2 Pin=J25-2
+Added Pin To Net: NetName=NetJ25_2 Pin=K12-4
+Added Net: Name=NetJ25_2
+Added Pin To Net: NetName=NetJ26_2 Pin=J26-2
+Added Pin To Net: NetName=NetJ26_2 Pin=K12-5
+Added Net: Name=NetJ26_2
+Added Pin To Net: NetName=NetJ27_2 Pin=J27-2
+Added Pin To Net: NetName=NetJ27_2 Pin=K12-6
+Added Net: Name=NetJ27_2
+Added Pin To Net: NetName=NetJ28_2 Pin=J28-2
+Added Pin To Net: NetName=NetJ28_2 Pin=K12-7
+Added Net: Name=NetJ28_2
+Added Pin To Net: NetName=NetJ29_2 Pin=J29-2
+Added Pin To Net: NetName=NetJ29_2 Pin=K12-8
+Added Net: Name=NetJ29_2
+Added Pin To Net: NetName=USB_ID Pin=K11-4
+Added Pin To Net: NetName=USB_ID Pin=U1-69
+Added Net: Name=USB_ID
+Added Pin To Net: NetName=USB_N Pin=K11-2
+Added Pin To Net: NetName=USB_N Pin=U1-70
+Added Net: Name=USB_N
+Added Pin To Net: NetName=USB_P Pin=K11-3
+Added Pin To Net: NetName=USB_P Pin=U1-71
+Added Net: Name=USB_P
+Added Pin To Net: NetName=VUSB Pin=K11-1
+Added Pin To Net: NetName=VUSB Pin=R20-1
+Added Net: Name=VUSB
+Added Differential Pair: Name=USB
+Added Member To Class: ClassName=General Overview Member=Component D8 0805
+Added Member To Class: ClassName=General Overview Member=Component J22 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J23 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J24 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J25 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J26 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J27 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J28 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J29 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component K12 Connector_Terminal_SMD_53261-1071
+Added Member To Class: ClassName=General Overview Member=Component M5 Communication_ISM_nRF24L01+
+Added Member To Class: ClassName=General Overview Member=Component R20 330R

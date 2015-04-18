@@ -1,0 +1,72 @@
+Added Component: Designator=C10(1206C+_TANTAL-10u16V)
+Added Component: Designator=C11(1210C-GENERIC)
+Added Component: Designator=C12(1206C+_TANTAL-10u16V)
+Added Component: Designator=C13(1210C-GENERIC)
+Added Component: Designator=D6(0805LED)
+Added Component: Designator=D7(0805LED)
+Added Component: Designator=K7(Header_Male_2.54 2x1)
+Added Component: Designator=K8(Header_Male_2.54 2x1)
+Added Component: Designator=K9(Header_Male_2.54 2x1)
+Added Component: Designator=R16(0805R-680)
+Added Component: Designator=R17(0805R-680)
+Added Component: Designator=R18(0805R-10K)
+Added Pin To Net: NetName=GND Pin=C10-2
+Added Pin To Net: NetName=GND Pin=C11-2
+Added Pin To Net: NetName=GND Pin=C12-2
+Added Pin To Net: NetName=GND Pin=C13-2
+Added Pin To Net: NetName=GND Pin=K4-GND
+Added Pin To Net: NetName=GND Pin=K4-GND
+Added Pin To Net: NetName=GND Pin=K7-1
+Added Pin To Net: NetName=3V3 Pin=K9-1
+Added Pin To Net: NetName=GND Pin=R18-1
+Added Pin To Net: NetName=GND Pin=U2-3
+Added Pin To Net: NetName=GND Pin=VR1-1
+Added Pin To Net: NetName=5V0 Pin=C10-1
+Added Pin To Net: NetName=5V0 Pin=C11-1
+Added Pin To Net: NetName=5V0 Pin=D6-A
+Added Pin To Net: NetName=5V0 Pin=D7-A
+Added Pin To Net: NetName=5V0 Pin=K4-VCC
+Added Pin To Net: NetName=5V0 Pin=K4-VCC
+Added Pin To Net: NetName=5V0 Pin=U2-4
+Added Pin To Net: NetName=5V0 Pin=U2-8
+Added Net: Name=5V0
+Added Pin To Net: NetName=NetC12_1 Pin=C12-1
+Added Pin To Net: NetName=NetC12_1 Pin=C13-1
+Added Pin To Net: NetName=NetC12_1 Pin=K9-2
+Added Pin To Net: NetName=NetC12_1 Pin=VR1-2
+Added Pin To Net: NetName=NetC12_1 Pin=VR1-4
+Added Net: Name=NetC12_1
+Added Pin To Net: NetName=NetD6_K Pin=D6-K
+Added Pin To Net: NetName=NetD6_K Pin=R16-2
+Added Net: Name=NetD6_K
+Added Pin To Net: NetName=NetD7_K Pin=D7-K
+Added Pin To Net: NetName=NetD7_K Pin=R17-2
+Added Net: Name=NetD7_K
+Added Pin To Net: NetName=NetK7_2 Pin=K7-2
+Added Pin To Net: NetName=NetK7_2 Pin=K8-2
+Added Net: Name=NetK7_2
+Added Pin To Net: NetName=NetR16_1 Pin=R16-1
+Added Pin To Net: NetName=NetR16_1 Pin=U2-7
+Added Net: Name=NetR16_1
+Added Pin To Net: NetName=NetR17_1 Pin=R17-1
+Added Pin To Net: NetName=NetR17_1 Pin=U2-6
+Added Net: Name=NetR17_1
+Added Pin To Net: NetName=NetR18_2 Pin=R18-2
+Added Pin To Net: NetName=NetR18_2 Pin=U2-2
+Added Net: Name=NetR18_2
+Added Pin To Net: NetName=VBAT Pin=K8-1
+Added Pin To Net: NetName=VBAT Pin=U2-5
+Added Pin To Net: NetName=VBAT Pin=VR1-3
+Added Net: Name=VBAT
+Added Member To Class: ClassName=General Overview Member=Component C10 1206 10u16V TANT
+Added Member To Class: ClassName=General Overview Member=Component C11 TBD
+Added Member To Class: ClassName=General Overview Member=Component C12 1206 10u16V TANT
+Added Member To Class: ClassName=General Overview Member=Component C13 TBD
+Added Member To Class: ClassName=General Overview Member=Component D6 0805
+Added Member To Class: ClassName=General Overview Member=Component D7 0805
+Added Member To Class: ClassName=General Overview Member=Component K7 Connector_Headers_SMD_M_2x1
+Added Member To Class: ClassName=General Overview Member=Component K8 Connector_Headers_SMD_M_2x1
+Added Member To Class: ClassName=General Overview Member=Component K9 Connector_Headers_SMD_M_2x1
+Added Member To Class: ClassName=General Overview Member=Component R16 680R
+Added Member To Class: ClassName=General Overview Member=Component R17 680R
+Added Member To Class: ClassName=General Overview Member=Component R18 10K

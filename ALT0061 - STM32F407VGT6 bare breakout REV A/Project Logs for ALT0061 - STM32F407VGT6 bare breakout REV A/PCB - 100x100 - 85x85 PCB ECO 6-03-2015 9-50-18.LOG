@@ -1,0 +1,426 @@
+Added Component: Designator=C1(0603C-GENERIC)
+Added Component: Designator=C2(0603C-GENERIC)
+Added Component: Designator=C3(0603C-GENERIC)
+Added Component: Designator=C4(0603C-GENERIC)
+Added Component: Designator=C5(0603C-GENERIC)
+Added Component: Designator=C6(0603C-GENERIC)
+Added Component: Designator=C7(0603C-GENERIC)
+Added Component: Designator=C8(0603C-GENERIC)
+Added Component: Designator=C9(1206C+_TANTAL-10u16V)
+Added Component: Designator=C10(1206C+_TANTAL-10u16V)
+Added Component: Designator=C11(1210C-GENERIC)
+Added Component: Designator=C12(1206C+_TANTAL-10u16V)
+Added Component: Designator=C13(1210C-GENERIC)
+Added Component: Designator=C14(0603C-GENERIC)
+Added Component: Designator=CN1(SSD1306_128x64_OLED)
+Added Component: Designator=D1(0805LED)
+Added Component: Designator=D2(0805LED)
+Added Component: Designator=D3(0805LED)
+Added Component: Designator=D4(0805LED)
+Added Component: Designator=D5(0805LED)
+Added Component: Designator=D6(0805LED)
+Added Component: Designator=D7(0805LED)
+Added Component: Designator=J1(BYPASS)
+Added Component: Designator=J2(BYPASS)
+Added Component: Designator=J3(BYPASS)
+Added Component: Designator=J4(BYPASS)
+Added Component: Designator=J5(BYPASS)
+Added Component: Designator=J6(BYPASS)
+Added Component: Designator=J7(BYPASS)
+Added Component: Designator=J8(BYPASS)
+Added Component: Designator=J9(BYPASS)
+Added Component: Designator=J10(BYPASS)
+Added Component: Designator=J11(BYPASS)
+Added Component: Designator=J12(BYPASS)
+Added Component: Designator=J13(BYPASS)
+Added Component: Designator=J14(BYPASS)
+Added Component: Designator=J15(BYPASS)
+Added Component: Designator=J16(BYPASS)
+Added Component: Designator=J17(BYPASS)
+Added Component: Designator=J18(BYPASS)
+Added Component: Designator=J19(BYPASS)
+Added Component: Designator=J20(BYPASS)
+Added Component: Designator=J21(BYPASS)
+Added Component: Designator=K1(Header_Male_2.54 5x1)
+Added Component: Designator=K2(SCHD3A0100)
+Added Component: Designator=K3(Header_Male_2.54 6x1)
+Added Component: Designator=K4(ADC-028)
+Added Component: Designator=K5(Header_Male_2.54 3x1)
+Added Component: Designator=K6(Header_Male_2.54 3x1)
+Added Component: Designator=K7(Header_Male_2.54 2x1)
+Added Component: Designator=K8(Header_Male_2.54 2x1)
+Added Component: Designator=K9(Header_Male_2.54 2x1)
+Added Component: Designator=M1(nRF24L01+_SMD)
+Added Component: Designator=R1(0805R-10K)
+Added Component: Designator=R2(0603R-100)
+Added Component: Designator=R3(0805R-10K)
+Added Component: Designator=R4(0805R-10K)
+Added Component: Designator=R5(0805R-10K)
+Added Component: Designator=R6(0805R-10K)
+Added Component: Designator=R7(0805R-10K)
+Added Component: Designator=R8(0603R-TBD)
+Added Component: Designator=R9(0603R-TBD)
+Added Component: Designator=R10(0603R-TBD)
+Added Component: Designator=R11(0603R-TBD)
+Added Component: Designator=R12(0603R-TBD)
+Added Component: Designator=R13(0603R-TBD)
+Added Component: Designator=R14(0603R-TBD)
+Added Component: Designator=R15(0603R-TBD)
+Added Component: Designator=R16(0805R-680)
+Added Component: Designator=R17(0805R-680)
+Added Component: Designator=R18(0805R-10K)
+Added Component: Designator=RP1(1206-ARRAY-4-GENERIC)
+Added Component: Designator=SW1(SW-PB-SMD)
+Added Component: Designator=SW2(SW-PB-SMD)
+Added Component: Designator=SW3(SW-PB-SMD)
+Added Component: Designator=SW4(SW-PB-SMD)
+Added Component: Designator=SW5(SW-PB-SMD)
+Added Component: Designator=SW6(SW-PB-SMD)
+Added Component: Designator=SW7(SW-PB-SMD)
+Added Component: Designator=U1(STM-LQFP100_N)
+Added Component: Designator=VR1(SOT223)
+Added Component: Designator=Y1(XTAL MC-306)
+Added Component: Designator=Y2(XTAL 6035)
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=NetC1_2 Pin=C1-2
+Added Pin To Net: NetName=NetC2_1 Pin=C2-1
+Added Pin To Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=GND Pin=C3-1
+Added Pin To Net: NetName=NetC3_2 Pin=C3-2
+Added Pin To Net: NetName=NetC4_1 Pin=C4-1
+Added Pin To Net: NetName=GND Pin=C4-2
+Added Pin To Net: NetName=GND Pin=C5-1
+Added Pin To Net: NetName=NetC5_2 Pin=C5-2
+Added Pin To Net: NetName=GND Pin=C6-1
+Added Pin To Net: NetName=NetC6_2 Pin=C6-2
+Added Pin To Net: NetName=NetC7_1 Pin=C7-1
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=NetC8_1 Pin=C8-1
+Added Pin To Net: NetName=GND Pin=C8-2
+Added Pin To Net: NetName=5V0 Pin=C10-1
+Added Pin To Net: NetName=GND Pin=C10-2
+Added Pin To Net: NetName=5V0 Pin=C11-1
+Added Pin To Net: NetName=GND Pin=C11-2
+Added Pin To Net: NetName=NetC12_1 Pin=C12-1
+Added Pin To Net: NetName=GND Pin=C12-2
+Added Pin To Net: NetName=NetC12_1 Pin=C13-1
+Added Pin To Net: NetName=GND Pin=C13-2
+Added Pin To Net: NetName=GND Pin=C14-1
+Added Pin To Net: NetName=NRST Pin=C14-2
+Added Pin To Net: NetName=NetCN1_13 Pin=CN1-13
+Added Pin To Net: NetName=NetCN1_14 Pin=CN1-14
+Added Pin To Net: NetName=NetCN1_15 Pin=CN1-15
+Added Pin To Net: NetName=NetCN1_18 Pin=CN1-18
+Added Pin To Net: NetName=NetCN1_19 Pin=CN1-19
+Added Pin To Net: NetName=NetD1_A Pin=D1-A
+Added Pin To Net: NetName=NetD1_K Pin=D1-K
+Added Pin To Net: NetName=NetD2_A Pin=D2-A
+Added Pin To Net: NetName=NetD1_K Pin=D2-K
+Added Pin To Net: NetName=NetD3_A Pin=D3-A
+Added Pin To Net: NetName=NetD1_K Pin=D3-K
+Added Pin To Net: NetName=NetD4_A Pin=D4-A
+Added Pin To Net: NetName=NetD1_K Pin=D4-K
+Added Pin To Net: NetName=NetD5_A Pin=D5-A
+Added Pin To Net: NetName=NetD1_K Pin=D5-K
+Added Pin To Net: NetName=5V0 Pin=D6-A
+Added Pin To Net: NetName=NetD6_K Pin=D6-K
+Added Pin To Net: NetName=5V0 Pin=D7-A
+Added Pin To Net: NetName=NetD7_K Pin=D7-K
+Added Pin To Net: NetName=OLED_SS Pin=J1-1
+Added Pin To Net: NetName=NetCN1_13 Pin=J1-2
+Added Pin To Net: NetName=OLED_RST Pin=J2-1
+Added Pin To Net: NetName=NetCN1_14 Pin=J2-2
+Added Pin To Net: NetName=OLED_DC Pin=J3-1
+Added Pin To Net: NetName=NetCN1_15 Pin=J3-2
+Added Pin To Net: NetName=OLED_SCK Pin=J4-1
+Added Pin To Net: NetName=NetCN1_18 Pin=J4-2
+Added Pin To Net: NetName=OLED_MOSI Pin=J5-1
+Added Pin To Net: NetName=NetCN1_19 Pin=J5-2
+Added Pin To Net: NetName=ENC1_A Pin=J6-1
+Added Pin To Net: NetName=NetJ6_2 Pin=J6-2
+Added Pin To Net: NetName=ENC1_B Pin=J7-1
+Added Pin To Net: NetName=NetJ7_2 Pin=J7-2
+Added Pin To Net: NetName=ENC2_A Pin=J8-1
+Added Pin To Net: NetName=NetJ8_2 Pin=J8-2
+Added Pin To Net: NetName=ENC2_B Pin=J9-1
+Added Pin To Net: NetName=NetJ9_2 Pin=J9-2
+Added Pin To Net: NetName=SD_DAT2 Pin=J10-1
+Added Pin To Net: NetName=NetJ10_2 Pin=J10-2
+Added Pin To Net: NetName=SD_DAT3 Pin=J11-1
+Added Pin To Net: NetName=NetJ11_2 Pin=J11-2
+Added Pin To Net: NetName=SD_CMD Pin=J12-1
+Added Pin To Net: NetName=NetJ12_2 Pin=J12-2
+Added Pin To Net: NetName=SD_CLK Pin=J13-1
+Added Pin To Net: NetName=NetJ13_2 Pin=J13-2
+Added Pin To Net: NetName=SD_DAT0 Pin=J14-1
+Added Pin To Net: NetName=NetJ14_2 Pin=J14-2
+Added Pin To Net: NetName=SD_DAT1 Pin=J15-1
+Added Pin To Net: NetName=NetJ15_2 Pin=J15-2
+Added Pin To Net: NetName=NRF_CE Pin=J16-1
+Added Pin To Net: NetName=NetJ16_2 Pin=J16-2
+Added Pin To Net: NetName=NetJ17_1 Pin=J17-1
+Added Pin To Net: NetName=NRF_SS Pin=J17-2
+Added Pin To Net: NetName=NRF_SCK Pin=J18-1
+Added Pin To Net: NetName=NetJ18_2 Pin=J18-2
+Added Pin To Net: NetName=NetJ19_1 Pin=J19-1
+Added Pin To Net: NetName=NRF_MOSI Pin=J19-2
+Added Pin To Net: NetName=NRF_MISO Pin=J20-1
+Added Pin To Net: NetName=NetJ20_2 Pin=J20-2
+Added Pin To Net: NetName=NetJ21_1 Pin=J21-1
+Added Pin To Net: NetName=NRF_IRQ Pin=J21-2
+Added Pin To Net: NetName=3V3 Pin=K1-1
+Added Pin To Net: NetName=SWDIO Pin=K1-2
+Added Pin To Net: NetName=SWCLK Pin=K1-3
+Added Pin To Net: NetName=NRST Pin=K1-4
+Added Pin To Net: NetName=GND Pin=K1-5
+Added Pin To Net: NetName=NetJ10_2 Pin=K2-1
+Added Pin To Net: NetName=NetJ11_2 Pin=K2-2
+Added Pin To Net: NetName=NetJ12_2 Pin=K2-3
+Added Pin To Net: NetName=3V3 Pin=K2-4
+Added Pin To Net: NetName=NetJ13_2 Pin=K2-5
+Added Pin To Net: NetName=GND Pin=K2-6
+Added Pin To Net: NetName=GND Pin=K2-6
+Added Pin To Net: NetName=GND Pin=K2-6
+Added Pin To Net: NetName=GND Pin=K2-6
+Added Pin To Net: NetName=GND Pin=K2-6
+Added Pin To Net: NetName=GND Pin=K2-6
+Added Pin To Net: NetName=GND Pin=K2-6
+Added Pin To Net: NetName=NetJ14_2 Pin=K2-7
+Added Pin To Net: NetName=NetJ15_2 Pin=K2-8
+Added Pin To Net: NetName=NetJ15_2 Pin=K3-1
+Added Pin To Net: NetName=NetJ14_2 Pin=K3-2
+Added Pin To Net: NetName=NetJ13_2 Pin=K3-3
+Added Pin To Net: NetName=NetJ12_2 Pin=K3-4
+Added Pin To Net: NetName=NetJ11_2 Pin=K3-5
+Added Pin To Net: NetName=NetJ10_2 Pin=K3-6
+Added Pin To Net: NetName=GND Pin=K4-GND
+Added Pin To Net: NetName=GND Pin=K4-GND
+Added Pin To Net: NetName=5V0 Pin=K4-VCC
+Added Pin To Net: NetName=5V0 Pin=K4-VCC
+Added Pin To Net: NetName=NetC5_2 Pin=K5-1
+Added Pin To Net: NetName=GND Pin=K5-2
+Added Pin To Net: NetName=NetC6_2 Pin=K5-3
+Added Pin To Net: NetName=NetC7_1 Pin=K6-1
+Added Pin To Net: NetName=GND Pin=K6-2
+Added Pin To Net: NetName=NetC8_1 Pin=K6-3
+Added Pin To Net: NetName=GND Pin=K7-1
+Added Pin To Net: NetName=NetK7_2 Pin=K7-2
+Added Pin To Net: NetName=VBAT Pin=K8-1
+Added Pin To Net: NetName=NetK7_2 Pin=K8-2
+Added Pin To Net: NetName=3V3 Pin=K9-1
+Added Pin To Net: NetName=NetC12_1 Pin=K9-2
+Added Pin To Net: NetName=GND Pin=M1-1
+Added Pin To Net: NetName=3V3 Pin=M1-2
+Added Pin To Net: NetName=NetJ16_2 Pin=M1-3
+Added Pin To Net: NetName=NetJ17_1 Pin=M1-4
+Added Pin To Net: NetName=NetJ18_2 Pin=M1-5
+Added Pin To Net: NetName=NetJ19_1 Pin=M1-6
+Added Pin To Net: NetName=NetJ20_2 Pin=M1-7
+Added Pin To Net: NetName=NetJ21_1 Pin=M1-8
+Added Pin To Net: NetName=INPUT0 Pin=R1-1
+Added Pin To Net: NetName=GND Pin=R1-2
+Added Pin To Net: NetName=LED0 Pin=R2-1
+Added Pin To Net: NetName=NetD5_A Pin=R2-2
+Added Pin To Net: NetName=INPUT1 Pin=R3-1
+Added Pin To Net: NetName=GND Pin=R3-2
+Added Pin To Net: NetName=INPUT2 Pin=R4-1
+Added Pin To Net: NetName=GND Pin=R4-2
+Added Pin To Net: NetName=INPUT3 Pin=R5-1
+Added Pin To Net: NetName=GND Pin=R5-2
+Added Pin To Net: NetName=INPUT4 Pin=R6-1
+Added Pin To Net: NetName=GND Pin=R6-2
+Added Pin To Net: NetName=INPUT5 Pin=R7-1
+Added Pin To Net: NetName=GND Pin=R7-2
+Added Pin To Net: NetName=3V3 Pin=R8-1
+Added Pin To Net: NetName=NetC5_2 Pin=R8-2
+Added Pin To Net: NetName=3V3 Pin=R9-1
+Added Pin To Net: NetName=NetC6_2 Pin=R9-2
+Added Pin To Net: NetName=NetJ6_2 Pin=R10-1
+Added Pin To Net: NetName=NetC5_2 Pin=R10-2
+Added Pin To Net: NetName=NetJ7_2 Pin=R11-1
+Added Pin To Net: NetName=NetC6_2 Pin=R11-2
+Added Pin To Net: NetName=NetJ8_2 Pin=R12-1
+Added Pin To Net: NetName=NetC7_1 Pin=R12-2
+Added Pin To Net: NetName=NetJ9_2 Pin=R13-1
+Added Pin To Net: NetName=NetC8_1 Pin=R13-2
+Added Pin To Net: NetName=NetC7_1 Pin=R14-1
+Added Pin To Net: NetName=3V3 Pin=R14-2
+Added Pin To Net: NetName=NetC8_1 Pin=R15-1
+Added Pin To Net: NetName=3V3 Pin=R15-2
+Added Pin To Net: NetName=NetR16_1 Pin=R16-1
+Added Pin To Net: NetName=NetD6_K Pin=R16-2
+Added Pin To Net: NetName=NetR17_1 Pin=R17-1
+Added Pin To Net: NetName=NetD7_K Pin=R17-2
+Added Pin To Net: NetName=GND Pin=R18-1
+Added Pin To Net: NetName=NetR18_2 Pin=R18-2
+Added Pin To Net: NetName=NetD4_A Pin=RP1-1
+Added Pin To Net: NetName=NetD3_A Pin=RP1-2
+Added Pin To Net: NetName=NetD2_A Pin=RP1-3
+Added Pin To Net: NetName=NetD1_A Pin=RP1-4
+Added Pin To Net: NetName=LED4 Pin=RP1-5
+Added Pin To Net: NetName=LED3 Pin=RP1-6
+Added Pin To Net: NetName=LED2 Pin=RP1-7
+Added Pin To Net: NetName=LED1 Pin=RP1-8
+Added Pin To Net: NetName=INPUT0 Pin=SW1-1
+Added Pin To Net: NetName=3V3 Pin=SW1-2
+Added Pin To Net: NetName=INPUT1 Pin=SW2-1
+Added Pin To Net: NetName=3V3 Pin=SW2-2
+Added Pin To Net: NetName=INPUT2 Pin=SW3-1
+Added Pin To Net: NetName=3V3 Pin=SW3-2
+Added Pin To Net: NetName=INPUT3 Pin=SW4-1
+Added Pin To Net: NetName=3V3 Pin=SW4-2
+Added Pin To Net: NetName=INPUT4 Pin=SW5-1
+Added Pin To Net: NetName=3V3 Pin=SW5-2
+Added Pin To Net: NetName=INPUT5 Pin=SW6-1
+Added Pin To Net: NetName=3V3 Pin=SW6-2
+Added Pin To Net: NetName=NRST Pin=SW7-1
+Added Pin To Net: NetName=GND Pin=SW7-2
+Added Pin To Net: NetName=LED0 Pin=U1-1
+Added Pin To Net: NetName=LED1 Pin=U1-2
+Added Pin To Net: NetName=LED2 Pin=U1-3
+Added Pin To Net: NetName=LED3 Pin=U1-4
+Added Pin To Net: NetName=LED4 Pin=U1-5
+Added Pin To Net: NetName=3V3 Pin=U1-6
+Added Pin To Net: NetName=RTC_IN Pin=U1-8
+Added Pin To Net: NetName=RTC_OUT Pin=U1-9
+Added Pin To Net: NetName=GND Pin=U1-10
+Added Pin To Net: NetName=3V3 Pin=U1-11
+Added Pin To Net: NetName=CRY_IN Pin=U1-12
+Added Pin To Net: NetName=CRY_OUT Pin=U1-13
+Added Pin To Net: NetName=NRST Pin=U1-14
+Added Pin To Net: NetName=3V3 Pin=U1-19
+Added Pin To Net: NetName=GND Pin=U1-20
+Added Pin To Net: NetName=3V3 Pin=U1-21
+Added Pin To Net: NetName=3V3 Pin=U1-22
+Added Pin To Net: NetName=ENC2_A Pin=U1-23
+Added Pin To Net: NetName=ENC2_B Pin=U1-24
+Added Pin To Net: NetName=GND Pin=U1-27
+Added Pin To Net: NetName=3V3 Pin=U1-28
+Added Pin To Net: NetName=ENC1_A Pin=U1-40
+Added Pin To Net: NetName=ENC1_B Pin=U1-42
+Added Pin To Net: NetName=3V3 Pin=U1-50
+Added Pin To Net: NetName=NRF_SS Pin=U1-51
+Added Pin To Net: NetName=NRF_SCK Pin=U1-52
+Added Pin To Net: NetName=NRF_MISO Pin=U1-53
+Added Pin To Net: NetName=NRF_MOSI Pin=U1-54
+Added Pin To Net: NetName=NRF_IRQ Pin=U1-55
+Added Pin To Net: NetName=NRF_CE Pin=U1-56
+Added Pin To Net: NetName=INPUT5 Pin=U1-57
+Added Pin To Net: NetName=INPUT4 Pin=U1-58
+Added Pin To Net: NetName=INPUT3 Pin=U1-59
+Added Pin To Net: NetName=INPUT2 Pin=U1-60
+Added Pin To Net: NetName=INPUT1 Pin=U1-61
+Added Pin To Net: NetName=INPUT0 Pin=U1-62
+Added Pin To Net: NetName=SD_DAT0 Pin=U1-65
+Added Pin To Net: NetName=SD_DAT1 Pin=U1-66
+Added Pin To Net: NetName=SWDIO Pin=U1-72
+Added Pin To Net: NetName=GND Pin=U1-74
+Added Pin To Net: NetName=3V3 Pin=U1-75
+Added Pin To Net: NetName=SWCLK Pin=U1-76
+Added Pin To Net: NetName=OLED_SS Pin=U1-77
+Added Pin To Net: NetName=SD_DAT2 Pin=U1-78
+Added Pin To Net: NetName=SD_DAT3 Pin=U1-79
+Added Pin To Net: NetName=SD_CLK Pin=U1-80
+Added Pin To Net: NetName=SD_CMD Pin=U1-83
+Added Pin To Net: NetName=OLED_SCK Pin=U1-89
+Added Pin To Net: NetName=OLED_MOSI Pin=U1-91
+Added Pin To Net: NetName=OLED_DC Pin=U1-92
+Added Pin To Net: NetName=OLED_RST Pin=U1-93
+Added Pin To Net: NetName=GND Pin=U1-94
+Added Pin To Net: NetName=GND Pin=U1-99
+Added Pin To Net: NetName=3V3 Pin=U1-100
+Added Pin To Net: NetName=GND Pin=VR1-1
+Added Pin To Net: NetName=NetC12_1 Pin=VR1-2
+Added Pin To Net: NetName=VBAT Pin=VR1-3
+Added Pin To Net: NetName=NetC12_1 Pin=VR1-4
+Added Pin To Net: NetName=NetC1_2 Pin=Y1-1
+Added Pin To Net: NetName=RTC_IN Pin=Y1-2
+Added Pin To Net: NetName=NetC3_2 Pin=Y1-3
+Added Pin To Net: NetName=RTC_OUT Pin=Y1-4
+Added Pin To Net: NetName=NetC2_1 Pin=Y2-1
+Added Pin To Net: NetName=CRY_IN Pin=Y2-2
+Added Pin To Net: NetName=NetC4_1 Pin=Y2-3
+Added Pin To Net: NetName=CRY_OUT Pin=Y2-4
+Added Member To Class: ClassName=General Overview Member=Component C1 7pF
+Added Member To Class: ClassName=General Overview Member=Component C2 22pF
+Added Member To Class: ClassName=General Overview Member=Component C3 7pF
+Added Member To Class: ClassName=General Overview Member=Component C4 22pF
+Added Member To Class: ClassName=General Overview Member=Component C5 100nF
+Added Member To Class: ClassName=General Overview Member=Component C6 100nF
+Added Member To Class: ClassName=General Overview Member=Component C7 100nF
+Added Member To Class: ClassName=General Overview Member=Component C8 100nF
+Added Member To Class: ClassName=General Overview Member=Component C9 1206 10u16V TANT
+Added Member To Class: ClassName=General Overview Member=Component C10 1206 10u16V TANT
+Added Member To Class: ClassName=General Overview Member=Component C11 TBD
+Added Member To Class: ClassName=General Overview Member=Component C12 1206 10u16V TANT
+Added Member To Class: ClassName=General Overview Member=Component C13 TBD
+Added Member To Class: ClassName=General Overview Member=Component C14 100nF
+Added Member To Class: ClassName=General Overview Member=Component CN1 SSD1306_128x64_OLED
+Added Member To Class: ClassName=General Overview Member=Component D1 0805
+Added Member To Class: ClassName=General Overview Member=Component D2 0805
+Added Member To Class: ClassName=General Overview Member=Component D3 0805
+Added Member To Class: ClassName=General Overview Member=Component D4 0805
+Added Member To Class: ClassName=General Overview Member=Component D5 0805
+Added Member To Class: ClassName=General Overview Member=Component D6 0805
+Added Member To Class: ClassName=General Overview Member=Component D7 0805
+Added Member To Class: ClassName=General Overview Member=Component J1 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J2 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J3 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J4 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J5 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J6 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J7 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J8 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J9 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J10 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J11 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J12 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J13 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J14 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J15 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J16 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J17 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J18 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J19 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J20 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component J21 Connector_Production Connectors_SMD_BYPASS
+Added Member To Class: ClassName=General Overview Member=Component K1 Connector_Headers_SMD_M_5x1-SWD
+Added Member To Class: ClassName=General Overview Member=Component K2 Micro SD
+Added Member To Class: ClassName=General Overview Member=Component K3 Connector_Headers_SMD_M_6x1
+Added Member To Class: ClassName=General Overview Member=Component K4 Connector_Power_SMD_5.5mm
+Added Member To Class: ClassName=General Overview Member=Component K5 Connector_Headers_SMD_M_3x1
+Added Member To Class: ClassName=General Overview Member=Component K6 Connector_Headers_SMD_M_3x1
+Added Member To Class: ClassName=General Overview Member=Component K7 Connector_Headers_SMD_M_2x1
+Added Member To Class: ClassName=General Overview Member=Component K8 Connector_Headers_SMD_M_2x1
+Added Member To Class: ClassName=General Overview Member=Component K9 Connector_Headers_SMD_M_2x1
+Added Member To Class: ClassName=General Overview Member=Component M1 Communication_ISM_nRF24L01+
+Added Member To Class: ClassName=General Overview Member=Component R1 10K
+Added Member To Class: ClassName=General Overview Member=Component R2 100R
+Added Member To Class: ClassName=General Overview Member=Component R3 10K
+Added Member To Class: ClassName=General Overview Member=Component R4 10K
+Added Member To Class: ClassName=General Overview Member=Component R5 10K
+Added Member To Class: ClassName=General Overview Member=Component R6 10K
+Added Member To Class: ClassName=General Overview Member=Component R7 10K
+Added Member To Class: ClassName=General Overview Member=Component R8 10K
+Added Member To Class: ClassName=General Overview Member=Component R9 10K
+Added Member To Class: ClassName=General Overview Member=Component R10 10K
+Added Member To Class: ClassName=General Overview Member=Component R11 10K
+Added Member To Class: ClassName=General Overview Member=Component R12 10K
+Added Member To Class: ClassName=General Overview Member=Component R13 10K
+Added Member To Class: ClassName=General Overview Member=Component R14 10K
+Added Member To Class: ClassName=General Overview Member=Component R15 10K
+Added Member To Class: ClassName=General Overview Member=Component R16 680R
+Added Member To Class: ClassName=General Overview Member=Component R17 680R
+Added Member To Class: ClassName=General Overview Member=Component R18 10K
+Added Member To Class: ClassName=General Overview Member=Component RP1 4X100R
+Added Member To Class: ClassName=General Overview Member=Component SW1 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW2 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW3 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW4 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW5 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW6 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW7 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component U1 Microcontrollers_ST_ARM_STM32F4_STM32F407VGT6
+Added Member To Class: ClassName=General Overview Member=Component VR1 LD1117-SOT223
+Added Member To Class: ClassName=General Overview Member=Component Y1 MC-306
+Added Member To Class: ClassName=General Overview Member=Component Y2 6035

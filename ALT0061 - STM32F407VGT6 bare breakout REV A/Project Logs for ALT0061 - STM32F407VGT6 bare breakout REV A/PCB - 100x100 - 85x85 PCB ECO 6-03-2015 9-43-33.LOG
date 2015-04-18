@@ -1,0 +1,178 @@
+Removed Pin From Net: NetName=SD_DAT2 Pin=J1-1
+Removed Pin From Net: NetName=SD_DAT3 Pin=J2-1
+Removed Pin From Net: NetName=SD_CMD Pin=J3-1
+Removed Pin From Net: NetName=SD_CLK Pin=J4-1
+Removed Pin From Net: NetName=SD_DAT0 Pin=J5-1
+Removed Pin From Net: NetName=SD_DAT1 Pin=J6-1
+Removed Pin From Net: NetName=NRF_CE Pin=J7-1
+Removed Pin From Net: NetName=NRF_SS Pin=J8-2
+Removed Pin From Net: NetName=NRF_SCK Pin=J9-1
+Removed Pin From Net: NetName=NRF_MOSI Pin=J10-2
+Removed Pin From Net: NetName=NRF_MISO Pin=J11-1
+Removed Pin From Net: NetName=NRF_IRQ Pin=J12-2
+Removed Pin From Net: NetName=OLED_SS Pin=J13-1
+Removed Pin From Net: NetName=NetCN1_13 Pin=J13-2
+Removed Pin From Net: NetName=OLED_RST Pin=J14-1
+Removed Pin From Net: NetName=NetCN1_14 Pin=J14-2
+Removed Pin From Net: NetName=OLED_DC Pin=J15-1
+Removed Pin From Net: NetName=NetCN1_15 Pin=J15-2
+Removed Pin From Net: NetName=OLED_SCK Pin=J16-1
+Removed Pin From Net: NetName=NetCN1_18 Pin=J16-2
+Removed Pin From Net: NetName=OLED_MOSI Pin=J17-1
+Removed Pin From Net: NetName=NetCN1_19 Pin=J17-2
+Removed Pin From Net: NetName=ENC1_A Pin=J18-1
+Removed Pin From Net: NetName=ENC1_B Pin=J19-1
+Removed Pin From Net: NetName=ENC2_A Pin=J20-1
+Removed Pin From Net: NetName=ENC2_B Pin=J21-1
+Removed Pin From Net: NetName=NetJ6_2 Pin=K2-8
+Removed Pin From Net: NetName=NetJ6_2 Pin=K3-1
+Removed Pin From Net: NetName=NetJ7_2 Pin=M1-3
+Removed Pin From Net: NetName=NetJ9_2 Pin=M1-5
+Removed Pin From Net: NetName=NetJ11_2 Pin=M1-7
+Removed Pin From Net: NetName=NetJ18_2 Pin=R10-1
+Removed Pin From Net: NetName=NetJ20_2 Pin=R12-1
+Change Component DesignItemId : Designator=J1 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J2 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J3 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J4 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J5 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J6 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J7 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J8 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J9 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J10 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J11 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J12 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J13 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J14 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J15 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J16 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J17 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J18 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J19 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J20 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component DesignItemId : Designator=J21 Old DesignItemId=Connector_Production Connectors_SMD_BYPASS-CLOSED New DesignItemId=Connector_Production Connectors_SMD_BYPASS
+Change Component Footprint: Designator=J1 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J2 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J3 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J4 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J5 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J6 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J7 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J8 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J9 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J10 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J11 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J12 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J13 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J14 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J15 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J16 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J17 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J18 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J19 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J20 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Footprint: Designator=J21 Old Footprint=BYPASS-CLOSED New Footprint=BYPASS
+Change Component Comment : Designator=J1 Old Comment= New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J2 Old Comment= New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J3 Old Comment= New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J4 Old Comment= New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J5 Old Comment= New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J6 Old Comment= New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J7 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J8 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J9 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J10 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J11 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J12 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J13 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J14 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J15 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J16 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J17 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J18 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J19 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J20 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Comment : Designator=J21 Old Comment=Connector_Production Connectors_SMD_BYPASS-CLOSED New Comment=Connector_Production Connectors_SMD_BYPASS
+Change Component Designator: OldDesignator=C? NewDesignator=C14
+Change Component Designator: OldDesignator=SW? NewDesignator=SW1
+Change Component Designator: OldDesignator=SW? NewDesignator=SW2
+Change Component Designator: OldDesignator=SW? NewDesignator=SW3
+Change Component Designator: OldDesignator=SW? NewDesignator=SW4
+Change Component Designator: OldDesignator=SW? NewDesignator=SW5
+Change Component Designator: OldDesignator=SW? NewDesignator=SW6
+Change Component Designator: OldDesignator=SW? NewDesignator=SW7
+Added Pin To Net: NetName=OLED_SS Pin=J1-1
+Added Pin To Net: NetName=NetCN1_13 Pin=J1-2
+Added Pin To Net: NetName=OLED_RST Pin=J2-1
+Added Pin To Net: NetName=NetCN1_14 Pin=J2-2
+Added Pin To Net: NetName=OLED_DC Pin=J3-1
+Added Pin To Net: NetName=NetCN1_15 Pin=J3-2
+Added Pin To Net: NetName=OLED_SCK Pin=J4-1
+Added Pin To Net: NetName=NetCN1_18 Pin=J4-2
+Added Pin To Net: NetName=OLED_MOSI Pin=J5-1
+Added Pin To Net: NetName=NetCN1_19 Pin=J5-2
+Added Pin To Net: NetName=ENC1_A Pin=J6-1
+Added Pin To Net: NetName=ENC1_B Pin=J7-1
+Added Pin To Net: NetName=ENC2_A Pin=J8-1
+Added Pin To Net: NetName=ENC2_B Pin=J9-1
+Added Pin To Net: NetName=SD_DAT2 Pin=J10-1
+Added Pin To Net: NetName=SD_DAT3 Pin=J11-1
+Added Pin To Net: NetName=SD_CMD Pin=J12-1
+Added Pin To Net: NetName=SD_CLK Pin=J13-1
+Added Pin To Net: NetName=SD_DAT0 Pin=J14-1
+Added Pin To Net: NetName=SD_DAT1 Pin=J15-1
+Added Pin To Net: NetName=NRF_CE Pin=J16-1
+Added Pin To Net: NetName=NRF_SS Pin=J17-2
+Added Pin To Net: NetName=NRF_SCK Pin=J18-1
+Added Pin To Net: NetName=NRF_MOSI Pin=J19-2
+Added Pin To Net: NetName=NRF_MISO Pin=J20-1
+Added Pin To Net: NetName=NRF_IRQ Pin=J21-2
+Added Pin To Net: NetName=NetJ11_2 Pin=K2-2
+Added Pin To Net: NetName=NetJ11_2 Pin=K3-5
+Added Pin To Net: NetName=NetJ18_2 Pin=M1-5
+Added Pin To Net: NetName=NetJ20_2 Pin=M1-7
+Added Pin To Net: NetName=NetJ6_2 Pin=R10-1
+Added Pin To Net: NetName=NetJ7_2 Pin=R11-1
+Added Pin To Net: NetName=NetJ9_2 Pin=R13-1
+Added Pin To Net: NetName=NetJ8_2 Pin=J8-2
+Added Pin To Net: NetName=NetJ8_2 Pin=R12-1
+Added Net: Name=NetJ8_2
+Added Pin To Net: NetName=NetJ10_2 Pin=J10-2
+Added Pin To Net: NetName=NetJ10_2 Pin=K2-1
+Added Pin To Net: NetName=NetJ10_2 Pin=K3-6
+Added Net: Name=NetJ10_2
+Added Pin To Net: NetName=NetJ12_2 Pin=J12-2
+Added Pin To Net: NetName=NetJ12_2 Pin=K2-3
+Added Pin To Net: NetName=NetJ12_2 Pin=K3-4
+Added Net: Name=NetJ12_2
+Added Pin To Net: NetName=NetJ13_2 Pin=J13-2
+Added Pin To Net: NetName=NetJ13_2 Pin=K2-5
+Added Pin To Net: NetName=NetJ13_2 Pin=K3-3
+Added Net: Name=NetJ13_2
+Added Pin To Net: NetName=NetJ14_2 Pin=J14-2
+Added Pin To Net: NetName=NetJ14_2 Pin=K2-7
+Added Pin To Net: NetName=NetJ14_2 Pin=K3-2
+Added Net: Name=NetJ14_2
+Added Pin To Net: NetName=NetJ15_2 Pin=J15-2
+Added Pin To Net: NetName=NetJ15_2 Pin=K2-8
+Added Pin To Net: NetName=NetJ15_2 Pin=K3-1
+Added Net: Name=NetJ15_2
+Added Pin To Net: NetName=NetJ16_2 Pin=J16-2
+Added Pin To Net: NetName=NetJ16_2 Pin=M1-3
+Added Net: Name=NetJ16_2
+Added Pin To Net: NetName=NetJ17_1 Pin=J17-1
+Added Pin To Net: NetName=NetJ17_1 Pin=M1-4
+Added Net: Name=NetJ17_1
+Added Pin To Net: NetName=NetJ19_1 Pin=J19-1
+Added Pin To Net: NetName=NetJ19_1 Pin=M1-6
+Added Net: Name=NetJ19_1
+Added Pin To Net: NetName=NetJ21_1 Pin=J21-1
+Added Pin To Net: NetName=NetJ21_1 Pin=M1-8
+Added Net: Name=NetJ21_1
+Added Member To Class: ClassName=General Overview Member=Component SW1 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW2 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW3 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW4 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW5 Mechanical_Switch_1P1T_SMD_SW-PB6MM
+Added Member To Class: ClassName=General Overview Member=Component SW7 Mechanical_Switch_1P1T_SMD_SW-PB6MM

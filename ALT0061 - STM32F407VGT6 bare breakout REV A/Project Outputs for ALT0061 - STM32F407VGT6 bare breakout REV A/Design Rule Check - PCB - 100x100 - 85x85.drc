@@ -1,0 +1,101 @@
+Protel Design System Design Rule Check
+PCB File : D:\Dropbox\PROJECTS\GITHUB\Altium\ALT0061 - STM32F407VGT6 bare breakout REV A\PCB - 100x100 - 85x85.PcbDoc
+Date     : 6/04/2015
+Time     : 1:09:48
+
+Processing Rule : Length Constraint (Min=2100mil) (Max=2200mil) ((InNet('SD_DAT2') OR InNet('SD_DAT3') OR InNet('SD_CMD') OR InNet('SD_CLK') OR InNet('SD_DAT0') OR InNet('SD_DAT1')))
+   Violation between Length Constraint: Net SD_DAT1
+   Violation between Length Constraint: Net SD_DAT0
+Rule Violations :2
+
+Processing Rule : Matched Lengths(Tolerance=50mil) ((InNet('SD_DAT2') OR InNet('SD_DAT3') OR InNet('SD_CMD') OR InNet('SD_CLK') OR InNet('SD_DAT0') OR InNet('SD_DAT1')))
+   Violation between Matched Net Lengths Between Net on TopLayer And Net on TopLayer
+   Violation between Matched Net Lengths Between Net on TopLayer And Net on TopLayer
+Rule Violations :2
+
+Processing Rule : Clearance Constraint (Gap=6mil) (InComponent('U2')),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=0mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=0mil) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=1mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=300mil) (All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: Net USB_P Between Pad R43-1 (2062.929,2382.929mil) And Track on layer Top Layer (2124.497,2434.497mil)
+   Violation between Un-Routed Net Constraint: Net USB_N Between Pad R40-1 (2102.929,2342.929mil) And Track on layer Top Layer (2169.497,2389.497mil)
+   Violation between Un-Routed Net Constraint: Net USB_ID Between Pad R15-1 (2022.929,2422.929mil) And Pad R15-2 (2079.497,2479.497mil)
+   Violation between Un-Routed Net Constraint: Net USB_ID Between Pad R28-2 (2000.503,2339.497mil) And Track on layer Top Layer (2004.142,2230mil)
+   Violation between Un-Routed Net Constraint: Net OLED_MOSI Between Track on layer Top Layer (535,3005mil) And Pad R31-1 (540,2930mil)
+   Violation between Un-Routed Net Constraint: Net NRF_SS Between Track on layer Top Layer (3060,1570mil) And Pad R22-2 (3060,1640mil)
+   Violation between Un-Routed Net Constraint: Net NRF_SS Between Pad R20-1 (3170,1650mil) And Pad R20-2 (3170,1785mil)
+   Violation between Un-Routed Net Constraint: Net NRF_MISO Between Pad R19-1 (2970,1510mil) And Pad R19-2 (2970,1645mil)
+   Violation between Un-Routed Net Constraint: Net NRF_IRQ Between Pad R23-1 (2760,1600mil) And Pad R23-2 (2760,1735mil)
+   Violation between Un-Routed Net Constraint: Net SD_DAT1 Between Pad R21-1 (1320,2590mil) And Track on layer Top Layer (1450,2590mil)
+   Violation between Un-Routed Net Constraint: Net SD_DAT0 Between Pad R17-1 (1320,2710mil) And Pad R17-2 (1455,2710mil)
+   Violation between Un-Routed Net Constraint: Net SD_CLK Between Track on layer Top Layer (1524,2374mil) And Pad R34-1 (1600,2370mil)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad R72-2 (1400,1320mil) And Pad R72-1 (1480,1320mil)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad R71-1 (530,3490mil) And Pad R71-2 (530,3625mil)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad R25-1 (2570,610mil) And Pad R25-2 (2570,745mil)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad R26-1 (950,1000mil) And Pad R26-2 (950,1135mil)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad R42-1 (2540,1540mil) And Track on layer Top Layer (2540.919,1710mil)
+   Violation between Un-Routed Net Constraint: Net GND Between Track on layer Top Layer (2560.919,1710mil) And Track on layer Top Layer (2570,1880.919mil)
+   Violation between Un-Routed Net Constraint: Net GND Between Pad R66-1 (2570,1890mil) And Pad R66-2 (2665.459,1985.459mil)
+   Violation between Un-Routed Net Constraint: Net GND Between Track on layer Top Layer (1600.669,3759.331mil) And Pad K12-M3 (1866.236,3761.892mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Track on layer Top Layer (1647.033,1560mil) And Track on layer Top Layer (1680,1537.289mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R70-1 (3490,680mil) And Pad R70-2 (3490,760mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Track on layer Top Layer (3584.315,1275.685mil) And Track on layer Top Layer (3585,1180mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R16-1 (1660,2730mil) And Track on layer Top Layer (1670,2850mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R9-2 (2425,3200mil) And Pad R9-1 (2560,3200mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R5-2 (2445,1250mil) And Pad R5-1 (2580,1250mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R67-1 (3490,850mil) And Pad R67-2 (3490,985mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R68-1 (3600,1030mil) And Pad R68-2 (3600,1165mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R2-1 (2700,3200mil) And Pad R2-2 (2835,3200mil)
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R4-2 (1600,1230mil) And Track on layer Top Layer (1700,1170mil)
+   Violation between Un-Routed Net Constraint: Net ENC2_A Between Pad R11-2 (1700.503,1309.497mil) And Pad R11-1 (1757.071,1252.929mil)
+   Violation between Un-Routed Net Constraint: Net ENC2_A Between Track on layer Top Layer (2275,710mil) And Pad R10-1 (2325,625mil)
+   Violation between Un-Routed Net Constraint: Net ENC2_B Between Pad R12-2 (1750.503,1359.497mil) And Pad R12-1 (1807.071,1302.929mil)
+   Violation between Un-Routed Net Constraint: Net ENC2_B Between Pad R14-1 (2125,625mil) And Pad R14-2 (2125,760mil)
+   Violation between Un-Routed Net Constraint: Net BATVOLTAGE Between Track on layer Top Layer (480,360mil) And Track on layer Top Layer (540,360mil)
+   Violation between Un-Routed Net Constraint: Net PMOD_INT Between Pad R39-1 (2910,840mil) And Pad R39-2 (2910,920mil)
+   Violation between Un-Routed Net Constraint: Net PMOD_INT Between Pad R29-1 (2910,710mil) And Pad R29-2 (2910,790mil)
+   Violation between Un-Routed Net Constraint: Net PMOD_INT Between Pad R32-1 (2910,970mil) And Pad R32-2 (2910,1050mil)
+   Violation between Un-Routed Net Constraint: Net PMOD_MISO Between Pad R38-2 (2740,1050mil) And Track on layer Top Layer (2776,1006mil)
+   Violation between Un-Routed Net Constraint: Net PMOD_MOSI Between Pad R35-1 (2830,970mil) And Pad R35-2 (2830,1050mil)
+   Violation between Un-Routed Net Constraint: Net AFE_CON_SYNC1 Between Pad R8-1 (2760,1150mil) And Pad R8-2 (2760,1230mil)
+Rule Violations :41
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=20mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=8mil) (Max=150mil) (Preferred=20mil) (All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=20mil) (InPolygon),(All)
+Rule Violations :0
+
+
+Violations Detected : 45
+Time Elapsed        : 00:00:03

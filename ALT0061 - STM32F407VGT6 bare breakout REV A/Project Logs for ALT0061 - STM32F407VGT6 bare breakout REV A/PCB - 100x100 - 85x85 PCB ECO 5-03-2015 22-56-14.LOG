@@ -1,0 +1,20 @@
+Added Pin To Net: NetName=GND Pin=M1-1
+Added Pin To Net: NetName=3V3 Pin=M1-2
+Added Pin To Net: NetName=NRF_CE Pin=M1-3
+Added Pin To Net: NetName=NRF_CE Pin=U1-56
+Added Net: Name=NRF_CE
+Added Pin To Net: NetName=NRF_IRQ Pin=M1-8
+Added Pin To Net: NetName=NRF_IRQ Pin=U1-55
+Added Net: Name=NRF_IRQ
+Added Pin To Net: NetName=NRF_MISO Pin=M1-7
+Added Pin To Net: NetName=NRF_MISO Pin=U1-53
+Added Net: Name=NRF_MISO
+Added Pin To Net: NetName=NRF_MOSI Pin=M1-6
+Added Pin To Net: NetName=NRF_MOSI Pin=U1-54
+Added Net: Name=NRF_MOSI
+Added Pin To Net: NetName=NRF_SCK Pin=M1-5
+Added Pin To Net: NetName=NRF_SCK Pin=U1-52
+Added Net: Name=NRF_SCK
+Added Pin To Net: NetName=NRF_SS Pin=M1-4
+Added Pin To Net: NetName=NRF_SS Pin=U1-51
+Added Net: Name=NRF_SS

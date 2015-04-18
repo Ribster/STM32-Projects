@@ -1,0 +1,18 @@
+Change Component Designator: OldDesignator=R13 NewDesignator=R30
+Change Component Designator: OldDesignator=R18 NewDesignator=R36
+Added Component: Designator=R13(0805R-100K)
+Added Component: Designator=R18(0805R-100K)
+Added Component: Designator=R27(0805R-100K)
+Added Component: Designator=R33(0805R-100K)
+Added Pin To Net: NetName=VBAT Pin=R13-1
+Added Pin To Net: NetName=BATVOLTAGE Pin=R13-2
+Added Pin To Net: NetName=BATVOLTAGE Pin=R18-1
+Added Pin To Net: NetName=GND Pin=R18-2
+Added Pin To Net: NetName=VBAT Pin=R27-1
+Added Pin To Net: NetName=BATVOLTAGE Pin=R27-2
+Added Pin To Net: NetName=BATVOLTAGE Pin=R33-1
+Added Pin To Net: NetName=GND Pin=R33-2
+Added Member To Class: ClassName=General Overview Member=Component R27 100K
+Added Member To Class: ClassName=General Overview Member=Component R30 100K
+Added Member To Class: ClassName=General Overview Member=Component R33 100K
+Added Member To Class: ClassName=General Overview Member=Component R36 100K

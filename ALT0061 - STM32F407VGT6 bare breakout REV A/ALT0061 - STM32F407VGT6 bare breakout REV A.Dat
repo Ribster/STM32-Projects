@@ -1,0 +1,40 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~ALT0061 - STM32F407VGT6 bare breakout REV A.PrjPCB|ReportField=ProjectFullPath~D:\Dropbox\PROJECTS\GITHUB\Altium\ALT0061 - STM32F407VGT6 bare breakout REV A\ALT0061 - STM32F407VGT6 bare breakout REV A.PrjPCB|ReportField=Title~Bill of Materials For Project [ALT0061 - STM32F407VGT6 bare breakout REV A.PrjPCB] (No PCB Document Selected)|ReportField=TotalQuantity~189|ReportField=ReportTime~14:21:37|ReportField=ReportDate~6/04/2015|ReportField=ReportDateTime~6/04/2015 14:21:37|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~Robbe Van Assche|ReportField=Address2~Belgium|ReportField=Address3~2015|ReportField=Address4~Project title|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=ConfigurationParameters~|ReportField=ConfiguratorName~|ReportField=CurrentDate~|ReportField=CurrentTime~|ReportField=Date~|ReportField=DocumentFullPathAndName~|ReportField=DocumentName~|ReportField=DocumentNumber~ALT0061|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=IsUserConfigurable~|ReportField=ModifiedDate~|ReportField=Organization~|ReportField=ProjectName~|ReportField=Revision~A|ReportField=Rule~|ReportField=SheetNumber~4|ReportField=SheetTotal~4|ReportField=Time~|ReportField=Title~Sheetname|ReportField=VersionControl_RevNumber~|ReportField=DataSourceFileName~ALT0061 - STM32F407VGT6 bare breakout REV A.PrjPCB|ReportField=DataSourceFullPath~D:\Dropbox\PROJECTS\GITHUB\Altium\ALT0061 - STM32F407VGT6 bare breakout REV A\ALT0061 - STM32F407VGT6 bare breakout REV A.PrjPCB
+1206 10u16V TANT||C1, C3, C17, C18|1206C+_TANTAL-10u16V|Passives_Capacitors_Tantalum_1206C-TANTAL SIZE A-10u16V|4
+TBD|CAPACITOR 1210 CERAMIC VALUE TO BE DETERMINED|C2, C4, C5, C6, C16, C20, C31, C32, C36, C37|1210C-GENERIC|Passives_Capacitors_1210_1210C-TBD|10
+1uF|CAPACITOR 0603 CERAMIC|C7, C8, C9, C10|0603C-GENERIC|Passives_Capacitors_0603_1UF-35V-X5R-TAY|4
+7pF|CAPACITOR 0603 CERAMIC|C11, C12|0603C-GENERIC|Passives_Capacitors_0603_6N850V-X7R-MUR|2
+22pF|CAPACITOR 0603 CERAMIC|C13, C14|0603C-GENERIC|Passives_Capacitors_0603_22PF-50V-C0G-PAN|2
+2n2|CAPACITOR 0603 CERAMIC|C15|0603C-GENERIC|Passives_Capacitors_0603_2N2-50V-C0G-MUR|1
+100nF|CAPACITOR 0603 CERAMIC|C19, C29, C30, C33, C34, C35|0603C-GENERIC|Passives_Capacitors_0603_100NF-25V-X7R-TDK|6
+1uF|CAPACITOR 0402 CERAMIC|C21, C22, C23, C24, C25, C26, C27, C28|0402C-GENERIC|Passives_Capacitors_0402_1UF-10V-X5R-SAM|8
+SSD1306_128x64_OLED|SSD1306 OLED 128x64|CN1|SSD1306_128x64_OLED|SSD1306_128x64_OLED|1
+0805||D1, D2, D3, D4, D5, D6, D7, D8|0805LED|LED_SMD_0805|8
+Connector_Production Connectors_SMD_BYPASS|SOLDERDOT BYPASS|J1, J2, J3, J4, J5, J6, J7, J8, J9, J10, J11, J12, J13, J14, J15, J16, J17, J18, J19, J20, J21, J22, J23, J24, J25, J26, J27, J28, J29|BYPASS|Connector_Production Connectors_SMD_BYPASS|29
+Connector_Power_SMD_5.5mm|5.5mm SMD|K1, K5|ADC-028|Connector_Power_SMD_5.5mm|2
+Connector_Headers_SMD_M_2x1|SMD Header 2x1|K2, K4, K6, K9|Header_Male_2.54 2x1|Connector_Headers_SMD_M_2x1|4
+Connector_Terminal_SMD_53261-1071|Picoblade 10p|K3|53261-1071|Connector_Terminal_SMD_53261-1071|1
+Connector_Headers_SMD_M_3x1|SMD Header 3x1|K7, K8, K14, K15|Header_Male_2.54 3x1|Connector_Headers_SMD_M_3x1|4
+Connector_Headers_SMD_M_4x1|SMD Header 4x1|K10|Header_Male_2.54 4x1|Connector_Headers_SMD_M_4x1|1
+Micro SD||K11|SCHD3A0100|Connector_SD_SMD_SCHD3A0100|1
+Connector_USB_SMD_USB_F_MINI|MINI USB B FEMALE|K12|USB_F_MINI|Connector_USB_SMD_USB_F_MINI|1
+Connector_Headers_SMD_M_5x1-SWD|SWD SMD Header 5x1 for STM32|K13|Header_Male_2.54 5x1|Connector_Headers_SMD_M_5x1-SWD|1
+Connector_Headers_SMD_M_6x2|SMD Header 6x2|K16|Header_Male_2.54 6x2|Connector_Headers_SMD_M_6x2|1
+Communication_ISM_nRF24L01+|nRF24L01+|M5|nRF24L01+_SMD|Communication_ISM_nRF24L01+|1
+680R|RESISTOR 0805 1/4 WATT THIN FILM|R1, R7|0805R-680|0805R-680|2
+1206R-0R||R2, R5, R6, R9, R10, R14, R16, R17, R19, R20, R21, R23, R24, R25, R26, R41, R42, R44, R66, R67, R68, R69, R71|1206R-GENERIC|1206R-0R|23
+10K|RESISTOR 0805 1/4 WATT THIN FILM|R3, R50, R51, R52, R53, R56, R57, R60, R63|0805R-10K|0805R-10K|9
+0805-0R|RESISTOR 0805 1 WATT|R4, R8, R11, R12, R15, R22, R28, R29, R31, R32, R34, R35, R37, R38, R39, R40, R43, R70, R72|0805R-GENERIC|0805R-0R|19
+100K|RESISTOR 0805 1/4 WATT THIN FILM|R13, R18, R27, R30, R33, R36|0805R-100K|0805R-100K|6
+330R|RESISTOR 0805 1/4 WATT THIN FILM|R45|0805R-330|0805R-330|1
+22R|RESISTOR 0805 1/4 WATT THIN FILM|R46, R47|0805R-22|0805R-22|2
+100R|GENERIC RESISTOR 0603|R48|0603R-100|0603R-100|1
+330K|RESISTOR 0805 1/4 WATT THIN FILM|R49|0805R-330K|0805R-330K|1
+10K|RESISTOR 0603 VALUE TO BE DETERMINED|R54, R55, R58, R59, R61, R62, R64, R65|0603R-TBD|Passives_Resistors_0603_TBD|8
+4X100R|GENERIC RESISTOR ARRAY 4X INDEPENDENT|RP1|1206-ARRAY-4-GENERIC|ARRAY4-220R-ROHM|1
+Mechanical_Switch_1P1T_SMD_SW-PB6MM|PUSHBUTTON SWITCH 6MM SMD|SW1, SW2, SW3, SW4, SW5, SW6, SW7|SW-PB-SMD|Mechanical_Switch_1P1T_SMD_SW-PB6MM|7
+Connector_Production Connectors_SMD_TESTPOINT||TP1, TP2, TP3, TP4, TP5, TP6, TP7, TP8, TP9, TP10, TP11, TP12|TESTPOINT|Connector_Production Connectors_SMD_TESTPOINT|12
+Lipo Battery Charger||U1|SO8_N|Battery_SMD_TP4056|1
+Microcontrollers_ST_ARM_STM32F4_STM32F407VGT6|ARM Cortex-M4 32-bit MCU+FPU, 210 DMIPS, 1024 kB Flash, 192 kB Internal RAM, 82 I/Os, 100-pin LQFP, -40 to 85 degC, Tray|U2|STM-LQFP100_N|Microcontrollers_ST_ARM_STM32F4_STM32F407VGT6|1
+LD1117-SOT223||VR1|SOT223|LD1117-SOT223|1
+MC-306||Y1|XTAL MC-306|32k Quartz|1
+6035||Y2|XTAL 6035|6035 Quartz|1

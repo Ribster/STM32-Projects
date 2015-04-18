@@ -1,0 +1,12 @@
+Added Component: Designator=SW1(SW-PB-SMD)
+Added Component: Designator=SW2(SW-PB-SMD)
+Added Component: Designator=SW3(SW-PB-SMD)
+Added Component: Designator=SW4(SW-PB-SMD)
+Added Component: Designator=SW5(SW-PB-SMD)
+Added Component: Designator=SW6(SW-PB-SMD)
+Added Member To Class: ClassName=General Overview Member=Component SW1 SW-PB6MM-SMD
+Added Member To Class: ClassName=General Overview Member=Component SW2 SW-PB6MM-SMD
+Added Member To Class: ClassName=General Overview Member=Component SW3 SW-PB6MM-SMD
+Added Member To Class: ClassName=General Overview Member=Component SW4 SW-PB6MM-SMD
+Added Member To Class: ClassName=General Overview Member=Component SW5 SW-PB6MM-SMD
+Added Member To Class: ClassName=General Overview Member=Component SW6 SW-PB6MM-SMD
