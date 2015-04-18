@@ -29,7 +29,8 @@ src/leds.o: ../src/leds.c ../include/leds.h \
  ../libs/StdPeriph/include/stm32f4xx_dac.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
- ../include/delay.h ../include/gpio.h ../include/rcc.h ../include/nvic.h
+ ../include/delay.h ../include/gpio.h ../include/rcc.h ../include/nvic.h \
+ ../include/encoders.h
 
 ../include/leds.h:
 
@@ -108,3 +109,5 @@ src/leds.o: ../src/leds.c ../include/leds.h \
 ../include/rcc.h:
 
 ../include/nvic.h:
+
+../include/encoders.h:

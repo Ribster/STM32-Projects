@@ -12,6 +12,7 @@
 #include "delay.h"
 #include "pushbuttons.h"
 #include "uart.h"
+#include "encoders.h"
 
 void
 NMI_Handler(void);

@@ -63,3 +63,37 @@ rcc_setUSARTClock(USART_TypeDef* USARTx, FunctionalState newVal){
       RCC_APB1PeriphClockCmd(RCC_APB1Periph_UART8, newVal);
   }
 }
+
+void
+rcc_setTIMClock(TIM_TypeDef* TIMx, FunctionalState newVal){
+	if(TIMx == TIM2){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, newVal);
+	} else if(TIMx == TIM3){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, newVal);
+	} else if(TIMx == TIM4){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, newVal);
+	} else if(TIMx == TIM5){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, newVal);
+	} else if(TIMx == TIM6){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, newVal);
+	} else if(TIMx == TIM7){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, newVal);
+	} else if(TIMx == TIM12){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM12, newVal);
+	} else if(TIMx == TIM13){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM13, newVal);
+	} else if(TIMx == TIM14){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM14, newVal);
+	}
+	else if(TIMx == TIM1){
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, newVal);
+	} else if(TIMx == TIM8){
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM8, newVal);
+	} else if(TIMx == TIM9){
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM9, newVal);
+	} else if(TIMx == TIM10){
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM10, newVal);
+	} else if(TIMx == TIM11){
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM11, newVal);
+	}
+}

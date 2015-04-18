@@ -101,7 +101,10 @@ void PendSV_Handler(void)
 
 void
 SysTick_Handler(void){
+	// the delay function
 	delay_interruptHandler();
+	encoder_readEncoderOne();
+	encoder_readEncoderTwo();
 }
 
 void

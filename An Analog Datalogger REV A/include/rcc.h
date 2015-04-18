@@ -18,4 +18,7 @@ rcc_setGPIOClock(GPIO_TypeDef* GPIOx, FunctionalState newVal);
 void
 rcc_setUSARTClock(USART_TypeDef* USARTx, FunctionalState newVal);
 
+void
+rcc_setTIMClock(TIM_TypeDef* TIMx, FunctionalState newVal);
+
 #endif /* RCC_H_ */

@@ -14,7 +14,6 @@
 	#include "initialization.h"
 	#include "leds.h"
 	#include "pushbuttons.h"
-// user library files
 	#include "delay.h"
 	#include "dma.h"
 	#include "gpio.h"
@@ -25,6 +24,7 @@
 	#include "ssd1306.h"
 	#include "uart.h"
 	#include "usb.h"
+	#include "encoders.h"
 
 // global variables
 char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
@@ -39,8 +39,10 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 
 		while(1){
 			// loop
-			leds_ledTest();
-			printf("loop nr %ld \r\n", counter++);
+			//leds_ledTest();
+			leds_ledEncoderExample();
+			delay_milli(200);
+			printf(" -- loop nr %ld \r\n", counter++);
 		}
 	}
 

@@ -6,6 +6,7 @@
 C_SRCS += \
 ../src/delay.c \
 ../src/dma.c \
+../src/encoders.c \
 ../src/gpio.c \
 ../src/initialization.c \
 ../src/interrupts.c \
@@ -24,6 +25,7 @@ C_SRCS += \
 OBJS += \
 ./src/delay.o \
 ./src/dma.o \
+./src/encoders.o \
 ./src/gpio.o \
 ./src/initialization.o \
 ./src/interrupts.o \
@@ -42,6 +44,7 @@ OBJS += \
 C_DEPS += \
 ./src/delay.d \
 ./src/dma.d \
+./src/encoders.d \
 ./src/gpio.d \
 ./src/initialization.d \
 ./src/interrupts.d \

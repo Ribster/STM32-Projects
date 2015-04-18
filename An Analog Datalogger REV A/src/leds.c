@@ -61,7 +61,15 @@ initialize_LEDS(void){
 	GPIO_WriteBit(LED_PORT_3, (1<<LED_PIN_3), LED_INITSTATE_3);
 	GPIO_WriteBit(LED_PORT_4, (1<<LED_PIN_4), LED_INITSTATE_4);
 }
-
+void
+leds_setLed(uint8_t ref,
+		FunctionalState newState){
+	GPIO_WriteBit(led_portList[ref], (1<<led_pinList[ref]), (newState)?Bit_SET:Bit_RESET);
+}
+void
+leds_toggleLed(uint8_t ref){
+	GPIO_ToggleBits(led_portList[ref], (1<<led_pinList[ref]));
+}
 void
 leds_ledTest(void){
 	for(int i=0; i<5; i++){
@@ -78,11 +86,38 @@ leds_ledTest(void){
 	delay_milli(SYSTICK_FREQUENCY_HZ);
 }
 void
-leds_setLed(uint8_t ref,
-		FunctionalState newState){
-	GPIO_WriteBit(led_portList[ref], (1<<led_pinList[ref]), (newState)?Bit_SET:Bit_RESET);
-}
-void
-leds_toggleLed(uint8_t ref){
-	GPIO_ToggleBits(led_portList[ref], (1<<led_pinList[ref]));
+leds_ledEncoderExample(void){
+	// read the encoders
+	uint32_t valOne = TIM_GetCounter(ENC_1_TIMER);
+	printf("value One: %ld, value Two: %ld", TIM_GetCounter(ENC_1_TIMER), TIM_GetCounter(ENC_2_TIMER));
+	leds_setLed(ledList_White1, DISABLE);
+	leds_setLed(ledList_Blue, DISABLE);
+	leds_setLed(ledList_Orange, DISABLE);
+	leds_setLed(ledList_Green, DISABLE);
+	leds_setLed(ledList_White2, DISABLE);
+
+	if(valOne == 0){
+
+	} else if ( (valOne > 0) && ( valOne < (0x3FFF/65)) ) {
+		leds_setLed(ledList_White2, ENABLE);
+	} else if ( (valOne >= (0x3FFF/65)) && ( valOne < (0x7FFE/65)) ) {
+		leds_setLed(ledList_White2, ENABLE);
+		leds_setLed(ledList_Green, ENABLE);
+	} else if ( (valOne >= (0x7FFE/65)) && ( valOne < (0xBFFD/65)) ) {
+		leds_setLed(ledList_White2, ENABLE);
+		leds_setLed(ledList_Green, ENABLE);
+		leds_setLed(ledList_Orange, ENABLE);
+	} else if ( (valOne >= (0xBFFD/65)) && ( valOne < (0xFFFF/65)) ) {
+		leds_setLed(ledList_White2, ENABLE);
+		leds_setLed(ledList_Green, ENABLE);
+		leds_setLed(ledList_Orange, ENABLE);
+		leds_setLed(ledList_Blue, ENABLE);
+	} else {
+		leds_setLed(ledList_White2, ENABLE);
+		leds_setLed(ledList_Green, ENABLE);
+		leds_setLed(ledList_Orange, ENABLE);
+		leds_setLed(ledList_Blue, ENABLE);
+		leds_setLed(ledList_White1, ENABLE);
+	}
+
 }

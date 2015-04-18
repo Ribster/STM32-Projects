@@ -30,7 +30,8 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/delay.h \
  ../include/gpio.h ../include/rcc.h ../include/nvic.h ../include/uart.h \
- ../include/projectconfig.h ../include/leds.h ../include/pushbuttons.h
+ ../include/projectconfig.h ../include/leds.h ../include/encoders.h \
+ ../include/pushbuttons.h
 
 ../include/initialization.h:
 
@@ -113,5 +114,7 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
 ../include/projectconfig.h:
 
 ../include/leds.h:
+
+../include/encoders.h:
 
 ../include/pushbuttons.h:

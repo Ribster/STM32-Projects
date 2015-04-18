@@ -20,6 +20,10 @@ initialization(void){
 	// do the initialization of the pushbuttons
 	initialize_pushButtons();
 
+	// do the initialization of the encoders
+	initialize_encoderOne();
+	initialize_encoderTwo();
+
 	// do the initialization of the systick timer
 	delay_setup();
 }

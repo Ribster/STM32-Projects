@@ -17,6 +17,7 @@
 #include "leds.h"
 #include "pushbuttons.h"
 #include "projectconfig.h"
+#include "encoders.h"
 
 // prototype
 void

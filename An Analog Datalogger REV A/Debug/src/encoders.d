@@ -1,4 +1,4 @@
-src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
+src/encoders.o: ../src/encoders.c ../include/encoders.h \
  ../libs/cmsis/include/stm32f4xx.h ../libs/cmsis/include/core_cm4.h \
  ../libs/cmsis/include/core_cmInstr.h ../libs/cmsis/include/core_cmFunc.h \
  ../libs/cmsis/include/core_cm4_simd.h \
@@ -28,12 +28,10 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
  ../libs/StdPeriph/include/stm32f4xx_can.h \
  ../libs/StdPeriph/include/stm32f4xx_dac.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
- ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/delay.h \
- ../include/pushbuttons.h ../include/projectconfig.h ../include/leds.h \
- ../include/gpio.h ../include/rcc.h ../include/nvic.h \
- ../include/encoders.h ../include/uart.h
+ ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
+ ../include/gpio.h ../include/rcc.h ../include/nvic.h
 
-../include/interrupts.h:
+../include/encoders.h:
 
 ../libs/cmsis/include/stm32f4xx.h:
 
@@ -101,20 +99,10 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
 
 ../libs/StdPeriph/include/stm32f4xx_fsmc.h:
 
-../include/delay.h:
-
-../include/pushbuttons.h:
-
 ../include/projectconfig.h:
-
-../include/leds.h:
 
 ../include/gpio.h:
 
 ../include/rcc.h:
 
 ../include/nvic.h:
-
-../include/encoders.h:
-
-../include/uart.h:
