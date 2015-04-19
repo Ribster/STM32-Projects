@@ -32,7 +32,9 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
  ../include/initialization.h ../include/delay.h ../include/gpio.h \
  ../include/rcc.h ../include/nvic.h ../include/uart.h \
  ../include/projectconfig.h ../include/leds.h ../include/encoders.h \
- ../include/pushbuttons.h ../include/rtc.h ../include/leds.h \
+ ../include/pushbuttons.h ../include/rtc.h ../include/ssd1306.h \
+ ../include/dma.h ../libs/StdPeriph/include/stm32f4xx_dma2d.h \
+ ../include/spi.h ../include/fonts.h ../include/leds.h \
  ../include/pushbuttons.h ../include/delay.h ../include/dma.h \
  ../include/gpio.h ../include/rcc.h ../include/rtc.h ../include/sdio.h \
  ../include/spi.h ../include/ssd1306.h ../include/uart.h ../include/usb.h \
@@ -127,6 +129,16 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
 ../include/pushbuttons.h:
 
 ../include/rtc.h:
+
+../include/ssd1306.h:
+
+../include/dma.h:
+
+../libs/StdPeriph/include/stm32f4xx_dma2d.h:
+
+../include/spi.h:
+
+../include/fonts.h:
 
 ../include/leds.h:
 

@@ -12,6 +12,9 @@
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
 
+// general macro's
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
 
 
 // LEDS
@@ -341,53 +344,94 @@
 
 // OLED
 /*
-92	PB6	Output	GPIO_Output	OLED_DC
+92	PB6	Output	GPIO_Output	OLED_MOSI
 91	PB5	I/O		SPI3_MOSI	OLED_MOSI
 93	PB7	Output	GPIO_Output	OLED_RST
 89	PB3	I/O		SPI3_SCK	OLED_SCK
 95	PB8	Output	GPIO_Output	OLED_SS
 	*/
 #define OLED_SPI SPI3
+// Perspective of sizes is landscape orientation
+	#define OLED_HEIGHT 64
+	#define OLED_WIDTH 128
+	#define OLED_BufferSize (OLED_HEIGHT*OLED_WIDTH/8)
+	#define OLED_EXTERNALVCC Bit_RESET
+	//#define OLED_ORIENTATION SSD1306_ORIENTATION_LANDSCAPE_Normal
+	#define OLED_ORIENTATION SSD1306_ORIENTATION_PORTRAIT_CCW
+	#define OLED_VIEWMODE SSD1306_VIEWMODE_NORMAL
+// SPI Config
+	#define OLED_SPI_Direction SPI_Direction_1Line_Tx
+	#define OLED_SPI_Mode SPI_Mode_Master
+	#define OLED_SPI_DataSize SPI_DataSize_8b
+	#define OLED_SPI_CPOL SPI_CPOL_Low
+	#define OLED_SPI_CPHA SPI_CPHA_1Edge
+	#define OLED_SPI_NSS SPI_NSS_Soft
+	#define OLED_SPI_BaudRatePrescaler SPI_BaudRatePrescaler_2
+	#define OLED_SPI_FirstBit SPI_FirstBit_MSB
+	#define OLED_SPI_CRCPolynomial 7
+// DMA SPI from Memory 2 Peripheral
+	#define OLED_TX_DMAStream DMA1_Stream7
+	#define OLED_TX_DMAChannel DMA_Channel_0
+	#define OLED_TX_TransferCompleteFlag DMA_FLAG_TCIF7
+	#define OLED_TX_DMARequest SPI_I2S_DMAReq_Tx
+	#define OLED_DMA_PeripheralBaseAddr (uint32_t)&(OLED_SPI->DR)
+//#define OLED_DMA_Memory0BaseAddr //heap pointer
+	#define OLED_DMA_DIR DMA_DIR_MemoryToPeripheral
+	#define OLED_DMA_PeripheralInc DMA_PeripheralInc_Disable
+	#define OLED_DMA_MemoryInc DMA_MemoryInc_Enable
+	#define OLED_DMA_PeripheralDataSize DMA_PeripheralDataSize_Byte
+	#define OLED_DMA_MemoryDataSize DMA_MemoryDataSize_Byte
+	#define OLED_DMA_Mode DMA_Mode_Normal
+	#define OLED_DMA_Priority DMA_Priority_High
+	#define OLED_DMA_FIFOMode DMA_FIFOMode_Disable
+	#define OLED_DMA_FIFOThreshold DMA_FIFOThreshold_1QuarterFull
+	#define OLED_DMA_MemoryBurst DMA_MemoryBurst_Single
+	#define OLED_DMA_PeripheralBurst DMA_PeripheralBurst_Single
 
-#define OLED_DC_PORT GPIOB
-#define OLED_DC_PIN 6
-#define OLED_DC_MODE GPIO_Mode_OUT
-#define OLED_DC_PULL GPIO_PuPd_NOPULL
-#define OLED_DC_OTYPE GPIO_OType_PP
-#define OLED_DC_SPEED GPIO_Speed_100MHz
-#define OLED_DC_INITSTATE Bit_RESET
-
-#define OLED_MOSI_PORT GPIOB
-#define OLED_MOSI_PIN 5
-#define OLED_MOSI_MODE GPIO_Mode_AF
-#define OLED_MOSI_PULL GPIO_PuPd_NOPULL
-#define OLED_MOSI_OTYPE GPIO_OType_PP
-#define OLED_MOSI_SPEED GPIO_Speed_100MHz
-#define OLED_MOSI_AF GPIO_AF_SPI3 //AF6
-
-#define OLED_RST_PORT GPIOB
-#define OLED_RST_PIN 7
-#define OLED_RST_MODE GPIO_Mode_OUT
-#define OLED_RST_PULL GPIO_PuPd_NOPULL
-#define OLED_RST_OTYPE GPIO_OType_PP
-#define OLED_RST_SPEED GPIO_Speed_100MHz
-#define OLED_RST_INITSTATE Bit_RESET
-
-#define OLED_SCK_PORT GPIOB
-#define OLED_SCK_PIN 3
-#define OLED_SCK_MODE GPIO_Mode_AF
-#define OLED_SCK_PULL GPIO_PuPd_NOPULL
-#define OLED_SCK_OTYPE GPIO_OType_PP
-#define OLED_SCK_SPEED GPIO_Speed_100MHz
-#define OLED_SCK_AF GPIO_AF_SPI3 //AF6
-
-#define OLED_SS_PORT GPIOB
-#define OLED_SS_PIN 8
-#define OLED_SS_MODE GPIO_Mode_OUT
-#define OLED_SS_PULL GPIO_PuPd_NOPULL
-#define OLED_SS_OTYPE GPIO_OType_PP
-#define OLED_SS_SPEED GPIO_Speed_100MHz
-#define OLED_SS_INITSTATE Bit_RESET
+// Refresh timer
+	#define OLED_TIMER TIM13 /* Timer used for auto refresh interrupt */
+	#define OLED_TIMER_ITFlag TIM_IT_Update
+	#define OLED_TIMER_IRQn TIM8_UP_TIM13_IRQn
+	// DC PIN
+	#define OLED_DC_PORT GPIOB
+	#define OLED_DC_PIN 6
+	#define OLED_DC_MODE GPIO_Mode_OUT
+	#define OLED_DC_PULL GPIO_PuPd_NOPULL
+	#define OLED_DC_OTYPE GPIO_OType_PP
+	#define OLED_DC_SPEED GPIO_Speed_100MHz
+	#define OLED_DC_INITSTATE Bit_RESET
+	// MOSI PIN
+	#define OLED_MOSI_PORT GPIOB
+	#define OLED_MOSI_PIN 5
+	#define OLED_MOSI_MODE GPIO_Mode_AF
+	#define OLED_MOSI_PULL GPIO_PuPd_DOWN
+	#define OLED_MOSI_OTYPE GPIO_OType_PP
+	#define OLED_MOSI_SPEED GPIO_Speed_100MHz
+	#define OLED_MOSI_AF GPIO_AF_SPI3 //AF6
+	// RST PIN
+	#define OLED_RST_PORT GPIOB
+	#define OLED_RST_PIN 7
+	#define OLED_RST_MODE GPIO_Mode_OUT
+	#define OLED_RST_PULL GPIO_PuPd_NOPULL
+	#define OLED_RST_OTYPE GPIO_OType_PP
+	#define OLED_RST_SPEED GPIO_Speed_100MHz
+	#define OLED_RST_INITSTATE Bit_RESET
+	// SCK PIN
+	#define OLED_SCK_PORT GPIOB
+	#define OLED_SCK_PIN 3
+	#define OLED_SCK_MODE GPIO_Mode_AF
+	#define OLED_SCK_PULL GPIO_PuPd_DOWN
+	#define OLED_SCK_OTYPE GPIO_OType_PP
+	#define OLED_SCK_SPEED GPIO_Speed_100MHz
+	#define OLED_SCK_AF GPIO_AF_SPI3 //AF6
+	// SS PIN
+	#define OLED_SS_PORT GPIOB
+	#define OLED_SS_PIN 8
+	#define OLED_SS_MODE GPIO_Mode_OUT
+	#define OLED_SS_PULL GPIO_PuPd_NOPULL
+	#define OLED_SS_OTYPE GPIO_OType_PP
+	#define OLED_SS_SPEED GPIO_Speed_100MHz
+	#define OLED_SS_INITSTATE Bit_RESET
 
 // USB
 /*

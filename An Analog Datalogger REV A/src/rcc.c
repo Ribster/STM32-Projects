@@ -97,3 +97,46 @@ rcc_setTIMClock(TIM_TypeDef* TIMx, FunctionalState newVal){
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM11, newVal);
 	}
 }
+
+void
+rcc_setSPIClock(SPI_TypeDef* SPIx, FunctionalState newVal){
+	if (SPIx == SPI2){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, newVal);
+	} else if (SPIx == SPI3){
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI3, newVal);
+	}
+
+	else if(SPIx == SPI1){
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, newVal);
+	} else if (SPIx == SPI4){
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, newVal);
+	} else if (SPIx == SPI5){
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI5, newVal);
+	} else if (SPIx == SPI6){
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI6, newVal);
+	}
+}
+
+void
+rcc_setDMAClock(DMA_Stream_TypeDef* DMAx, FunctionalState newVal){
+	if(DMAx == DMA1_Stream0 ||
+		DMAx == DMA1_Stream1 ||
+		DMAx == DMA1_Stream2 ||
+		DMAx == DMA1_Stream3 ||
+		DMAx == DMA1_Stream4 ||
+		DMAx == DMA1_Stream5 ||
+		DMAx == DMA1_Stream6 ||
+		DMAx == DMA1_Stream7){
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA1, newVal);
+	}
+	if(DMAx == DMA2_Stream0 ||
+		DMAx == DMA2_Stream1 ||
+		DMAx == DMA2_Stream2 ||
+		DMAx == DMA2_Stream3 ||
+		DMAx == DMA2_Stream4 ||
+		DMAx == DMA2_Stream5 ||
+		DMAx == DMA2_Stream6 ||
+		DMAx == DMA2_Stream7){
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, newVal);
+	}
+}

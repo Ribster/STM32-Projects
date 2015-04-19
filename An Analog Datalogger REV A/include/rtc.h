@@ -15,6 +15,7 @@
 
 #include "projectconfig.h"
 #include "rcc.h"
+#include "delay.h"
 
 void
 initialize_RTC(void);

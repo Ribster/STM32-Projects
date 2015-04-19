@@ -28,6 +28,7 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* Go to infinite loop when Hard Fault exception occurs */
+	printf("Hardfault!!");
   while (1)
   {
   }
@@ -41,6 +42,7 @@ void HardFault_Handler(void)
 void MemManage_Handler(void)
 {
   /* Go to infinite loop when Memory Manage exception occurs */
+	printf("Memory Manage exception!!");
   while (1)
   {
   }
@@ -54,6 +56,7 @@ void MemManage_Handler(void)
 void BusFault_Handler(void)
 {
   /* Go to infinite loop when Bus Fault exception occurs */
+	printf("Busfault!!");
   while (1)
   {
   }
@@ -67,6 +70,7 @@ void BusFault_Handler(void)
 void UsageFault_Handler(void)
 {
   /* Go to infinite loop when Usage Fault exception occurs */
+	printf("UsageFault!!");
   while (1)
   {
   }
@@ -79,6 +83,7 @@ void UsageFault_Handler(void)
   */
 void SVC_Handler(void)
 {
+	printf("SVC Handler!!");
 }
 
 /**
@@ -88,6 +93,7 @@ void SVC_Handler(void)
   */
 void DebugMon_Handler(void)
 {
+	printf("Debug Monitor!!");
 }
 
 /**
@@ -97,6 +103,7 @@ void DebugMon_Handler(void)
   */
 void PendSV_Handler(void)
 {
+	printf("PendSVC!!");
 }
 
 void
@@ -119,4 +126,8 @@ EXTI15_10_IRQHandler(void){
 void
 USART2_IRQHandler(void){
 	uart_interruptHandlerTerminal();
+}
+void
+TIM8_UP_TIM13_IRQHandler(void){
+	ssd1306_interruptHandler();
 }

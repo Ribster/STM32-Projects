@@ -16,6 +16,7 @@ void
 initialize_RTC(void){
 
 	RTC_InitTypeDef  RTC_InitStructure;
+	uint32_t trying = 0;
 	//RTC_AlarmTypeDef RTC_AlarmStructure;
 
 
@@ -30,9 +31,34 @@ initialize_RTC(void){
 	  /* Enable the LSE OSC */
 	  RCC_LSEConfig(RCC_LSE_ON);
 
+	  printf("\r\n");
+
 	  /* Wait till LSE is ready */
 	  while(RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET)
 	  {
+		delay_milli(50);
+		printf("%ld times tried waiting for LSE to get ready..\r\n", ++trying);
+		if(trying == 5){
+			RCC_LSEConfig(RCC_LSE_OFF);
+			  /* The RTC Clock may varies due to LSI frequency dispersion */
+			  /* Enable the LSI OSC */
+			  RCC_LSICmd(ENABLE);
+
+			  /* Wait till LSI is ready */
+			  while(RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET)
+			  {
+			  }
+
+			  /* Select the RTC Clock Source */
+			  RCC_RTCCLKConfig(RCC_RTCCLKSource_LSI);
+
+			  /* ck_spre(1Hz) = RTCCLK(LSI) /(uwAsynchPrediv + 1)*(uwSynchPrediv + 1)*/
+			  uwSynchPrediv = 0xFF;
+			  uwAsynchPrediv = 0x7F;
+			  printf("RTC CONFIGURED AS LSI!! BE AWARE!! \r\n");
+			  delay_milli(1000);
+			goto escape_LSE;
+		}
 	  }
 
 	  /* Select the RTC Clock Source */
@@ -58,7 +84,7 @@ initialize_RTC(void){
 	  uwAsynchPrediv = 0x7F;
 	#endif /*defined(RTC_CLOCK_SOURCE_XX)*/
 
-
+escape_LSE:
 
 	  /* Enable the RTC Clock */
 	  RCC_RTCCLKCmd(ENABLE);

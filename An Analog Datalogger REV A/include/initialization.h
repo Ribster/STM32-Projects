@@ -19,6 +19,7 @@
 #include "projectconfig.h"
 #include "encoders.h"
 #include "rtc.h"
+#include "ssd1306.h"
 
 // prototype
 void

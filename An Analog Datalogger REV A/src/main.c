@@ -38,12 +38,14 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 		uint32_t counter = 0;
 
 		while(1){
-			// loop
+		// loop
 			//leds_ledTest();
-			leds_ledEncoderExample();
-			printf(" - ");
-			rtc_printTimeTerminal();
-			delay_milli(200);
+			//delay_milli(200);
+			//leds_ledEncoderExample();
+			//printf(" - ");
+			//rtc_printTimeTerminal();
+			//delay_milli(200);
+			ssd1306_pixbufferTest();
 			printf(" -- loop nr %ld \r\n", counter++);
 		}
 	}

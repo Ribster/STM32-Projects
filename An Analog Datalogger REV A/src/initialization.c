@@ -24,11 +24,18 @@ initialization(void){
 	initialize_encoderOne();
 	// initialize_encoderTwo(); -- Encoder 2 not working
 
+	// do the initialization of the systick timer
+	delay_setup();
+
 	// do the initialization of the RTC
 	initialize_RTC();
 
-	// do the initialization of the systick timer
-	delay_setup();
+
+
+	// do the initialization of the OLED -- This needs to be done after the systick initialization!!
+	initialize_SSD1306();
+
+
 }
 
 

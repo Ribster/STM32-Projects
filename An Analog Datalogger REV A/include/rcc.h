@@ -21,4 +21,10 @@ rcc_setUSARTClock(USART_TypeDef* USARTx, FunctionalState newVal);
 void
 rcc_setTIMClock(TIM_TypeDef* TIMx, FunctionalState newVal);
 
+void
+rcc_setSPIClock(SPI_TypeDef* SPIx, FunctionalState newVal);
+
+void
+rcc_setDMAClock(DMA_Stream_TypeDef* DMAx, FunctionalState newVal);
+
 #endif /* RCC_H_ */
