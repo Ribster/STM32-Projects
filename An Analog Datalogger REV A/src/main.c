@@ -34,19 +34,26 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 		// setup
 		initialization();
 
-		printf("init done!!");
 		uint32_t counter = 0;
 
 		while(1){
 		// loop
-			//leds_ledTest();
-			//delay_milli(200);
-			//leds_ledEncoderExample();
-			//printf(" - ");
-			//rtc_printTimeTerminal();
-			//delay_milli(200);
-			ssd1306_pixbufferTest();
-			printf(" -- loop nr %ld \r\n", counter++);
+
+//			leds_ledTest();
+//			delay_milli(200);
+//			leds_ledEncoderExample();
+//			printf(" - ");
+//			rtc_printTimeTerminal();
+//			delay_milli(200);
+//			ssd1306_pixbufferTest();
+//			ssd1306_lineTest();
+//			ssd1306_circleTest();
+//			ssd1306_areaTest();
+//			ssd1306_stringTest();
+
+
+
+			//printf(" -- loop nr %ld \r\n", counter++);
 		}
 	}
 

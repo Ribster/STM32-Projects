@@ -1,7 +1,6 @@
-src/pushbuttons.o: ../src/pushbuttons.c ../include/pushbuttons.h \
- ../include/projectconfig.h ../libs/cmsis/include/stm32f4xx.h \
- ../libs/cmsis/include/core_cm4.h ../libs/cmsis/include/core_cmInstr.h \
- ../libs/cmsis/include/core_cmFunc.h \
+src/rng.o: ../src/rng.c ../include/rng.h \
+ ../libs/cmsis/include/stm32f4xx.h ../libs/cmsis/include/core_cm4.h \
+ ../libs/cmsis/include/core_cmInstr.h ../libs/cmsis/include/core_cmFunc.h \
  ../libs/cmsis/include/core_cm4_simd.h \
  ../libs/cmsis/include/system_stm32f4xx.h ../include/stm32f4xx_conf.h \
  ../libs/StdPeriph/include/stm32f4xx_adc.h \
@@ -29,16 +28,9 @@ src/pushbuttons.o: ../src/pushbuttons.c ../include/pushbuttons.h \
  ../libs/StdPeriph/include/stm32f4xx_can.h \
  ../libs/StdPeriph/include/stm32f4xx_dac.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
- ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/leds.h \
- ../include/delay.h ../include/rtc.h ../include/rcc.h \
- ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
- ../include/dma.h ../libs/StdPeriph/include/stm32f4xx_dma2d.h \
- ../include/spi.h ../include/fonts.h ../include/fonts/smallfonts.h \
- ../include/encoders.h
+ ../libs/StdPeriph/include/stm32f4xx_fsmc.h
 
-../include/pushbuttons.h:
-
-../include/projectconfig.h:
+../include/rng.h:
 
 ../libs/cmsis/include/stm32f4xx.h:
 
@@ -105,29 +97,3 @@ src/pushbuttons.o: ../src/pushbuttons.c ../include/pushbuttons.h \
 ../libs/StdPeriph/include/stm32f4xx_dcmi.h:
 
 ../libs/StdPeriph/include/stm32f4xx_fsmc.h:
-
-../include/leds.h:
-
-../include/delay.h:
-
-../include/rtc.h:
-
-../include/rcc.h:
-
-../include/ssd1306.h:
-
-../include/gpio.h:
-
-../include/nvic.h:
-
-../include/dma.h:
-
-../libs/StdPeriph/include/stm32f4xx_dma2d.h:
-
-../include/spi.h:
-
-../include/fonts.h:
-
-../include/fonts/smallfonts.h:
-
-../include/encoders.h:

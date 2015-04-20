@@ -16,6 +16,7 @@ C_SRCS += \
 ../src/nvic.c \
 ../src/pushbuttons.c \
 ../src/rcc.c \
+../src/rng.c \
 ../src/rtc.c \
 ../src/sdio.c \
 ../src/spi.c \
@@ -36,6 +37,7 @@ OBJS += \
 ./src/nvic.o \
 ./src/pushbuttons.o \
 ./src/rcc.o \
+./src/rng.o \
 ./src/rtc.o \
 ./src/sdio.o \
 ./src/spi.o \
@@ -56,6 +58,7 @@ C_DEPS += \
 ./src/nvic.d \
 ./src/pushbuttons.d \
 ./src/rcc.d \
+./src/rng.d \
 ./src/rtc.d \
 ./src/sdio.d \
 ./src/spi.d \

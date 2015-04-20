@@ -28,11 +28,20 @@ ssd1306_initializeDMA(void);
 inline static void
 ssd1306_alterPixel(uint8_t x, uint8_t y, BitAction newVal);
 inline static void
+ssd1306_alterCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font, BitAction newVal);
+inline static void
+ssd1306_alterString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, BitAction newVal);
+inline static void
+ssd1306_alterStringBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding, BitAction newVal);
+inline static void
 ssd1306_alterLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, BitAction newval);
+inline static void
+ssd1306_alterCircle(uint8_t x0, uint8_t y0, uint16_t radius, BitAction newVal);
 inline static void
 ssd1306_alterArea(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, BitAction newval);
 inline static xypair_t
 ssd1306_adjustCoordinate(uint8_t x, uint8_t y);
+
 
 // initialization
 void
@@ -148,66 +157,227 @@ ssd1306_interruptHandler(void){
 // testfunctions
 void
 ssd1306_pixbufferTest(void){
-//	// test on direct buffer acces
-//		leds_setLed(ledList_Blue, ENABLE);
-//		memset(ssd1306_parameters.pixBuffer, 0, ssd1306_parameters.bufferSize);
-//		for(uint32_t i=0; i<ssd1306_parameters.bufferSize; i++){
-//			for(uint8_t j=0; j<8; j++){
-//				*(ssd1306_parameters.pixBuffer+i) |= (1<<j);
-//				delay_milli(2);
-//			}delay_milli(1);
-//		}
-//		delay_milli(500);
-//		for(uint32_t i=0; i<ssd1306_parameters.bufferSize; i++){
-//			for(uint8_t j=0; j<8; j++){
-//				*(ssd1306_parameters.pixBuffer+i) &= ~(1<<j);
-//				delay_milli(1);
-//			}delay_milli(1);
-//		}
-//		delay_milli(500);
-//		leds_setLed(ledList_Blue, DISABLE);
+	// test on direct buffer acces
+	ssd1306_clearScreen();
+	uint32_t currentTime = delay_getMillis();
+		leds_setLed(ledList_Blue, ENABLE);
+		memset(ssd1306_parameters.pixBuffer, 0, ssd1306_parameters.bufferSize);
+		for(uint32_t i=0; i<ssd1306_parameters.bufferSize; i++){
+			for(uint8_t j=0; j<8; j++){
+				*(ssd1306_parameters.pixBuffer+i) |= (1<<j);
+			}delay_milli(1);
+		}
+		delay_milli(500);
+		for(uint32_t i=0; i<ssd1306_parameters.bufferSize; i++){
+			for(uint8_t j=0; j<8; j++){
+				*(ssd1306_parameters.pixBuffer+i) &= ~(1<<j);
+			}delay_milli(1);
+		}
+		leds_setLed(ledList_Blue, DISABLE);
+	printf("The direct pixeltest took %ldms\r\n", delay_getMilliDifferenceSimple(currentTime));
+	delay_milli(2500);
 
 	// test on pixel routine
-	if( (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_LANDSCAPE_Normal) || (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_LANDSCAPE_UpsideDown) ){
-		leds_setLed(ledList_Green, ENABLE);
-		for(uint8_t i=0; i<ssd1306_parameters.pixels_height; i++){
-			for(uint8_t j=0; j<ssd1306_parameters.pixels_width; j++){
-				ssd1306_setPixel(j,i);
-				delay_milli(1);
-			}delay_milli(1);
-		}
-		delay_milli(500);
-		for(uint8_t i=0; i<ssd1306_parameters.pixels_height; i++){
-			for(uint8_t j=0; j<ssd1306_parameters.pixels_width; j++){
-				ssd1306_clearPixel(j,i);
-				delay_milli(1);
-			}delay_milli(1);
-		}
-		delay_milli(500);
-		leds_setLed(ledList_Green, DISABLE);
-	} else if ( (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_PORTRAIT_CW) || (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_PORTRAIT_CCW) ){
-		leds_setLed(ledList_Green, ENABLE);
-
-			for(uint8_t j=0; j<ssd1306_parameters.pixels_width; j++){
-				for(uint8_t i=0; i<ssd1306_parameters.pixels_height; i++){
-				ssd1306_setPixel(i,j);
-				delay_milli(1);
-				}
-			}delay_milli(1);
-		delay_milli(500);
-
-			for(uint8_t j=0; j<ssd1306_parameters.pixels_width; j++){
-				for(uint8_t i=0; i<ssd1306_parameters.pixels_height; i++){
-				ssd1306_clearPixel(i,j);
-				delay_milli(1);
-				}
-			}delay_milli(1);
-		delay_milli(500);
-
-		leds_setLed(ledList_Green, DISABLE);
+	ssd1306_clearScreen();
+	currentTime = delay_getMillis();
+	xypair_t tmp = ssd1306_getScreenDimensions();
+	leds_setLed(ledList_Green, ENABLE);
+	for(uint8_t i=0; i<tmp.y; i++){
+		for(uint8_t j=0; j<tmp.x; j++){
+			ssd1306_setPixel(j,i);
+		}delay_milli(1);
+	}
+	delay_milli(500);
+	for(uint8_t i=0; i<tmp.y; i++){
+		for(uint8_t j=0; j<tmp.x; j++){
+			ssd1306_clearPixel(j,i);
+		}delay_milli(1);
 	}
 
+	leds_setLed(ledList_Green, DISABLE);
+	printf("The pixelRoutine pixeltest took %ld ms\r\n", delay_getMilliDifferenceSimple(currentTime));
+	delay_milli(2500);
+}
+void
+ssd1306_lineTest(void){
+	// test on lines
+	ssd1306_clearScreen();
+	xypair_t tmp = ssd1306_getScreenDimensions();
+	uint32_t currentTime = delay_getMillis();
+	leds_setLed(ledList_Green, ENABLE);
+	for(uint8_t i=0; i<100; i++){
+		uint8_t x0, x1, y0, y1;
+		x0 = RNG_GetRandomNumber() % tmp.x;
+		x1 = RNG_GetRandomNumber() % tmp.x;
+		y0 = RNG_GetRandomNumber() % tmp.y;
+		y1 = RNG_GetRandomNumber() % tmp.y;
 
+		ssd1306_setLine(x0,x1,y0,y1);
+		delay_milli(2);
+	}
+	delay_milli(1000);
+	ssd1306_setScreen();
+	for(uint8_t i=0; i<100; i++){
+		uint8_t x0, x1, y0, y1;
+		x0 = RNG_GetRandomNumber() % tmp.x;
+		x1 = RNG_GetRandomNumber() % tmp.x;
+		y0 = RNG_GetRandomNumber() % tmp.y;
+		y1 = RNG_GetRandomNumber() % tmp.y;
+
+		ssd1306_clearLine(x0,x1,y0,y1);
+		delay_milli(2);
+	}
+	leds_setLed(ledList_Green, DISABLE);
+	printf("The linetest took %ld ms\r\n", delay_getMilliDifferenceSimple(currentTime));
+	delay_milli(2500);
+}
+void
+ssd1306_circleTest(void){
+	// test on circles
+	ssd1306_clearScreen();
+	xypair_t tmp = ssd1306_getScreenDimensions();
+	uint32_t currentTime = delay_getMillis();
+	leds_setLed(ledList_Green, ENABLE);
+	for(uint8_t i=0; i<100; i++){
+		uint8_t x0, x1, rad;
+		x0 = RNG_GetRandomNumber() % tmp.x;
+		x1 = RNG_GetRandomNumber() % tmp.x;
+		rad = RNG_GetRandomNumber() % tmp.y;
+
+		ssd1306_setCircle(x0,x1,rad);
+		delay_milli(2);
+	}
+	delay_milli(1000);
+	ssd1306_setScreen();
+	for(uint8_t i=0; i<100; i++){
+		uint8_t x0, x1, rad;
+		x0 = RNG_GetRandomNumber() % tmp.x;
+		x1 = RNG_GetRandomNumber() % tmp.x;
+		rad = RNG_GetRandomNumber() % tmp.y;
+
+		ssd1306_clearCircle(x0,x1,rad);
+		delay_milli(2);
+	}
+	leds_setLed(ledList_Green, DISABLE);
+	printf("The circletest took %ld ms\r\n", delay_getMilliDifferenceSimple(currentTime));
+	delay_milli(2500);
+}
+void
+ssd1306_areaTest(void){
+	// test on area
+	ssd1306_clearScreen();
+	xypair_t tmp = ssd1306_getScreenDimensions();
+	uint32_t currentTime = delay_getMillis();
+	leds_setLed(ledList_Green, ENABLE);
+	for(uint8_t i=0; i<100; i++){
+		uint8_t x0, x1, y0, y1;
+		x0 = RNG_GetRandomNumber() % tmp.x;
+		x1 = RNG_GetRandomNumber() % tmp.x;
+		y0 = RNG_GetRandomNumber() % tmp.y;
+		y1 = RNG_GetRandomNumber() % tmp.y;
+
+		ssd1306_alterArea(x0,x1,y0,y1, Bit_SET);
+		delay_milli(20);
+		ssd1306_clearScreen();
+	}
+	leds_setLed(ledList_Green, DISABLE);
+	printf("The areatest took %ld ms\r\n", delay_getMilliDifferenceSimple(currentTime));
+	delay_milli(2500);
+}
+void
+ssd1306_stringTest(void){
+	// test on lines
+	ssd1306_clearScreen();
+	xypair_t tmp = ssd1306_getScreenDimensions();
+	uint32_t currentTime = delay_getMillis();
+	leds_setLed(ledList_Green, ENABLE);
+	for(uint8_t i=0; i<100; i++){
+		uint8_t x0, y0;
+		x0 = RNG_GetRandomNumber() % tmp.x;
+		y0 = RNG_GetRandomNumber() % tmp.y;
+		switch(i%5){
+		case 0: ssd1306_alterString(x0/2,y0,"TESTSTRING!!", Font_System3x6, Bit_SET); break;
+		case 1: ssd1306_alterString(x0/2,y0,"Teststring!!", Font_System5x8, Bit_SET); break;
+		case 2: ssd1306_alterString(x0/2,y0,"Teststring!!", Font_System7x8, Bit_SET); break;
+		case 3: ssd1306_alterString(x0/2,y0,"Teststring!!", Font_8x8, Bit_SET); break;
+		case 4: ssd1306_alterString(x0/2,y0,"Teststring!!", Font_8x8Thin, Bit_SET); break;
+		}
+
+		delay_milli(600);
+		ssd1306_clearScreen();
+	}
+	leds_setLed(ledList_Green, DISABLE);
+	printf("The set stringtest took %ld ms\r\n", delay_getMilliDifferenceSimple(currentTime));
+	delay_milli(2500);
+
+	ssd1306_setScreen();
+
+	currentTime = delay_getMillis();
+	leds_setLed(ledList_Green, ENABLE);
+	for(uint8_t i=0; i<100; i++){
+		uint8_t x0, y0;
+		x0 = RNG_GetRandomNumber() % tmp.x;
+		y0 = RNG_GetRandomNumber() % tmp.y;
+		switch(i%5){
+		case 0: ssd1306_alterString(x0/2,y0,"TESTSTRING!!", Font_System3x6, Bit_RESET); break;
+		case 1: ssd1306_alterString(x0/2,y0,"Teststring!!", Font_System5x8, Bit_RESET); break;
+		case 2: ssd1306_alterString(x0/2,y0,"Teststring!!", Font_System7x8, Bit_RESET); break;
+		case 3: ssd1306_alterString(x0/2,y0,"Teststring!!", Font_8x8, Bit_RESET); break;
+		case 4: ssd1306_alterString(x0/2,y0,"Teststring!!", Font_8x8Thin, Bit_RESET); break;
+		}
+
+		delay_milli(600);
+		ssd1306_setScreen();
+	}
+	leds_setLed(ledList_Green, DISABLE);
+	printf("The clear stringtest took %ld ms\r\n", delay_getMilliDifferenceSimple(currentTime));
+	delay_milli(2500);
+
+	ssd1306_clearScreen();
+
+	currentTime = delay_getMillis();
+	leds_setLed(ledList_Green, ENABLE);
+	for(uint8_t i=0; i<100; i++){
+		uint8_t x0, y0;
+		x0 = RNG_GetRandomNumber() % tmp.x;
+		y0 = RNG_GetRandomNumber() % tmp.y;
+		switch(i%5){
+		case 0: ssd1306_setStringWithBorder(x0/2,y0,"TESTSTRING!!", Font_System3x6, 2); break;
+		case 1: ssd1306_setStringWithBorder(x0/2,y0,"Teststring!!", Font_System5x8, 2); break;
+		case 2: ssd1306_setStringWithBorder(x0/2,y0,"Teststring!!", Font_System7x8, 2); break;
+		case 3: ssd1306_setStringWithBorder(x0/2,y0,"Teststring!!", Font_8x8, 2); break;
+		case 4: ssd1306_setStringWithBorder(x0/2,y0,"Teststring!!", Font_8x8Thin, 2); break;
+		}
+
+		delay_milli(600);
+		ssd1306_clearScreen();
+	}
+	leds_setLed(ledList_Green, DISABLE);
+	printf("The stringtest with border took %ld ms\r\n", delay_getMilliDifferenceSimple(currentTime));
+	delay_milli(2500);
+
+	ssd1306_clearScreen();
+
+	currentTime = delay_getMillis();
+	leds_setLed(ledList_Green, ENABLE);
+	for(uint8_t i=0; i<100; i++){
+		uint8_t x0, y0;
+		x0 = RNG_GetRandomNumber() % tmp.x;
+		y0 = RNG_GetRandomNumber() % tmp.y;
+		switch(i%5){
+		case 0: ssd1306_setStringInverted(x0/2,y0,"TESTSTRING!!", Font_System3x6, 2); break;
+		case 1: ssd1306_setStringInverted(x0/2,y0,"Teststring!!", Font_System5x8, 2); break;
+		case 2: ssd1306_setStringInverted(x0/2,y0,"Teststring!!", Font_System7x8, 2); break;
+		case 3: ssd1306_setStringInverted(x0/2,y0,"Teststring!!", Font_8x8, 2); break;
+		case 4: ssd1306_setStringInverted(x0/2,y0,"Teststring!!", Font_8x8Thin, 2); break;
+		}
+
+		delay_milli(600);
+		ssd1306_clearScreen();
+	}
+	leds_setLed(ledList_Green, DISABLE);
+	printf("The inverted stringtest took %ld ms\r\n", delay_getMilliDifferenceSimple(currentTime));
+	delay_milli(2500);
 }
 // general settings
 void
@@ -251,7 +421,24 @@ ssd1306_setOrientation(SSD1306_ORIENTATION_t newVal){
 }
 void
 ssd1306_setViewMode(SSD1306_VIEWMODE_t newVal){
-
+	ssd1306_parameters.viewMode = newVal;
+	if(newVal == SSD1306_VIEWMODE_NORMAL){
+		transmitCommand(SSD1306_COMMANDS_BASE_SetNormal_1of1);
+	} else if(newVal == SSD1306_VIEWMODE_INVERTED){
+		transmitCommand(SSD1306_COMMANDS_BASE_SetInverse_1of1);
+	}
+}
+xypair_t
+ssd1306_getScreenDimensions(void){
+	xypair_t tmp;
+	if( (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_LANDSCAPE_Normal) || (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_LANDSCAPE_UpsideDown) ){
+		tmp.x = ssd1306_parameters.pixels_width;
+		tmp.y = ssd1306_parameters.pixels_height;
+	} else if ( (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_PORTRAIT_CW) || (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_PORTRAIT_CCW) ){
+		tmp.x = ssd1306_parameters.pixels_height;
+		tmp.y = ssd1306_parameters.pixels_width;
+	}
+	return tmp;
 }
 // pixels
 uint8_t
@@ -268,29 +455,25 @@ ssd1306_clearPixel(uint8_t x, uint8_t y){
 }
 inline static void
 ssd1306_alterPixel(uint8_t x, uint8_t y, BitAction newVal){
+	xypair_t tmp = ssd1306_getScreenDimensions();
+	// not writing out of bounds
+	if(x>=tmp.x || y>=tmp.y){ return; }
+
 	if( (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_LANDSCAPE_Normal) || (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_LANDSCAPE_UpsideDown) ){
-		if( (x>=ssd1306_parameters.pixels_width) || (y>=ssd1306_parameters.pixels_height) ){
-			return;
-		} else {
 			// From 0,0 to 0,7; 1,0 to 1,7 .... From 127,0 to 127,7
 			// From 0,8 to 0,15; 1,8 to 1,15 .... From 127,8 to 127,15
 			// ...
 			// From 0,55 to 0,63; 1,55 to 1,63 .... From 127,55 to 127,63
 			if(newVal){
 				ssd1306_parameters.pixBuffer[(x) + ( (y/8) * ssd1306_parameters.pixels_width)] |= (1<< (y%8) );
-				printf("SET LANDSCAPE x: %d, y: %d ; byte: %d ; bit: %d \r\n", x, y, (x) + ( (y/8) * ssd1306_parameters.pixels_width), y%8);
-				delay_milli(50);
+//				printf("SET LANDSCAPE x: %d, y: %d ; byte: %d ; bit: %d \r\n", x, y, (x) + ( (y/8) * ssd1306_parameters.pixels_width), y%8);
+//				delay_milli(50);
 			} else {
 				ssd1306_parameters.pixBuffer[(x) + ( (y/8) * ssd1306_parameters.pixels_width)] &= ~(1<< (y%8) );
-				printf("RESET LANDSCAPE x: %d, y: %d ; byte: %d ; bit: %d \r\n", x, y, (x) + ( (y/8) * ssd1306_parameters.pixels_width), y%8);
-				delay_milli(50);
+//				printf("RESET LANDSCAPE x: %d, y: %d ; byte: %d ; bit: %d \r\n", x, y, (x) + ( (y/8) * ssd1306_parameters.pixels_width), y%8);
+//				delay_milli(50);
 			}
-		}
-
 	} else if ( (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_PORTRAIT_CW) || (ssd1306_parameters.viewOrientation == SSD1306_ORIENTATION_PORTRAIT_CCW) ){
-		if( (x>=ssd1306_parameters.pixels_height) || (y>=ssd1306_parameters.pixels_width) ){
-			return;
-		} else {
 			// From 0,0 to 63,0
 			// From 0,1 to 63,1
 			// ...
@@ -304,7 +487,6 @@ ssd1306_alterPixel(uint8_t x, uint8_t y, BitAction newVal){
 				//printf("RESET PORTRAIT x: %d, y: %d ; byte: %d ; bit: %d \r\n", x, y, (x/8) + y*ssd1306_parameters.pixels_height/8, x%8);
 				//delay_milli(50);
 			}
-		}
 	}
 }
 // whole screen
@@ -318,20 +500,102 @@ ssd1306_clearScreen(void){
 }
 // characters
 void
-ssd1306_setCharacter(uint8_t x, uint8_t y){
-
+ssd1306_setCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font){
+	ssd1306_alterCharacter(x,y,ch,font,Bit_SET);
 }
 void
-ssd1306_clearCharacter(uint8_t x, uint8_t y){
+ssd1306_clearCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font){
+	ssd1306_alterCharacter(x,y,ch,font,Bit_RESET);
+}
+inline static void
+ssd1306_alterCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font, BitAction newVal){
+	  uint8_t col, column[font.u8Width];
 
+	  // Check if the requested character is available
+	  if ((ch >= font.u8FirstChar) && (ch <= font.u8LastChar))
+	  {
+	    // Retrieve appropriate columns from font data
+	    for (col = 0; col < font.u8Width; col++)
+	    {
+	      column[col] = font.au8FontTable[((ch - 32) * font.u8Width) + col];    // Get first column of appropriate character
+	    }
+	  }
+	  else
+	  {
+	    // Requested character is not available in this font ... send a space instead
+	    for (col = 0; col < font.u8Width; col++)
+	    {
+	      column[col] = 0xFF;    // Send solid space
+	    }
+	  }
+
+	  // Render each column
+	  uint16_t xoffset, yoffset;
+	  for (xoffset = 0; xoffset < font.u8Width; xoffset++)
+	  {
+	    for (yoffset = 0; yoffset < (font.u8Height + 1); yoffset++)
+	    {
+	      uint8_t bit = 0x00;
+	      bit = (column[xoffset] << (8 - (yoffset + 1)));     // Shift current row bit left
+	      bit = (bit >> 7);                     // Shift current row but right (results in 0x01 for black, and 0x00 for white)
+	      if (bit)
+	      {
+	        ssd1306_alterPixel(x + xoffset, y + font.u8Height - yoffset, newVal);
+	      }
+	    }
+	  }
 }
 void
-ssd1306_setString(uint8_t x, uint8_t y){
-
+ssd1306_setString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font){
+	ssd1306_alterString(x,y,str,font,Bit_SET);
 }
 void
-ssd1306_clearString(uint8_t x, uint8_t y){
-
+ssd1306_clearString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font){
+	ssd1306_alterString(x,y,str,font,Bit_RESET);
+}
+inline static void
+ssd1306_alterString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, BitAction newVal){
+	  uint8_t l;
+	  for (l = 0; l < strlen(str); l++)
+	  {
+		  ssd1306_alterCharacter(x + (l * (font.u8Width + 1)), y, str[l], font, newVal);
+	  }
+}
+inline static void
+ssd1306_alterStringBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding, BitAction newVal){
+	uint8_t stringLength = strlen(str);
+	uint8_t stringWidth = stringLength*font.u8Width+(stringLength-1);
+	uint8_t stringHeight = font.u8Height;
+		// x - padding ; (x+linewidth+padding)
+		// y - padding ; (y+linewidth+padding)
+		ssd1306_alterLine(x-padding, y-padding, x-padding, y+stringHeight+padding, newVal);	// left line
+		ssd1306_alterLine(x-padding, y-padding, x+padding+stringWidth, y-padding, newVal);	// bottom line
+		ssd1306_alterLine(x+stringWidth+padding, y-padding, x+stringWidth+padding, y+stringHeight+padding, newVal);	// right line
+		ssd1306_alterLine(x-padding, y+padding+stringHeight, x+padding+stringWidth, y+stringHeight+padding, newVal);	// top line
+}
+void
+ssd1306_setStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding){
+	// set border
+	ssd1306_alterStringBorder(x,y,str,font,padding,Bit_SET);
+	// set string
+	ssd1306_alterString(x,y,str,font,Bit_SET);
+}
+void
+ssd1306_clearStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding){
+	// clear border
+	ssd1306_alterStringBorder(x,y,str,font,padding,Bit_RESET);
+	// clear string
+	ssd1306_alterString(x,y,str,font,Bit_RESET);
+}
+void
+ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding){
+	// set Area
+	uint8_t stringLength = strlen(str);
+	uint8_t stringWidth = stringLength*font.u8Width+(stringLength-1);
+	uint8_t stringHeigth = font.u8Height;
+	ssd1306_setArea(x-padding, y-padding, x+padding+stringWidth, y+padding+stringHeigth);
+	// clear string
+	ssd1306_alterString(x,y,str,font,Bit_RESET);
 }
 // lines
 void
@@ -371,12 +635,41 @@ ssd1306_alterLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, BitAction newv
 
 // circles
 void
-ssd1306_setCircle(uint8_t x, uint8_t y){
-
+ssd1306_setCircle(uint8_t x, uint8_t y, uint16_t radius){
+	ssd1306_alterCircle(x, y, radius, Bit_SET);
 }
 void
-ssd1306_clearCircle(uint8_t x, uint8_t y){
+ssd1306_clearCircle(uint8_t x, uint8_t y, uint16_t radius){
+	ssd1306_alterCircle(x, y, radius, Bit_RESET);
+}
+inline static void
+ssd1306_alterCircle(uint8_t x0, uint8_t y0, uint16_t radius, BitAction newVal){
+	// reference : http://en.wikipedia.org/wiki/Midpoint_circle_algorithm
+	  int x = radius;
+	  int y = 0;
+	  int radiusError = 1-x;
 
+	  while(x >= y)
+	  {
+	    ssd1306_alterPixel( x + x0,  y + y0, newVal);
+	    ssd1306_alterPixel( y + x0,  x + y0, newVal);
+	    ssd1306_alterPixel(-x + x0,  y + y0, newVal);
+	    ssd1306_alterPixel(-y + x0,  x + y0, newVal);
+	    ssd1306_alterPixel(-x + x0, -y + y0, newVal);
+	    ssd1306_alterPixel(-y + x0, -x + y0, newVal);
+	    ssd1306_alterPixel( x + x0, -y + y0, newVal);
+	    ssd1306_alterPixel( y + x0, -x + y0, newVal);
+	    y++;
+	    if (radiusError<0)
+	    {
+	      radiusError += 2 * y + 1;
+	    }
+	    else
+	    {
+	      x--;
+	      radiusError += 2 * (y - x) + 1;
+	    }
+	  }
 }
 // area's
 void
@@ -497,8 +790,8 @@ ssd1306_firstInit(void){
 			transmitCommand(SSD1306_COMMANDS_BASE_DisplayOn_UseRam_1of1);
 
 		/* STEP 14 */
-			// set normal state
-			transmitCommand(SSD1306_COMMANDS_BASE_SetNormal_1of1);
+			// set viewmode state
+			ssd1306_setViewMode(ssd1306_parameters.viewMode);
 
 		/* STEP 15 */
 			memset(ssd1306_parameters.pixBuffer, 0, ssd1306_parameters.bufferSize);
@@ -598,3 +891,4 @@ ssd1306_adjustCoordinate(uint8_t x, uint8_t y){
 	tmp.y = y;
 	return tmp;
 }
+

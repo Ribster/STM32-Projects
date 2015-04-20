@@ -20,6 +20,7 @@
 #include "encoders.h"
 #include "rtc.h"
 #include "ssd1306.h"
+#include "rng.h"
 
 // prototype
 void

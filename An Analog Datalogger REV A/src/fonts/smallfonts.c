@@ -34,8 +34,8 @@
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-#include "nil.h"
-#include "smallfonts.h"
+#include "stm32f4xx.h"
+#include "fonts/smallfonts.h"
 
 /* Global variables */
 const struct FONT_DEF Font_System3x6    = {3, 6, 32, 96,  au8FontSystem3x6};

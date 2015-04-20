@@ -29,11 +29,12 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
  ../libs/StdPeriph/include/stm32f4xx_dac.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/delay.h \
- ../include/gpio.h ../include/rcc.h ../include/nvic.h ../include/uart.h \
- ../include/projectconfig.h ../include/leds.h ../include/encoders.h \
- ../include/pushbuttons.h ../include/rtc.h ../include/ssd1306.h \
- ../include/dma.h ../libs/StdPeriph/include/stm32f4xx_dma2d.h \
- ../include/spi.h ../include/fonts.h
+ ../include/rtc.h ../include/projectconfig.h ../include/rcc.h \
+ ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
+ ../include/leds.h ../include/encoders.h ../include/dma.h \
+ ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
+ ../include/fonts.h ../include/fonts/smallfonts.h ../include/uart.h \
+ ../include/pushbuttons.h ../include/rng.h
 
 ../include/initialization.h:
 
@@ -105,25 +106,21 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
 
 ../include/delay.h:
 
-../include/gpio.h:
+../include/rtc.h:
+
+../include/projectconfig.h:
 
 ../include/rcc.h:
 
+../include/ssd1306.h:
+
+../include/gpio.h:
+
 ../include/nvic.h:
-
-../include/uart.h:
-
-../include/projectconfig.h:
 
 ../include/leds.h:
 
 ../include/encoders.h:
-
-../include/pushbuttons.h:
-
-../include/rtc.h:
-
-../include/ssd1306.h:
 
 ../include/dma.h:
 
@@ -132,3 +129,11 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
 ../include/spi.h:
 
 ../include/fonts.h:
+
+../include/fonts/smallfonts.h:
+
+../include/uart.h:
+
+../include/pushbuttons.h:
+
+../include/rng.h:

@@ -16,11 +16,15 @@
 #include "projectconfig.h"
 #include "rcc.h"
 #include "delay.h"
+#include "ssd1306.h"
 
 void
 initialize_RTC(void);
 
 void
 rtc_printTimeTerminal(void);
+
+void
+rtc_setTimeToOLED(void);
 
 #endif /* RTC_H_ */

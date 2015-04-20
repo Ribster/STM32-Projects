@@ -12,6 +12,7 @@
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_dma.h"
 #include "stm32f4xx_spi.h"
+#include "stm32f4xx_rng.h"
 
 #include "projectconfig.h"
 #include "gpio.h"
@@ -20,6 +21,8 @@
 #include "dma.h"
 #include "spi.h"
 #include "fonts.h"
+
+#include "fonts/smallfonts.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -208,6 +211,14 @@ typedef struct xypair_t{
 	// testfunctions
 	void
 	ssd1306_pixbufferTest(void);
+	void
+	ssd1306_lineTest(void);
+	void
+	ssd1306_circleTest(void);
+	void
+	ssd1306_areaTest(void);
+	void
+	ssd1306_stringTest(void);
 	// general settings
 	void
 	ssd1306_setOn(void);
@@ -217,6 +228,8 @@ typedef struct xypair_t{
 	ssd1306_setOrientation(SSD1306_ORIENTATION_t newVal);
 	void
 	ssd1306_setViewMode(SSD1306_VIEWMODE_t newVal);
+	xypair_t
+	ssd1306_getScreenDimensions(void);
 	// pixels
 	uint8_t
 	ssd1306_getPixel(uint8_t x, uint8_t y);
@@ -231,13 +244,19 @@ typedef struct xypair_t{
 	ssd1306_clearScreen(void);
 	// characters
 	void
-	ssd1306_setCharacter(uint8_t x, uint8_t y);
+	ssd1306_setCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font);
 	void
-	ssd1306_clearCharacter(uint8_t x, uint8_t y);
+	ssd1306_clearCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font);
 	void
-	ssd1306_setString(uint8_t x, uint8_t y);
+	ssd1306_setString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font);
 	void
-	ssd1306_clearString(uint8_t x, uint8_t y);
+	ssd1306_clearString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font);
+	void
+	ssd1306_setStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
+	void
+	ssd1306_clearStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
+	void
+	ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
 	// lines
 	void
 	ssd1306_setLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
@@ -245,9 +264,9 @@ typedef struct xypair_t{
 	ssd1306_clearLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
 	// circles
 	void
-	ssd1306_setCircle(uint8_t x, uint8_t y);
+	ssd1306_setCircle(uint8_t x, uint8_t y, uint16_t radius);
 	void
-	ssd1306_clearCircle(uint8_t x, uint8_t y);
+	ssd1306_clearCircle(uint8_t x, uint8_t y, uint16_t radius);
 	// area's
 	void
 	ssd1306_setArea(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);

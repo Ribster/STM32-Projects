@@ -18,6 +18,7 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 src \
+src/fonts \
 libs/misc/src \
 libs/cmsis/src \
 libs/StdPeriph/src \

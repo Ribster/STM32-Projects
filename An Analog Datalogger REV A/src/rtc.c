@@ -139,3 +139,16 @@ rtc_printTimeTerminal(void){
 	RTC_GetTime(RTC_Format_BIN, &RTC_TimeStructure);
 	printf("%02d:%02d:%02d",RTC_TimeStructure.RTC_Hours, RTC_TimeStructure.RTC_Minutes, RTC_TimeStructure.RTC_Seconds);
 }
+
+void
+rtc_setTimeToOLED(void){
+	char time[9];
+	xypair_t tmp = ssd1306_getScreenDimensions();
+	uint8_t stringHeigth = (Font_System3x6.u8Height);
+	uint8_t stringWidth = (Font_System3x6.u8Width*8)+(7);
+	RTC_GetTime(RTC_Format_BIN, &RTC_TimeStructure);
+	sprintf(time, "%02d:%02d:%02d",RTC_TimeStructure.RTC_Hours, RTC_TimeStructure.RTC_Minutes, RTC_TimeStructure.RTC_Seconds);
+	printf("%s \r\n",time);
+	ssd1306_clearArea(tmp.x-stringWidth-1,tmp.y-stringHeigth-1, tmp.x-1, tmp.y-1);
+	ssd1306_setString(tmp.x-stringWidth-1,tmp.y-stringHeigth-1,time,Font_System3x6);
+}

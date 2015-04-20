@@ -30,7 +30,8 @@ initialization(void){
 	// do the initialization of the RTC
 	initialize_RTC();
 
-
+	// do the initialization of the Random Number Generator
+	initialize_RNG();
 
 	// do the initialization of the OLED -- This needs to be done after the systick initialization!!
 	initialize_SSD1306();

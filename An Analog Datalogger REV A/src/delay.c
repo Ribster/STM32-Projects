@@ -26,8 +26,24 @@ delay_setup(void){
 }
 void
 delay_interruptHandler(void){
+	delay_totalBuffer++;
 	if(delay_microBuffer != 0x00){
 		delay_microBuffer--;
 	}
+	// set time on OLED screen
+	if(delay_totalBuffer%1000 == 0){
+		rtc_setTimeToOLED();
+	}
 }
-
+uint32_t
+delay_getMillis(void){
+	return delay_totalBuffer;
+}
+uint32_t
+delay_getMilliDifference(uint32_t t0, uint32_t t1){
+	return t1-t0;
+}
+uint32_t
+delay_getMilliDifferenceSimple(uint32_t t0){
+	return delay_getMilliDifference(t0, delay_totalBuffer);
+}

@@ -29,11 +29,12 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
  ../libs/StdPeriph/include/stm32f4xx_dac.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/delay.h \
- ../include/pushbuttons.h ../include/projectconfig.h ../include/leds.h \
- ../include/gpio.h ../include/rcc.h ../include/nvic.h \
- ../include/encoders.h ../include/uart.h ../include/ssd1306.h \
- ../include/dma.h ../libs/StdPeriph/include/stm32f4xx_dma2d.h \
- ../include/spi.h ../include/fonts.h
+ ../include/rtc.h ../include/projectconfig.h ../include/rcc.h \
+ ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
+ ../include/leds.h ../include/encoders.h ../include/dma.h \
+ ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
+ ../include/fonts.h ../include/fonts/smallfonts.h \
+ ../include/pushbuttons.h ../include/uart.h
 
 ../include/interrupts.h:
 
@@ -105,23 +106,21 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
 
 ../include/delay.h:
 
-../include/pushbuttons.h:
+../include/rtc.h:
 
 ../include/projectconfig.h:
 
-../include/leds.h:
+../include/rcc.h:
+
+../include/ssd1306.h:
 
 ../include/gpio.h:
 
-../include/rcc.h:
-
 ../include/nvic.h:
 
+../include/leds.h:
+
 ../include/encoders.h:
-
-../include/uart.h:
-
-../include/ssd1306.h:
 
 ../include/dma.h:
 
@@ -130,3 +129,9 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
 ../include/spi.h:
 
 ../include/fonts.h:
+
+../include/fonts/smallfonts.h:
+
+../include/pushbuttons.h:
+
+../include/uart.h:
