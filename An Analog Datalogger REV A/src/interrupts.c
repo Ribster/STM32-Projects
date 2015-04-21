@@ -132,9 +132,6 @@ TIM8_UP_TIM13_IRQHandler(void){
 	ssd1306_interruptHandler();
 }
 
-/******************************************************************************/
-/*                 STM32F4xx Peripherals Interrupt Handlers                   */
-/******************************************************************************/
 /**
   * @brief  This function handles SDIO global interrupt request.
   * @param  None
