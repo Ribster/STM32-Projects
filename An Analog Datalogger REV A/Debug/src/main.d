@@ -35,7 +35,9 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
  ../include/encoders.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
  ../include/fonts.h ../include/fonts/smallfonts.h ../include/uart.h \
- ../include/pushbuttons.h ../include/rng.h ../include/leds.h \
+ ../include/pushbuttons.h ../include/rng.h ../include/sdio.h \
+ ../libs/fatfs/inc/diskio.h ../libs/fatfs/inc/integer.h \
+ ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h ../include/leds.h \
  ../include/pushbuttons.h ../include/delay.h ../include/dma.h \
  ../include/gpio.h ../include/rcc.h ../include/rtc.h ../include/sdio.h \
  ../include/spi.h ../include/ssd1306.h ../include/uart.h ../include/usb.h \
@@ -144,6 +146,16 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
 ../include/pushbuttons.h:
 
 ../include/rng.h:
+
+../include/sdio.h:
+
+../libs/fatfs/inc/diskio.h:
+
+../libs/fatfs/inc/integer.h:
+
+../libs/fatfs/inc/ff.h:
+
+../libs/fatfs/inc/ffconf.h:
 
 ../include/leds.h:
 

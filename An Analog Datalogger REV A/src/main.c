@@ -5,8 +5,9 @@
  *      Author: Robbe Van Assche
  */
 
-// stdlib
+// std lib
 	#include "stm32f4xx.h"
+
 // arm-none-eabi
 	#include <stdio.h>
 // project files
@@ -25,9 +26,14 @@
 	#include "uart.h"
 	#include "usb.h"
 	#include "encoders.h"
+	#include "sdio.h"
+// fatfs lib
+	#include "diskio.h"
+	#include "ff.h"
 
 // global variables
 char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
+
 
 // main routine
 	int main(void){
@@ -40,8 +46,8 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 		// loop
 
 //			leds_ledTest();
-//			delay_milli(200);
-//			leds_ledEncoderExample();
+			delay_milli(2000);
+			//leds_ledEncoderExample();
 //			printf(" - ");
 //			rtc_printTimeTerminal();
 //			delay_milli(200);
@@ -53,7 +59,7 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 
 
 
-			//printf(" -- loop nr %ld \r\n", counter++);
+			printf(" -- loop nr %ld \r\n", counter++);
 		}
 	}
 

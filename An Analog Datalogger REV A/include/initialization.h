@@ -21,6 +21,7 @@
 #include "rtc.h"
 #include "ssd1306.h"
 #include "rng.h"
+#include "sdio.h"
 
 // prototype
 void

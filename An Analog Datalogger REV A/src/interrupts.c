@@ -131,3 +131,29 @@ void
 TIM8_UP_TIM13_IRQHandler(void){
 	ssd1306_interruptHandler();
 }
+
+/******************************************************************************/
+/*                 STM32F4xx Peripherals Interrupt Handlers                   */
+/******************************************************************************/
+/**
+  * @brief  This function handles SDIO global interrupt request.
+  * @param  None
+  * @retval None
+  */
+void
+SDIO_IRQHandler(void)
+{
+  /* Process All SDIO Interrupt Sources */
+  SD_ProcessIRQSrc();
+}
+
+/**
+  * @brief  This function handles DMA2 Stream3 or DMA2 Stream6 global interrupts
+  *         requests.
+  * @param  None
+  * @retval None
+  */
+void
+SD_SDIO_DMA_IRQHANDLER(void){
+	SD_ProcessDMAIRQ();
+}

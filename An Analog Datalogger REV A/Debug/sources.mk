@@ -20,6 +20,7 @@ SUBDIRS := \
 src \
 src/fonts \
 libs/misc/src \
+libs/fatfs/src \
 libs/cmsis/src \
 libs/StdPeriph/src \
 

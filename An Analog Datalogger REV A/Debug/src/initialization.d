@@ -34,7 +34,9 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
  ../include/leds.h ../include/encoders.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
  ../include/fonts.h ../include/fonts/smallfonts.h ../include/uart.h \
- ../include/pushbuttons.h ../include/rng.h
+ ../include/pushbuttons.h ../include/rng.h ../include/sdio.h \
+ ../libs/fatfs/inc/diskio.h ../libs/fatfs/inc/integer.h \
+ ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h
 
 ../include/initialization.h:
 
@@ -137,3 +139,13 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
 ../include/pushbuttons.h:
 
 ../include/rng.h:
+
+../include/sdio.h:
+
+../libs/fatfs/inc/diskio.h:
+
+../libs/fatfs/inc/integer.h:
+
+../libs/fatfs/inc/ff.h:
+
+../libs/fatfs/inc/ffconf.h:

@@ -86,7 +86,10 @@ void
 leds_ledEncoderExample(void){
 	// read the encoders
 	int16_t valOne = encoder_getEncoderOneValue()*400;
+	//int16_t valTwo = encoder_getEncoderTwoValue()*400;
 	printf("Encoder value One: %d", encoder_getEncoderOneValue());
+	printf(" ");
+	printf("Encoder value Two: %d", encoder_getEncoderTwoValue());
 	leds_setLed(ledList_White1, DISABLE);
 	leds_setLed(ledList_Blue, DISABLE);
 	leds_setLed(ledList_Orange, DISABLE);

@@ -11,6 +11,7 @@ RM := rm -rf
 -include src/fonts/subdir.mk
 -include src/subdir.mk
 -include libs/misc/src/subdir.mk
+-include libs/fatfs/src/subdir.mk
 -include libs/cmsis/src/subdir.mk
 -include libs/StdPeriph/src/subdir.mk
 -include subdir.mk

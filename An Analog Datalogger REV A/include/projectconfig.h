@@ -171,7 +171,7 @@
 	#define ENC_1_B_SPEED GPIO_Speed_100MHz
 	#define ENC_1_B_AF GPIO_AF_TIM8 //AF3
 
-#define ENC_2_TIMER TIM2
+#define ENC_2_TIMER TIM5
 	// CHAN A
 	#define ENC_2_A_PORT GPIOA
 	#define ENC_2_A_PIN 0
@@ -179,7 +179,7 @@
 	#define ENC_2_A_PULL GPIO_PuPd_NOPULL
 	#define ENC_2_A_OTYPE GPIO_OType_PP
 	#define ENC_2_A_SPEED GPIO_Speed_100MHz
-	#define ENC_2_A_AF GPIO_AF_TIM2 //AF1
+	#define ENC_2_A_AF GPIO_AF_TIM5 //AF2
 	// CHAN B
 	#define ENC_2_B_PORT GPIOA
 	#define ENC_2_B_PIN 1
@@ -187,7 +187,7 @@
 	#define ENC_2_B_PULL GPIO_PuPd_NOPULL
 	#define ENC_2_B_OTYPE GPIO_OType_PP
 	#define ENC_2_B_SPEED GPIO_Speed_100MHz
-	#define ENC_2_B_AF GPIO_AF_TIM2 //AF1
+	#define ENC_2_B_AF GPIO_AF_TIM5 //AF2
 
 // BATTERY MANAGEMENT
 /*
@@ -472,53 +472,118 @@
 78	PC10	I/O	SDIO_D2
 79	PC11	I/O	SDIO_D3
 */
-#define SDIO_CK_PORT GPIOC
-#define SDIO_CK_PIN 12
-#define SDIO_CK_MODE GPIO_Mode_AF
-#define SDIO_CK_PULL GPIO_PuPd_NOPULL
-#define SDIO_CK_OTYPE GPIO_OType_PP
-#define SDIO_CK_SPEED GPIO_Speed_100MHz
-#define SDIO_CK_AF GPIO_AF_SDIO //AF12
 
-#define SDIO_CMD_PORT GPIOD
-#define SDIO_CMD_PIN 2
-#define SDIO_CMD_MODE GPIO_Mode_AF
-#define SDIO_CMD_PULL GPIO_PuPd_NOPULL
-#define SDIO_CMD_OTYPE GPIO_OType_PP
-#define SDIO_CMD_SPEED GPIO_Speed_100MHz
-#define SDIO_CMD_AF GPIO_AF_SDIO //AF12
+#define DBG
+//#define DBGIO
 
-#define SDIO_D0_PORT GPIOC
-#define SDIO_D0_PIN 8
-#define SDIO_D0_MODE GPIO_Mode_AF
-#define SDIO_D0_PULL GPIO_PuPd_NOPULL
-#define SDIO_D0_OTYPE GPIO_OType_PP
-#define SDIO_D0_SPEED GPIO_Speed_100MHz
-#define SDIO_D0_AF GPIO_AF_SDIO //AF12
+#define SD_DETECT_PIN                    GPIO_Pin_2                 /* PC.02 */
+#define SD_DETECT_GPIO_PORT              GPIOC                      /* GPIOC */
+#define SD_DETECT_GPIO_CLK               RCC_AHB1Periph_GPIOC
 
-#define SDIO_D1_PORT GPIOC
-#define SDIO_D1_PIN 9
-#define SDIO_D1_MODE GPIO_Mode_AF
-#define SDIO_D1_PULL GPIO_PuPd_NOPULL
-#define SDIO_D1_OTYPE GPIO_OType_PP
-#define SDIO_D1_SPEED GPIO_Speed_100MHz
-#define SDIO_D1_AF GPIO_AF_SDIO //AF12
+#define SDIO_FIFO_ADDRESS                ((uint32_t)0x40012C80)
+/**
+  * @brief  SDIO Intialization Frequency (400KHz max)
+  */
+#define SDIO_INIT_CLK_DIV                ((uint8_t)0x76)
+/**
+  * @brief  SDIO Data Transfer Frequency (25MHz max)
+  */
+#define SDIO_TRANSFER_CLK_DIV            ((uint8_t)0x2)
 
-#define SDIO_D2_PORT GPIOC
-#define SDIO_D2_PIN 10
-#define SDIO_D2_MODE GPIO_Mode_AF
-#define SDIO_D2_PULL GPIO_PuPd_NOPULL
-#define SDIO_D2_OTYPE GPIO_OType_PP
-#define SDIO_D2_SPEED GPIO_Speed_100MHz
-#define SDIO_D2_AF GPIO_AF_SDIO //AF12
+#define SD_SDIO_DMA                   DMA2
+#define SD_SDIO_DMA_CLK               RCC_AHB1Periph_DMA2
 
-#define SDIO_D3_PORT GPIOC
-#define SDIO_D3_PIN 11
-#define SDIO_D3_MODE GPIO_Mode_AF
-#define SDIO_D3_PULL GPIO_PuPd_NOPULL
-#define SDIO_D3_OTYPE GPIO_OType_PP
-#define SDIO_D3_SPEED GPIO_Speed_100MHz
-#define SDIO_D3_AF GPIO_AF_SDIO //AF12
+#define SD_SDIO_DMA_STREAM3	          3
+//#define SD_SDIO_DMA_STREAM6           6
+
+#ifdef SD_SDIO_DMA_STREAM3
+	#undef SD_SDIO_DMA_STREAM6
+#endif
+
+#ifdef SD_SDIO_DMA_STREAM6
+	#undef SD_SDIO_DMA_STREAM3
+#endif
+
+#ifdef SD_SDIO_DMA_STREAM3
+ #define SD_SDIO_DMA_STREAM            DMA2_Stream3
+ #define SD_SDIO_DMA_CHANNEL           DMA_Channel_4
+ #define SD_SDIO_DMA_FLAG_FEIF         DMA_FLAG_FEIF3
+ #define SD_SDIO_DMA_FLAG_DMEIF        DMA_FLAG_DMEIF3
+ #define SD_SDIO_DMA_FLAG_TEIF         DMA_FLAG_TEIF3
+ #define SD_SDIO_DMA_FLAG_HTIF         DMA_FLAG_HTIF3
+ #define SD_SDIO_DMA_FLAG_TCIF         DMA_FLAG_TCIF3
+ #define SD_SDIO_DMA_IRQn              DMA2_Stream3_IRQn
+ #define SD_SDIO_DMA_IRQHANDLER        DMA2_Stream3_IRQHandler
+#elif defined SD_SDIO_DMA_STREAM6
+ #define SD_SDIO_DMA_STREAM            DMA2_Stream6
+ #define SD_SDIO_DMA_CHANNEL           DMA_Channel_4
+ #define SD_SDIO_DMA_FLAG_FEIF         DMA_FLAG_FEIF6
+ #define SD_SDIO_DMA_FLAG_DMEIF        DMA_FLAG_DMEIF6
+ #define SD_SDIO_DMA_FLAG_TEIF         DMA_FLAG_TEIF6
+ #define SD_SDIO_DMA_FLAG_HTIF         DMA_FLAG_HTIF6
+ #define SD_SDIO_DMA_FLAG_TCIF         DMA_FLAG_TCIF6
+ #define SD_SDIO_DMA_IRQn              DMA2_Stream6_IRQn
+ #define SD_SDIO_DMA_IRQHANDLER        DMA2_Stream6_IRQHandler
+#endif /* SD_SDIO_DMA_STREAM3 */
+
+/* Uncomment the following line to select the SDIO Data transfer mode */
+#if !defined (SD_DMA_MODE) && !defined (SD_POLLING_MODE)
+#define SD_DMA_MODE                                ((uint32_t)0x00000000)
+/*#define SD_POLLING_MODE                            ((uint32_t)0x00000002)*/
+#endif
+	#define SDIO_RESET_AF GPIO_AF_MCO
+	#define SDIO_RESET_MODE GPIO_Mode_IN
+	#define SDIO_RESET_PULL GPIO_PuPd_NOPULL
+	#define SDIO_RESET_OTYPE GPIO_OType_PP
+	#define SDIO_RESET_SPEED GPIO_Speed_100MHz
+	// SDIO CLOCK
+	#define SDIO_CK_PORT GPIOC
+	#define SDIO_CK_PIN 12
+	#define SDIO_CK_MODE GPIO_Mode_AF
+	#define SDIO_CK_PULL GPIO_PuPd_NOPULL
+	#define SDIO_CK_OTYPE GPIO_OType_PP
+	#define SDIO_CK_SPEED GPIO_Speed_100MHz
+	#define SDIO_CK_AF GPIO_AF_SDIO //AF12
+	// SDIO COMMAND
+	#define SDIO_CMD_PORT GPIOD
+	#define SDIO_CMD_PIN 2
+	#define SDIO_CMD_MODE GPIO_Mode_AF
+	#define SDIO_CMD_PULL GPIO_PuPd_UP
+	#define SDIO_CMD_OTYPE GPIO_OType_PP
+	#define SDIO_CMD_SPEED GPIO_Speed_100MHz
+	#define SDIO_CMD_AF GPIO_AF_SDIO //AF12
+	// SDIO D0
+	#define SDIO_D0_PORT GPIOC
+	#define SDIO_D0_PIN 8
+	#define SDIO_D0_MODE GPIO_Mode_AF
+	#define SDIO_D0_PULL GPIO_PuPd_UP
+	#define SDIO_D0_OTYPE GPIO_OType_PP
+	#define SDIO_D0_SPEED GPIO_Speed_100MHz
+	#define SDIO_D0_AF GPIO_AF_SDIO //AF12
+	// SDIO D1
+	#define SDIO_D1_PORT GPIOC
+	#define SDIO_D1_PIN 9
+	#define SDIO_D1_MODE GPIO_Mode_AF
+	#define SDIO_D1_PULL GPIO_PuPd_UP
+	#define SDIO_D1_OTYPE GPIO_OType_PP
+	#define SDIO_D1_SPEED GPIO_Speed_100MHz
+	#define SDIO_D1_AF GPIO_AF_SDIO //AF12
+	// SDIO D2
+	#define SDIO_D2_PORT GPIOC
+	#define SDIO_D2_PIN 10
+	#define SDIO_D2_MODE GPIO_Mode_AF
+	#define SDIO_D2_PULL GPIO_PuPd_UP
+	#define SDIO_D2_OTYPE GPIO_OType_PP
+	#define SDIO_D2_SPEED GPIO_Speed_100MHz
+	#define SDIO_D2_AF GPIO_AF_SDIO //AF12
+	// SDIO D3
+	#define SDIO_D3_PORT GPIOC
+	#define SDIO_D3_PIN 11
+	#define SDIO_D3_MODE GPIO_Mode_AF
+	#define SDIO_D3_PULL GPIO_PuPd_UP
+	#define SDIO_D3_OTYPE GPIO_OType_PP
+	#define SDIO_D3_SPEED GPIO_Speed_100MHz
+	#define SDIO_D3_AF GPIO_AF_SDIO //AF12
 // USART
 /*
 87	PD6	I/O	USART2_RX

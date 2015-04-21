@@ -9,11 +9,13 @@
 #define INTERRUPTS_H_
 
 #include "stm32f4xx.h"
+#include "projectconfig.h"
 #include "delay.h"
 #include "pushbuttons.h"
 #include "uart.h"
 #include "encoders.h"
 #include "ssd1306.h"
+#include "sdio.h"
 
 void
 NMI_Handler(void);
@@ -40,6 +42,10 @@ void
 USART2_IRQHandler(void);
 void
 TIM8_UP_TIM13_IRQHandler(void);
+void
+SDIO_IRQHandler(void);
+void
+SD_SDIO_DMA_IRQHANDLER(void);
 
 
 #endif /* INTERRUPTS_H_ */

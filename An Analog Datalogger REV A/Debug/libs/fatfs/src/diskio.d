@@ -1,4 +1,5 @@
-src/sdio.o: ../src/sdio.c ../include/sdio.h \
+libs/fatfs/src/diskio.o: ../libs/fatfs/src/diskio.c \
+ ../libs/fatfs/inc/diskio.h ../libs/fatfs/inc/integer.h \
  ../libs/cmsis/include/stm32f4xx.h ../libs/cmsis/include/core_cm4.h \
  ../libs/cmsis/include/core_cmInstr.h ../libs/cmsis/include/core_cmFunc.h \
  ../libs/cmsis/include/core_cm4_simd.h \
@@ -28,12 +29,13 @@ src/sdio.o: ../src/sdio.c ../include/sdio.h \
  ../libs/StdPeriph/include/stm32f4xx_can.h \
  ../libs/StdPeriph/include/stm32f4xx_dac.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
- ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
- ../include/gpio.h ../include/rcc.h ../include/nvic.h \
- ../libs/fatfs/inc/diskio.h ../libs/fatfs/inc/integer.h \
- ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h
+ ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/sdio.h \
+ ../include/projectconfig.h ../include/gpio.h ../include/rcc.h \
+ ../include/nvic.h ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h
 
-../include/sdio.h:
+../libs/fatfs/inc/diskio.h:
+
+../libs/fatfs/inc/integer.h:
 
 ../libs/cmsis/include/stm32f4xx.h:
 
@@ -101,6 +103,8 @@ src/sdio.o: ../src/sdio.c ../include/sdio.h \
 
 ../libs/StdPeriph/include/stm32f4xx_fsmc.h:
 
+../include/sdio.h:
+
 ../include/projectconfig.h:
 
 ../include/gpio.h:
@@ -108,10 +112,6 @@ src/sdio.o: ../src/sdio.c ../include/sdio.h \
 ../include/rcc.h:
 
 ../include/nvic.h:
-
-../libs/fatfs/inc/diskio.h:
-
-../libs/fatfs/inc/integer.h:
 
 ../libs/fatfs/inc/ff.h:
 

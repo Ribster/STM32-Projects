@@ -22,7 +22,7 @@ initialization(void){
 
 	// do the initialization of the encoders
 	initialize_encoderOne();
-	// initialize_encoderTwo(); -- Encoder 2 not working
+	initialize_encoderTwo(); //-- Encoder 2 not working
 
 	// do the initialization of the systick timer
 	delay_setup();
@@ -36,7 +36,8 @@ initialization(void){
 	// do the initialization of the OLED -- This needs to be done after the systick initialization!!
 	initialize_SSD1306();
 
-
+	// do the initialization of the SD card
+	initialize_SDIO();
 }
 
 
