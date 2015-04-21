@@ -39,6 +39,31 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 	int main(void){
 		// setup
 		initialization();
+		//ssd1306_setOrientation(SSD1306_ORIENTATION_LANDSCAPE_UpsideDown);
+		for(uint8_t i=0;i<40; i++){
+			ssd1306_setTextBlock(0,0,127,50,
+					"Sed tristique pharetra mi, faucibus mollis ex. "
+					"Proin consectetur ipsum tincidunt, faucibus libero eget, "
+					"feugiat risus. In dignissim, metus eu pellentesque pharetra, "
+					"purus enim fringilla felis, in lobortis magna nisl sit amet arcu. "
+					"Sed ex lacus, vulputate ut orci ac, tincidunt mattis ipsum. "
+					"Curabitur nulla odio, sagittis non accumsan ultrices, cursus ac metus. "
+					"Suspendisse et lacinia ipsum, molestie condimentum nulla. "
+					"Pellentesque habitant morbi tristique senectus et netus et malesuada "
+					"fames ac turpis egestas. Aliquam erat volutpat. Vestibulum vel "
+					"vulputate nisi. Integer euismod nibh facilisis, tempor ipsum eget, "
+					"tincidunt justo. Cras ultrices interdum metus, in efficitur lectus "
+					"imperdiet eu. Integer et felis et velit semper bibendum in nec purus.",
+					Font_System5x8, i);
+			char nr[4];
+			xypair_t tmp = ssd1306_getScreenDimensions();
+			uint8_t stringHeigth = (Font_System3x6.u8Height);
+			uint8_t stringWidth = (Font_System3x6.u8Width*3)+(1);
+			sprintf(nr, "%03d",i);
+			ssd1306_clearArea(0,tmp.y-stringHeigth-1, stringWidth, tmp.y-1);
+			ssd1306_setString(0,tmp.y-stringHeigth-1,nr,Font_System3x6);
+			delay_milli(100);
+		}
 
 		uint32_t counter = 0;
 

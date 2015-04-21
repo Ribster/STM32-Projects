@@ -257,6 +257,8 @@ typedef struct xypair_t{
 	ssd1306_clearStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
 	void
 	ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
+	void
+	ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftLine);
 	// lines
 	void
 	ssd1306_setLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);

@@ -597,6 +597,37 @@ ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF
 	// clear string
 	ssd1306_alterString(x,y,str,font,Bit_RESET);
 }
+void
+ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftLine){
+	// get the coordinates
+	xypair_t xy0 = ssd1306_adjustCoordinate(x0,y0);
+	xypair_t xy1 = ssd1306_adjustCoordinate(x1,y1);
+	xypair_t topLeft; topLeft.x = MIN(xy0.x,xy1.x); topLeft.y = MAX(xy0.y,xy1.y);
+	xypair_t topRight; topRight.x = MAX(xy0.x,xy1.x); topRight.y = MAX(xy0.y,xy1.y);
+	xypair_t bottomLeft; bottomLeft.x = MIN(xy0.x,xy1.x); bottomLeft.y = MIN(xy0.y,xy1.y);
+	xypair_t bottomRight; bottomRight.x = MAX(xy0.x,xy1.x); bottomRight.y = MAX(xy0.y,xy1.y);
+	uint32_t maxColumns = (bottomRight.x - bottomLeft.x) / (font.u8Width+1);
+	uint32_t maxLines = (topLeft.y - bottomLeft.y) / (font.u8Height+1);
+	uint32_t totLength = strlen(str);
+	// clear the text block
+	ssd1306_alterArea(bottomLeft.x, bottomLeft.y, topRight.x, topRight.y, Bit_RESET);
+	// write every line until the string is printed
+		  uint32_t c, l;
+		  uint32_t i = shiftLine*maxColumns;
+
+		  for(l = 1; l < maxLines+1; l++){
+			  for (c = 0; c < maxColumns; c++)
+			  {
+				  // TODO: interpret text with \r or \n
+				  if(str[i]!=0x00 && i<totLength){
+					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), str[i++], font, ENABLE);
+				  } else { break; }
+			  }
+		  }
+
+
+
+}
 // lines
 void
 ssd1306_setLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1){

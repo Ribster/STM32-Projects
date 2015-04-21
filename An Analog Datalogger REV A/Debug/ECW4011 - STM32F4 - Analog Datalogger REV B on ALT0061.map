@@ -39,7 +39,7 @@ Archive member included because of file (symbol)
 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-setvbuf.o)
                               ./src/uart.o (setvbuf)
 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-sprintf.o)
-                              ./src/rtc.o (sprintf)
+                              ./src/main.o (sprintf)
 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strcpy.o)
                               ./src/sdio.o (strcpy)
 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strlen.o)
@@ -186,16 +186,12 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./src/fonts/smallfonts.o
  .data          0x0000000000000000        0x0 ./src/fonts/smallfonts.o
  .bss           0x0000000000000000        0x0 ./src/fonts/smallfonts.o
- .rodata.Font_System5x8
-                0x0000000000000000        0x8 ./src/fonts/smallfonts.o
  .rodata.Font_System7x8
                 0x0000000000000000        0x8 ./src/fonts/smallfonts.o
  .rodata.Font_8x8
                 0x0000000000000000        0x8 ./src/fonts/smallfonts.o
  .rodata.Font_8x8Thin
                 0x0000000000000000        0x8 ./src/fonts/smallfonts.o
- .rodata.au8FontSystem5x8
-                0x0000000000000000      0x1e8 ./src/fonts/smallfonts.o
  .rodata.au8FontSystem7x8
                 0x0000000000000000      0x2a8 ./src/fonts/smallfonts.o
  .rodata.au8Font8x8
@@ -7356,7 +7352,7 @@ END GROUP
  *(.flashtext .flashtext.*)
                 0x000000000800026c                . = ALIGN (0x4)
 
-.text           0x0000000008000270     0xfa34
+.text           0x0000000008000270    0x10154
                 0x0000000008000270                . = ALIGN (0x4)
  *(.text .text.*)
  .text.NVIC_SetPriority
@@ -7465,848 +7461,856 @@ END GROUP
  .text.leds_toggleLed
                 0x0000000008000b5c       0x38 ./src/leds.o
                 0x0000000008000b5c                leds_toggleLed
- .text.main     0x0000000008000b94       0x2c ./src/main.o
+ .text.main     0x0000000008000b94       0xd8 ./src/main.o
                 0x0000000008000b94                main
  .text.nvic_initInterrupt
-                0x0000000008000bc0       0x34 ./src/nvic.o
-                0x0000000008000bc0                nvic_initInterrupt
+                0x0000000008000c6c       0x34 ./src/nvic.o
+                0x0000000008000c6c                nvic_initInterrupt
  .text.initialize_pushButtons
-                0x0000000008000bf4      0x100 ./src/pushbuttons.o
-                0x0000000008000bf4                initialize_pushButtons
+                0x0000000008000ca0      0x100 ./src/pushbuttons.o
+                0x0000000008000ca0                initialize_pushButtons
  .text.pushbuttons_interruptHandler_UP
-                0x0000000008000cf4       0x24 ./src/pushbuttons.o
-                0x0000000008000cf4                pushbuttons_interruptHandler_UP
+                0x0000000008000da0       0x24 ./src/pushbuttons.o
+                0x0000000008000da0                pushbuttons_interruptHandler_UP
  .text.pushbuttons_interruptHandler_LEFT
-                0x0000000008000d18       0x24 ./src/pushbuttons.o
-                0x0000000008000d18                pushbuttons_interruptHandler_LEFT
+                0x0000000008000dc4       0x24 ./src/pushbuttons.o
+                0x0000000008000dc4                pushbuttons_interruptHandler_LEFT
  .text.pushbuttons_interruptHandler_MIDDLE
-                0x0000000008000d3c       0x24 ./src/pushbuttons.o
-                0x0000000008000d3c                pushbuttons_interruptHandler_MIDDLE
+                0x0000000008000de8       0x24 ./src/pushbuttons.o
+                0x0000000008000de8                pushbuttons_interruptHandler_MIDDLE
  .text.pushbuttons_interruptHandler_RIGHT
-                0x0000000008000d60       0x24 ./src/pushbuttons.o
-                0x0000000008000d60                pushbuttons_interruptHandler_RIGHT
+                0x0000000008000e0c       0x24 ./src/pushbuttons.o
+                0x0000000008000e0c                pushbuttons_interruptHandler_RIGHT
  .text.pushbuttons_interruptHandler_DOWN
-                0x0000000008000d84       0x24 ./src/pushbuttons.o
-                0x0000000008000d84                pushbuttons_interruptHandler_DOWN
+                0x0000000008000e30       0x24 ./src/pushbuttons.o
+                0x0000000008000e30                pushbuttons_interruptHandler_DOWN
  .text.pushbuttons_interruptHandler_ENTER
-                0x0000000008000da8       0x3c ./src/pushbuttons.o
-                0x0000000008000da8                pushbuttons_interruptHandler_ENTER
+                0x0000000008000e54       0x3c ./src/pushbuttons.o
+                0x0000000008000e54                pushbuttons_interruptHandler_ENTER
  .text.rcc_setGPIOClock
-                0x0000000008000de4      0x120 ./src/rcc.o
-                0x0000000008000de4                rcc_setGPIOClock
+                0x0000000008000e90      0x120 ./src/rcc.o
+                0x0000000008000e90                rcc_setGPIOClock
  .text.rcc_setUSARTClock
-                0x0000000008000f04       0xdc ./src/rcc.o
-                0x0000000008000f04                rcc_setUSARTClock
+                0x0000000008000fb0       0xdc ./src/rcc.o
+                0x0000000008000fb0                rcc_setUSARTClock
  .text.rcc_setTIMClock
-                0x0000000008000fe0      0x164 ./src/rcc.o
-                0x0000000008000fe0                rcc_setTIMClock
+                0x000000000800108c      0x164 ./src/rcc.o
+                0x000000000800108c                rcc_setTIMClock
  .text.rcc_setSPIClock
-                0x0000000008001144       0xac ./src/rcc.o
-                0x0000000008001144                rcc_setSPIClock
+                0x00000000080011f0       0xac ./src/rcc.o
+                0x00000000080011f0                rcc_setSPIClock
  .text.rcc_setDMAClock
-                0x00000000080011f0       0xec ./src/rcc.o
-                0x00000000080011f0                rcc_setDMAClock
+                0x000000000800129c       0xec ./src/rcc.o
+                0x000000000800129c                rcc_setDMAClock
  .text.initialize_RNG
-                0x00000000080012dc       0x14 ./src/rng.o
-                0x00000000080012dc                initialize_RNG
+                0x0000000008001388       0x14 ./src/rng.o
+                0x0000000008001388                initialize_RNG
  .text.initialize_RTC
-                0x00000000080012f0      0x124 ./src/rtc.o
-                0x00000000080012f0                initialize_RTC
+                0x000000000800139c      0x124 ./src/rtc.o
+                0x000000000800139c                initialize_RTC
  .text.rtc_setTimeToOLED
-                0x0000000008001414       0xbc ./src/rtc.o
-                0x0000000008001414                rtc_setTimeToOLED
- .text.dec32    0x00000000080014d0       0x68 ./src/sdio.o
-                0x00000000080014d0                dec32
+                0x00000000080014c0       0xbc ./src/rtc.o
+                0x00000000080014c0                rtc_setTimeToOLED
+ .text.dec32    0x000000000800157c       0x68 ./src/sdio.o
+                0x000000000800157c                dec32
  .text.initialize_SDIO
-                0x0000000008001538      0x4d8 ./src/sdio.o
-                0x0000000008001538                initialize_SDIO
+                0x00000000080015e4      0x4d8 ./src/sdio.o
+                0x00000000080015e4                initialize_SDIO
  .text.SD_LowLevel_Init
-                0x0000000008001a10       0xb8 ./src/sdio.o
-                0x0000000008001a10                SD_LowLevel_Init
+                0x0000000008001abc       0xb8 ./src/sdio.o
+                0x0000000008001abc                SD_LowLevel_Init
  .text.SD_LowLevel_DMA_TxConfig
-                0x0000000008001ac8       0xa0 ./src/sdio.o
-                0x0000000008001ac8                SD_LowLevel_DMA_TxConfig
+                0x0000000008001b74       0xa0 ./src/sdio.o
+                0x0000000008001b74                SD_LowLevel_DMA_TxConfig
  .text.SD_LowLevel_DMA_RxConfig
-                0x0000000008001b68       0xa0 ./src/sdio.o
-                0x0000000008001b68                SD_LowLevel_DMA_RxConfig
- .text.SD_Init  0x0000000008001c08       0xb4 ./src/sdio.o
-                0x0000000008001c08                SD_Init
+                0x0000000008001c14       0xa0 ./src/sdio.o
+                0x0000000008001c14                SD_LowLevel_DMA_RxConfig
+ .text.SD_Init  0x0000000008001cb4       0xb4 ./src/sdio.o
+                0x0000000008001cb4                SD_Init
  .text.SD_GetStatus
-                0x0000000008001cbc       0x30 ./src/sdio.o
-                0x0000000008001cbc                SD_GetStatus
+                0x0000000008001d68       0x30 ./src/sdio.o
+                0x0000000008001d68                SD_GetStatus
  .text.SD_GetState
-                0x0000000008001cec       0x40 ./src/sdio.o
-                0x0000000008001cec                SD_GetState
+                0x0000000008001d98       0x40 ./src/sdio.o
+                0x0000000008001d98                SD_GetState
  .text.SD_Detect
-                0x0000000008001d2c       0x14 ./src/sdio.o
-                0x0000000008001d2c                SD_Detect
+                0x0000000008001dd8       0x14 ./src/sdio.o
+                0x0000000008001dd8                SD_Detect
  .text.SD_PowerON
-                0x0000000008001d40      0x22c ./src/sdio.o
-                0x0000000008001d40                SD_PowerON
+                0x0000000008001dec      0x22c ./src/sdio.o
+                0x0000000008001dec                SD_PowerON
  .text.SD_InitializeCards
-                0x0000000008001f6c      0x18c ./src/sdio.o
-                0x0000000008001f6c                SD_InitializeCards
+                0x0000000008002018      0x18c ./src/sdio.o
+                0x0000000008002018                SD_InitializeCards
  .text.SD_GetCardInfo
-                0x00000000080020f8      0x5b8 ./src/sdio.o
-                0x00000000080020f8                SD_GetCardInfo
+                0x00000000080021a4      0x5b8 ./src/sdio.o
+                0x00000000080021a4                SD_GetCardInfo
  .text.SD_EnableWideBusOperation
-                0x00000000080026b0       0xd8 ./src/sdio.o
-                0x00000000080026b0                SD_EnableWideBusOperation
+                0x000000000800275c       0xd8 ./src/sdio.o
+                0x000000000800275c                SD_EnableWideBusOperation
  .text.SD_SelectDeselect
-                0x0000000008002788       0x4c ./src/sdio.o
-                0x0000000008002788                SD_SelectDeselect
+                0x0000000008002834       0x4c ./src/sdio.o
+                0x0000000008002834                SD_SelectDeselect
  .text.SD_ReadMultiBlocksFIXED
-                0x00000000080027d4      0x130 ./src/sdio.o
-                0x00000000080027d4                SD_ReadMultiBlocksFIXED
+                0x0000000008002880      0x130 ./src/sdio.o
+                0x0000000008002880                SD_ReadMultiBlocksFIXED
  .text.SD_WaitReadOperation
-                0x0000000008002904       0xb8 ./src/sdio.o
-                0x0000000008002904                SD_WaitReadOperation
+                0x00000000080029b0       0xb8 ./src/sdio.o
+                0x00000000080029b0                SD_WaitReadOperation
  .text.SD_WriteMultiBlocksFIXED
-                0x00000000080029bc      0x1ac ./src/sdio.o
-                0x00000000080029bc                SD_WriteMultiBlocksFIXED
+                0x0000000008002a68      0x1ac ./src/sdio.o
+                0x0000000008002a68                SD_WriteMultiBlocksFIXED
  .text.SD_WaitWriteOperation
-                0x0000000008002b68       0xb8 ./src/sdio.o
-                0x0000000008002b68                SD_WaitWriteOperation
+                0x0000000008002c14       0xb8 ./src/sdio.o
+                0x0000000008002c14                SD_WaitWriteOperation
  .text.SD_StopTransfer
-                0x0000000008002c20       0x48 ./src/sdio.o
-                0x0000000008002c20                SD_StopTransfer
+                0x0000000008002ccc       0x48 ./src/sdio.o
+                0x0000000008002ccc                SD_StopTransfer
  .text.SD_SendStatus
-                0x0000000008002c68       0x78 ./src/sdio.o
-                0x0000000008002c68                SD_SendStatus
+                0x0000000008002d14       0x78 ./src/sdio.o
+                0x0000000008002d14                SD_SendStatus
  .text.SD_ProcessIRQSrc
-                0x0000000008002ce0       0xc8 ./src/sdio.o
-                0x0000000008002ce0                SD_ProcessIRQSrc
+                0x0000000008002d8c       0xc8 ./src/sdio.o
+                0x0000000008002d8c                SD_ProcessIRQSrc
  .text.SD_ProcessDMAIRQ
-                0x0000000008002da8       0x30 ./src/sdio.o
-                0x0000000008002da8                SD_ProcessDMAIRQ
+                0x0000000008002e54       0x30 ./src/sdio.o
+                0x0000000008002e54                SD_ProcessDMAIRQ
  .text.CmdError
-                0x0000000008002dd8       0x4c ./src/sdio.o
+                0x0000000008002e84       0x4c ./src/sdio.o
  .text.CmdResp7Error
-                0x0000000008002e24       0x78 ./src/sdio.o
+                0x0000000008002ed0       0x78 ./src/sdio.o
  .text.CmdResp1Error
-                0x0000000008002e9c      0x1a4 ./src/sdio.o
+                0x0000000008002f48      0x1a4 ./src/sdio.o
  .text.CmdResp3Error
-                0x0000000008003040       0x50 ./src/sdio.o
+                0x00000000080030ec       0x50 ./src/sdio.o
  .text.CmdResp2Error
-                0x0000000008003090       0x68 ./src/sdio.o
+                0x000000000800313c       0x68 ./src/sdio.o
  .text.CmdResp6Error
-                0x00000000080030f8       0xd0 ./src/sdio.o
+                0x00000000080031a4       0xd0 ./src/sdio.o
  .text.SDEnWideBus
-                0x00000000080031c8      0x180 ./src/sdio.o
- .text.FindSCR  0x0000000008003348      0x204 ./src/sdio.o
+                0x0000000008003274      0x180 ./src/sdio.o
+ .text.FindSCR  0x00000000080033f4      0x204 ./src/sdio.o
  .text.initialize_SPI
-                0x000000000800354c       0x6c ./src/spi.o
-                0x000000000800354c                initialize_SPI
+                0x00000000080035f8       0x6c ./src/spi.o
+                0x00000000080035f8                initialize_SPI
  .text.initialize_SSD1306
-                0x00000000080035b8      0x13c ./src/ssd1306.o
-                0x00000000080035b8                initialize_SSD1306
+                0x0000000008003664      0x13c ./src/ssd1306.o
+                0x0000000008003664                initialize_SSD1306
  .text.ssd1306_transmitPixelBuffer
-                0x00000000080036f4       0x64 ./src/ssd1306.o
-                0x00000000080036f4                ssd1306_transmitPixelBuffer
+                0x00000000080037a0       0x64 ./src/ssd1306.o
+                0x00000000080037a0                ssd1306_transmitPixelBuffer
  .text.ssd1306_interruptHandler
-                0x0000000008003758       0x34 ./src/ssd1306.o
-                0x0000000008003758                ssd1306_interruptHandler
+                0x0000000008003804       0x34 ./src/ssd1306.o
+                0x0000000008003804                ssd1306_interruptHandler
  .text.ssd1306_setOrientation
-                0x000000000800378c       0x90 ./src/ssd1306.o
-                0x000000000800378c                ssd1306_setOrientation
+                0x0000000008003838       0x90 ./src/ssd1306.o
+                0x0000000008003838                ssd1306_setOrientation
  .text.ssd1306_setViewMode
-                0x000000000800381c       0x34 ./src/ssd1306.o
-                0x000000000800381c                ssd1306_setViewMode
+                0x00000000080038c8       0x34 ./src/ssd1306.o
+                0x00000000080038c8                ssd1306_setViewMode
  .text.ssd1306_getScreenDimensions
-                0x0000000008003850       0x64 ./src/ssd1306.o
-                0x0000000008003850                ssd1306_getScreenDimensions
+                0x00000000080038fc       0x64 ./src/ssd1306.o
+                0x00000000080038fc                ssd1306_getScreenDimensions
  .text.ssd1306_alterPixel
-                0x00000000080038b4      0x190 ./src/ssd1306.o
+                0x0000000008003960      0x190 ./src/ssd1306.o
  .text.ssd1306_alterCharacter
-                0x0000000008003a44      0x14c ./src/ssd1306.o
+                0x0000000008003af0      0x14c ./src/ssd1306.o
  .text.ssd1306_setString
-                0x0000000008003b90       0x38 ./src/ssd1306.o
-                0x0000000008003b90                ssd1306_setString
+                0x0000000008003c3c       0x38 ./src/ssd1306.o
+                0x0000000008003c3c                ssd1306_setString
  .text.ssd1306_alterString
-                0x0000000008003bc8       0x6c ./src/ssd1306.o
+                0x0000000008003c74       0x6c ./src/ssd1306.o
+ .text.ssd1306_setTextBlock
+                0x0000000008003ce0      0x18c ./src/ssd1306.o
+                0x0000000008003ce0                ssd1306_setTextBlock
  .text.ssd1306_alterLine
-                0x0000000008003c34      0x10c ./src/ssd1306.o
+                0x0000000008003e6c      0x10c ./src/ssd1306.o
  .text.ssd1306_clearArea
-                0x0000000008003d40       0x38 ./src/ssd1306.o
-                0x0000000008003d40                ssd1306_clearArea
+                0x0000000008003f78       0x38 ./src/ssd1306.o
+                0x0000000008003f78                ssd1306_clearArea
  .text.ssd1306_alterArea
-                0x0000000008003d78       0x8c ./src/ssd1306.o
+                0x0000000008003fb0       0x8c ./src/ssd1306.o
  .text.ssd1306_firstInit
-                0x0000000008003e04      0x148 ./src/ssd1306.o
- .text.setRST   0x0000000008003f4c       0x20 ./src/ssd1306.o
- .text.setDC    0x0000000008003f6c       0x20 ./src/ssd1306.o
- .text.setSS    0x0000000008003f8c       0x24 ./src/ssd1306.o
+                0x000000000800403c      0x148 ./src/ssd1306.o
+ .text.setRST   0x0000000008004184       0x20 ./src/ssd1306.o
+ .text.setDC    0x00000000080041a4       0x20 ./src/ssd1306.o
+ .text.setSS    0x00000000080041c4       0x24 ./src/ssd1306.o
  .text.transmitCommand
-                0x0000000008003fb0       0x20 ./src/ssd1306.o
+                0x00000000080041e8       0x20 ./src/ssd1306.o
  .text.transmitByte
-                0x0000000008003fd0       0x3c ./src/ssd1306.o
+                0x0000000008004208       0x3c ./src/ssd1306.o
  .text.ssd1306_initializeDMA
-                0x000000000800400c       0x68 ./src/ssd1306.o
+                0x0000000008004244       0x68 ./src/ssd1306.o
  .text.ssd1306_adjustCoordinate
-                0x0000000008004074       0xa8 ./src/ssd1306.o
+                0x00000000080042ac       0xa8 ./src/ssd1306.o
  .text.initialize_UART
-                0x000000000800411c       0xe4 ./src/uart.o
-                0x000000000800411c                initialize_UART
+                0x0000000008004354       0xe4 ./src/uart.o
+                0x0000000008004354                initialize_UART
  .text.uart_interruptHandlerTerminal
-                0x0000000008004200        0xc ./src/uart.o
-                0x0000000008004200                uart_interruptHandlerTerminal
- .text._sbrk    0x000000000800420c       0x68 ./libs/misc/src/_sbrk.o
-                0x000000000800420c                _sbrk
- .text._exit    0x0000000008004274       0x18 ./libs/misc/src/newlib_stubs.o
-                0x0000000008004274                _exit
- .text._close   0x000000000800428c       0x18 ./libs/misc/src/newlib_stubs.o
-                0x000000000800428c                _close
- .text._fstat   0x00000000080042a4       0x20 ./libs/misc/src/newlib_stubs.o
-                0x00000000080042a4                _fstat
- .text._isatty  0x00000000080042c4       0x2c ./libs/misc/src/newlib_stubs.o
-                0x00000000080042c4                _isatty
- .text._lseek   0x00000000080042f0       0x1c ./libs/misc/src/newlib_stubs.o
-                0x00000000080042f0                _lseek
- .text._read    0x000000000800430c       0x78 ./libs/misc/src/newlib_stubs.o
-                0x000000000800430c                _read
- .text._write   0x0000000008004384       0xb4 ./libs/misc/src/newlib_stubs.o
-                0x0000000008004384                _write
+                0x0000000008004438        0xc ./src/uart.o
+                0x0000000008004438                uart_interruptHandlerTerminal
+ .text._sbrk    0x0000000008004444       0x68 ./libs/misc/src/_sbrk.o
+                0x0000000008004444                _sbrk
+ .text._exit    0x00000000080044ac       0x18 ./libs/misc/src/newlib_stubs.o
+                0x00000000080044ac                _exit
+ .text._close   0x00000000080044c4       0x18 ./libs/misc/src/newlib_stubs.o
+                0x00000000080044c4                _close
+ .text._fstat   0x00000000080044dc       0x20 ./libs/misc/src/newlib_stubs.o
+                0x00000000080044dc                _fstat
+ .text._isatty  0x00000000080044fc       0x2c ./libs/misc/src/newlib_stubs.o
+                0x00000000080044fc                _isatty
+ .text._lseek   0x0000000008004528       0x1c ./libs/misc/src/newlib_stubs.o
+                0x0000000008004528                _lseek
+ .text._read    0x0000000008004544       0x78 ./libs/misc/src/newlib_stubs.o
+                0x0000000008004544                _read
+ .text._write   0x00000000080045bc       0xb4 ./libs/misc/src/newlib_stubs.o
+                0x00000000080045bc                _write
  .text.disk_initialize
-                0x0000000008004438       0x38 ./libs/fatfs/src/diskio.o
-                0x0000000008004438                disk_initialize
+                0x0000000008004670       0x38 ./libs/fatfs/src/diskio.o
+                0x0000000008004670                disk_initialize
  .text.disk_status
-                0x0000000008004470       0x2c ./libs/fatfs/src/diskio.o
-                0x0000000008004470                disk_status
+                0x00000000080046a8       0x2c ./libs/fatfs/src/diskio.o
+                0x00000000080046a8                disk_status
  .text.disk_read
-                0x000000000800449c      0x120 ./libs/fatfs/src/diskio.o
-                0x000000000800449c                disk_read
+                0x00000000080046d4      0x120 ./libs/fatfs/src/diskio.o
+                0x00000000080046d4                disk_read
  .text.disk_write
-                0x00000000080045bc      0x120 ./libs/fatfs/src/diskio.o
-                0x00000000080045bc                disk_write
+                0x00000000080047f4      0x120 ./libs/fatfs/src/diskio.o
+                0x00000000080047f4                disk_write
  .text.disk_ioctl
-                0x00000000080046dc       0x20 ./libs/fatfs/src/diskio.o
-                0x00000000080046dc                disk_ioctl
+                0x0000000008004914       0x20 ./libs/fatfs/src/diskio.o
+                0x0000000008004914                disk_ioctl
  .text.get_fattime
-                0x00000000080046fc       0x10 ./libs/fatfs/src/diskio.o
-                0x00000000080046fc                get_fattime
- .text.mem_cpy  0x000000000800470c       0x3c ./libs/fatfs/src/ff.o
- .text.mem_set  0x0000000008004748       0x34 ./libs/fatfs/src/ff.o
- .text.mem_cmp  0x000000000800477c       0x50 ./libs/fatfs/src/ff.o
- .text.chk_chr  0x00000000080047cc       0x38 ./libs/fatfs/src/ff.o
+                0x0000000008004934       0x10 ./libs/fatfs/src/diskio.o
+                0x0000000008004934                get_fattime
+ .text.mem_cpy  0x0000000008004944       0x3c ./libs/fatfs/src/ff.o
+ .text.mem_set  0x0000000008004980       0x34 ./libs/fatfs/src/ff.o
+ .text.mem_cmp  0x00000000080049b4       0x50 ./libs/fatfs/src/ff.o
+ .text.chk_chr  0x0000000008004a04       0x38 ./libs/fatfs/src/ff.o
  .text.move_window
-                0x0000000008004804       0xbc ./libs/fatfs/src/ff.o
- .text.sync     0x00000000080048c0      0x14c ./libs/fatfs/src/ff.o
+                0x0000000008004a3c       0xbc ./libs/fatfs/src/ff.o
+ .text.sync     0x0000000008004af8      0x14c ./libs/fatfs/src/ff.o
  .text.clust2sect
-                0x0000000008004a0c       0x40 ./libs/fatfs/src/ff.o
-                0x0000000008004a0c                clust2sect
- .text.get_fat  0x0000000008004a4c      0x158 ./libs/fatfs/src/ff.o
-                0x0000000008004a4c                get_fat
- .text.put_fat  0x0000000008004ba4      0x1f4 ./libs/fatfs/src/ff.o
-                0x0000000008004ba4                put_fat
+                0x0000000008004c44       0x40 ./libs/fatfs/src/ff.o
+                0x0000000008004c44                clust2sect
+ .text.get_fat  0x0000000008004c84      0x158 ./libs/fatfs/src/ff.o
+                0x0000000008004c84                get_fat
+ .text.put_fat  0x0000000008004ddc      0x1f4 ./libs/fatfs/src/ff.o
+                0x0000000008004ddc                put_fat
  .text.remove_chain
-                0x0000000008004d98       0x9c ./libs/fatfs/src/ff.o
+                0x0000000008004fd0       0x9c ./libs/fatfs/src/ff.o
  .text.create_chain
-                0x0000000008004e34      0x118 ./libs/fatfs/src/ff.o
- .text.dir_sdi  0x0000000008004f4c      0x104 ./libs/fatfs/src/ff.o
+                0x000000000800506c      0x118 ./libs/fatfs/src/ff.o
+ .text.dir_sdi  0x0000000008005184      0x104 ./libs/fatfs/src/ff.o
  .text.dir_next
-                0x0000000008005050      0x1a8 ./libs/fatfs/src/ff.o
+                0x0000000008005288      0x1a8 ./libs/fatfs/src/ff.o
  .text.dir_find
-                0x00000000080051f8       0x94 ./libs/fatfs/src/ff.o
+                0x0000000008005430       0x94 ./libs/fatfs/src/ff.o
  .text.dir_read
-                0x000000000800528c       0x90 ./libs/fatfs/src/ff.o
+                0x00000000080054c4       0x90 ./libs/fatfs/src/ff.o
  .text.dir_register
-                0x000000000800531c       0xac ./libs/fatfs/src/ff.o
+                0x0000000008005554       0xac ./libs/fatfs/src/ff.o
  .text.create_name
-                0x00000000080053c8      0x238 ./libs/fatfs/src/ff.o
+                0x0000000008005600      0x238 ./libs/fatfs/src/ff.o
  .text.get_fileinfo
-                0x0000000008005600      0x11c ./libs/fatfs/src/ff.o
+                0x0000000008005838      0x11c ./libs/fatfs/src/ff.o
  .text.follow_path
-                0x000000000800571c       0xfc ./libs/fatfs/src/ff.o
+                0x0000000008005954       0xfc ./libs/fatfs/src/ff.o
  .text.check_fs
-                0x0000000008005818       0xc0 ./libs/fatfs/src/ff.o
+                0x0000000008005a50       0xc0 ./libs/fatfs/src/ff.o
  .text.chk_mounted
-                0x00000000080058d8      0x550 ./libs/fatfs/src/ff.o
+                0x0000000008005b10      0x550 ./libs/fatfs/src/ff.o
  .text.validate
-                0x0000000008005e28       0x4c ./libs/fatfs/src/ff.o
- .text.f_mount  0x0000000008005e74       0x54 ./libs/fatfs/src/ff.o
-                0x0000000008005e74                f_mount
- .text.f_open   0x0000000008005ec8      0x2e0 ./libs/fatfs/src/ff.o
-                0x0000000008005ec8                f_open
- .text.f_read   0x00000000080061a8      0x2b8 ./libs/fatfs/src/ff.o
-                0x00000000080061a8                f_read
- .text.f_write  0x0000000008006460      0x314 ./libs/fatfs/src/ff.o
-                0x0000000008006460                f_write
- .text.f_sync   0x0000000008006774      0x184 ./libs/fatfs/src/ff.o
-                0x0000000008006774                f_sync
- .text.f_close  0x00000000080068f8       0x28 ./libs/fatfs/src/ff.o
-                0x00000000080068f8                f_close
+                0x0000000008006060       0x4c ./libs/fatfs/src/ff.o
+ .text.f_mount  0x00000000080060ac       0x54 ./libs/fatfs/src/ff.o
+                0x00000000080060ac                f_mount
+ .text.f_open   0x0000000008006100      0x2e0 ./libs/fatfs/src/ff.o
+                0x0000000008006100                f_open
+ .text.f_read   0x00000000080063e0      0x2b8 ./libs/fatfs/src/ff.o
+                0x00000000080063e0                f_read
+ .text.f_write  0x0000000008006698      0x314 ./libs/fatfs/src/ff.o
+                0x0000000008006698                f_write
+ .text.f_sync   0x00000000080069ac      0x184 ./libs/fatfs/src/ff.o
+                0x00000000080069ac                f_sync
+ .text.f_close  0x0000000008006b30       0x28 ./libs/fatfs/src/ff.o
+                0x0000000008006b30                f_close
  .text.f_opendir
-                0x0000000008006920       0xcc ./libs/fatfs/src/ff.o
-                0x0000000008006920                f_opendir
+                0x0000000008006b58       0xcc ./libs/fatfs/src/ff.o
+                0x0000000008006b58                f_opendir
  .text.f_readdir
-                0x00000000080069ec       0x90 ./libs/fatfs/src/ff.o
-                0x00000000080069ec                f_readdir
+                0x0000000008006c24       0x90 ./libs/fatfs/src/ff.o
+                0x0000000008006c24                f_readdir
  .text.__libc_init_array
-                0x0000000008006a7c       0x6c ./libs/cmsis/src/startup_cm.o
-                0x0000000008006a7c                __libc_init_array
+                0x0000000008006cb4       0x6c ./libs/cmsis/src/startup_cm.o
+                0x0000000008006cb4                __libc_init_array
  .text.__libc_fini_array
-                0x0000000008006ae8       0x3c ./libs/cmsis/src/startup_cm.o
-                0x0000000008006ae8                __libc_fini_array
+                0x0000000008006d20       0x3c ./libs/cmsis/src/startup_cm.o
+                0x0000000008006d20                __libc_fini_array
  .text.SystemInit
-                0x0000000008006b24       0x58 ./libs/cmsis/src/system_stm32f4xx.o
-                0x0000000008006b24                SystemInit
+                0x0000000008006d5c       0x58 ./libs/cmsis/src/system_stm32f4xx.o
+                0x0000000008006d5c                SystemInit
  .text.SetSysClock
-                0x0000000008006b7c       0xf4 ./libs/cmsis/src/system_stm32f4xx.o
+                0x0000000008006db4       0xf4 ./libs/cmsis/src/system_stm32f4xx.o
  .text.NVIC_PriorityGroupConfig
-                0x0000000008006c70       0x24 ./libs/StdPeriph/src/misc.o
-                0x0000000008006c70                NVIC_PriorityGroupConfig
+                0x0000000008006ea8       0x24 ./libs/StdPeriph/src/misc.o
+                0x0000000008006ea8                NVIC_PriorityGroupConfig
  .text.NVIC_Init
-                0x0000000008006c94       0xc0 ./libs/StdPeriph/src/misc.o
-                0x0000000008006c94                NVIC_Init
+                0x0000000008006ecc       0xc0 ./libs/StdPeriph/src/misc.o
+                0x0000000008006ecc                NVIC_Init
  .text.DMA_DeInit
-                0x0000000008006d54      0x1a4 ./libs/StdPeriph/src/stm32f4xx_dma.o
-                0x0000000008006d54                DMA_DeInit
+                0x0000000008006f8c      0x1a4 ./libs/StdPeriph/src/stm32f4xx_dma.o
+                0x0000000008006f8c                DMA_DeInit
  .text.DMA_Init
-                0x0000000008006ef8       0xac ./libs/StdPeriph/src/stm32f4xx_dma.o
-                0x0000000008006ef8                DMA_Init
- .text.DMA_Cmd  0x0000000008006fa4       0x38 ./libs/StdPeriph/src/stm32f4xx_dma.o
-                0x0000000008006fa4                DMA_Cmd
+                0x0000000008007130       0xac ./libs/StdPeriph/src/stm32f4xx_dma.o
+                0x0000000008007130                DMA_Init
+ .text.DMA_Cmd  0x00000000080071dc       0x38 ./libs/StdPeriph/src/stm32f4xx_dma.o
+                0x00000000080071dc                DMA_Cmd
  .text.DMA_FlowControllerConfig
-                0x0000000008006fdc       0x34 ./libs/StdPeriph/src/stm32f4xx_dma.o
-                0x0000000008006fdc                DMA_FlowControllerConfig
+                0x0000000008007214       0x34 ./libs/StdPeriph/src/stm32f4xx_dma.o
+                0x0000000008007214                DMA_FlowControllerConfig
  .text.DMA_GetFlagStatus
-                0x0000000008007010       0x78 ./libs/StdPeriph/src/stm32f4xx_dma.o
-                0x0000000008007010                DMA_GetFlagStatus
+                0x0000000008007248       0x78 ./libs/StdPeriph/src/stm32f4xx_dma.o
+                0x0000000008007248                DMA_GetFlagStatus
  .text.DMA_ClearFlag
-                0x0000000008007088       0x5c ./libs/StdPeriph/src/stm32f4xx_dma.o
-                0x0000000008007088                DMA_ClearFlag
+                0x00000000080072c0       0x5c ./libs/StdPeriph/src/stm32f4xx_dma.o
+                0x00000000080072c0                DMA_ClearFlag
  .text.DMA_ITConfig
-                0x00000000080070e4       0x74 ./libs/StdPeriph/src/stm32f4xx_dma.o
-                0x00000000080070e4                DMA_ITConfig
+                0x000000000800731c       0x74 ./libs/StdPeriph/src/stm32f4xx_dma.o
+                0x000000000800731c                DMA_ITConfig
  .text.EXTI_Init
-                0x0000000008007158       0xe4 ./libs/StdPeriph/src/stm32f4xx_exti.o
-                0x0000000008007158                EXTI_Init
+                0x0000000008007390       0xe4 ./libs/StdPeriph/src/stm32f4xx_exti.o
+                0x0000000008007390                EXTI_Init
  .text.EXTI_GetITStatus
-                0x000000000800723c       0x34 ./libs/StdPeriph/src/stm32f4xx_exti.o
-                0x000000000800723c                EXTI_GetITStatus
+                0x0000000008007474       0x34 ./libs/StdPeriph/src/stm32f4xx_exti.o
+                0x0000000008007474                EXTI_GetITStatus
  .text.EXTI_ClearITPendingBit
-                0x0000000008007270       0x1c ./libs/StdPeriph/src/stm32f4xx_exti.o
-                0x0000000008007270                EXTI_ClearITPendingBit
+                0x00000000080074a8       0x1c ./libs/StdPeriph/src/stm32f4xx_exti.o
+                0x00000000080074a8                EXTI_ClearITPendingBit
  .text.GPIO_Init
-                0x000000000800728c      0x11c ./libs/StdPeriph/src/stm32f4xx_gpio.o
-                0x000000000800728c                GPIO_Init
+                0x00000000080074c4      0x11c ./libs/StdPeriph/src/stm32f4xx_gpio.o
+                0x00000000080074c4                GPIO_Init
  .text.GPIO_WriteBit
-                0x00000000080073a8       0x30 ./libs/StdPeriph/src/stm32f4xx_gpio.o
-                0x00000000080073a8                GPIO_WriteBit
+                0x00000000080075e0       0x30 ./libs/StdPeriph/src/stm32f4xx_gpio.o
+                0x00000000080075e0                GPIO_WriteBit
  .text.GPIO_ToggleBits
-                0x00000000080073d8       0x24 ./libs/StdPeriph/src/stm32f4xx_gpio.o
-                0x00000000080073d8                GPIO_ToggleBits
+                0x0000000008007610       0x24 ./libs/StdPeriph/src/stm32f4xx_gpio.o
+                0x0000000008007610                GPIO_ToggleBits
  .text.GPIO_PinAFConfig
-                0x00000000080073fc       0x90 ./libs/StdPeriph/src/stm32f4xx_gpio.o
-                0x00000000080073fc                GPIO_PinAFConfig
+                0x0000000008007634       0x90 ./libs/StdPeriph/src/stm32f4xx_gpio.o
+                0x0000000008007634                GPIO_PinAFConfig
  .text.PWR_BackupAccessCmd
-                0x000000000800748c       0x20 ./libs/StdPeriph/src/stm32f4xx_pwr.o
-                0x000000000800748c                PWR_BackupAccessCmd
+                0x00000000080076c4       0x20 ./libs/StdPeriph/src/stm32f4xx_pwr.o
+                0x00000000080076c4                PWR_BackupAccessCmd
  .text.RCC_LSEConfig
-                0x00000000080074ac       0x40 ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x00000000080074ac                RCC_LSEConfig
+                0x00000000080076e4       0x40 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x00000000080076e4                RCC_LSEConfig
  .text.RCC_LSICmd
-                0x00000000080074ec       0x20 ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x00000000080074ec                RCC_LSICmd
+                0x0000000008007724       0x20 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x0000000008007724                RCC_LSICmd
  .text.RCC_GetClocksFreq
-                0x000000000800750c      0x154 ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x000000000800750c                RCC_GetClocksFreq
+                0x0000000008007744      0x154 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x0000000008007744                RCC_GetClocksFreq
  .text.RCC_RTCCLKConfig
-                0x0000000008007660       0x5c ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x0000000008007660                RCC_RTCCLKConfig
+                0x0000000008007898       0x5c ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x0000000008007898                RCC_RTCCLKConfig
  .text.RCC_RTCCLKCmd
-                0x00000000080076bc       0x20 ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x00000000080076bc                RCC_RTCCLKCmd
+                0x00000000080078f4       0x20 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x00000000080078f4                RCC_RTCCLKCmd
  .text.RCC_AHB1PeriphClockCmd
-                0x00000000080076dc       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x00000000080076dc                RCC_AHB1PeriphClockCmd
+                0x0000000008007914       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x0000000008007914                RCC_AHB1PeriphClockCmd
  .text.RCC_AHB2PeriphClockCmd
-                0x0000000008007718       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x0000000008007718                RCC_AHB2PeriphClockCmd
+                0x0000000008007950       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x0000000008007950                RCC_AHB2PeriphClockCmd
  .text.RCC_APB1PeriphClockCmd
-                0x0000000008007754       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x0000000008007754                RCC_APB1PeriphClockCmd
+                0x000000000800798c       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x000000000800798c                RCC_APB1PeriphClockCmd
  .text.RCC_APB2PeriphClockCmd
-                0x0000000008007790       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x0000000008007790                RCC_APB2PeriphClockCmd
+                0x00000000080079c8       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x00000000080079c8                RCC_APB2PeriphClockCmd
  .text.RCC_APB2PeriphResetCmd
-                0x00000000080077cc       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x00000000080077cc                RCC_APB2PeriphResetCmd
+                0x0000000008007a04       0x3c ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x0000000008007a04                RCC_APB2PeriphResetCmd
  .text.RCC_GetFlagStatus
-                0x0000000008007808       0x74 ./libs/StdPeriph/src/stm32f4xx_rcc.o
-                0x0000000008007808                RCC_GetFlagStatus
- .text.RNG_Cmd  0x000000000800787c       0x38 ./libs/StdPeriph/src/stm32f4xx_rng.o
-                0x000000000800787c                RNG_Cmd
+                0x0000000008007a40       0x74 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x0000000008007a40                RCC_GetFlagStatus
+ .text.RNG_Cmd  0x0000000008007ab4       0x38 ./libs/StdPeriph/src/stm32f4xx_rng.o
+                0x0000000008007ab4                RNG_Cmd
  .text.RTC_Init
-                0x00000000080078b4       0x78 ./libs/StdPeriph/src/stm32f4xx_rtc.o
-                0x00000000080078b4                RTC_Init
+                0x0000000008007aec       0x78 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000008007aec                RTC_Init
  .text.RTC_EnterInitMode
-                0x000000000800792c       0x74 ./libs/StdPeriph/src/stm32f4xx_rtc.o
-                0x000000000800792c                RTC_EnterInitMode
+                0x0000000008007b64       0x74 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000008007b64                RTC_EnterInitMode
  .text.RTC_ExitInitMode
-                0x00000000080079a0       0x1c ./libs/StdPeriph/src/stm32f4xx_rtc.o
-                0x00000000080079a0                RTC_ExitInitMode
+                0x0000000008007bd8       0x1c ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000008007bd8                RTC_ExitInitMode
  .text.RTC_WaitForSynchro
-                0x00000000080079bc       0x78 ./libs/StdPeriph/src/stm32f4xx_rtc.o
-                0x00000000080079bc                RTC_WaitForSynchro
+                0x0000000008007bf4       0x78 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000008007bf4                RTC_WaitForSynchro
  .text.RTC_SetTime
-                0x0000000008007a34      0x114 ./libs/StdPeriph/src/stm32f4xx_rtc.o
-                0x0000000008007a34                RTC_SetTime
+                0x0000000008007c6c      0x114 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000008007c6c                RTC_SetTime
  .text.RTC_GetTime
-                0x0000000008007b48       0x9c ./libs/StdPeriph/src/stm32f4xx_rtc.o
-                0x0000000008007b48                RTC_GetTime
+                0x0000000008007d80       0x9c ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000008007d80                RTC_GetTime
  .text.RTC_SetDate
-                0x0000000008007be4      0x120 ./libs/StdPeriph/src/stm32f4xx_rtc.o
-                0x0000000008007be4                RTC_SetDate
+                0x0000000008007e1c      0x120 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000008007e1c                RTC_SetDate
  .text.RTC_ByteToBcd2
-                0x0000000008007d04       0x3c ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000008007f3c       0x3c ./libs/StdPeriph/src/stm32f4xx_rtc.o
  .text.RTC_Bcd2ToByte
-                0x0000000008007d40       0x38 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000008007f78       0x38 ./libs/StdPeriph/src/stm32f4xx_rtc.o
  .text.SDIO_DeInit
-                0x0000000008007d78       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007d78                SDIO_DeInit
+                0x0000000008007fb0       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000008007fb0                SDIO_DeInit
  .text.SDIO_Init
-                0x0000000008007d94       0x5c ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007d94                SDIO_Init
+                0x0000000008007fcc       0x5c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000008007fcc                SDIO_Init
  .text.SDIO_ClockCmd
-                0x0000000008007df0       0x20 ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007df0                SDIO_ClockCmd
+                0x0000000008008028       0x20 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000008008028                SDIO_ClockCmd
  .text.SDIO_SetPowerState
-                0x0000000008007e10       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007e10                SDIO_SetPowerState
+                0x0000000008008048       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000008008048                SDIO_SetPowerState
  .text.SDIO_GetPowerState
-                0x0000000008007e2c       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007e2c                SDIO_GetPowerState
+                0x0000000008008064       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000008008064                SDIO_GetPowerState
  .text.SDIO_SendCommand
-                0x0000000008007e48       0x58 ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007e48                SDIO_SendCommand
+                0x0000000008008080       0x58 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000008008080                SDIO_SendCommand
  .text.SDIO_GetCommandResponse
-                0x0000000008007ea0       0x18 ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007ea0                SDIO_GetCommandResponse
+                0x00000000080080d8       0x18 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x00000000080080d8                SDIO_GetCommandResponse
  .text.SDIO_GetResponse
-                0x0000000008007eb8       0x28 ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007eb8                SDIO_GetResponse
+                0x00000000080080f0       0x28 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x00000000080080f0                SDIO_GetResponse
  .text.SDIO_DataConfig
-                0x0000000008007ee0       0x5c ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007ee0                SDIO_DataConfig
+                0x0000000008008118       0x5c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000008008118                SDIO_DataConfig
  .text.SDIO_ReadData
-                0x0000000008007f3c       0x18 ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007f3c                SDIO_ReadData
+                0x0000000008008174       0x18 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000008008174                SDIO_ReadData
  .text.SDIO_DMACmd
-                0x0000000008007f54       0x20 ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007f54                SDIO_DMACmd
+                0x000000000800818c       0x20 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x000000000800818c                SDIO_DMACmd
  .text.SDIO_ITConfig
-                0x0000000008007f74       0x3c ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007f74                SDIO_ITConfig
+                0x00000000080081ac       0x3c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x00000000080081ac                SDIO_ITConfig
  .text.SDIO_GetFlagStatus
-                0x0000000008007fb0       0x34 ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007fb0                SDIO_GetFlagStatus
+                0x00000000080081e8       0x34 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x00000000080081e8                SDIO_GetFlagStatus
  .text.SDIO_ClearFlag
-                0x0000000008007fe4       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008007fe4                SDIO_ClearFlag
+                0x000000000800821c       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x000000000800821c                SDIO_ClearFlag
  .text.SDIO_GetITStatus
-                0x0000000008008000       0x34 ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008008000                SDIO_GetITStatus
+                0x0000000008008238       0x34 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000008008238                SDIO_GetITStatus
  .text.SDIO_ClearITPendingBit
-                0x0000000008008034       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
-                0x0000000008008034                SDIO_ClearITPendingBit
+                0x000000000800826c       0x1c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x000000000800826c                SDIO_ClearITPendingBit
  .text.SPI_Init
-                0x0000000008008050       0x88 ./libs/StdPeriph/src/stm32f4xx_spi.o
-                0x0000000008008050                SPI_Init
- .text.SPI_Cmd  0x00000000080080d8       0x40 ./libs/StdPeriph/src/stm32f4xx_spi.o
-                0x00000000080080d8                SPI_Cmd
+                0x0000000008008288       0x88 ./libs/StdPeriph/src/stm32f4xx_spi.o
+                0x0000000008008288                SPI_Init
+ .text.SPI_Cmd  0x0000000008008310       0x40 ./libs/StdPeriph/src/stm32f4xx_spi.o
+                0x0000000008008310                SPI_Cmd
  .text.SPI_I2S_SendData
-                0x0000000008008118       0x1c ./libs/StdPeriph/src/stm32f4xx_spi.o
-                0x0000000008008118                SPI_I2S_SendData
+                0x0000000008008350       0x1c ./libs/StdPeriph/src/stm32f4xx_spi.o
+                0x0000000008008350                SPI_I2S_SendData
  .text.SPI_I2S_DMACmd
-                0x0000000008008134       0x48 ./libs/StdPeriph/src/stm32f4xx_spi.o
-                0x0000000008008134                SPI_I2S_DMACmd
+                0x000000000800836c       0x48 ./libs/StdPeriph/src/stm32f4xx_spi.o
+                0x000000000800836c                SPI_I2S_DMACmd
  .text.SPI_I2S_GetFlagStatus
-                0x000000000800817c       0x38 ./libs/StdPeriph/src/stm32f4xx_spi.o
-                0x000000000800817c                SPI_I2S_GetFlagStatus
+                0x00000000080083b4       0x38 ./libs/StdPeriph/src/stm32f4xx_spi.o
+                0x00000000080083b4                SPI_I2S_GetFlagStatus
  .text.SYSCFG_EXTILineConfig
-                0x00000000080081b4       0x84 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
-                0x00000000080081b4                SYSCFG_EXTILineConfig
+                0x00000000080083ec       0x84 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+                0x00000000080083ec                SYSCFG_EXTILineConfig
  .text.TIM_TimeBaseInit
-                0x0000000008008238       0xd4 ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x0000000008008238                TIM_TimeBaseInit
+                0x0000000008008470       0xd4 ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x0000000008008470                TIM_TimeBaseInit
  .text.TIM_SetCounter
-                0x000000000800830c       0x1c ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x000000000800830c                TIM_SetCounter
+                0x0000000008008544       0x1c ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x0000000008008544                TIM_SetCounter
  .text.TIM_SetAutoreload
-                0x0000000008008328       0x1c ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x0000000008008328                TIM_SetAutoreload
+                0x0000000008008560       0x1c ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x0000000008008560                TIM_SetAutoreload
  .text.TIM_GetCounter
-                0x0000000008008344       0x18 ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x0000000008008344                TIM_GetCounter
+                0x000000000800857c       0x18 ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x000000000800857c                TIM_GetCounter
  .text.TIM_ARRPreloadConfig
-                0x000000000800835c       0x40 ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x000000000800835c                TIM_ARRPreloadConfig
- .text.TIM_Cmd  0x000000000800839c       0x40 ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x000000000800839c                TIM_Cmd
+                0x0000000008008594       0x40 ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x0000000008008594                TIM_ARRPreloadConfig
+ .text.TIM_Cmd  0x00000000080085d4       0x40 ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x00000000080085d4                TIM_Cmd
  .text.TIM_ITConfig
-                0x00000000080083dc       0x48 ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x00000000080083dc                TIM_ITConfig
+                0x0000000008008614       0x48 ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x0000000008008614                TIM_ITConfig
  .text.TIM_GetITStatus
-                0x0000000008008424       0x54 ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x0000000008008424                TIM_GetITStatus
+                0x000000000800865c       0x54 ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x000000000800865c                TIM_GetITStatus
  .text.TIM_ClearITPendingBit
-                0x0000000008008478       0x20 ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x0000000008008478                TIM_ClearITPendingBit
+                0x00000000080086b0       0x20 ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x00000000080086b0                TIM_ClearITPendingBit
  .text.TIM_EncoderInterfaceConfig
-                0x0000000008008498       0x98 ./libs/StdPeriph/src/stm32f4xx_tim.o
-                0x0000000008008498                TIM_EncoderInterfaceConfig
+                0x00000000080086d0       0x98 ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x00000000080086d0                TIM_EncoderInterfaceConfig
  .text.USART_Init
-                0x0000000008008530      0x178 ./libs/StdPeriph/src/stm32f4xx_usart.o
-                0x0000000008008530                USART_Init
+                0x0000000008008768      0x178 ./libs/StdPeriph/src/stm32f4xx_usart.o
+                0x0000000008008768                USART_Init
  .text.USART_Cmd
-                0x00000000080086a8       0x40 ./libs/StdPeriph/src/stm32f4xx_usart.o
-                0x00000000080086a8                USART_Cmd
+                0x00000000080088e0       0x40 ./libs/StdPeriph/src/stm32f4xx_usart.o
+                0x00000000080088e0                USART_Cmd
  .text.USART_ITConfig
-                0x00000000080086e8       0x90 ./libs/StdPeriph/src/stm32f4xx_usart.o
-                0x00000000080086e8                USART_ITConfig
- .text          0x0000000008008778       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_aeabi_uldivmod.o)
-                0x0000000008008778                __aeabi_uldivmod
- .text          0x00000000080087a4       0x60 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(bpabi.o)
-                0x00000000080087a4                __gnu_ldivmod_helper
-                0x00000000080087d4                __gnu_uldivmod_helper
- .text          0x0000000008008804        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_dvmd_tls.o)
-                0x0000000008008804                __aeabi_ldiv0
-                0x0000000008008804                __aeabi_idiv0
- .text          0x0000000008008808      0x29c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_divdi3.o)
-                0x0000000008008808                __divdi3
- .text          0x0000000008008aa4      0x26c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_udivdi3.o)
-                0x0000000008008aa4                __udivdi3
- .text.__errno  0x0000000008008d10        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-errno.o)
-                0x0000000008008d10                __errno
- .text.exit     0x0000000008008d1c       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-exit.o)
-                0x0000000008008d1c                exit
- .text.malloc   0x0000000008008d3c       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-malloc.o)
-                0x0000000008008d3c                malloc
- .text.free     0x0000000008008d4c       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-malloc.o)
-                0x0000000008008d4c                free
+                0x0000000008008920       0x90 ./libs/StdPeriph/src/stm32f4xx_usart.o
+                0x0000000008008920                USART_ITConfig
+ .text          0x00000000080089b0       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_aeabi_uldivmod.o)
+                0x00000000080089b0                __aeabi_uldivmod
+ .text          0x00000000080089dc       0x60 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(bpabi.o)
+                0x00000000080089dc                __gnu_ldivmod_helper
+                0x0000000008008a0c                __gnu_uldivmod_helper
+ .text          0x0000000008008a3c        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_dvmd_tls.o)
+                0x0000000008008a3c                __aeabi_ldiv0
+                0x0000000008008a3c                __aeabi_idiv0
+ .text          0x0000000008008a40      0x29c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_divdi3.o)
+                0x0000000008008a40                __divdi3
+ .text          0x0000000008008cdc      0x26c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_udivdi3.o)
+                0x0000000008008cdc                __udivdi3
+ .text.__errno  0x0000000008008f48        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-errno.o)
+                0x0000000008008f48                __errno
+ .text.exit     0x0000000008008f54       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-exit.o)
+                0x0000000008008f54                exit
+ .text.malloc   0x0000000008008f74       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-malloc.o)
+                0x0000000008008f74                malloc
+ .text.free     0x0000000008008f84       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-malloc.o)
+                0x0000000008008f84                free
  .text._malloc_r
-                0x0000000008008d5c      0x51c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mallocr.o)
-                0x0000000008008d5c                _malloc_r
- .text          0x0000000008009278      0x134 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memcpy.o)
-                0x0000000008009278                memcpy
- .text.memset   0x00000000080093ac       0x9c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memset.o)
-                0x00000000080093ac                memset
+                0x0000000008008f94      0x51c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mallocr.o)
+                0x0000000008008f94                _malloc_r
+ .text          0x00000000080094b0      0x134 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memcpy.o)
+                0x00000000080094b0                memcpy
+ .text.memset   0x00000000080095e4       0x9c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memset.o)
+                0x00000000080095e4                memset
  .text.__malloc_lock
-                0x0000000008009448        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mlock.o)
-                0x0000000008009448                __malloc_lock
+                0x0000000008009680        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mlock.o)
+                0x0000000008009680                __malloc_lock
  .text.__malloc_unlock
-                0x000000000800944c        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mlock.o)
-                0x000000000800944c                __malloc_unlock
- .text.printf   0x0000000008009450       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-printf.o)
-                0x0000000008009450                printf
- .text._puts_r  0x0000000008009478       0x5c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-puts.o)
-                0x0000000008009478                _puts_r
- .text.puts     0x00000000080094d4       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-puts.o)
-                0x00000000080094d4                puts
- .text._sbrk_r  0x00000000080094e4       0x24 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-sbrkr.o)
-                0x00000000080094e4                _sbrk_r
- .text.setvbuf  0x0000000008009508       0xf8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-setvbuf.o)
-                0x0000000008009508                setvbuf
- .text.sprintf  0x0000000008009600       0x4c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-sprintf.o)
-                0x0000000008009600                sprintf
- .text.strcpy   0x000000000800964c       0xbc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strcpy.o)
-                0x000000000800964c                strcpy
- .text.strlen   0x0000000008009708       0x5c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strlen.o)
-                0x0000000008009708                strlen
+                0x0000000008009684        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mlock.o)
+                0x0000000008009684                __malloc_unlock
+ .text.printf   0x0000000008009688       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-printf.o)
+                0x0000000008009688                printf
+ .text._puts_r  0x00000000080096b0       0x5c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-puts.o)
+                0x00000000080096b0                _puts_r
+ .text.puts     0x000000000800970c       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-puts.o)
+                0x000000000800970c                puts
+ .text._sbrk_r  0x000000000800971c       0x24 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-sbrkr.o)
+                0x000000000800971c                _sbrk_r
+ .text.setvbuf  0x0000000008009740       0xf8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-setvbuf.o)
+                0x0000000008009740                setvbuf
+ .text.sprintf  0x0000000008009838       0x4c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-sprintf.o)
+                0x0000000008009838                sprintf
+ .text.strcpy   0x0000000008009884       0xbc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strcpy.o)
+                0x0000000008009884                strcpy
+ .text.strlen   0x0000000008009940       0x5c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strlen.o)
+                0x0000000008009940                strlen
  .text._svfprintf_r
-                0x0000000008009764     0x1494 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
-                0x0000000008009764                _svfprintf_r
+                0x000000000800999c     0x1494 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
+                0x000000000800999c                _svfprintf_r
  .text._vfprintf_r
-                0x000000000800abf8     0x13e8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
-                0x000000000800abf8                _vfprintf_r
+                0x000000000800ae30     0x13e8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
+                0x000000000800ae30                _vfprintf_r
  .text.__sbprintf
-                0x000000000800bfe0       0x78 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
+                0x000000000800c218       0x78 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
  .text.__swsetup_r
-                0x000000000800c058       0xc4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wsetup.o)
-                0x000000000800c058                __swsetup_r
+                0x000000000800c290       0xc4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wsetup.o)
+                0x000000000800c290                __swsetup_r
  .text.startup.register_fini
-                0x000000000800c11c       0x14 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__call_atexit.o)
+                0x000000000800c354       0x14 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__call_atexit.o)
  .text.__call_exitprocs
-                0x000000000800c130       0xd4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__call_atexit.o)
-                0x000000000800c130                __call_exitprocs
- .text.atexit   0x000000000800c204        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-atexit.o)
-                0x000000000800c204                atexit
- .text.quorem   0x000000000800c210      0x12c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-dtoa.o)
- *fill*         0x000000000800c33c        0x4 
- .text._dtoa_r  0x000000000800c340      0xe98 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-dtoa.o)
-                0x000000000800c340                _dtoa_r
+                0x000000000800c368       0xd4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__call_atexit.o)
+                0x000000000800c368                __call_exitprocs
+ .text.atexit   0x000000000800c43c        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-atexit.o)
+                0x000000000800c43c                atexit
+ .text.quorem   0x000000000800c448      0x12c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-dtoa.o)
+ *fill*         0x000000000800c574        0x4 
+ .text._dtoa_r  0x000000000800c578      0xe98 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-dtoa.o)
+                0x000000000800c578                _dtoa_r
  .text.__sflush_r
-                0x000000000800d1d8      0x154 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fflush.o)
-                0x000000000800d1d8                __sflush_r
+                0x000000000800d410      0x154 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fflush.o)
+                0x000000000800d410                __sflush_r
  .text._fflush_r
-                0x000000000800d32c       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fflush.o)
-                0x000000000800d32c                _fflush_r
+                0x000000000800d564       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fflush.o)
+                0x000000000800d564                _fflush_r
  .text._cleanup_r
-                0x000000000800d358        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
-                0x000000000800d358                _cleanup_r
+                0x000000000800d590        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
+                0x000000000800d590                _cleanup_r
  .text.__sinit.part.1
-                0x000000000800d364       0xf0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
- .text.__sinit  0x000000000800d454        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
-                0x000000000800d454                __sinit
+                0x000000000800d59c       0xf0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
+ .text.__sinit  0x000000000800d68c        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
+                0x000000000800d68c                __sinit
  .text.__sfp_lock_acquire
-                0x000000000800d460        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
-                0x000000000800d460                __sfp_lock_acquire
+                0x000000000800d698        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
+                0x000000000800d698                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x000000000800d464        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
-                0x000000000800d464                __sfp_lock_release
+                0x000000000800d69c        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
+                0x000000000800d69c                __sfp_lock_release
  .text._malloc_trim_r
-                0x000000000800d468       0x9c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-freer.o)
-                0x000000000800d468                _malloc_trim_r
- .text._free_r  0x000000000800d504      0x1b0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-freer.o)
-                0x000000000800d504                _free_r
+                0x000000000800d6a0       0x9c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-freer.o)
+                0x000000000800d6a0                _malloc_trim_r
+ .text._free_r  0x000000000800d73c      0x1b0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-freer.o)
+                0x000000000800d73c                _free_r
  .text.__sfvwrite_r
-                0x000000000800d6b4      0x318 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fvwrite.o)
-                0x000000000800d6b4                __sfvwrite_r
+                0x000000000800d8ec      0x318 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fvwrite.o)
+                0x000000000800d8ec                __sfvwrite_r
  .text._fwalk_reent
-                0x000000000800d9cc       0x54 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fwalk.o)
-                0x000000000800d9cc                _fwalk_reent
+                0x000000000800dc04       0x54 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fwalk.o)
+                0x000000000800dc04                _fwalk_reent
  .text.__locale_charset
-                0x000000000800da20        0x8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
-                0x000000000800da20                __locale_charset
+                0x000000000800dc58        0x8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
+                0x000000000800dc58                __locale_charset
  .text.__locale_mb_cur_max
-                0x000000000800da28        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
-                0x000000000800da28                __locale_mb_cur_max
+                0x000000000800dc60        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
+                0x000000000800dc60                __locale_mb_cur_max
  .text._localeconv_r
-                0x000000000800da34        0x8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
-                0x000000000800da34                _localeconv_r
+                0x000000000800dc6c        0x8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
+                0x000000000800dc6c                _localeconv_r
  .text.__smakebuf_r
-                0x000000000800da3c       0xe0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-makebuf.o)
-                0x000000000800da3c                __smakebuf_r
- .text.memchr   0x000000000800db1c       0x94 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memchr.o)
-                0x000000000800db1c                memchr
- .text.memmove  0x000000000800dbb0       0xc8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memmove.o)
-                0x000000000800dbb0                memmove
- .text._Balloc  0x000000000800dc78       0x4c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800dc78                _Balloc
- .text._Bfree   0x000000000800dcc4       0x14 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800dcc4                _Bfree
+                0x000000000800dc74       0xe0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-makebuf.o)
+                0x000000000800dc74                __smakebuf_r
+ .text.memchr   0x000000000800dd54       0x94 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memchr.o)
+                0x000000000800dd54                memchr
+ .text.memmove  0x000000000800dde8       0xc8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memmove.o)
+                0x000000000800dde8                memmove
+ .text._Balloc  0x000000000800deb0       0x4c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800deb0                _Balloc
+ .text._Bfree   0x000000000800defc       0x14 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800defc                _Bfree
  .text.__multadd
-                0x000000000800dcd8       0x84 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800dcd8                __multadd
+                0x000000000800df10       0x84 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800df10                __multadd
  .text.__hi0bits
-                0x000000000800dd5c       0x40 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800dd5c                __hi0bits
+                0x000000000800df94       0x40 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800df94                __hi0bits
  .text.__lo0bits
-                0x000000000800dd9c       0x5c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800dd9c                __lo0bits
- .text.__i2b    0x000000000800ddf8       0x14 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800ddf8                __i2b
+                0x000000000800dfd4       0x5c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800dfd4                __lo0bits
+ .text.__i2b    0x000000000800e030       0x14 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800e030                __i2b
  .text.__multiply
-                0x000000000800de0c      0x134 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800de0c                __multiply
+                0x000000000800e044      0x134 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800e044                __multiply
  .text.__pow5mult
-                0x000000000800df40       0xa0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800df40                __pow5mult
+                0x000000000800e178       0xa0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800e178                __pow5mult
  .text.__lshift
-                0x000000000800dfe0       0xac /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800dfe0                __lshift
- .text.__mcmp   0x000000000800e08c       0x48 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800e08c                __mcmp
- .text.__mdiff  0x000000000800e0d4       0xd4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800e0d4                __mdiff
- .text.__d2b    0x000000000800e1a8       0xb8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800e1a8                __d2b
+                0x000000000800e218       0xac /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800e218                __lshift
+ .text.__mcmp   0x000000000800e2c4       0x48 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800e2c4                __mcmp
+ .text.__mdiff  0x000000000800e30c       0xd4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800e30c                __mdiff
+ .text.__d2b    0x000000000800e3e0       0xb8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x000000000800e3e0                __d2b
  .text._realloc_r
-                0x000000000800e260      0x3ec /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-reallocr.o)
-                0x000000000800e260                _realloc_r
+                0x000000000800e498      0x3ec /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-reallocr.o)
+                0x000000000800e498                _realloc_r
  .text.__fpclassifyd
-                0x000000000800e64c       0x58 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-s_fpclassify.o)
-                0x000000000800e64c                __fpclassifyd
- .text.__sread  0x000000000800e6a4       0x24 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
-                0x000000000800e6a4                __sread
+                0x000000000800e884       0x58 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-s_fpclassify.o)
+                0x000000000800e884                __fpclassifyd
+ .text.__sread  0x000000000800e8dc       0x24 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
+                0x000000000800e8dc                __sread
  .text.__swrite
-                0x000000000800e6c8       0x38 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
-                0x000000000800e6c8                __swrite
- .text.__sseek  0x000000000800e700       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
-                0x000000000800e700                __sseek
+                0x000000000800e900       0x38 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
+                0x000000000800e900                __swrite
+ .text.__sseek  0x000000000800e938       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
+                0x000000000800e938                __sseek
  .text.__sclose
-                0x000000000800e720        0x8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
-                0x000000000800e720                __sclose
+                0x000000000800e958        0x8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
+                0x000000000800e958                __sclose
  .text.__ssprint_r
-                0x000000000800e728      0x104 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfiprintf.o)
-                0x000000000800e728                __ssprint_r
+                0x000000000800e960      0x104 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfiprintf.o)
+                0x000000000800e960                __ssprint_r
  .text.__sprint_r.part.0
-                0x000000000800e82c       0x78 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfiprintf.o)
+                0x000000000800ea64       0x78 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfiprintf.o)
  .text.__sprint_r
-                0x000000000800e8a4       0x18 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfiprintf.o)
-                0x000000000800e8a4                __sprint_r
+                0x000000000800eadc       0x18 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfiprintf.o)
+                0x000000000800eadc                __sprint_r
  .text.__swbuf_r
-                0x000000000800e8bc       0xa8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wbuf.o)
-                0x000000000800e8bc                __swbuf_r
+                0x000000000800eaf4       0xa8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wbuf.o)
+                0x000000000800eaf4                __swbuf_r
  .text._write_r
-                0x000000000800e964       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-writer.o)
-                0x000000000800e964                _write_r
+                0x000000000800eb9c       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-writer.o)
+                0x000000000800eb9c                _write_r
  .text.__register_exitproc
-                0x000000000800e98c       0xa4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__atexit.o)
-                0x000000000800e98c                __register_exitproc
+                0x000000000800ebc4       0xa4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__atexit.o)
+                0x000000000800ebc4                __register_exitproc
  .text._calloc_r
-                0x000000000800ea30       0x60 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-callocr.o)
-                0x000000000800ea30                _calloc_r
+                0x000000000800ec68       0x60 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-callocr.o)
+                0x000000000800ec68                _calloc_r
  .text._close_r
-                0x000000000800ea90       0x24 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-closer.o)
-                0x000000000800ea90                _close_r
+                0x000000000800ecc8       0x24 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-closer.o)
+                0x000000000800ecc8                _close_r
  .text._fclose_r
-                0x000000000800eab4       0x84 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fclose.o)
-                0x000000000800eab4                _fclose_r
+                0x000000000800ecec       0x84 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fclose.o)
+                0x000000000800ecec                _fclose_r
  .text._fputwc_r
-                0x000000000800eb38       0xc4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fputwc.o)
-                0x000000000800eb38                _fputwc_r
+                0x000000000800ed70       0xc4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fputwc.o)
+                0x000000000800ed70                _fputwc_r
  .text._fstat_r
-                0x000000000800ebfc       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fstatr.o)
-                0x000000000800ebfc                _fstat_r
+                0x000000000800ee34       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fstatr.o)
+                0x000000000800ee34                _fstat_r
  .text._isatty_r
-                0x000000000800ec24       0x24 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-isattyr.o)
-                0x000000000800ec24                _isatty_r
+                0x000000000800ee5c       0x24 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-isattyr.o)
+                0x000000000800ee5c                _isatty_r
  .text._lseek_r
-                0x000000000800ec48       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-lseekr.o)
-                0x000000000800ec48                _lseek_r
- .text._read_r  0x000000000800ec70       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-readr.o)
-                0x000000000800ec70                _read_r
+                0x000000000800ee80       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-lseekr.o)
+                0x000000000800ee80                _lseek_r
+ .text._read_r  0x000000000800eea8       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-readr.o)
+                0x000000000800eea8                _read_r
  .text._wcrtomb_r
-                0x000000000800ec98       0x54 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wcrtomb.o)
-                0x000000000800ec98                _wcrtomb_r
+                0x000000000800eed0       0x54 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wcrtomb.o)
+                0x000000000800eed0                _wcrtomb_r
  .text.__ascii_wctomb
-                0x000000000800ecec       0x1c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wctomb_r.o)
-                0x000000000800ecec                __ascii_wctomb
- .text          0x000000000800ed08      0x370 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_arm_addsubdf3.o)
-                0x000000000800ed08                __aeabi_drsub
-                0x000000000800ed10                __subdf3
-                0x000000000800ed10                __aeabi_dsub
-                0x000000000800ed14                __aeabi_dadd
-                0x000000000800ed14                __adddf3
-                0x000000000800ef8c                __aeabi_ui2d
-                0x000000000800ef8c                __floatunsidf
-                0x000000000800efac                __floatsidf
-                0x000000000800efac                __aeabi_i2d
-                0x000000000800efd0                __extendsfdf2
-                0x000000000800efd0                __aeabi_f2d
-                0x000000000800f00c                __aeabi_ul2d
-                0x000000000800f00c                __floatundidf
-                0x000000000800f01c                __aeabi_l2d
-                0x000000000800f01c                __floatdidf
- .text          0x000000000800f078      0x424 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_arm_muldivdf3.o)
-                0x000000000800f078                __aeabi_dmul
-                0x000000000800f078                __muldf3
-                0x000000000800f2cc                __aeabi_ddiv
-                0x000000000800f2cc                __divdf3
- .text          0x000000000800f49c      0x110 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_arm_cmpdf2.o)
-                0x000000000800f49c                __gtdf2
-                0x000000000800f49c                __gedf2
-                0x000000000800f4a4                __ltdf2
-                0x000000000800f4a4                __ledf2
-                0x000000000800f4ac                __eqdf2
-                0x000000000800f4ac                __nedf2
-                0x000000000800f4ac                __cmpdf2
-                0x000000000800f528                __aeabi_cdrcmple
-                0x000000000800f538                __aeabi_cdcmple
-                0x000000000800f538                __aeabi_cdcmpeq
-                0x000000000800f548                __aeabi_dcmpeq
-                0x000000000800f55c                __aeabi_dcmplt
-                0x000000000800f570                __aeabi_dcmple
-                0x000000000800f584                __aeabi_dcmpge
-                0x000000000800f598                __aeabi_dcmpgt
- .text          0x000000000800f5ac       0x50 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_arm_fixdfsi.o)
-                0x000000000800f5ac                __fixdfsi
-                0x000000000800f5ac                __aeabi_d2iz
+                0x000000000800ef24       0x1c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wctomb_r.o)
+                0x000000000800ef24                __ascii_wctomb
+ .text          0x000000000800ef40      0x370 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_arm_addsubdf3.o)
+                0x000000000800ef40                __aeabi_drsub
+                0x000000000800ef48                __subdf3
+                0x000000000800ef48                __aeabi_dsub
+                0x000000000800ef4c                __aeabi_dadd
+                0x000000000800ef4c                __adddf3
+                0x000000000800f1c4                __aeabi_ui2d
+                0x000000000800f1c4                __floatunsidf
+                0x000000000800f1e4                __floatsidf
+                0x000000000800f1e4                __aeabi_i2d
+                0x000000000800f208                __extendsfdf2
+                0x000000000800f208                __aeabi_f2d
+                0x000000000800f244                __aeabi_ul2d
+                0x000000000800f244                __floatundidf
+                0x000000000800f254                __aeabi_l2d
+                0x000000000800f254                __floatdidf
+ .text          0x000000000800f2b0      0x424 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_arm_muldivdf3.o)
+                0x000000000800f2b0                __aeabi_dmul
+                0x000000000800f2b0                __muldf3
+                0x000000000800f504                __aeabi_ddiv
+                0x000000000800f504                __divdf3
+ .text          0x000000000800f6d4      0x110 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_arm_cmpdf2.o)
+                0x000000000800f6d4                __gtdf2
+                0x000000000800f6d4                __gedf2
+                0x000000000800f6dc                __ltdf2
+                0x000000000800f6dc                __ledf2
+                0x000000000800f6e4                __eqdf2
+                0x000000000800f6e4                __nedf2
+                0x000000000800f6e4                __cmpdf2
+                0x000000000800f760                __aeabi_cdrcmple
+                0x000000000800f770                __aeabi_cdcmple
+                0x000000000800f770                __aeabi_cdcmpeq
+                0x000000000800f780                __aeabi_dcmpeq
+                0x000000000800f794                __aeabi_dcmplt
+                0x000000000800f7a8                __aeabi_dcmple
+                0x000000000800f7bc                __aeabi_dcmpge
+                0x000000000800f7d0                __aeabi_dcmpgt
+ .text          0x000000000800f7e4       0x50 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_arm_fixdfsi.o)
+                0x000000000800f7e4                __fixdfsi
+                0x000000000800f7e4                __aeabi_d2iz
  *(.rodata .rodata.*)
  .rodata.Font_System3x6
-                0x000000000800f5fc        0x8 ./src/fonts/smallfonts.o
-                0x000000000800f5fc                Font_System3x6
+                0x000000000800f834        0x8 ./src/fonts/smallfonts.o
+                0x000000000800f834                Font_System3x6
+ .rodata.Font_System5x8
+                0x000000000800f83c        0x8 ./src/fonts/smallfonts.o
+                0x000000000800f83c                Font_System5x8
  .rodata.au8FontSystem3x6
-                0x000000000800f604       0xc4 ./src/fonts/smallfonts.o
-                0x000000000800f604                au8FontSystem3x6
- .rodata        0x000000000800f6c8       0x70 ./src/interrupts.o
- .rodata        0x000000000800f738       0x14 ./src/main.o
- .rodata        0x000000000800f74c       0x78 ./src/rtc.o
- .rodata        0x000000000800f7c4      0x170 ./src/sdio.o
- .rodata        0x000000000800f934      0x184 ./src/ssd1306.o
- .rodata        0x000000000800fab8       0x28 ./src/uart.o
- .rodata        0x000000000800fae0        0x8 ./libs/misc/src/newlib_stubs.o
- .rodata        0x000000000800fae8       0x10 ./libs/fatfs/src/ff.o
+                0x000000000800f844       0xc4 ./src/fonts/smallfonts.o
+                0x000000000800f844                au8FontSystem3x6
+ .rodata.au8FontSystem5x8
+                0x000000000800f908      0x1e8 ./src/fonts/smallfonts.o
+                0x000000000800f908                au8FontSystem5x8
+ .rodata        0x000000000800faf0       0x70 ./src/interrupts.o
+ .rodata        0x000000000800fb60      0x310 ./src/main.o
+ .rodata        0x000000000800fe70       0x78 ./src/rtc.o
+ .rodata        0x000000000800fee8      0x170 ./src/sdio.o
+ .rodata        0x0000000008010058      0x184 ./src/ssd1306.o
+ .rodata        0x00000000080101dc       0x28 ./src/uart.o
+ .rodata        0x0000000008010204        0x8 ./libs/misc/src/newlib_stubs.o
+ .rodata        0x000000000801020c       0x10 ./libs/fatfs/src/ff.o
  .rodata.str1.4
-                0x000000000800faf8        0x2 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-impure.o)
+                0x000000000801021c        0x2 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-impure.o)
                                           0x4 (size before relaxing)
- *fill*         0x000000000800fafa        0x2 
+ *fill*         0x000000000801021e        0x2 
  .rodata._global_impure_ptr
-                0x000000000800fafc        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-impure.o)
-                0x000000000800fafc                _global_impure_ptr
+                0x0000000008010220        0x4 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-impure.o)
+                0x0000000008010220                _global_impure_ptr
  .rodata.str1.4
-                0x000000000800fb00        0x2 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-puts.o)
+                0x0000000008010224        0x2 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-puts.o)
                                           0x4 (size before relaxing)
- *fill*         0x000000000800fb02        0x2 
+ *fill*         0x0000000008010226        0x2 
  .rodata.blanks.6794
-                0x000000000800fb04       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
+                0x0000000008010228       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x000000000800fb14       0x42 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
+                0x0000000008010238       0x42 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
                                          0x44 (size before relaxing)
- *fill*         0x000000000800fb56        0x2 
+ *fill*         0x000000000801027a        0x2 
  .rodata.zeroes.6795
-                0x000000000800fb58       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
+                0x000000000801027c       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
  .rodata.zeroes.6810
-                0x000000000800fb68       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
+                0x000000000801028c       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
  .rodata.str1.4
                 0x0000000000000000       0x44 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
  .rodata.blanks.6809
-                0x000000000800fb78       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
+                0x000000000801029c       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
  .rodata.str1.4
-                0x000000000800fb88       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-dtoa.o)
+                0x00000000080102ac       0x10 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-dtoa.o)
                                          0x14 (size before relaxing)
  .rodata.str1.4
-                0x000000000800fb98        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
+                0x00000000080102bc        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
                                          0x14 (size before relaxing)
- *fill*         0x000000000800fba4        0x4 
  .rodata.__mprec_tens
-                0x000000000800fba8       0xc8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800fba8                __mprec_tens
+                0x00000000080102c8       0xc8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x00000000080102c8                __mprec_tens
  .rodata.__mprec_bigtens
-                0x000000000800fc70       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
-                0x000000000800fc70                __mprec_bigtens
+                0x0000000008010390       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x0000000008010390                __mprec_bigtens
  .rodata.p05.5265
-                0x000000000800fc98        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+                0x00000000080103b8        0xc /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
  *(.eh_frame*)
- .eh_frame      0x000000000800fca4        0x0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strcmp.o)
+ .eh_frame      0x00000000080103c4        0x0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strcmp.o)
                                          0x70 (size before relaxing)
  *(.glue_7)
  .glue_7        0x0000000000000000        0x0 linker stubs
  *(.glue_7t)
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x000000000800fca4        0x0
+.vfp11_veneer   0x00000000080103c4        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x000000000800fca4        0x0
+.v4_bx          0x00000000080103c4        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x000000000800fca4        0x0
+.iplt           0x00000000080103c4        0x0
  .iplt          0x0000000000000000        0x0 ./src/fonts/smallfonts.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000000000800fca4                __exidx_start = .
+                0x00000000080103c4                __exidx_start = .
 
-.ARM.exidx      0x000000000800fca4        0x8
+.ARM.exidx      0x00000000080103c4        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x000000000800fca4        0x8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_divdi3.o)
- .ARM.exidx     0x000000000800fcac        0x0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x00000000080103c4        0x8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_divdi3.o)
+ .ARM.exidx     0x00000000080103cc        0x0 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_udivdi3.o)
                                           0x8 (size before relaxing)
-                0x000000000800fcac                __exidx_end = .
+                0x00000000080103cc                __exidx_end = .
 
-.rel.dyn        0x000000000800fcac        0x0
+.rel.dyn        0x00000000080103cc        0x0
  .rel.iplt      0x0000000000000000        0x0 ./src/fonts/smallfonts.o
-                0x000000000800fcac                . = ALIGN (0x4)
-                0x000000000800fcac                _etext = .
-                0x000000000800fcac                _sidata = _etext
+                0x00000000080103cc                . = ALIGN (0x4)
+                0x00000000080103cc                _etext = .
+                0x00000000080103cc                _sidata = _etext
 
 .ROarraySection
  *(.ROarraySection .ROarraySection.*)
 
-.data           0x0000000020000000      0x8dc load address 0x000000000800fcac
+.data           0x0000000020000000      0x8dc load address 0x00000000080103cc
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
                 0x0000000020000000                __data_start__ = .
@@ -8351,10 +8355,10 @@ END GROUP
                 0x00000000200008dc                _edata = .
                 0x00000000200008dc                __data_end__ = .
 
-.igot.plt       0x00000000200008dc        0x0 load address 0x0000000008010588
+.igot.plt       0x00000000200008dc        0x0 load address 0x0000000008010ca8
  .igot.plt      0x0000000000000000        0x0 ./src/fonts/smallfonts.o
 
-.bss            0x00000000200008e0      0x600 load address 0x0000000008010590
+.bss            0x00000000200008e0      0x600 load address 0x0000000008010cb0
                 0x00000000200008e0                . = ALIGN (0x4)
  *rdimon-crt0.o(.data)
                 0x00000000200008e0                . = ALIGN (0x4)
@@ -8457,7 +8461,7 @@ END GROUP
                 0x0000000020000ee0                PROVIDE (__end, _end_noinit)
                 0x0000000020000ee0                PROVIDE (__end__, _end_noinit)
 
-._check_stack   0x0000000020000ee0      0x100 load address 0x0000000008010b90
+._check_stack   0x0000000020000ee0      0x100 load address 0x00000000080112b0
                 0x0000000020000ee0                . = ALIGN (0x4)
                 0x0000000020000fe0                . = (. + _Minimum_Stack_Size)
  *fill*         0x0000000020000ee0      0x100 
@@ -8762,7 +8766,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000     0x1658
+.debug_aranges  0x0000000000000000     0x1660
  *(.debug_aranges)
  .debug_aranges
                 0x0000000000000000       0x18 ./src/fonts/smallfonts.o
@@ -8797,54 +8801,54 @@ END GROUP
  .debug_aranges
                 0x00000000000004c0       0x20 ./src/spi.o
  .debug_aranges
-                0x00000000000004e0      0x1a0 ./src/ssd1306.o
+                0x00000000000004e0      0x1a8 ./src/ssd1306.o
  .debug_aranges
-                0x0000000000000680       0x28 ./src/uart.o
+                0x0000000000000688       0x28 ./src/uart.o
  .debug_aranges
-                0x00000000000006a8       0x20 ./libs/misc/src/_sbrk.o
+                0x00000000000006b0       0x20 ./libs/misc/src/_sbrk.o
  .debug_aranges
-                0x00000000000006c8       0x98 ./libs/misc/src/newlib_stubs.o
+                0x00000000000006d0       0x98 ./libs/misc/src/newlib_stubs.o
  .debug_aranges
-                0x0000000000000760       0x48 ./libs/fatfs/src/diskio.o
+                0x0000000000000768       0x48 ./libs/fatfs/src/diskio.o
  .debug_aranges
-                0x00000000000007a8      0x158 ./libs/fatfs/src/ff.o
+                0x00000000000007b0      0x158 ./libs/fatfs/src/ff.o
  .debug_aranges
-                0x0000000000000900       0x38 ./libs/cmsis/src/startup_cm.o
+                0x0000000000000908       0x38 ./libs/cmsis/src/startup_cm.o
  .debug_aranges
-                0x0000000000000938       0x30 ./libs/cmsis/src/system_stm32f4xx.o
+                0x0000000000000940       0x30 ./libs/cmsis/src/system_stm32f4xx.o
  .debug_aranges
-                0x0000000000000968       0x68 ./libs/cmsis/src/vectors_stm32f4xx.o
+                0x0000000000000970       0x68 ./libs/cmsis/src/vectors_stm32f4xx.o
  .debug_aranges
-                0x00000000000009d0       0x40 ./libs/StdPeriph/src/misc.o
+                0x00000000000009d8       0x40 ./libs/StdPeriph/src/misc.o
  .debug_aranges
-                0x0000000000000a10       0xb0 ./libs/StdPeriph/src/stm32f4xx_dma.o
+                0x0000000000000a18       0xb0 ./libs/StdPeriph/src/stm32f4xx_dma.o
  .debug_aranges
-                0x0000000000000ac0       0x58 ./libs/StdPeriph/src/stm32f4xx_exti.o
+                0x0000000000000ac8       0x58 ./libs/StdPeriph/src/stm32f4xx_exti.o
  .debug_aranges
-                0x0000000000000b18       0x88 ./libs/StdPeriph/src/stm32f4xx_gpio.o
+                0x0000000000000b20       0x88 ./libs/StdPeriph/src/stm32f4xx_gpio.o
  .debug_aranges
-                0x0000000000000ba0       0x98 ./libs/StdPeriph/src/stm32f4xx_pwr.o
+                0x0000000000000ba8       0x98 ./libs/StdPeriph/src/stm32f4xx_pwr.o
  .debug_aranges
-                0x0000000000000c38      0x1b8 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+                0x0000000000000c40      0x1b8 ./libs/StdPeriph/src/stm32f4xx_rcc.o
  .debug_aranges
-                0x0000000000000df0       0x58 ./libs/StdPeriph/src/stm32f4xx_rng.o
+                0x0000000000000df8       0x58 ./libs/StdPeriph/src/stm32f4xx_rng.o
  .debug_aranges
-                0x0000000000000e48      0x1e0 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+                0x0000000000000e50      0x1e0 ./libs/StdPeriph/src/stm32f4xx_rtc.o
  .debug_aranges
-                0x0000000000001028      0x108 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+                0x0000000000001030      0x108 ./libs/StdPeriph/src/stm32f4xx_sdio.o
  .debug_aranges
-                0x0000000000001130       0xe0 ./libs/StdPeriph/src/stm32f4xx_spi.o
+                0x0000000000001138       0xe0 ./libs/StdPeriph/src/stm32f4xx_spi.o
  .debug_aranges
-                0x0000000000001210       0x50 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+                0x0000000000001218       0x50 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
  .debug_aranges
-                0x0000000000001260      0x2f8 ./libs/StdPeriph/src/stm32f4xx_tim.o
+                0x0000000000001268      0x2f8 ./libs/StdPeriph/src/stm32f4xx_tim.o
  .debug_aranges
-                0x0000000000001558      0x100 ./libs/StdPeriph/src/stm32f4xx_usart.o
+                0x0000000000001560      0x100 ./libs/StdPeriph/src/stm32f4xx_usart.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000    0x123fa
+.debug_info     0x0000000000000000    0x12640
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x21e ./src/fonts/smallfonts.o
  .debug_info    0x000000000000021e      0x7ad ./src/delay.o
@@ -8854,38 +8858,38 @@ END GROUP
  .debug_info    0x0000000000001b99      0x123 ./src/initialization.o
  .debug_info    0x0000000000001cbc      0x200 ./src/interrupts.o
  .debug_info    0x0000000000001ebc      0x3f3 ./src/leds.o
- .debug_info    0x00000000000022af      0x15c ./src/main.o
- .debug_info    0x000000000000240b      0x168 ./src/nvic.o
- .debug_info    0x0000000000002573      0x334 ./src/pushbuttons.o
- .debug_info    0x00000000000028a7      0x6ce ./src/rcc.o
- .debug_info    0x0000000000002f75       0xdb ./src/rng.o
- .debug_info    0x0000000000003050      0x394 ./src/rtc.o
- .debug_info    0x00000000000033e4     0x1d8a ./src/sdio.o
- .debug_info    0x000000000000516e      0x327 ./src/spi.o
- .debug_info    0x0000000000005495     0x1c37 ./src/ssd1306.o
- .debug_info    0x00000000000070cc      0xe15 ./src/uart.o
- .debug_info    0x0000000000007ee1      0x109 ./libs/misc/src/_sbrk.o
- .debug_info    0x0000000000007fea      0x710 ./libs/misc/src/newlib_stubs.o
- .debug_info    0x00000000000086fa      0x481 ./libs/fatfs/src/diskio.o
- .debug_info    0x0000000000008b7b     0x15d9 ./libs/fatfs/src/ff.o
- .debug_info    0x000000000000a154      0x29c ./libs/cmsis/src/startup_cm.o
- .debug_info    0x000000000000a3f0      0x5c4 ./libs/cmsis/src/system_stm32f4xx.o
- .debug_info    0x000000000000a9b4      0x135 ./libs/cmsis/src/vectors_stm32f4xx.o
- .debug_info    0x000000000000aae9      0x545 ./libs/StdPeriph/src/misc.o
- .debug_info    0x000000000000b02e      0x741 ./libs/StdPeriph/src/stm32f4xx_dma.o
- .debug_info    0x000000000000b76f      0x340 ./libs/StdPeriph/src/stm32f4xx_exti.o
- .debug_info    0x000000000000baaf      0x60d ./libs/StdPeriph/src/stm32f4xx_gpio.o
- .debug_info    0x000000000000c0bc      0x5d5 ./libs/StdPeriph/src/stm32f4xx_pwr.o
- .debug_info    0x000000000000c691      0xe0a ./libs/StdPeriph/src/stm32f4xx_rcc.o
- .debug_info    0x000000000000d49b      0x287 ./libs/StdPeriph/src/stm32f4xx_rng.o
- .debug_info    0x000000000000d722     0x10e7 ./libs/StdPeriph/src/stm32f4xx_rtc.o
- .debug_info    0x000000000000e809      0x7fd ./libs/StdPeriph/src/stm32f4xx_sdio.o
- .debug_info    0x000000000000f006      0xb29 ./libs/StdPeriph/src/stm32f4xx_spi.o
- .debug_info    0x000000000000fb2f      0x298 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
- .debug_info    0x000000000000fdc7     0x1c69 ./libs/StdPeriph/src/stm32f4xx_tim.o
- .debug_info    0x0000000000011a30      0x9ca ./libs/StdPeriph/src/stm32f4xx_usart.o
+ .debug_info    0x00000000000022af      0x274 ./src/main.o
+ .debug_info    0x0000000000002523      0x168 ./src/nvic.o
+ .debug_info    0x000000000000268b      0x334 ./src/pushbuttons.o
+ .debug_info    0x00000000000029bf      0x6ce ./src/rcc.o
+ .debug_info    0x000000000000308d       0xdb ./src/rng.o
+ .debug_info    0x0000000000003168      0x394 ./src/rtc.o
+ .debug_info    0x00000000000034fc     0x1d8a ./src/sdio.o
+ .debug_info    0x0000000000005286      0x327 ./src/spi.o
+ .debug_info    0x00000000000055ad     0x1d65 ./src/ssd1306.o
+ .debug_info    0x0000000000007312      0xe15 ./src/uart.o
+ .debug_info    0x0000000000008127      0x109 ./libs/misc/src/_sbrk.o
+ .debug_info    0x0000000000008230      0x710 ./libs/misc/src/newlib_stubs.o
+ .debug_info    0x0000000000008940      0x481 ./libs/fatfs/src/diskio.o
+ .debug_info    0x0000000000008dc1     0x15d9 ./libs/fatfs/src/ff.o
+ .debug_info    0x000000000000a39a      0x29c ./libs/cmsis/src/startup_cm.o
+ .debug_info    0x000000000000a636      0x5c4 ./libs/cmsis/src/system_stm32f4xx.o
+ .debug_info    0x000000000000abfa      0x135 ./libs/cmsis/src/vectors_stm32f4xx.o
+ .debug_info    0x000000000000ad2f      0x545 ./libs/StdPeriph/src/misc.o
+ .debug_info    0x000000000000b274      0x741 ./libs/StdPeriph/src/stm32f4xx_dma.o
+ .debug_info    0x000000000000b9b5      0x340 ./libs/StdPeriph/src/stm32f4xx_exti.o
+ .debug_info    0x000000000000bcf5      0x60d ./libs/StdPeriph/src/stm32f4xx_gpio.o
+ .debug_info    0x000000000000c302      0x5d5 ./libs/StdPeriph/src/stm32f4xx_pwr.o
+ .debug_info    0x000000000000c8d7      0xe0a ./libs/StdPeriph/src/stm32f4xx_rcc.o
+ .debug_info    0x000000000000d6e1      0x287 ./libs/StdPeriph/src/stm32f4xx_rng.o
+ .debug_info    0x000000000000d968     0x10e7 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+ .debug_info    0x000000000000ea4f      0x7fd ./libs/StdPeriph/src/stm32f4xx_sdio.o
+ .debug_info    0x000000000000f24c      0xb29 ./libs/StdPeriph/src/stm32f4xx_spi.o
+ .debug_info    0x000000000000fd75      0x298 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+ .debug_info    0x000000000001000d     0x1c69 ./libs/StdPeriph/src/stm32f4xx_tim.o
+ .debug_info    0x0000000000011c76      0x9ca ./libs/StdPeriph/src/stm32f4xx_usart.o
 
-.debug_abbrev   0x0000000000000000     0x31cd
+.debug_abbrev   0x0000000000000000     0x323c
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000       0xb9 ./src/fonts/smallfonts.o
  .debug_abbrev  0x00000000000000b9      0x201 ./src/delay.o
@@ -8895,38 +8899,38 @@ END GROUP
  .debug_abbrev  0x000000000000066a       0x79 ./src/initialization.o
  .debug_abbrev  0x00000000000006e3       0x91 ./src/interrupts.o
  .debug_abbrev  0x0000000000000774      0x16a ./src/leds.o
- .debug_abbrev  0x00000000000008de       0xa0 ./src/main.o
- .debug_abbrev  0x000000000000097e       0xc9 ./src/nvic.o
- .debug_abbrev  0x0000000000000a47       0xfe ./src/pushbuttons.o
- .debug_abbrev  0x0000000000000b45       0xe4 ./src/rcc.o
- .debug_abbrev  0x0000000000000c29       0x80 ./src/rng.o
- .debug_abbrev  0x0000000000000ca9      0x13b ./src/rtc.o
- .debug_abbrev  0x0000000000000de4      0x2eb ./src/sdio.o
- .debug_abbrev  0x00000000000010cf      0x106 ./src/spi.o
- .debug_abbrev  0x00000000000011d5      0x2d5 ./src/ssd1306.o
- .debug_abbrev  0x00000000000014aa      0x201 ./src/uart.o
- .debug_abbrev  0x00000000000016ab       0x8e ./libs/misc/src/_sbrk.o
- .debug_abbrev  0x0000000000001739      0x19e ./libs/misc/src/newlib_stubs.o
- .debug_abbrev  0x00000000000018d7      0x133 ./libs/fatfs/src/diskio.o
- .debug_abbrev  0x0000000000001a0a      0x195 ./libs/fatfs/src/ff.o
- .debug_abbrev  0x0000000000001b9f      0x128 ./libs/cmsis/src/startup_cm.o
- .debug_abbrev  0x0000000000001cc7      0x13b ./libs/cmsis/src/system_stm32f4xx.o
- .debug_abbrev  0x0000000000001e02       0x92 ./libs/cmsis/src/vectors_stm32f4xx.o
- .debug_abbrev  0x0000000000001e94      0x14a ./libs/StdPeriph/src/misc.o
- .debug_abbrev  0x0000000000001fde      0x15a ./libs/StdPeriph/src/stm32f4xx_dma.o
- .debug_abbrev  0x0000000000002138      0x1aa ./libs/StdPeriph/src/stm32f4xx_exti.o
- .debug_abbrev  0x00000000000022e2      0x1a8 ./libs/StdPeriph/src/stm32f4xx_gpio.o
- .debug_abbrev  0x000000000000248a      0x184 ./libs/StdPeriph/src/stm32f4xx_pwr.o
- .debug_abbrev  0x000000000000260e      0x1bf ./libs/StdPeriph/src/stm32f4xx_rcc.o
- .debug_abbrev  0x00000000000027cd      0x149 ./libs/StdPeriph/src/stm32f4xx_rng.o
- .debug_abbrev  0x0000000000002916      0x1b3 ./libs/StdPeriph/src/stm32f4xx_rtc.o
- .debug_abbrev  0x0000000000002ac9      0x17c ./libs/StdPeriph/src/stm32f4xx_sdio.o
- .debug_abbrev  0x0000000000002c45      0x16c ./libs/StdPeriph/src/stm32f4xx_spi.o
- .debug_abbrev  0x0000000000002db1      0x136 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
- .debug_abbrev  0x0000000000002ee7      0x18c ./libs/StdPeriph/src/stm32f4xx_tim.o
- .debug_abbrev  0x0000000000003073      0x15a ./libs/StdPeriph/src/stm32f4xx_usart.o
+ .debug_abbrev  0x00000000000008de      0x10f ./src/main.o
+ .debug_abbrev  0x00000000000009ed       0xc9 ./src/nvic.o
+ .debug_abbrev  0x0000000000000ab6       0xfe ./src/pushbuttons.o
+ .debug_abbrev  0x0000000000000bb4       0xe4 ./src/rcc.o
+ .debug_abbrev  0x0000000000000c98       0x80 ./src/rng.o
+ .debug_abbrev  0x0000000000000d18      0x13b ./src/rtc.o
+ .debug_abbrev  0x0000000000000e53      0x2eb ./src/sdio.o
+ .debug_abbrev  0x000000000000113e      0x106 ./src/spi.o
+ .debug_abbrev  0x0000000000001244      0x2d5 ./src/ssd1306.o
+ .debug_abbrev  0x0000000000001519      0x201 ./src/uart.o
+ .debug_abbrev  0x000000000000171a       0x8e ./libs/misc/src/_sbrk.o
+ .debug_abbrev  0x00000000000017a8      0x19e ./libs/misc/src/newlib_stubs.o
+ .debug_abbrev  0x0000000000001946      0x133 ./libs/fatfs/src/diskio.o
+ .debug_abbrev  0x0000000000001a79      0x195 ./libs/fatfs/src/ff.o
+ .debug_abbrev  0x0000000000001c0e      0x128 ./libs/cmsis/src/startup_cm.o
+ .debug_abbrev  0x0000000000001d36      0x13b ./libs/cmsis/src/system_stm32f4xx.o
+ .debug_abbrev  0x0000000000001e71       0x92 ./libs/cmsis/src/vectors_stm32f4xx.o
+ .debug_abbrev  0x0000000000001f03      0x14a ./libs/StdPeriph/src/misc.o
+ .debug_abbrev  0x000000000000204d      0x15a ./libs/StdPeriph/src/stm32f4xx_dma.o
+ .debug_abbrev  0x00000000000021a7      0x1aa ./libs/StdPeriph/src/stm32f4xx_exti.o
+ .debug_abbrev  0x0000000000002351      0x1a8 ./libs/StdPeriph/src/stm32f4xx_gpio.o
+ .debug_abbrev  0x00000000000024f9      0x184 ./libs/StdPeriph/src/stm32f4xx_pwr.o
+ .debug_abbrev  0x000000000000267d      0x1bf ./libs/StdPeriph/src/stm32f4xx_rcc.o
+ .debug_abbrev  0x000000000000283c      0x149 ./libs/StdPeriph/src/stm32f4xx_rng.o
+ .debug_abbrev  0x0000000000002985      0x1b3 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+ .debug_abbrev  0x0000000000002b38      0x17c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+ .debug_abbrev  0x0000000000002cb4      0x16c ./libs/StdPeriph/src/stm32f4xx_spi.o
+ .debug_abbrev  0x0000000000002e20      0x136 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+ .debug_abbrev  0x0000000000002f56      0x18c ./libs/StdPeriph/src/stm32f4xx_tim.o
+ .debug_abbrev  0x00000000000030e2      0x15a ./libs/StdPeriph/src/stm32f4xx_usart.o
 
-.debug_line     0x0000000000000000     0xf806
+.debug_line     0x0000000000000000     0xf88a
  *(.debug_line)
  .debug_line    0x0000000000000000      0x484 ./src/fonts/smallfonts.o
  .debug_line    0x0000000000000484      0x6c0 ./src/delay.o
@@ -8936,38 +8940,38 @@ END GROUP
  .debug_line    0x0000000000001aae      0x6a9 ./src/initialization.o
  .debug_line    0x0000000000002157      0x78c ./src/interrupts.o
  .debug_line    0x00000000000028e3      0x6d8 ./src/leds.o
- .debug_line    0x0000000000002fbb      0x6b0 ./src/main.o
- .debug_line    0x000000000000366b      0x476 ./src/nvic.o
- .debug_line    0x0000000000003ae1      0x6be ./src/pushbuttons.o
- .debug_line    0x000000000000419f      0x51e ./src/rcc.o
- .debug_line    0x00000000000046bd      0x471 ./src/rng.o
- .debug_line    0x0000000000004b2e      0x676 ./src/rtc.o
- .debug_line    0x00000000000051a4      0xf54 ./src/sdio.o
- .debug_line    0x00000000000060f8      0x54a ./src/spi.o
- .debug_line    0x0000000000006642      0xdfd ./src/ssd1306.o
- .debug_line    0x000000000000743f      0x571 ./src/uart.o
- .debug_line    0x00000000000079b0      0x23c ./libs/misc/src/_sbrk.o
- .debug_line    0x0000000000007bec      0x6dd ./libs/misc/src/newlib_stubs.o
- .debug_line    0x00000000000082c9      0x662 ./libs/fatfs/src/diskio.o
- .debug_line    0x000000000000892b      0xba1 ./libs/fatfs/src/ff.o
- .debug_line    0x00000000000094cc      0x28c ./libs/cmsis/src/startup_cm.o
- .debug_line    0x0000000000009758      0x4fa ./libs/cmsis/src/system_stm32f4xx.o
- .debug_line    0x0000000000009c52       0x93 ./libs/cmsis/src/vectors_stm32f4xx.o
- .debug_line    0x0000000000009ce5      0x4d2 ./libs/StdPeriph/src/misc.o
- .debug_line    0x000000000000a1b7      0x660 ./libs/StdPeriph/src/stm32f4xx_dma.o
- .debug_line    0x000000000000a817      0x51f ./libs/StdPeriph/src/stm32f4xx_exti.o
- .debug_line    0x000000000000ad36      0x5cc ./libs/StdPeriph/src/stm32f4xx_gpio.o
- .debug_line    0x000000000000b302      0x5d7 ./libs/StdPeriph/src/stm32f4xx_pwr.o
- .debug_line    0x000000000000b8d9      0x8cc ./libs/StdPeriph/src/stm32f4xx_rcc.o
- .debug_line    0x000000000000c1a5      0x50c ./libs/StdPeriph/src/stm32f4xx_rng.o
- .debug_line    0x000000000000c6b1      0xab0 ./libs/StdPeriph/src/stm32f4xx_rtc.o
- .debug_line    0x000000000000d161      0x6c7 ./libs/StdPeriph/src/stm32f4xx_sdio.o
- .debug_line    0x000000000000d828      0x6df ./libs/StdPeriph/src/stm32f4xx_spi.o
- .debug_line    0x000000000000df07      0x4fa ./libs/StdPeriph/src/stm32f4xx_syscfg.o
- .debug_line    0x000000000000e401      0xcee ./libs/StdPeriph/src/stm32f4xx_tim.o
- .debug_line    0x000000000000f0ef      0x717 ./libs/StdPeriph/src/stm32f4xx_usart.o
+ .debug_line    0x0000000000002fbb      0x6eb ./src/main.o
+ .debug_line    0x00000000000036a6      0x476 ./src/nvic.o
+ .debug_line    0x0000000000003b1c      0x6be ./src/pushbuttons.o
+ .debug_line    0x00000000000041da      0x51e ./src/rcc.o
+ .debug_line    0x00000000000046f8      0x471 ./src/rng.o
+ .debug_line    0x0000000000004b69      0x676 ./src/rtc.o
+ .debug_line    0x00000000000051df      0xf54 ./src/sdio.o
+ .debug_line    0x0000000000006133      0x54a ./src/spi.o
+ .debug_line    0x000000000000667d      0xe46 ./src/ssd1306.o
+ .debug_line    0x00000000000074c3      0x571 ./src/uart.o
+ .debug_line    0x0000000000007a34      0x23c ./libs/misc/src/_sbrk.o
+ .debug_line    0x0000000000007c70      0x6dd ./libs/misc/src/newlib_stubs.o
+ .debug_line    0x000000000000834d      0x662 ./libs/fatfs/src/diskio.o
+ .debug_line    0x00000000000089af      0xba1 ./libs/fatfs/src/ff.o
+ .debug_line    0x0000000000009550      0x28c ./libs/cmsis/src/startup_cm.o
+ .debug_line    0x00000000000097dc      0x4fa ./libs/cmsis/src/system_stm32f4xx.o
+ .debug_line    0x0000000000009cd6       0x93 ./libs/cmsis/src/vectors_stm32f4xx.o
+ .debug_line    0x0000000000009d69      0x4d2 ./libs/StdPeriph/src/misc.o
+ .debug_line    0x000000000000a23b      0x660 ./libs/StdPeriph/src/stm32f4xx_dma.o
+ .debug_line    0x000000000000a89b      0x51f ./libs/StdPeriph/src/stm32f4xx_exti.o
+ .debug_line    0x000000000000adba      0x5cc ./libs/StdPeriph/src/stm32f4xx_gpio.o
+ .debug_line    0x000000000000b386      0x5d7 ./libs/StdPeriph/src/stm32f4xx_pwr.o
+ .debug_line    0x000000000000b95d      0x8cc ./libs/StdPeriph/src/stm32f4xx_rcc.o
+ .debug_line    0x000000000000c229      0x50c ./libs/StdPeriph/src/stm32f4xx_rng.o
+ .debug_line    0x000000000000c735      0xab0 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+ .debug_line    0x000000000000d1e5      0x6c7 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+ .debug_line    0x000000000000d8ac      0x6df ./libs/StdPeriph/src/stm32f4xx_spi.o
+ .debug_line    0x000000000000df8b      0x4fa ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+ .debug_line    0x000000000000e485      0xcee ./libs/StdPeriph/src/stm32f4xx_tim.o
+ .debug_line    0x000000000000f173      0x717 ./libs/StdPeriph/src/stm32f4xx_usart.o
 
-.debug_frame    0x0000000000000000     0x6d4c
+.debug_frame    0x0000000000000000     0x6d74
  *(.debug_frame)
  .debug_frame   0x0000000000000000      0x128 ./src/delay.o
  .debug_frame   0x0000000000000128       0xa0 ./src/dma.o
@@ -8984,158 +8988,158 @@ END GROUP
  .debug_frame   0x0000000000000870       0x7c ./src/rtc.o
  .debug_frame   0x00000000000008ec      0x62c ./src/sdio.o
  .debug_frame   0x0000000000000f18       0x34 ./src/spi.o
- .debug_frame   0x0000000000000f4c      0x798 ./src/ssd1306.o
- .debug_frame   0x00000000000016e4       0x58 ./src/uart.o
- .debug_frame   0x000000000000173c       0x34 ./libs/misc/src/_sbrk.o
- .debug_frame   0x0000000000001770      0x278 ./libs/misc/src/newlib_stubs.o
- .debug_frame   0x00000000000019e8       0xf0 ./libs/fatfs/src/diskio.o
- .debug_frame   0x0000000000001ad8      0x5f0 ./libs/fatfs/src/ff.o
- .debug_frame   0x00000000000020c8       0x9c ./libs/cmsis/src/startup_cm.o
- .debug_frame   0x0000000000002164       0x7c ./libs/cmsis/src/system_stm32f4xx.o
- .debug_frame   0x00000000000021e0      0x100 ./libs/cmsis/src/vectors_stm32f4xx.o
- .debug_frame   0x00000000000022e0       0xd8 ./libs/StdPeriph/src/misc.o
- .debug_frame   0x00000000000023b8      0x308 ./libs/StdPeriph/src/stm32f4xx_dma.o
- .debug_frame   0x00000000000026c0      0x148 ./libs/StdPeriph/src/stm32f4xx_exti.o
- .debug_frame   0x0000000000002808      0x23c ./libs/StdPeriph/src/stm32f4xx_gpio.o
- .debug_frame   0x0000000000002a44      0x27c ./libs/StdPeriph/src/stm32f4xx_pwr.o
- .debug_frame   0x0000000000002cc0      0x814 ./libs/StdPeriph/src/stm32f4xx_rcc.o
- .debug_frame   0x00000000000034d4      0x13c ./libs/StdPeriph/src/stm32f4xx_rng.o
- .debug_frame   0x0000000000003610      0x8b0 ./libs/StdPeriph/src/stm32f4xx_rtc.o
- .debug_frame   0x0000000000003ec0      0x48c ./libs/StdPeriph/src/stm32f4xx_sdio.o
- .debug_frame   0x000000000000434c      0x3f4 ./libs/StdPeriph/src/stm32f4xx_spi.o
- .debug_frame   0x0000000000004740      0x11c ./libs/StdPeriph/src/stm32f4xx_syscfg.o
- .debug_frame   0x000000000000485c      0xe54 ./libs/StdPeriph/src/stm32f4xx_tim.o
- .debug_frame   0x00000000000056b0      0x490 ./libs/StdPeriph/src/stm32f4xx_usart.o
- .debug_frame   0x0000000000005b40       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x0000000000005b68       0x50 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(bpabi.o)
- .debug_frame   0x0000000000005bb8       0x34 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_divdi3.o)
- .debug_frame   0x0000000000005bec       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_udivdi3.o)
- .debug_frame   0x0000000000005c1c       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-errno.o)
- .debug_frame   0x0000000000005c3c       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-exit.o)
- .debug_frame   0x0000000000005c64       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-malloc.o)
- .debug_frame   0x0000000000005c94       0x58 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mallocr.o)
- .debug_frame   0x0000000000005cec       0x34 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memset.o)
- .debug_frame   0x0000000000005d20       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mlock.o)
- .debug_frame   0x0000000000005d50       0x74 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-printf.o)
- .debug_frame   0x0000000000005dc4       0x44 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-puts.o)
- .debug_frame   0x0000000000005e08       0x58 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-reent.o)
- .debug_frame   0x0000000000005e60       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-sbrkr.o)
- .debug_frame   0x0000000000005e8c       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-setvbuf.o)
- .debug_frame   0x0000000000005ebc       0x84 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-sprintf.o)
- .debug_frame   0x0000000000005f40       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strcpy.o)
- .debug_frame   0x0000000000005f60       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strlen.o)
- .debug_frame   0x0000000000005f80       0x40 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
- .debug_frame   0x0000000000005fc0       0x90 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
- .debug_frame   0x0000000000006050       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wsetup.o)
- .debug_frame   0x000000000000607c       0x50 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__call_atexit.o)
- .debug_frame   0x00000000000060cc       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-atexit.o)
- .debug_frame   0x00000000000060ec       0x88 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-dtoa.o)
- .debug_frame   0x0000000000006174       0x6c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fflush.o)
- .debug_frame   0x00000000000061e0      0x124 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
- .debug_frame   0x0000000000006304       0x74 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-freer.o)
- .debug_frame   0x0000000000006378       0x68 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fvwrite.o)
- .debug_frame   0x00000000000063e0       0x54 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fwalk.o)
- .debug_frame   0x0000000000006434       0x9c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
- .debug_frame   0x00000000000064d0       0x48 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-makebuf.o)
- .debug_frame   0x0000000000006518       0x3c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memchr.o)
- .debug_frame   0x0000000000006554       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memmove.o)
- .debug_frame   0x0000000000006584      0x268 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
- .debug_frame   0x00000000000067ec       0x60 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-reallocr.o)
- .debug_frame   0x000000000000684c       0x34 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-s_fpclassify.o)
- .debug_frame   0x0000000000006880       0x88 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
- .debug_frame   0x0000000000006908       0x78 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfiprintf.o)
- .debug_frame   0x0000000000006980       0xd8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfiprintf.o)
- .debug_frame   0x0000000000006a58       0x3c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wbuf.o)
- .debug_frame   0x0000000000006a94       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-writer.o)
- .debug_frame   0x0000000000006ac0       0x34 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__atexit.o)
- .debug_frame   0x0000000000006af4       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-callocr.o)
- .debug_frame   0x0000000000006b1c       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-closer.o)
- .debug_frame   0x0000000000006b48       0x44 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fclose.o)
- .debug_frame   0x0000000000006b8c       0x68 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fputwc.o)
- .debug_frame   0x0000000000006bf4       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fstatr.o)
- .debug_frame   0x0000000000006c20       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-isattyr.o)
- .debug_frame   0x0000000000006c4c       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-lseekr.o)
- .debug_frame   0x0000000000006c78       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-readr.o)
- .debug_frame   0x0000000000006ca4       0x60 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wcrtomb.o)
- .debug_frame   0x0000000000006d04       0x48 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wctomb_r.o)
+ .debug_frame   0x0000000000000f4c      0x7c0 ./src/ssd1306.o
+ .debug_frame   0x000000000000170c       0x58 ./src/uart.o
+ .debug_frame   0x0000000000001764       0x34 ./libs/misc/src/_sbrk.o
+ .debug_frame   0x0000000000001798      0x278 ./libs/misc/src/newlib_stubs.o
+ .debug_frame   0x0000000000001a10       0xf0 ./libs/fatfs/src/diskio.o
+ .debug_frame   0x0000000000001b00      0x5f0 ./libs/fatfs/src/ff.o
+ .debug_frame   0x00000000000020f0       0x9c ./libs/cmsis/src/startup_cm.o
+ .debug_frame   0x000000000000218c       0x7c ./libs/cmsis/src/system_stm32f4xx.o
+ .debug_frame   0x0000000000002208      0x100 ./libs/cmsis/src/vectors_stm32f4xx.o
+ .debug_frame   0x0000000000002308       0xd8 ./libs/StdPeriph/src/misc.o
+ .debug_frame   0x00000000000023e0      0x308 ./libs/StdPeriph/src/stm32f4xx_dma.o
+ .debug_frame   0x00000000000026e8      0x148 ./libs/StdPeriph/src/stm32f4xx_exti.o
+ .debug_frame   0x0000000000002830      0x23c ./libs/StdPeriph/src/stm32f4xx_gpio.o
+ .debug_frame   0x0000000000002a6c      0x27c ./libs/StdPeriph/src/stm32f4xx_pwr.o
+ .debug_frame   0x0000000000002ce8      0x814 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+ .debug_frame   0x00000000000034fc      0x13c ./libs/StdPeriph/src/stm32f4xx_rng.o
+ .debug_frame   0x0000000000003638      0x8b0 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+ .debug_frame   0x0000000000003ee8      0x48c ./libs/StdPeriph/src/stm32f4xx_sdio.o
+ .debug_frame   0x0000000000004374      0x3f4 ./libs/StdPeriph/src/stm32f4xx_spi.o
+ .debug_frame   0x0000000000004768      0x11c ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+ .debug_frame   0x0000000000004884      0xe54 ./libs/StdPeriph/src/stm32f4xx_tim.o
+ .debug_frame   0x00000000000056d8      0x490 ./libs/StdPeriph/src/stm32f4xx_usart.o
+ .debug_frame   0x0000000000005b68       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000000000005b90       0x50 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(bpabi.o)
+ .debug_frame   0x0000000000005be0       0x34 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_divdi3.o)
+ .debug_frame   0x0000000000005c14       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/libgcc.a(_udivdi3.o)
+ .debug_frame   0x0000000000005c44       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-errno.o)
+ .debug_frame   0x0000000000005c64       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-exit.o)
+ .debug_frame   0x0000000000005c8c       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-malloc.o)
+ .debug_frame   0x0000000000005cbc       0x58 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mallocr.o)
+ .debug_frame   0x0000000000005d14       0x34 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memset.o)
+ .debug_frame   0x0000000000005d48       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mlock.o)
+ .debug_frame   0x0000000000005d78       0x74 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-printf.o)
+ .debug_frame   0x0000000000005dec       0x44 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-puts.o)
+ .debug_frame   0x0000000000005e30       0x58 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-reent.o)
+ .debug_frame   0x0000000000005e88       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000000000005eb4       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-setvbuf.o)
+ .debug_frame   0x0000000000005ee4       0x84 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-sprintf.o)
+ .debug_frame   0x0000000000005f68       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strcpy.o)
+ .debug_frame   0x0000000000005f88       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-strlen.o)
+ .debug_frame   0x0000000000005fa8       0x40 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfprintf.o)
+ .debug_frame   0x0000000000005fe8       0x90 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfprintf.o)
+ .debug_frame   0x0000000000006078       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wsetup.o)
+ .debug_frame   0x00000000000060a4       0x50 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00000000000060f4       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-atexit.o)
+ .debug_frame   0x0000000000006114       0x88 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-dtoa.o)
+ .debug_frame   0x000000000000619c       0x6c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fflush.o)
+ .debug_frame   0x0000000000006208      0x124 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-findfp.o)
+ .debug_frame   0x000000000000632c       0x74 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-freer.o)
+ .debug_frame   0x00000000000063a0       0x68 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fvwrite.o)
+ .debug_frame   0x0000000000006408       0x54 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fwalk.o)
+ .debug_frame   0x000000000000645c       0x9c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-locale.o)
+ .debug_frame   0x00000000000064f8       0x48 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-makebuf.o)
+ .debug_frame   0x0000000000006540       0x3c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memchr.o)
+ .debug_frame   0x000000000000657c       0x30 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-memmove.o)
+ .debug_frame   0x00000000000065ac      0x268 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-mprec.o)
+ .debug_frame   0x0000000000006814       0x60 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-reallocr.o)
+ .debug_frame   0x0000000000006874       0x34 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-s_fpclassify.o)
+ .debug_frame   0x00000000000068a8       0x88 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-stdio.o)
+ .debug_frame   0x0000000000006930       0x78 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-svfiprintf.o)
+ .debug_frame   0x00000000000069a8       0xd8 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-vfiprintf.o)
+ .debug_frame   0x0000000000006a80       0x3c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wbuf.o)
+ .debug_frame   0x0000000000006abc       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-writer.o)
+ .debug_frame   0x0000000000006ae8       0x34 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-__atexit.o)
+ .debug_frame   0x0000000000006b1c       0x28 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-callocr.o)
+ .debug_frame   0x0000000000006b44       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-closer.o)
+ .debug_frame   0x0000000000006b70       0x44 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fclose.o)
+ .debug_frame   0x0000000000006bb4       0x68 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fputwc.o)
+ .debug_frame   0x0000000000006c1c       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-fstatr.o)
+ .debug_frame   0x0000000000006c48       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-isattyr.o)
+ .debug_frame   0x0000000000006c74       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-lseekr.o)
+ .debug_frame   0x0000000000006ca0       0x2c /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-readr.o)
+ .debug_frame   0x0000000000006ccc       0x60 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wcrtomb.o)
+ .debug_frame   0x0000000000006d2c       0x48 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/libg.a(lib_a-wctomb_r.o)
 
-.debug_str      0x0000000000000000    0x70a83
+.debug_str      0x0000000000000000    0x70ae8
  *(.debug_str)
  .debug_str     0x0000000000000000    0x5d414 ./src/fonts/smallfonts.o
                                       0x5d592 (size before relaxing)
- .debug_str     0x000000000005d414     0x86e5 ./src/delay.o
-                                      0x65cef (size before relaxing)
- .debug_str     0x0000000000065af9      0x211 ./src/dma.o
+ .debug_str     0x000000000005d414     0x86ed ./src/delay.o
+                                      0x65cf7 (size before relaxing)
+ .debug_str     0x0000000000065b01      0x211 ./src/dma.o
                                       0x5e8bb (size before relaxing)
- .debug_str     0x0000000000065d0a      0x30e ./src/encoders.o
-                                      0x60dfe (size before relaxing)
- .debug_str     0x0000000000066018      0x20f ./src/gpio.o
+ .debug_str     0x0000000000065d12      0x30e ./src/encoders.o
+                                      0x60e06 (size before relaxing)
+ .debug_str     0x0000000000066020      0x20f ./src/gpio.o
                                       0x5dd36 (size before relaxing)
- .debug_str     0x0000000000066227     0x112b ./src/initialization.o
-                                      0x66767 (size before relaxing)
- .debug_str     0x0000000000067352      0x103 ./src/interrupts.o
-                                      0x66838 (size before relaxing)
- .debug_str     0x0000000000067455       0xde ./src/leds.o
-                                      0x65867 (size before relaxing)
- .debug_str     0x0000000000067533       0x2e ./src/main.o
-                                      0x6677b (size before relaxing)
- .debug_str     0x0000000000067561       0x55 ./src/nvic.o
+ .debug_str     0x000000000006622f     0x112b ./src/initialization.o
+                                      0x6676f (size before relaxing)
+ .debug_str     0x000000000006735a      0x103 ./src/interrupts.o
+                                      0x66840 (size before relaxing)
+ .debug_str     0x000000000006745d       0xde ./src/leds.o
+                                      0x6586f (size before relaxing)
+ .debug_str     0x000000000006753b       0x50 ./src/main.o
+                                      0x66813 (size before relaxing)
+ .debug_str     0x000000000006758b       0x55 ./src/nvic.o
                                       0x5d553 (size before relaxing)
- .debug_str     0x00000000000675b6       0xfa ./src/pushbuttons.o
-                                      0x6590d (size before relaxing)
- .debug_str     0x00000000000676b0       0x7f ./src/rcc.o
+ .debug_str     0x00000000000675e0       0xfa ./src/pushbuttons.o
+                                      0x65915 (size before relaxing)
+ .debug_str     0x00000000000676da       0x7f ./src/rcc.o
                                       0x5d6d5 (size before relaxing)
- .debug_str     0x000000000006772f       0x1c ./src/rng.o
+ .debug_str     0x0000000000067759       0x1c ./src/rng.o
                                       0x5d4ce (size before relaxing)
- .debug_str     0x000000000006774b      0x17d ./src/rtc.o
-                                      0x65826 (size before relaxing)
- .debug_str     0x00000000000678c8     0x1739 ./src/sdio.o
-                                      0x668f2 (size before relaxing)
- .debug_str     0x0000000000069001       0x9f ./src/spi.o
+ .debug_str     0x0000000000067775      0x15b ./src/rtc.o
+                                      0x6582e (size before relaxing)
+ .debug_str     0x00000000000678d0     0x1739 ./src/sdio.o
+                                      0x668fa (size before relaxing)
+ .debug_str     0x0000000000069009       0x9f ./src/spi.o
                                       0x6052e (size before relaxing)
- .debug_str     0x00000000000690a0      0xc29 ./src/ssd1306.o
-                                      0x66b3e (size before relaxing)
- .debug_str     0x0000000000069cc9      0x44d ./src/uart.o
-                                      0x64472 (size before relaxing)
- .debug_str     0x000000000006a116      0x4d2 ./libs/misc/src/_sbrk.o
+ .debug_str     0x00000000000690a8      0xc86 ./src/ssd1306.o
+                                      0x66bab (size before relaxing)
+ .debug_str     0x0000000000069d2e      0x44d ./src/uart.o
+                                      0x6447a (size before relaxing)
+ .debug_str     0x000000000006a17b      0x4d2 ./libs/misc/src/_sbrk.o
                                        0x4572 (size before relaxing)
- .debug_str     0x000000000006a5e8     0x144f ./libs/misc/src/newlib_stubs.o
-                                      0x64ae7 (size before relaxing)
- .debug_str     0x000000000006ba37       0xc0 ./libs/fatfs/src/diskio.o
-                                      0x64deb (size before relaxing)
- .debug_str     0x000000000006baf7      0x895 ./libs/fatfs/src/ff.o
+ .debug_str     0x000000000006a64d     0x144f ./libs/misc/src/newlib_stubs.o
+                                      0x64aef (size before relaxing)
+ .debug_str     0x000000000006ba9c       0xc0 ./libs/fatfs/src/diskio.o
+                                      0x64df3 (size before relaxing)
+ .debug_str     0x000000000006bb5c      0x895 ./libs/fatfs/src/ff.o
                                        0x372d (size before relaxing)
- .debug_str     0x000000000006c38c      0x133 ./libs/cmsis/src/startup_cm.o
+ .debug_str     0x000000000006c3f1      0x133 ./libs/cmsis/src/startup_cm.o
                                        0x35e2 (size before relaxing)
- .debug_str     0x000000000006c4bf      0x1c2 ./libs/cmsis/src/system_stm32f4xx.o
+ .debug_str     0x000000000006c524      0x1c2 ./libs/cmsis/src/system_stm32f4xx.o
                                       0x5d74b (size before relaxing)
- .debug_str     0x000000000006c681       0x4b ./libs/cmsis/src/vectors_stm32f4xx.o
+ .debug_str     0x000000000006c6e6       0x4b ./libs/cmsis/src/vectors_stm32f4xx.o
                                        0x2606 (size before relaxing)
- .debug_str     0x000000000006c6cc      0x11a ./libs/StdPeriph/src/misc.o
+ .debug_str     0x000000000006c731      0x11a ./libs/StdPeriph/src/misc.o
                                       0x5d734 (size before relaxing)
- .debug_str     0x000000000006c7e6      0x556 ./libs/StdPeriph/src/stm32f4xx_dma.o
+ .debug_str     0x000000000006c84b      0x556 ./libs/StdPeriph/src/stm32f4xx_dma.o
                                       0x5db9a (size before relaxing)
- .debug_str     0x000000000006cd3c       0xff ./libs/StdPeriph/src/stm32f4xx_exti.o
+ .debug_str     0x000000000006cda1       0xff ./libs/StdPeriph/src/stm32f4xx_exti.o
                                       0x5d6aa (size before relaxing)
- .debug_str     0x000000000006ce3b      0x15e ./libs/StdPeriph/src/stm32f4xx_gpio.o
+ .debug_str     0x000000000006cea0      0x15e ./libs/StdPeriph/src/stm32f4xx_gpio.o
                                       0x5d7dc (size before relaxing)
- .debug_str     0x000000000006cf99      0x54a ./libs/StdPeriph/src/stm32f4xx_pwr.o
+ .debug_str     0x000000000006cffe      0x54a ./libs/StdPeriph/src/stm32f4xx_pwr.o
                                       0x5daab (size before relaxing)
- .debug_str     0x000000000006d4e3      0xc39 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+ .debug_str     0x000000000006d548      0xc39 ./libs/StdPeriph/src/stm32f4xx_rcc.o
                                       0x5e298 (size before relaxing)
- .debug_str     0x000000000006e11c       0xbc ./libs/StdPeriph/src/stm32f4xx_rng.o
+ .debug_str     0x000000000006e181       0xbc ./libs/StdPeriph/src/stm32f4xx_rng.o
                                       0x5d5b5 (size before relaxing)
- .debug_str     0x000000000006e1d8      0xaad ./libs/StdPeriph/src/stm32f4xx_rtc.o
+ .debug_str     0x000000000006e23d      0xaad ./libs/StdPeriph/src/stm32f4xx_rtc.o
                                       0x5e0cb (size before relaxing)
- .debug_str     0x000000000006ec85      0x80f ./libs/StdPeriph/src/stm32f4xx_sdio.o
+ .debug_str     0x000000000006ecea      0x80f ./libs/StdPeriph/src/stm32f4xx_sdio.o
                                       0x5decd (size before relaxing)
- .debug_str     0x000000000006f494      0x2f0 ./libs/StdPeriph/src/stm32f4xx_spi.o
+ .debug_str     0x000000000006f4f9      0x2f0 ./libs/StdPeriph/src/stm32f4xx_spi.o
                                       0x5dab3 (size before relaxing)
- .debug_str     0x000000000006f784      0x347 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+ .debug_str     0x000000000006f7e9      0x347 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
                                       0x5d837 (size before relaxing)
- .debug_str     0x000000000006facb      0xb25 ./libs/StdPeriph/src/stm32f4xx_tim.o
+ .debug_str     0x000000000006fb30      0xb25 ./libs/StdPeriph/src/stm32f4xx_tim.o
                                       0x5e1d3 (size before relaxing)
- .debug_str     0x00000000000705f0      0x493 ./libs/StdPeriph/src/stm32f4xx_usart.o
+ .debug_str     0x0000000000070655      0x493 ./libs/StdPeriph/src/stm32f4xx_usart.o
                                       0x5daef (size before relaxing)
 
 .debug_loc
@@ -9294,7 +9298,7 @@ OUTPUT(ECW4011 - STM32F4 - Analog Datalogger REV B on ALT0061.elf elf32-littlear
  .debug_macro   0x0000000000018fcf      0x735 ./libs/StdPeriph/src/stm32f4xx_tim.o
  .debug_macro   0x0000000000019704      0x1c0 ./libs/StdPeriph/src/stm32f4xx_usart.o
 
-.debug_ranges   0x0000000000000000     0x13f0
+.debug_ranges   0x0000000000000000     0x13f8
  .debug_ranges  0x0000000000000000       0x48 ./src/delay.o
  .debug_ranges  0x0000000000000048       0x28 ./src/dma.o
  .debug_ranges  0x0000000000000070       0x58 ./src/encoders.o
@@ -9310,25 +9314,25 @@ OUTPUT(ECW4011 - STM32F4 - Analog Datalogger REV B on ALT0061.elf elf32-littlear
  .debug_ranges  0x0000000000000248       0x20 ./src/rtc.o
  .debug_ranges  0x0000000000000268      0x160 ./src/sdio.o
  .debug_ranges  0x00000000000003c8       0x10 ./src/spi.o
- .debug_ranges  0x00000000000003d8      0x190 ./src/ssd1306.o
- .debug_ranges  0x0000000000000568       0x18 ./src/uart.o
- .debug_ranges  0x0000000000000580       0x10 ./libs/misc/src/_sbrk.o
- .debug_ranges  0x0000000000000590       0x88 ./libs/misc/src/newlib_stubs.o
- .debug_ranges  0x0000000000000618       0x38 ./libs/fatfs/src/diskio.o
- .debug_ranges  0x0000000000000650      0x148 ./libs/fatfs/src/ff.o
- .debug_ranges  0x0000000000000798       0x28 ./libs/cmsis/src/startup_cm.o
- .debug_ranges  0x00000000000007c0       0x20 ./libs/cmsis/src/system_stm32f4xx.o
- .debug_ranges  0x00000000000007e0       0x58 ./libs/cmsis/src/vectors_stm32f4xx.o
- .debug_ranges  0x0000000000000838       0x30 ./libs/StdPeriph/src/misc.o
- .debug_ranges  0x0000000000000868       0xa0 ./libs/StdPeriph/src/stm32f4xx_dma.o
- .debug_ranges  0x0000000000000908       0x48 ./libs/StdPeriph/src/stm32f4xx_exti.o
- .debug_ranges  0x0000000000000950       0x78 ./libs/StdPeriph/src/stm32f4xx_gpio.o
- .debug_ranges  0x00000000000009c8       0x88 ./libs/StdPeriph/src/stm32f4xx_pwr.o
- .debug_ranges  0x0000000000000a50      0x1a8 ./libs/StdPeriph/src/stm32f4xx_rcc.o
- .debug_ranges  0x0000000000000bf8       0x48 ./libs/StdPeriph/src/stm32f4xx_rng.o
- .debug_ranges  0x0000000000000c40      0x1d0 ./libs/StdPeriph/src/stm32f4xx_rtc.o
- .debug_ranges  0x0000000000000e10       0xf8 ./libs/StdPeriph/src/stm32f4xx_sdio.o
- .debug_ranges  0x0000000000000f08       0xd0 ./libs/StdPeriph/src/stm32f4xx_spi.o
- .debug_ranges  0x0000000000000fd8       0x40 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
- .debug_ranges  0x0000000000001018      0x2e8 ./libs/StdPeriph/src/stm32f4xx_tim.o
- .debug_ranges  0x0000000000001300       0xf0 ./libs/StdPeriph/src/stm32f4xx_usart.o
+ .debug_ranges  0x00000000000003d8      0x198 ./src/ssd1306.o
+ .debug_ranges  0x0000000000000570       0x18 ./src/uart.o
+ .debug_ranges  0x0000000000000588       0x10 ./libs/misc/src/_sbrk.o
+ .debug_ranges  0x0000000000000598       0x88 ./libs/misc/src/newlib_stubs.o
+ .debug_ranges  0x0000000000000620       0x38 ./libs/fatfs/src/diskio.o
+ .debug_ranges  0x0000000000000658      0x148 ./libs/fatfs/src/ff.o
+ .debug_ranges  0x00000000000007a0       0x28 ./libs/cmsis/src/startup_cm.o
+ .debug_ranges  0x00000000000007c8       0x20 ./libs/cmsis/src/system_stm32f4xx.o
+ .debug_ranges  0x00000000000007e8       0x58 ./libs/cmsis/src/vectors_stm32f4xx.o
+ .debug_ranges  0x0000000000000840       0x30 ./libs/StdPeriph/src/misc.o
+ .debug_ranges  0x0000000000000870       0xa0 ./libs/StdPeriph/src/stm32f4xx_dma.o
+ .debug_ranges  0x0000000000000910       0x48 ./libs/StdPeriph/src/stm32f4xx_exti.o
+ .debug_ranges  0x0000000000000958       0x78 ./libs/StdPeriph/src/stm32f4xx_gpio.o
+ .debug_ranges  0x00000000000009d0       0x88 ./libs/StdPeriph/src/stm32f4xx_pwr.o
+ .debug_ranges  0x0000000000000a58      0x1a8 ./libs/StdPeriph/src/stm32f4xx_rcc.o
+ .debug_ranges  0x0000000000000c00       0x48 ./libs/StdPeriph/src/stm32f4xx_rng.o
+ .debug_ranges  0x0000000000000c48      0x1d0 ./libs/StdPeriph/src/stm32f4xx_rtc.o
+ .debug_ranges  0x0000000000000e18       0xf8 ./libs/StdPeriph/src/stm32f4xx_sdio.o
+ .debug_ranges  0x0000000000000f10       0xd0 ./libs/StdPeriph/src/stm32f4xx_spi.o
+ .debug_ranges  0x0000000000000fe0       0x40 ./libs/StdPeriph/src/stm32f4xx_syscfg.o
+ .debug_ranges  0x0000000000001020      0x2e8 ./libs/StdPeriph/src/stm32f4xx_tim.o
+ .debug_ranges  0x0000000000001308       0xf0 ./libs/StdPeriph/src/stm32f4xx_usart.o
