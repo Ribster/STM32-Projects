@@ -127,6 +127,11 @@ void
 USART2_IRQHandler(void){
 	uart_interruptHandlerTerminal();
 }
+/**
+  * @brief  This function handles TIMER 8 through 13 interrupts.
+  * @param  None
+  * @retval None
+  */
 void
 TIM8_UP_TIM13_IRQHandler(void){
 	ssd1306_interruptHandler();
