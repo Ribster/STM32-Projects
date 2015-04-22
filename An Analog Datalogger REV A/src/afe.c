@@ -35,7 +35,7 @@ initialize_AFE(void){
 				AFE_INT_PIN,
 				AFE_INT_PULL,
 				AFE_INT_SPEED);
-
+		GPIO_WriteBit(AFE_INT_PORT, (1<<AFE_INT_PIN), AFE_INT_INITSTATE);
 		// SYNC 1
 		gpio_initStandard(
 				AFE_SYNC1_PORT,
@@ -155,7 +155,7 @@ initialize_AFE(void){
 				);
 		// USE DMA MODE
 		  GPIO_WriteBit(AFE_CS_PORT, AFE_CS_PIN, Bit_RESET);
-		  GPIO_WriteBit(AFE_SYNC1_PORT, AFE_SYNC1_PIN, Bit_SET);
+		  GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_RESET);
 		  /* Enable DMA SPI TX Stream */
 		  DMA_Cmd(AFE_DMA_TX_DMAStream,ENABLE);
 
@@ -177,7 +177,7 @@ initialize_AFE(void){
 		  SPI_Cmd(AFE_SPI, ENABLE);
 
 		  while(DMA_GetFlagStatus(AFE_DMA_RX_DMAStream,AFE_DMA_RX_TransferHalfCompleteFlag)==RESET);
-		  GPIO_WriteBit(AFE_SYNC1_PORT, AFE_SYNC1_PIN, Bit_RESET);
+
 
 		  printf("Halftime Complete from AFE\r\n");
 
@@ -185,6 +185,7 @@ initialize_AFE(void){
 		  while (DMA_GetFlagStatus(AFE_DMA_RX_DMAStream,AFE_DMA_RX_TransferCompleteFlag)==RESET);
 
 		  GPIO_WriteBit(AFE_CS_PORT, AFE_CS_PIN, Bit_SET);
+		  GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_SET);
 
 		  printf("Received data from AFE\r\n");
 
@@ -203,5 +204,16 @@ initialize_AFE(void){
 		  /* Disable the SPI peripheral */
 		  SPI_Cmd(AFE_SPI, DISABLE);
 
-		  fwrite((void*)afe_DMA_RX_Buffer, AFE_DMA_BufferSize, 1, stdout);
+		  printf("RX buffer: \r\n");
+		  for(uint32_t i= 0; i<AFE_DMA_BufferSize; i++){
+			  if(i!=0){
+				  printf(", ");
+			  }
+			  printf("%04ld:0x%x", i+1, afe_DMA_RX_Buffer[i]);
+			  if(i%1000==0){
+				  printf("\r\n");
+			  }
+		  }
+		  //fwrite((void*)afe_DMA_RX_Buffer, AFE_DMA_BufferSize, 1, stdout);
+		  printf("\r\n");
 }

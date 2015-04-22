@@ -220,7 +220,7 @@
 	 */
 #define AFE_SPI SPI1
 #define AFE_SPI_IRQn SPI1_IRQn
-#define AFE_DMA_BufferSize 512
+#define AFE_DMA_BufferSize 5120
 	// SPI Config
 		#define AFE_SPI_Direction SPI_Direction_2Lines_FullDuplex
 		#define AFE_SPI_Mode SPI_Mode_Master
@@ -264,11 +264,11 @@
 	// INTERRUPT PIN
 	#define AFE_INT_PORT GPIOC
 	#define AFE_INT_PIN 4
-	#define AFE_INT_MODE GPIO_Mode_IN
-	#define AFE_INT_PULL GPIO_PuPd_NOPULL
+	#define AFE_INT_MODE GPIO_Mode_OUT
+	#define AFE_INT_PULL GPIO_PuPd_UP
 	#define AFE_INT_OTYPE GPIO_OType_PP
 	#define AFE_INT_SPEED GPIO_Speed_100MHz
-	#define AFE_INT_EXTI_Line (1<<AFE_INT_PIN)
+	#define AFE_INT_INITSTATE Bit_SET
 	// CHIPSELECT PIN
 	#define AFE_CS_PORT GPIOA
 	#define AFE_CS_PIN 4
