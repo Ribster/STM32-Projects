@@ -22,6 +22,7 @@
 #include "ssd1306.h"
 #include "rng.h"
 #include "sdio.h"
+#include "afe.h"
 
 // prototype
 void

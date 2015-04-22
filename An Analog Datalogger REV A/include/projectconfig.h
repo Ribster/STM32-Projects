@@ -17,6 +17,12 @@
 #define MAX(a,b) (((a)>(b))?(a):(b))
 
 
+// Project version
+#define PROJVER "0.0.000"
+
+#define DBG
+//#define DBGIO
+
 // LEDS
 /*
 1	PE2	Output	GPIO_Output	LED0
@@ -212,77 +218,121 @@
 36	PB1	I/O		GPIO_EXTI1	AFE_SYNC3
 38	PE7	I/O		GPIO_EXTI7	EXT_SYNC
 	 */
-#define AFE_CS_PORT GPIOA
-#define AFE_CS_PIN 4
-#define AFE_CS_MODE GPIO_Mode_OUT
-#define AFE_CS_PULL GPIO_PuPd_NOPULL
-#define AFE_CS_OTYPE GPIO_OType_PP
-#define AFE_CS_SPEED GPIO_Speed_100MHz
-#define AFE_CS_INITSTATE Bit_RESET
+#define AFE_SPI SPI1
+#define AFE_SPI_IRQn SPI1_IRQn
+#define AFE_DMA_BufferSize 512
+	// SPI Config
+		#define AFE_SPI_Direction SPI_Direction_2Lines_FullDuplex
+		#define AFE_SPI_Mode SPI_Mode_Master
+		#define AFE_SPI_DataSize SPI_DataSize_8b
+		#define AFE_SPI_CPOL SPI_CPOL_Low
+		#define AFE_SPI_CPHA SPI_CPHA_1Edge
+		#define AFE_SPI_NSS SPI_NSS_Soft
+		#define AFE_SPI_BaudRatePrescaler SPI_BaudRatePrescaler_2
+		#define AFE_SPI_FirstBit SPI_FirstBit_MSB
+		#define AFE_SPI_CRCPolynomial 7
+	// DMA SPI from Memory 2 Peripheral
+		// TX STREAM
+		#define AFE_DMA_TX_DMAStream DMA2_Stream5
+		#define AFE_DMA_TX_DMAChannel DMA_Channel_3
+		#define AFE_DMA_TX_TransferCompleteFlag DMA_FLAG_TCIF5
+		#define AFE_DMA_TX_TransferHalfCompleteFlag DMA_FLAG_HTIF5
+		#define AFE_DMA_TX_DMARequest SPI_I2S_DMAReq_Tx
+		#define AFE_DMA_TX_DIR DMA_DIR_MemoryToPeripheral
 
-#define AFE_INT_PORT GPIOC
-#define AFE_INT_PIN 4
-#define AFE_INT_MODE GPIO_Mode_OUT
-#define AFE_INT_PULL GPIO_PuPd_NOPULL
-#define AFE_INT_OTYPE GPIO_OType_PP
-#define AFE_INT_SPEED GPIO_Speed_100MHz
-#define AFE_INT_INITSTATE Bit_RESET
+		// RX STREAM
+		#define AFE_DMA_RX_DMAStream DMA2_Stream0
+		#define AFE_DMA_RX_DMAChannel DMA_Channel_3
+		#define AFE_DMA_RX_TransferCompleteFlag DMA_FLAG_TCIF0
+		#define AFE_DMA_RX_TransferHalfCompleteFlag DMA_FLAG_HTIF0
+		#define AFE_DMA_RX_DMARequest SPI_I2S_DMAReq_Rx
+		#define AFE_DMA_RX_DIR DMA_DIR_PeripheralToMemory
 
-#define AFE_MISO_PORT GPIOA
-#define AFE_MISO_PIN 6
-#define AFE_MISO_MODE GPIO_Mode_AF
-#define AFE_MISO_PULL GPIO_PuPd_NOPULL
-#define AFE_MISO_OTYPE GPIO_OType_PP
-#define AFE_MISO_SPEED GPIO_Speed_100MHz
-#define AFE_MISO_AF GPIO_AF_SPI1 //AF5
+		#define AFE_DMA_PeripheralBaseAddr (uint32_t)&(AFE_SPI->DR)
+		//#define AFE_DMA_Memory0BaseAddr //heap pointer
+		#define AFE_DMA_PeripheralInc DMA_PeripheralInc_Disable
+		#define AFE_DMA_MemoryInc DMA_MemoryInc_Enable
+		#define AFE_DMA_PeripheralDataSize DMA_PeripheralDataSize_Byte
+		#define AFE_DMA_MemoryDataSize DMA_MemoryDataSize_Byte
+		#define AFE_DMA_Mode DMA_Mode_Normal
+		#define AFE_DMA_Priority DMA_Priority_High
+		#define AFE_DMA_FIFOMode DMA_FIFOMode_Disable
+		#define AFE_DMA_FIFOThreshold DMA_FIFOThreshold_HalfFull
+		#define AFE_DMA_MemoryBurst DMA_MemoryBurst_Single
+		#define AFE_DMA_PeripheralBurst DMA_PeripheralBurst_Single
 
-#define AFE_MOSI_PORT GPIOA
-#define AFE_MOSI_PIN 7
-#define AFE_MOSI_MODE GPIO_Mode_AF
-#define AFE_MOSI_PULL GPIO_PuPd_NOPULL
-#define AFE_MOSI_OTYPE GPIO_OType_PP
-#define AFE_MOSI_SPEED GPIO_Speed_100MHz
-#define AFE_MOSI_AF GPIO_AF_SPI1 //AF5
-
-#define AFE_SCK_PORT GPIOA
-#define AFE_SCK_PIN 5
-#define AFE_SCK_MODE GPIO_Mode_AF
-#define AFE_SCK_PULL GPIO_PuPd_NOPULL
-#define AFE_SCK_OTYPE GPIO_OType_PP
-#define AFE_SCK_SPEED GPIO_Speed_100MHz
-#define AFE_SCK_AF GPIO_AF_SPI1 //AF5
-
-#define AFE_SYNC1_PORT GPIOC
-#define AFE_SYNC1_PIN 5
-#define AFE_SYNC1_MODE GPIO_Mode_IN
-#define AFE_SYNC1_PULL GPIO_PuPd_NOPULL
-#define AFE_SYNC1_OTYPE GPIO_OType_PP
-#define AFE_SYNC1_SPEED GPIO_Speed_100MHz
-#define AFE_SYNC1_EXTI_Line (1<<AFE_SYNC1_PIN)
-
-#define AFE_SYNC2_PORT GPIOB
-#define AFE_SYNC2_PIN 0
-#define AFE_SYNC2_MODE GPIO_Mode_IN
-#define AFE_SYNC2_PULL GPIO_PuPd_NOPULL
-#define AFE_SYNC2_OTYPE GPIO_OType_PP
-#define AFE_SYNC2_SPEED GPIO_Speed_100MHz
-#define AFE_SYNC2_EXTI_Line (1<<AFE_SYNC2_PIN)
-
-#define AFE_SYNC3_PORT GPIOB
-#define AFE_SYNC3_PIN 1
-#define AFE_SYNC3_MODE GPIO_Mode_IN
-#define AFE_SYNC3_PULL GPIO_PuPd_NOPULL
-#define AFE_SYNC3_OTYPE GPIO_OType_PP
-#define AFE_SYNC3_SPEED GPIO_Speed_100MHz
-#define AFE_SYNC3_EXTI_Line (1<<AFE_SYNC3_PIN)
-
-#define AFE_EXT_SYNC_PORT GPIOE
-#define AFE_EXT_SYNC_PIN 7
-#define AFE_EXT_SYNC_MODE GPIO_Mode_IN
-#define AFE_EXT_SYNC_PULL GPIO_PuPd_NOPULL
-#define AFE_EXT_SYNC_OTYPE GPIO_OType_PP
-#define AFE_EXT_SYNC_SPEED GPIO_Speed_100MHz
-#define AFE_EXT_SYNC_EXTI_Line (1<<AFE_EXT_SYNC_PIN)
+	// INTERRUPT PIN
+	#define AFE_INT_PORT GPIOC
+	#define AFE_INT_PIN 4
+	#define AFE_INT_MODE GPIO_Mode_IN
+	#define AFE_INT_PULL GPIO_PuPd_NOPULL
+	#define AFE_INT_OTYPE GPIO_OType_PP
+	#define AFE_INT_SPEED GPIO_Speed_100MHz
+	#define AFE_INT_EXTI_Line (1<<AFE_INT_PIN)
+	// CHIPSELECT PIN
+	#define AFE_CS_PORT GPIOA
+	#define AFE_CS_PIN 4
+	#define AFE_CS_MODE GPIO_Mode_OUT
+	#define AFE_CS_PULL GPIO_PuPd_NOPULL
+	#define AFE_CS_OTYPE GPIO_OType_PP
+	#define AFE_CS_SPEED GPIO_Speed_100MHz
+	#define AFE_CS_INITSTATE Bit_SET
+	// MISO PIN
+	#define AFE_MISO_PORT GPIOA
+	#define AFE_MISO_PIN 6
+	#define AFE_MISO_MODE GPIO_Mode_AF
+	#define AFE_MISO_PULL GPIO_PuPd_DOWN
+	#define AFE_MISO_OTYPE GPIO_OType_PP
+	#define AFE_MISO_SPEED GPIO_Speed_100MHz
+	#define AFE_MISO_AF GPIO_AF_SPI1 //AF5
+	// MOSI PIN
+	#define AFE_MOSI_PORT GPIOA
+	#define AFE_MOSI_PIN 7
+	#define AFE_MOSI_MODE GPIO_Mode_AF
+	#define AFE_MOSI_PULL GPIO_PuPd_DOWN
+	#define AFE_MOSI_OTYPE GPIO_OType_PP
+	#define AFE_MOSI_SPEED GPIO_Speed_100MHz
+	#define AFE_MOSI_AF GPIO_AF_SPI1 //AF5
+	// SCK PIN
+	#define AFE_SCK_PORT GPIOA
+	#define AFE_SCK_PIN 5
+	#define AFE_SCK_MODE GPIO_Mode_AF
+	#define AFE_SCK_PULL GPIO_PuPd_DOWN
+	#define AFE_SCK_OTYPE GPIO_OType_PP
+	#define AFE_SCK_SPEED GPIO_Speed_100MHz
+	#define AFE_SCK_AF GPIO_AF_SPI1 //AF5
+	// SYNC1 PIN
+	#define AFE_SYNC1_PORT GPIOC
+	#define AFE_SYNC1_PIN 5
+	#define AFE_SYNC1_MODE GPIO_Mode_OUT
+	#define AFE_SYNC1_PULL GPIO_PuPd_NOPULL
+	#define AFE_SYNC1_OTYPE GPIO_OType_PP
+	#define AFE_SYNC1_SPEED GPIO_Speed_100MHz
+	#define AFE_SYNC1_INITSTATE Bit_RESET
+	// SYNC2 PIN
+	#define AFE_SYNC2_PORT GPIOB
+	#define AFE_SYNC2_PIN 0
+	#define AFE_SYNC2_MODE GPIO_Mode_IN
+	#define AFE_SYNC2_PULL GPIO_PuPd_NOPULL
+	#define AFE_SYNC2_OTYPE GPIO_OType_PP
+	#define AFE_SYNC2_SPEED GPIO_Speed_100MHz
+	#define AFE_SYNC2_EXTI_Line (1<<AFE_SYNC2_PIN)
+	// SYNC3 PIN
+	#define AFE_SYNC3_PORT GPIOB
+	#define AFE_SYNC3_PIN 1
+	#define AFE_SYNC3_MODE GPIO_Mode_IN
+	#define AFE_SYNC3_PULL GPIO_PuPd_NOPULL
+	#define AFE_SYNC3_OTYPE GPIO_OType_PP
+	#define AFE_SYNC3_SPEED GPIO_Speed_100MHz
+	#define AFE_SYNC3_EXTI_Line (1<<AFE_SYNC3_PIN)
+	// EXTERNAL SYNC PIN
+	#define AFE_EXT_SYNC_PORT GPIOE
+	#define AFE_EXT_SYNC_PIN 7
+	#define AFE_EXT_SYNC_MODE GPIO_Mode_IN
+	#define AFE_EXT_SYNC_PULL GPIO_PuPd_NOPULL
+	#define AFE_EXT_SYNC_OTYPE GPIO_OType_PP
+	#define AFE_EXT_SYNC_SPEED GPIO_Speed_100MHz
+	#define AFE_EXT_SYNC_EXTI_Line (1<<AFE_EXT_SYNC_PIN)
 
 // nRF
 /*
@@ -370,13 +420,13 @@
 	#define OLED_SPI_FirstBit SPI_FirstBit_MSB
 	#define OLED_SPI_CRCPolynomial 7
 // DMA SPI from Memory 2 Peripheral
-	#define OLED_TX_DMAStream DMA1_Stream7
-	#define OLED_TX_DMAChannel DMA_Channel_0
-	#define OLED_TX_TransferCompleteFlag DMA_FLAG_TCIF7
-	#define OLED_TX_DMARequest SPI_I2S_DMAReq_Tx
+	#define OLED_DMA_TX_DMAStream DMA1_Stream7
+	#define OLED_DMA_TX_DMAChannel DMA_Channel_0
+	#define OLED_DMA_TX_TransferCompleteFlag DMA_FLAG_TCIF7
+	#define OLED_DMA_TX_DMARequest SPI_I2S_DMAReq_Tx
 	#define OLED_DMA_PeripheralBaseAddr (uint32_t)&(OLED_SPI->DR)
 //#define OLED_DMA_Memory0BaseAddr //heap pointer
-	#define OLED_DMA_DIR DMA_DIR_MemoryToPeripheral
+	#define OLED_DMA_TX_DIR DMA_DIR_MemoryToPeripheral
 	#define OLED_DMA_PeripheralInc DMA_PeripheralInc_Disable
 	#define OLED_DMA_MemoryInc DMA_MemoryInc_Enable
 	#define OLED_DMA_PeripheralDataSize DMA_PeripheralDataSize_Byte
@@ -473,8 +523,7 @@
 79	PC11	I/O	SDIO_D3
 */
 
-#define DBG
-//#define DBGIO
+
 
 #define SD_DETECT_PIN                    GPIO_Pin_2                 /* PC.02 */
 #define SD_DETECT_GPIO_PORT              GPIOC                      /* GPIOC */

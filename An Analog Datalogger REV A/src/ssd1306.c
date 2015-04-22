@@ -5,42 +5,72 @@
  *      Author: Robbe Van Assche
  */
 
-#include "ssd1306.h"
+// include the header file
+	#include "ssd1306.h"
 
 // local variables
-static SSD1306_OLED_t ssd1306_parameters;
+	static SSD1306_OLED_t ssd1306_parameters; // stores the local variables of the ssd1306
 
 // local prototypes
-static void
-ssd1306_firstInit(void);
-inline static void
-setRST(BitAction newVal);
-inline static void
-setDC(BitAction newVal);
-inline static void
-setSS(BitAction newVal);
-inline static void
-transmitCommand(uint8_t val);
-inline static void
-transmitByte(uint8_t val);
-inline static void
-ssd1306_initializeDMA(void);
-inline static void
-ssd1306_alterPixel(uint8_t x, uint8_t y, BitAction newVal);
-inline static void
-ssd1306_alterCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font, BitAction newVal);
-inline static void
-ssd1306_alterString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, BitAction newVal);
-inline static void
-ssd1306_alterStringBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding, BitAction newVal);
-inline static void
-ssd1306_alterLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, BitAction newval);
-inline static void
-ssd1306_alterCircle(uint8_t x0, uint8_t y0, uint16_t radius, BitAction newVal);
-inline static void
-ssd1306_alterArea(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, BitAction newval);
-inline static xypair_t
-ssd1306_adjustCoordinate(uint8_t x, uint8_t y);
+	// first initialization routine
+	static void
+	ssd1306_firstInit(void);
+	
+	// set Reset Pin
+	inline static void
+	setRST(BitAction newVal);
+	
+	// set DC pin
+	inline static void
+	setDC(BitAction newVal);
+	
+	// set Chip Select pin
+	inline static void
+	setSS(BitAction newVal);
+	
+	// transmit a command to the ssd1306
+	inline static void
+	transmitCommand(uint8_t val);
+	
+	// transmit a byte to the ssd1306
+	inline static void
+	transmitByte(uint8_t val);
+	
+	// initialize the DMA for the ssd1306
+	inline static void
+	ssd1306_initializeDMA(void);
+	
+	// alter a pixel on the ssd1306
+	inline static void
+	ssd1306_alterPixel(uint8_t x, uint8_t y, BitAction newVal);
+	
+	// alter a character on the ssd1306
+	inline static void
+	ssd1306_alterCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font, BitAction newVal);
+	
+	// alter a string on the ssd1306
+	inline static void
+	ssd1306_alterString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, BitAction newVal);
+	
+	// alter a string with addition of a string border on the ssd1306
+	inline static void
+	ssd1306_alterStringBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding, BitAction newVal);
+	
+	// alter a line on the ssd1306
+	inline static void
+	ssd1306_alterLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, BitAction newval);
+	
+	// alter a circle on the ssd1306
+	inline static void
+	ssd1306_alterCircle(uint8_t x0, uint8_t y0, uint16_t radius, BitAction newVal);
+	
+	// alter an area on the ssd1306
+	inline static void
+	ssd1306_alterArea(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, BitAction newval);
+	
+	// check if the coordinate is within writing range of the screen. If not, clip the value
+	inline static xypair_t
+	ssd1306_adjustCoordinate(uint8_t x, uint8_t y);
 
 
 // initialization
@@ -53,17 +83,22 @@ initialize_SSD1306(void){
 	ssd1306_parameters.viewMode = SSD1306_VIEWMODE_NORMAL;
 	ssd1306_parameters.viewOrientation = OLED_ORIENTATION;
 	ssd1306_parameters.externalVCC = OLED_EXTERNALVCC;
+	
 	// make the framebuffer
-	ssd1306_parameters.pixBuffer = malloc(ssd1306_parameters.bufferSize);
-	if(ssd1306_parameters.pixBuffer == 0x00){
-		free(ssd1306_parameters.pixBuffer);
-		printf("ERROR: INTIALIZING OLED SSD1306");
-		exit(1);
-		return;
-	}
+		// allocation of the buffer
+		ssd1306_parameters.pixBuffer = malloc(ssd1306_parameters.bufferSize);
+		
+		// make sure the allocation is done correctly, return if not
+		if(ssd1306_parameters.pixBuffer == 0x00){
+			free(ssd1306_parameters.pixBuffer);
+			printf("ERROR: INTIALIZING OLED SSD1306");
+			exit(1);
+			return;
+		}
 
 	// initialize the pins
 		// DC PIN
+			// do a standard initialization
 			gpio_initStandard(
 					OLED_DC_PORT,
 					OLED_DC_MODE,
@@ -71,8 +106,11 @@ initialize_SSD1306(void){
 					OLED_DC_PIN,
 					OLED_DC_PULL,
 					OLED_DC_SPEED);
+			// standard output value
 			GPIO_WriteBit(OLED_DC_PORT, (1<<OLED_DC_PIN), OLED_DC_INITSTATE);
+			
 		// RESET PIN
+			// do a standard initialization
 			gpio_initStandard(
 					OLED_RST_PORT,
 					OLED_RST_MODE,
@@ -80,8 +118,12 @@ initialize_SSD1306(void){
 					OLED_RST_PIN,
 					OLED_RST_PULL,
 					OLED_RST_SPEED);
+					
+			// standard output value
 			GPIO_WriteBit(OLED_RST_PORT, (1<<OLED_RST_PIN), OLED_RST_INITSTATE);
+			
 		// CHIP SELECT PIN
+			// do a standard initialization
 			gpio_initStandard(
 					OLED_SS_PORT,
 					OLED_SS_MODE,
@@ -89,8 +131,12 @@ initialize_SSD1306(void){
 					OLED_SS_PIN,
 					OLED_SS_PULL,
 					OLED_SS_SPEED);
+					
+			// standard output value
 			GPIO_WriteBit(OLED_SS_PORT, (1<<OLED_SS_PIN), OLED_SS_INITSTATE);
+			
 		// MOSI PIN
+			// do a standard initialization
 			gpio_initAF(
 					OLED_MOSI_PORT,
 					OLED_MOSI_MODE,
@@ -99,7 +145,9 @@ initialize_SSD1306(void){
 					OLED_MOSI_PULL,
 					OLED_MOSI_SPEED,
 					OLED_MOSI_AF);
+					
 		// SCK PIN
+			// do a standard initialization
 			gpio_initAF(
 					OLED_SCK_PORT,
 					OLED_SCK_MODE,
@@ -108,19 +156,25 @@ initialize_SSD1306(void){
 					OLED_SCK_PULL,
 					OLED_SCK_SPEED,
 					OLED_SCK_AF);
+					
 	// initialize the SPI driver
-			rcc_setSPIClock(OLED_SPI, ENABLE);
+		// set the SPI clock to enable
+		rcc_setSPIClock(OLED_SPI, ENABLE);
+		
+		// do an SPI initialization
 		initialize_SPI(
-				OLED_SPI,
-				OLED_SPI_Direction,
-				OLED_SPI_Mode,
-				OLED_SPI_DataSize,
-				OLED_SPI_CPOL,
-				OLED_SPI_CPHA,
-				OLED_SPI_NSS,
-				OLED_SPI_BaudRatePrescaler,
-				OLED_SPI_FirstBit,
-				OLED_SPI_CRCPolynomial);
+			OLED_SPI,
+			OLED_SPI_Direction,
+			OLED_SPI_Mode,
+			OLED_SPI_DataSize,
+			OLED_SPI_CPOL,
+			OLED_SPI_CPHA,
+			OLED_SPI_NSS,
+			OLED_SPI_BaudRatePrescaler,
+			OLED_SPI_FirstBit,
+			OLED_SPI_CRCPolynomial);
+			
+		// enable the SPI
 		SPI_Cmd(OLED_SPI, ENABLE);
 
 	// initialize routine
@@ -133,11 +187,11 @@ ssd1306_transmitPixelBuffer(void){
 	setSS(Bit_RESET);
 	SPI_Cmd(OLED_SPI, DISABLE);
 	ssd1306_initializeDMA();
-	dma_enableSPIRequest(OLED_TX_DMAStream, OLED_SPI, OLED_TX_DMARequest);
+	dma_enableSPIRequest(OLED_DMA_TX_DMAStream, OLED_SPI, OLED_DMA_TX_DMARequest);
 	SPI_Cmd(OLED_SPI, ENABLE);
-	while (DMA_GetFlagStatus(OLED_TX_DMAStream, OLED_TX_TransferCompleteFlag)==RESET);
-	dma_disableSPIRequest(OLED_TX_DMAStream, OLED_SPI, OLED_TX_DMARequest);
-	DMA_Cmd(OLED_TX_DMAStream, DISABLE);
+	while (DMA_GetFlagStatus(OLED_DMA_TX_DMAStream, OLED_DMA_TX_TransferCompleteFlag)==RESET);
+	dma_disableSPIRequest(OLED_DMA_TX_DMAStream, OLED_SPI, OLED_DMA_TX_DMARequest);
+	DMA_Cmd(OLED_DMA_TX_DMAStream, DISABLE);
 	setSS(Bit_SET);
 }
 void
@@ -536,7 +590,7 @@ ssd1306_alterCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font, B
 	    for (yoffset = 0; yoffset < (font.u8Height + 1); yoffset++)
 	    {
 	      uint8_t bit = 0x00;
-	      bit = (column[xoffset] << (8 - (yoffset + 1)));     // Shift current row bit left
+	      bit = (column[xoffset] << (font.u8Height - (yoffset + 1)));     // Shift current row bit left
 	      bit = (bit >> 7);                     // Shift current row but right (results in 0x01 for black, and 0x00 for white)
 	      if (bit)
 	      {
@@ -598,14 +652,15 @@ ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF
 	ssd1306_alterString(x,y,str,font,Bit_RESET);
 }
 void
-ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftLine){
-	// get the coordinates
+ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftLines){
+// old version
 	xypair_t xy0 = ssd1306_adjustCoordinate(x0,y0);
 	xypair_t xy1 = ssd1306_adjustCoordinate(x1,y1);
 	xypair_t topLeft; topLeft.x = MIN(xy0.x,xy1.x); topLeft.y = MAX(xy0.y,xy1.y);
 	xypair_t topRight; topRight.x = MAX(xy0.x,xy1.x); topRight.y = MAX(xy0.y,xy1.y);
 	xypair_t bottomLeft; bottomLeft.x = MIN(xy0.x,xy1.x); bottomLeft.y = MIN(xy0.y,xy1.y);
 	xypair_t bottomRight; bottomRight.x = MAX(xy0.x,xy1.x); bottomRight.y = MAX(xy0.y,xy1.y);
+
 	uint32_t maxColumns = (bottomRight.x - bottomLeft.x) / (font.u8Width+1);
 	uint32_t maxLines = (topLeft.y - bottomLeft.y) / (font.u8Height+1);
 	uint32_t totLength = strlen(str);
@@ -613,7 +668,9 @@ ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char*
 	ssd1306_alterArea(bottomLeft.x, bottomLeft.y, topRight.x, topRight.y, Bit_RESET);
 	// write every line until the string is printed
 		  uint32_t c, l;
-		  uint32_t i = shiftLine*maxColumns;
+		  // total lines * height of a line
+		  uint32_t strTotHeight = (totLength / maxColumns ) * (font.u8Height+1);
+		  uint32_t i = shiftLines*maxColumns;
 
 		  for(l = 1; l < maxLines+1; l++){
 			  for (c = 0; c < maxColumns; c++)
@@ -624,9 +681,70 @@ ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char*
 				  } else { break; }
 			  }
 		  }
-
-
-
+}
+void
+ssd1306_setTextBlockSmooth(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftPixels){
+	// Interpret the string
+		// make tree of pointers with struct
+			stringPointerTree_t startPointer;
+			stringPointerTree_t* currentPointer = &startPointer;
+			uint32_t lastBreak = 0;
+			uint32_t i;
+		// for each line
+			for(i=0; i<strlen(str); i++){
+				if(str[i] != '\n'){
+					// make a new string branch
+					stringPointerTree_t* tmpPointer = malloc(sizeof(stringPointerTree_t));
+					tmpPointer->nextPointer = 0x00;
+					tmpPointer->previousPointer = 0x00;
+					tmpPointer->nr = 0;
+					tmpPointer->textPointer = 0x00;
+					// make room for the string
+					tmpPointer->textPointer = malloc(i-lastBreak+1);
+					// copy the string into the new place
+					memset(tmpPointer->textPointer, 0, i-lastBreak+1); // clear the buffer
+					memcpy(tmpPointer->textPointer, (str+lastBreak), i-lastBreak); // cpy the data over
+					// assign the pointer to the current item
+					currentPointer->nextPointer = tmpPointer;		// make the current pointer point to the new item
+					tmpPointer->previousPointer = currentPointer;	// let the new item point to the previous item
+					tmpPointer->nr = currentPointer->nr+1;			// make the new item number incremented
+					currentPointer = tmpPointer;					// assign the temp pointer to the current pointer
+					// set the new break
+					lastBreak = i+1;
+				}
+			}
+		// print out for test
+#ifdef DBG
+		currentPointer = &startPointer;
+		while(currentPointer->nextPointer != 0x00){
+			// print the inside of the string
+			printf("Tree nr: %ld, ptr:0x%p, prevptr:0x%p, nextptr:0x%p, txt: %s \r\n",
+					currentPointer->nr,
+					(uint32_t*)currentPointer,
+					(uint32_t*)currentPointer->previousPointer,
+					(uint32_t*)currentPointer->nextPointer,
+					currentPointer->textPointer);
+			// move the pointer
+			currentPointer = currentPointer->nextPointer;
+		}
+#endif
+	// Look at the pixelshift that is necessary
+		// calculate the whole lines that need to be skipped
+		// store the rest of the division as pixelshift for topline
+	// Determine the lines that fall in between the printable area
+		// determine the printable area
+			xypair_t xy0 = ssd1306_adjustCoordinate(x0,y0);
+			xypair_t xy1 = ssd1306_adjustCoordinate(x1,y1);
+			xypair_t topLeft; topLeft.x = MIN(xy0.x,xy1.x); topLeft.y = MAX(xy0.y,xy1.y);
+			xypair_t topRight; topRight.x = MAX(xy0.x,xy1.x); topRight.y = MAX(xy0.y,xy1.y);
+			xypair_t bottomLeft; bottomLeft.x = MIN(xy0.x,xy1.x); bottomLeft.y = MIN(xy0.y,xy1.y);
+			xypair_t bottomRight; bottomRight.x = MAX(xy0.x,xy1.x); bottomRight.y = MAX(xy0.y,xy1.y);
+		// determine startline from pointertree and endline
+	// Print the lines
+		// print startline with pixelshift = (u8height - ypixelshift)
+		// for each line until endline
+			// print whole line
+	// Destroy the whole tree from memory
 }
 // lines
 void
@@ -879,13 +997,13 @@ transmitByte(uint8_t val){
 inline static void
 ssd1306_initializeDMA(void){
 	// DMA only used for transfer of DATA
-	DMA_DeInit(OLED_TX_DMAStream);
-	initialize_DMA(
-			OLED_TX_DMAStream,
-			OLED_TX_DMAChannel,
+	DMA_DeInit(OLED_DMA_TX_DMAStream);
+	DMA_initNormal(
+			OLED_DMA_TX_DMAStream,
+			OLED_DMA_TX_DMAChannel,
 			OLED_DMA_PeripheralBaseAddr,
 			(uint32_t)ssd1306_parameters.pixBuffer,
-			OLED_DMA_DIR,
+			OLED_DMA_TX_DIR,
 			ssd1306_parameters.bufferSize,
 			OLED_DMA_PeripheralInc,
 			OLED_DMA_MemoryInc,

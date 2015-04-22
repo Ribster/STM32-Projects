@@ -1,6 +1,6 @@
-src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
- ../libs/cmsis/include/core_cm4.h ../libs/cmsis/include/core_cmInstr.h \
- ../libs/cmsis/include/core_cmFunc.h \
+src/afe.o: ../src/afe.c ../include/afe.h ../include/projectconfig.h \
+ ../libs/cmsis/include/stm32f4xx.h ../libs/cmsis/include/core_cm4.h \
+ ../libs/cmsis/include/core_cmInstr.h ../libs/cmsis/include/core_cmFunc.h \
  ../libs/cmsis/include/core_cm4_simd.h \
  ../libs/cmsis/include/system_stm32f4xx.h ../include/stm32f4xx_conf.h \
  ../libs/StdPeriph/include/stm32f4xx_adc.h \
@@ -28,20 +28,15 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
  ../libs/StdPeriph/include/stm32f4xx_can.h \
  ../libs/StdPeriph/include/stm32f4xx_dac.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
- ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
- ../include/initialization.h ../include/delay.h ../include/rtc.h \
- ../include/projectconfig.h ../include/rcc.h ../include/ssd1306.h \
- ../include/gpio.h ../include/nvic.h ../include/leds.h \
- ../include/encoders.h ../include/dma.h \
- ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
- ../include/fonts/smallfonts.h ../include/uart.h ../include/pushbuttons.h \
- ../include/rng.h ../include/sdio.h ../libs/fatfs/inc/diskio.h \
- ../libs/fatfs/inc/integer.h ../libs/fatfs/inc/ff.h \
- ../libs/fatfs/inc/ffconf.h ../include/afe.h ../include/leds.h \
- ../include/pushbuttons.h ../include/delay.h ../include/dma.h \
- ../include/gpio.h ../include/rcc.h ../include/rtc.h ../include/sdio.h \
- ../include/spi.h ../include/ssd1306.h ../include/uart.h ../include/usb.h \
- ../include/encoders.h
+ ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/gpio.h \
+ ../include/rcc.h ../include/nvic.h ../include/dma.h \
+ ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/delay.h \
+ ../include/rtc.h ../include/ssd1306.h ../include/leds.h \
+ ../include/encoders.h ../include/spi.h ../include/fonts/smallfonts.h
+
+../include/afe.h:
+
+../include/projectconfig.h:
 
 ../libs/cmsis/include/stm32f4xx.h:
 
@@ -109,76 +104,26 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
 
 ../libs/StdPeriph/include/stm32f4xx_fsmc.h:
 
-../include/projectconfig.h:
-
-../include/initialization.h:
-
-../include/delay.h:
-
-../include/rtc.h:
-
-../include/projectconfig.h:
+../include/gpio.h:
 
 ../include/rcc.h:
 
-../include/ssd1306.h:
-
-../include/gpio.h:
-
 ../include/nvic.h:
-
-../include/leds.h:
-
-../include/encoders.h:
 
 ../include/dma.h:
 
 ../libs/StdPeriph/include/stm32f4xx_dma2d.h:
 
-../include/spi.h:
-
-../include/fonts/smallfonts.h:
-
-../include/uart.h:
-
-../include/pushbuttons.h:
-
-../include/rng.h:
-
-../include/sdio.h:
-
-../libs/fatfs/inc/diskio.h:
-
-../libs/fatfs/inc/integer.h:
-
-../libs/fatfs/inc/ff.h:
-
-../libs/fatfs/inc/ffconf.h:
-
-../include/afe.h:
-
-../include/leds.h:
-
-../include/pushbuttons.h:
-
 ../include/delay.h:
-
-../include/dma.h:
-
-../include/gpio.h:
-
-../include/rcc.h:
 
 ../include/rtc.h:
 
-../include/sdio.h:
+../include/ssd1306.h:
+
+../include/leds.h:
+
+../include/encoders.h:
 
 ../include/spi.h:
 
-../include/ssd1306.h:
-
-../include/uart.h:
-
-../include/usb.h:
-
-../include/encoders.h:
+../include/fonts/smallfonts.h:

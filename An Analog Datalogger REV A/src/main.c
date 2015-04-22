@@ -39,7 +39,6 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 	int main(void){
 		// setup
 		initialization();
-		//ssd1306_setOrientation(SSD1306_ORIENTATION_LANDSCAPE_UpsideDown);
 		ssd1306_setTextBlock(0,0,127,50,
 				"An Analog Datalogger         REV A.       "
 				"                      "
@@ -50,10 +49,10 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 
 		while(1){
 		// loop
+			counter++;
 
 //			leds_ledTest();
-			delay_milli(2000);
-			//leds_ledEncoderExample();
+//			leds_ledEncoderExample();
 //			printf(" - ");
 //			rtc_printTimeTerminal();
 //			delay_milli(200);
@@ -71,7 +70,8 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 			ssd1306_clearArea(0,tmp.y-stringHeigth, stringWidth, tmp.y);
 			ssd1306_setString(0,tmp.y-stringHeigth-1,nr,Font_System5x8);
 
-			printf(" -- loop nr %ld \r\n", counter++);
+			//printf(" -- loop nr %ld \r\n", counter++);
+			delay_milli(1000);
 		}
 	}
 

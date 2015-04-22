@@ -4,10 +4,10 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/afe.c \
 ../src/delay.c \
 ../src/dma.c \
 ../src/encoders.c \
-../src/fonts.c \
 ../src/gpio.c \
 ../src/initialization.c \
 ../src/interrupts.c \
@@ -25,10 +25,10 @@ C_SRCS += \
 ../src/usb.c 
 
 OBJS += \
+./src/afe.o \
 ./src/delay.o \
 ./src/dma.o \
 ./src/encoders.o \
-./src/fonts.o \
 ./src/gpio.o \
 ./src/initialization.o \
 ./src/interrupts.o \
@@ -46,10 +46,10 @@ OBJS += \
 ./src/usb.o 
 
 C_DEPS += \
+./src/afe.d \
 ./src/delay.d \
 ./src/dma.d \
 ./src/encoders.d \
-./src/fonts.d \
 ./src/gpio.d \
 ./src/initialization.d \
 ./src/interrupts.d \

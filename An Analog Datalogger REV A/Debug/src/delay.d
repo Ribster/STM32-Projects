@@ -33,7 +33,7 @@ src/delay.o: ../src/delay.c ../include/delay.h \
  ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
  ../include/leds.h ../include/encoders.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
- ../include/fonts.h ../include/fonts/smallfonts.h
+ ../include/fonts/smallfonts.h
 
 ../include/delay.h:
 
@@ -126,7 +126,5 @@ src/delay.o: ../src/delay.c ../include/delay.h \
 ../libs/StdPeriph/include/stm32f4xx_dma2d.h:
 
 ../include/spi.h:
-
-../include/fonts.h:
 
 ../include/fonts/smallfonts.h:

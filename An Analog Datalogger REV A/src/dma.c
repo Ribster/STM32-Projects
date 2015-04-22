@@ -17,7 +17,7 @@ dma_SPIRequest(
 
 // implementation
 void
-initialize_DMA(DMA_Stream_TypeDef* DMAx,
+DMA_initNormal(DMA_Stream_TypeDef* DMAx,
 		uint32_t DMA_Channel,
 		uint32_t DMA_PeripheralBaseAddr,
 		uint32_t DMA_Memory0BaseAddr,
@@ -33,6 +33,7 @@ initialize_DMA(DMA_Stream_TypeDef* DMAx,
 		uint32_t DMA_FIFOThreshold,
 		uint32_t DMA_MemoryBurst,
 		uint32_t DMA_PeripheralBurst){
+	DMA_DeInit(DMAx);
 	rcc_setDMAClock(DMAx, ENABLE);
 	DMA_InitTypeDef tmp;
 	tmp.DMA_BufferSize = DMA_BufferSize;

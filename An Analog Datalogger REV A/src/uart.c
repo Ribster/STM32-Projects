@@ -12,8 +12,6 @@ void
 initialize_UART(void){
 	// initialize the GPIO's
 	USART_InitTypeDef USART_InitStruct;
-	NVIC_InitTypeDef NVIC_InitStructure;
-
 
 	gpio_initAF(
 			UART2_PORT_RX,
@@ -43,11 +41,9 @@ initialize_UART(void){
 
 	USART_ITConfig(TERMINAL_UART, TERMINAL_IT_RX, ENABLE); // enable the USARTx receive interrupt
 
-	NVIC_InitStructure.NVIC_IRQChannel = TERMINAL_UART_IRQN;		 // we want to configure the USART1 interrupts
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = TERMINAL_IT_RX_IRQChannelPreemptionPriority;// this sets the priority group of the USART1 interrupts
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = TERMINAL_IT_RX_IRQChannelSubPriority;		 // this sets the subpriority inside the group
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			 // the USART1 interrupts are globally enabled
-	NVIC_Init(&NVIC_InitStructure);
+	nvic_initInterrupt(TERMINAL_UART_IRQN,
+			TERMINAL_IT_RX_IRQChannelPreemptionPriority,
+			TERMINAL_IT_RX_IRQChannelSubPriority);
 
 	USART_Cmd(TERMINAL_UART, ENABLE);
 
@@ -55,8 +51,9 @@ initialize_UART(void){
     setvbuf(stdin, NULL, _IONBF, 0);
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
-
-    printf("\r\nTesting uart after initialization!!\r\n");
+#ifdef DBG
+	printf("\r\nTesting uart after initialization!!\r\n");
+#endif
 }
 
 void

@@ -33,7 +33,7 @@ src/ssd1306.o: ../src/ssd1306.c ../include/ssd1306.h \
  ../include/delay.h ../include/rtc.h ../include/ssd1306.h \
  ../include/encoders.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
- ../include/fonts.h ../include/fonts/smallfonts.h
+ ../include/fonts/smallfonts.h
 
 ../include/ssd1306.h:
 
@@ -126,7 +126,5 @@ src/ssd1306.o: ../src/ssd1306.c ../include/ssd1306.h \
 ../libs/StdPeriph/include/stm32f4xx_dma2d.h:
 
 ../include/spi.h:
-
-../include/fonts.h:
 
 ../include/fonts/smallfonts.h:

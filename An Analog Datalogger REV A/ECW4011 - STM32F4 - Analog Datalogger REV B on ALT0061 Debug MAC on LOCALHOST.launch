@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.zylin.embeddedcdt.idleNative">
 <booleanAttribute key="com.zylin.embeddedcdt.debugger_app_console" value="false"/>
-<stringAttribute key="com.zylin.embeddedcdt.debugger_init_commands" value="target extended-remote localhost:4242&#13;&#10;monitor reset init&#13;&#10;load&#10;continue"/>
+<stringAttribute key="com.zylin.embeddedcdt.debugger_init_commands" value="target extended-remote localhost:4242&#13;&#10;monitor reset init&#13;&#10;load&#10;monitor reset halt"/>
 <stringAttribute key="org.eclipse.cdt.debug.mi.core.DEBUG_NAME" value="/Developer/Eclipse/gcc-arm-none-eabi-4_9-2015q1/bin/arm-none-eabi-gdb"/>
 <stringAttribute key="org.eclipse.cdt.debug.mi.core.GDB_INIT" value=""/>
 <booleanAttribute key="org.eclipse.cdt.debug.mi.core.breakpointsFullPath" value="false"/>

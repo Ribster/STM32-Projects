@@ -20,6 +20,8 @@ initialize_SPI(SPI_TypeDef* SPIx,
 		uint16_t SPI_CRCPolynomial){
 	SPI_InitTypeDef tmp;
 
+	SPI_I2S_DeInit(SPIx);
+
 	// enable the clock
 	rcc_setSPIClock(SPIx, ENABLE);
 

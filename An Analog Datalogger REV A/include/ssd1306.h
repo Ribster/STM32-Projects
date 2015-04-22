@@ -20,7 +20,6 @@
 #include "delay.h"
 #include "dma.h"
 #include "spi.h"
-#include "fonts.h"
 
 #include "fonts/smallfonts.h"
 
@@ -191,6 +190,13 @@ typedef struct SSD1306_OLED{
 	BitAction externalVCC;
 }SSD1306_OLED_t;
 
+typedef struct stringPointerTree_t{
+	uint32_t nr;
+	struct stringPointerTree_t* nextPointer;
+	struct stringPointerTree_t* previousPointer;
+	uint8_t* textPointer;
+}stringPointerTree_t;
+
 typedef struct xypair_t{
 	uint8_t x;
 	uint8_t y;
@@ -259,6 +265,9 @@ typedef struct xypair_t{
 	ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
 	void
 	ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftLine);
+	void
+	ssd1306_setTextBlockSmooth(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftPixel);
+
 	// lines
 	void
 	ssd1306_setLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);

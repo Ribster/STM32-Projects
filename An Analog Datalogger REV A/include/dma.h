@@ -18,7 +18,7 @@
 // prototypes
 
 void
-initialize_DMA(DMA_Stream_TypeDef* DMAx,
+DMA_initNormal(DMA_Stream_TypeDef* DMAx,
 		uint32_t DMA_Channel,
 		uint32_t DMA_PeripheralBaseAddr,
 		uint32_t DMA_Memory0BaseAddr,

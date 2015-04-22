@@ -37,7 +37,10 @@ initialize_RTC(void){
 	  while(RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET)
 	  {
 		delay_milli(50);
-		printf("%ld times tried waiting for LSE to get ready..\r\n", ++trying);
+#ifdef DBG
+	printf("%ld times tried waiting for LSE to get ready..\r\n", ++trying);
+#endif
+
 		if(trying == 5){
 			RCC_LSEConfig(RCC_LSE_OFF);
 			  /* The RTC Clock may varies due to LSI frequency dispersion */
@@ -55,7 +58,9 @@ initialize_RTC(void){
 			  /* ck_spre(1Hz) = RTCCLK(LSI) /(uwAsynchPrediv + 1)*(uwSynchPrediv + 1)*/
 			  uwSynchPrediv = 0xFF;
 			  uwAsynchPrediv = 0x7F;
-			  printf("RTC CONFIGURED AS LSI!! BE AWARE!! \r\n");
+#ifdef DBG
+	printf("RTC CONFIGURED AS LSI!! BE AWARE!! \r\n");
+#endif
 			  delay_milli(1000);
 			goto escape_LSE;
 		}
@@ -148,7 +153,9 @@ rtc_setTimeToOLED(void){
 	uint8_t stringWidth = (Font_System5x8.u8Width*8)+(7);
 	RTC_GetTime(RTC_Format_BIN, &RTC_TimeStructure);
 	sprintf(time, "%02d:%02d:%02d",RTC_TimeStructure.RTC_Hours, RTC_TimeStructure.RTC_Minutes, RTC_TimeStructure.RTC_Seconds);
+#ifdef DBG
 	printf("%s \r\n",time);
+#endif
 	ssd1306_clearArea(tmp.x-stringWidth-1,tmp.y-stringHeigth, tmp.x-1, tmp.y);
 	ssd1306_setString(tmp.x-stringWidth-1,tmp.y-stringHeigth-1,time,Font_System5x8);
 }
