@@ -10,6 +10,10 @@ RM := rm -rf
 -include sources.mk
 -include src/fonts/subdir.mk
 -include src/subdir.mk
+-include libs/usb/usb_lib/otg/src/subdir.mk
+-include libs/usb/usb_lib/core/src/subdir.mk
+-include libs/usb/usb_lib/cdc/src/subdir.mk
+-include libs/usb/usb_conf/src/subdir.mk
 -include libs/misc/src/subdir.mk
 -include libs/fatfs/src/subdir.mk
 -include libs/cmsis/src/subdir.mk

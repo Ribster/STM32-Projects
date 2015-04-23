@@ -13,10 +13,6 @@ volatile uint8_t afe_DMA_RX_Buffer[AFE_DMA_BufferSize];
 void
 initialize_AFE(void){
 
-#ifdef DBG
-
-#endif
-
 	// intialize pins
 		// CS PIN
 		gpio_initStandard(
@@ -156,6 +152,7 @@ initialize_AFE(void){
 		// USE DMA MODE
 		  GPIO_WriteBit(AFE_CS_PORT, AFE_CS_PIN, Bit_RESET);
 		  GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_RESET);
+		  GPIO_WriteBit(AFE_SYNC1_PORT, AFE_SYNC1_PIN, Bit_SET);
 		  /* Enable DMA SPI TX Stream */
 		  DMA_Cmd(AFE_DMA_TX_DMAStream,ENABLE);
 
@@ -169,26 +166,29 @@ initialize_AFE(void){
 		  SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Rx, ENABLE);
 
 		  // clear TX buffer
-		  memset((void*)afe_DMA_TX_Buffer, 0, AFE_DMA_BufferSize);
-
-
+		  	  //memset((void*)afe_DMA_TX_Buffer, 0, AFE_DMA_BufferSize);
+		  for(uint32_t j=0;j<AFE_DMA_BufferSize;j++){
+			  afe_DMA_TX_Buffer[j] = j%256;
+		  }
 
 		  /* Enable the SPI peripheral */
 		  SPI_Cmd(AFE_SPI, ENABLE);
 
 		  while(DMA_GetFlagStatus(AFE_DMA_RX_DMAStream,AFE_DMA_RX_TransferHalfCompleteFlag)==RESET);
 
-
+		  GPIO_WriteBit(AFE_SYNC1_PORT, AFE_SYNC1_PIN, Bit_RESET);
+#ifdef DBG
 		  printf("Halftime Complete from AFE\r\n");
+#endif
 
 		  while (DMA_GetFlagStatus(AFE_DMA_TX_DMAStream,AFE_DMA_TX_TransferCompleteFlag)==RESET);
 		  while (DMA_GetFlagStatus(AFE_DMA_RX_DMAStream,AFE_DMA_RX_TransferCompleteFlag)==RESET);
 
 		  GPIO_WriteBit(AFE_CS_PORT, AFE_CS_PIN, Bit_SET);
 		  GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_SET);
-
+#ifdef DBG
 		  printf("Received data from AFE\r\n");
-
+#endif
 		  /* Disable DMA SPI TX Stream */
 		  DMA_Cmd(AFE_DMA_TX_DMAStream,DISABLE);
 
@@ -203,7 +203,7 @@ initialize_AFE(void){
 
 		  /* Disable the SPI peripheral */
 		  SPI_Cmd(AFE_SPI, DISABLE);
-
+#ifdef DBG
 		  printf("RX buffer: \r\n");
 		  for(uint32_t i= 0; i<AFE_DMA_BufferSize; i++){
 			  if(i!=0){
@@ -216,4 +216,5 @@ initialize_AFE(void){
 		  }
 		  //fwrite((void*)afe_DMA_RX_Buffer, AFE_DMA_BufferSize, 1, stdout);
 		  printf("\r\n");
+#endif
 }

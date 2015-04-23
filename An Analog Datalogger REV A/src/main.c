@@ -37,42 +37,104 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 
 // main routine
 	int main(void){
-		// setup
+		// setup initialization
 		initialization();
+
+		// print the home screen
+		ssd1306_setTextBlock(0,0,127,50,
+				"An Analog Datalogger\n"
+				"REV A.\n"
+				"Under Construction\n",
+				Font_System5x8, 0);
+		delay_milli(3000);
 		ssd1306_setTextBlock(0,0,127,50,
 				"An Analog Datalogger         REV A.       "
 				"                      "
 				"Under Construction.",
 				Font_System5x8, 0);
 
+
+		// make counter variable
 		uint32_t counter = 0;
 
-		while(1){
-		// loop
-			counter++;
+		// final loop
+			while(1){
+				// increment the loopcounter
+				counter++;
 
-//			leds_ledTest();
-//			leds_ledEncoderExample();
-//			printf(" - ");
-//			rtc_printTimeTerminal();
-//			delay_milli(200);
-//			ssd1306_pixbufferTest();
-//			ssd1306_lineTest();
-//			ssd1306_circleTest();
-//			ssd1306_areaTest();
-//			ssd1306_stringTest();
+				// 2 Start interrupt possibilities
+					// RTC interrupt every second
 
-			char nr[11];
-			xypair_t tmp = ssd1306_getScreenDimensions();
-			uint8_t stringHeigth = (Font_System5x8.u8Height);
-			uint8_t stringWidth = (Font_System5x8.u8Width*10)+(9);
-			sprintf(nr, "%010ld",counter);
-			ssd1306_clearArea(0,tmp.y-stringHeigth, stringWidth, tmp.y);
-			ssd1306_setString(0,tmp.y-stringHeigth-1,nr,Font_System5x8);
+					// External interrupt
 
-			//printf(" -- loop nr %ld \r\n", counter++);
-			delay_milli(1000);
-		}
+				// Upon interrupt, read out AFE
+
+				// Write data from AFE to SD card
+
+				// Write the loopcounter
+					// make a loopcounter with RTC clock displayed
+					#define printLength 11
+					char nr[printLength];
+					xypair_t tmp = ssd1306_getScreenDimensions();
+					uint8_t stringHeigth = (Font_System5x8.u8Height);
+					uint8_t stringWidth = (Font_System5x8.u8Width*(printLength-1))+(printLength-2);
+					sprintf(nr, "%010ld",counter);
+					ssd1306_clearArea(0,tmp.y-stringHeigth, stringWidth, tmp.y);
+					ssd1306_setString(0,tmp.y-stringHeigth-1,nr,Font_System5x8);
+
+					printf(" -- loop nr %ld \r\n", counter++);
+					delay_milli(1000);
+			}
+
+
+		// testloop
+			while(1){
+				// loop
+				#define TESTLOOP	4
+				counter++;
+
+				#if TESTLOOP==1
+					// just testing the leds
+					leds_ledTest();
+
+				#elif TESTLOOP==2
+					// test the encoders
+					leds_ledEncoderExample();
+					printf(" - ");
+					rtc_printTimeTerminal();
+					delay_milli(200);
+
+				#elif TESTLOOP==3
+					// test the SSD1306 functions
+					ssd1306_pixbufferTest();
+					ssd1306_lineTest();
+					ssd1306_circleTest();
+					ssd1306_areaTest();
+					ssd1306_stringTest();
+
+				#elif TESTLOOP==4
+
+					// make a loopcounter with RTC clock displayed
+					#define printLength 11
+					char nr[printLength];
+					xypair_t tmp = ssd1306_getScreenDimensions();
+					uint8_t stringHeigth = (Font_System5x8.u8Height);
+					uint8_t stringWidth = (Font_System5x8.u8Width*(printLength-1))+(printLength-2);
+					sprintf(nr, "%010ld",counter);
+					ssd1306_clearArea(0,tmp.y-stringHeigth, stringWidth, tmp.y);
+					ssd1306_setString(0,tmp.y-stringHeigth-1,nr,Font_System5x8);
+
+					printf(" -- loop nr %ld \r\n", counter++);
+					delay_milli(1000);
+				#endif
+	//
+
+
+
+
+
+
+			}
 	}
 
 

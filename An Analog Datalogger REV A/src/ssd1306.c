@@ -669,7 +669,6 @@ ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char*
 	// write every line until the string is printed
 		  uint32_t c, l;
 		  // total lines * height of a line
-		  uint32_t strTotHeight = (totLength / maxColumns ) * (font.u8Height+1);
 		  uint32_t i = shiftLines*maxColumns;
 
 		  for(l = 1; l < maxLines+1; l++){
@@ -678,73 +677,11 @@ ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char*
 				  // TODO: interpret text with \r or \n
 				  if(str[i]!=0x00 && i<totLength){
 					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), str[i++], font, ENABLE);
+				  } else if (str[i] == '\n') {
+					  l++;
 				  } else { break; }
 			  }
 		  }
-}
-void
-ssd1306_setTextBlockSmooth(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftPixels){
-	// Interpret the string
-		// make tree of pointers with struct
-			stringPointerTree_t startPointer;
-			stringPointerTree_t* currentPointer = &startPointer;
-			uint32_t lastBreak = 0;
-			uint32_t i;
-		// for each line
-			for(i=0; i<strlen(str); i++){
-				if(str[i] != '\n'){
-					// make a new string branch
-					stringPointerTree_t* tmpPointer = malloc(sizeof(stringPointerTree_t));
-					tmpPointer->nextPointer = 0x00;
-					tmpPointer->previousPointer = 0x00;
-					tmpPointer->nr = 0;
-					tmpPointer->textPointer = 0x00;
-					// make room for the string
-					tmpPointer->textPointer = malloc(i-lastBreak+1);
-					// copy the string into the new place
-					memset(tmpPointer->textPointer, 0, i-lastBreak+1); // clear the buffer
-					memcpy(tmpPointer->textPointer, (str+lastBreak), i-lastBreak); // cpy the data over
-					// assign the pointer to the current item
-					currentPointer->nextPointer = tmpPointer;		// make the current pointer point to the new item
-					tmpPointer->previousPointer = currentPointer;	// let the new item point to the previous item
-					tmpPointer->nr = currentPointer->nr+1;			// make the new item number incremented
-					currentPointer = tmpPointer;					// assign the temp pointer to the current pointer
-					// set the new break
-					lastBreak = i+1;
-				}
-			}
-		// print out for test
-#ifdef DBG
-		currentPointer = &startPointer;
-		while(currentPointer->nextPointer != 0x00){
-			// print the inside of the string
-			printf("Tree nr: %ld, ptr:0x%p, prevptr:0x%p, nextptr:0x%p, txt: %s \r\n",
-					currentPointer->nr,
-					(uint32_t*)currentPointer,
-					(uint32_t*)currentPointer->previousPointer,
-					(uint32_t*)currentPointer->nextPointer,
-					currentPointer->textPointer);
-			// move the pointer
-			currentPointer = currentPointer->nextPointer;
-		}
-#endif
-	// Look at the pixelshift that is necessary
-		// calculate the whole lines that need to be skipped
-		// store the rest of the division as pixelshift for topline
-	// Determine the lines that fall in between the printable area
-		// determine the printable area
-			xypair_t xy0 = ssd1306_adjustCoordinate(x0,y0);
-			xypair_t xy1 = ssd1306_adjustCoordinate(x1,y1);
-			xypair_t topLeft; topLeft.x = MIN(xy0.x,xy1.x); topLeft.y = MAX(xy0.y,xy1.y);
-			xypair_t topRight; topRight.x = MAX(xy0.x,xy1.x); topRight.y = MAX(xy0.y,xy1.y);
-			xypair_t bottomLeft; bottomLeft.x = MIN(xy0.x,xy1.x); bottomLeft.y = MIN(xy0.y,xy1.y);
-			xypair_t bottomRight; bottomRight.x = MAX(xy0.x,xy1.x); bottomRight.y = MAX(xy0.y,xy1.y);
-		// determine startline from pointertree and endline
-	// Print the lines
-		// print startline with pixelshift = (u8height - ypixelshift)
-		// for each line until endline
-			// print whole line
-	// Destroy the whole tree from memory
 }
 // lines
 void

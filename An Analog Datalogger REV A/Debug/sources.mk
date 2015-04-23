@@ -19,6 +19,10 @@ C_DEPS :=
 SUBDIRS := \
 src \
 src/fonts \
+libs/usb/usb_lib/otg/src \
+libs/usb/usb_lib/core/src \
+libs/usb/usb_lib/cdc/src \
+libs/usb/usb_conf/src \
 libs/misc/src \
 libs/fatfs/src \
 libs/cmsis/src \
