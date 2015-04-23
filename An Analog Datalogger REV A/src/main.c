@@ -90,7 +90,7 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 		// testloop
 			while(1){
 				// loop
-				#define TESTLOOP	4
+				#define TESTLOOP	5
 				counter++;
 
 				#if TESTLOOP==1
@@ -126,6 +126,16 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 
 					printf(" -- loop nr %ld \r\n", counter++);
 					delay_milli(1000);
+
+				#elif TESTLOOP==5
+					/* If there's data on the virtual serial port:
+					 *  - Echo it back
+					 */
+					uint8_t theByte;
+					if (VCP_get_char(&theByte))
+					{
+						VCP_put_char(theByte);
+					}
 				#endif
 	//
 

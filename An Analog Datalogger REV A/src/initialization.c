@@ -41,6 +41,9 @@ initialization(void){
 
 	// do the initialization of the OLED -- This needs to be done after the systick initialization!!
 	initialize_SSD1306();
+
+	// do the initialization of the USB
+	initialize_USB();
 }
 
 

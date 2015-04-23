@@ -37,7 +37,24 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
  ../include/fonts/smallfonts.h ../include/uart.h ../include/pushbuttons.h \
  ../include/rng.h ../include/sdio.h ../libs/fatfs/inc/diskio.h \
  ../libs/fatfs/inc/integer.h ../libs/fatfs/inc/ff.h \
- ../libs/fatfs/inc/ffconf.h ../include/afe.h ../include/leds.h \
+ ../libs/fatfs/inc/ffconf.h ../include/afe.h ../include/usb.h \
+ ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
+ ../libs/usb/usb_lib/core/inc/usbd_ioreq.h \
+ ../libs/usb/usb_lib/core/inc/usbd_def.h \
+ ../libs/usb/usb_conf/inc/usbd_conf.h \
+ ../libs/usb/usb_lib/core/inc/usbd_core.h \
+ ../libs/usb/usb_lib/otg/inc/usb_dcd.h \
+ ../libs/usb/usb_lib/otg/inc/usb_core.h \
+ ../libs/usb/usb_conf/inc/usb_conf.h \
+ ../libs/usb/usb_lib/otg/inc/usb_regs.h \
+ ../libs/usb/usb_lib/otg/inc/usb_defines.h \
+ ../libs/usb/usb_lib/core/inc/usbd_usr.h \
+ ../libs/usb/usb_conf/inc/usbd_desc.h \
+ ../libs/usb/usb_lib/core/inc/usbd_def.h \
+ ../libs/usb/usb_lib/cdc/inc/usbd_cdc_vcp.h \
+ ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
+ ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h \
+ ../libs/usb/usb_lib/otg/inc/usb_dcd.h ../include/leds.h \
  ../include/pushbuttons.h ../include/delay.h ../include/dma.h \
  ../include/gpio.h ../include/rcc.h ../include/rtc.h ../include/sdio.h \
  ../include/spi.h ../include/ssd1306.h ../include/uart.h ../include/usb.h \
@@ -156,6 +173,42 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
 ../libs/fatfs/inc/ffconf.h:
 
 ../include/afe.h:
+
+../include/usb.h:
+
+../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h:
+
+../libs/usb/usb_lib/core/inc/usbd_ioreq.h:
+
+../libs/usb/usb_lib/core/inc/usbd_def.h:
+
+../libs/usb/usb_conf/inc/usbd_conf.h:
+
+../libs/usb/usb_lib/core/inc/usbd_core.h:
+
+../libs/usb/usb_lib/otg/inc/usb_dcd.h:
+
+../libs/usb/usb_lib/otg/inc/usb_core.h:
+
+../libs/usb/usb_conf/inc/usb_conf.h:
+
+../libs/usb/usb_lib/otg/inc/usb_regs.h:
+
+../libs/usb/usb_lib/otg/inc/usb_defines.h:
+
+../libs/usb/usb_lib/core/inc/usbd_usr.h:
+
+../libs/usb/usb_conf/inc/usbd_desc.h:
+
+../libs/usb/usb_lib/core/inc/usbd_def.h:
+
+../libs/usb/usb_lib/cdc/inc/usbd_cdc_vcp.h:
+
+../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h:
+
+../libs/usb/usb_lib/otg/inc/usb_dcd_int.h:
+
+../libs/usb/usb_lib/otg/inc/usb_dcd.h:
 
 ../include/leds.h:
 

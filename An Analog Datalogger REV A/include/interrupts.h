@@ -16,6 +16,7 @@
 #include "encoders.h"
 #include "ssd1306.h"
 #include "sdio.h"
+#include "usb.h"
 
 void
 NMI_Handler(void);
@@ -44,8 +45,16 @@ void
 TIM8_UP_TIM13_IRQHandler(void);
 void
 SDIO_IRQHandler(void);
+
+// SDIO Interrupt handler. Be aware this is a macro.
+// This is done to be flexible with the DMA streams
 void
 SD_SDIO_DMA_IRQHANDLER(void);
+
+void
+OTG_FS_IRQHandler(void);
+void
+OTG_FS_WKUP_IRQHandler(void);
 
 
 #endif /* INTERRUPTS_H_ */

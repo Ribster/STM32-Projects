@@ -35,7 +35,24 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
  ../include/fonts/smallfonts.h ../include/pushbuttons.h ../include/uart.h \
  ../include/sdio.h ../libs/fatfs/inc/diskio.h ../libs/fatfs/inc/integer.h \
- ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h
+ ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h ../include/usb.h \
+ ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
+ ../libs/usb/usb_lib/core/inc/usbd_ioreq.h \
+ ../libs/usb/usb_lib/core/inc/usbd_def.h \
+ ../libs/usb/usb_conf/inc/usbd_conf.h \
+ ../libs/usb/usb_lib/core/inc/usbd_core.h \
+ ../libs/usb/usb_lib/otg/inc/usb_dcd.h \
+ ../libs/usb/usb_lib/otg/inc/usb_core.h \
+ ../libs/usb/usb_conf/inc/usb_conf.h \
+ ../libs/usb/usb_lib/otg/inc/usb_regs.h \
+ ../libs/usb/usb_lib/otg/inc/usb_defines.h \
+ ../libs/usb/usb_lib/core/inc/usbd_usr.h \
+ ../libs/usb/usb_conf/inc/usbd_desc.h \
+ ../libs/usb/usb_lib/core/inc/usbd_def.h \
+ ../libs/usb/usb_lib/cdc/inc/usbd_cdc_vcp.h \
+ ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
+ ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h \
+ ../libs/usb/usb_lib/otg/inc/usb_dcd.h
 
 ../include/interrupts.h:
 
@@ -144,3 +161,39 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
 ../libs/fatfs/inc/ff.h:
 
 ../libs/fatfs/inc/ffconf.h:
+
+../include/usb.h:
+
+../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h:
+
+../libs/usb/usb_lib/core/inc/usbd_ioreq.h:
+
+../libs/usb/usb_lib/core/inc/usbd_def.h:
+
+../libs/usb/usb_conf/inc/usbd_conf.h:
+
+../libs/usb/usb_lib/core/inc/usbd_core.h:
+
+../libs/usb/usb_lib/otg/inc/usb_dcd.h:
+
+../libs/usb/usb_lib/otg/inc/usb_core.h:
+
+../libs/usb/usb_conf/inc/usb_conf.h:
+
+../libs/usb/usb_lib/otg/inc/usb_regs.h:
+
+../libs/usb/usb_lib/otg/inc/usb_defines.h:
+
+../libs/usb/usb_lib/core/inc/usbd_usr.h:
+
+../libs/usb/usb_conf/inc/usbd_desc.h:
+
+../libs/usb/usb_lib/core/inc/usbd_def.h:
+
+../libs/usb/usb_lib/cdc/inc/usbd_cdc_vcp.h:
+
+../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h:
+
+../libs/usb/usb_lib/otg/inc/usb_dcd_int.h:
+
+../libs/usb/usb_lib/otg/inc/usb_dcd.h:

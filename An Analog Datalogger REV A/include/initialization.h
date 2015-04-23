@@ -23,6 +23,7 @@
 #include "rng.h"
 #include "sdio.h"
 #include "afe.h"
+#include "usb.h"
 
 // prototype
 void
