@@ -343,54 +343,66 @@
 52	PB13	I/O	SPI2_SCK	nRF_SCK
 51	PB12	I/O	SPI2_NSS	nRF_SS
 	*/
+#define nRF_SPI SPI2
 
-#define nRF_CE_PORT GPIOD
-#define nRF_CE_PIN 9
-#define nRF_CE_MODE GPIO_Mode_OUT
-#define nRF_CE_PULL GPIO_PuPd_NOPULL
-#define nRF_CE_OTYPE GPIO_OType_PP
-#define nRF_CE_SPEED GPIO_Speed_100MHz
-#define nRF_CE_INITSTATE Bit_RESET
+// SPI Config
+	#define nRF_SPI_Direction SPI_Direction_2Lines_FullDuplex
+	#define nRF_SPI_Mode SPI_Mode_Master
+	#define nRF_SPI_DataSize SPI_DataSize_8b
+	#define nRF_SPI_CPOL SPI_CPOL_Low
+	#define nRF_SPI_CPHA SPI_CPHA_1Edge
+	#define nRF_SPI_NSS SPI_NSS_Soft
+	#define nRF_SPI_BaudRatePrescaler SPI_BaudRatePrescaler_4
+	#define nRF_SPI_FirstBit SPI_FirstBit_MSB
+	#define nRF_SPI_CRCPolynomial 7
 
-#define nRF_IRQ_PORT GPIOD
-#define nRF_IRQ_PIN 8
-#define nRF_IRQ_MODE GPIO_Mode_IN
-#define nRF_IRQ_PULL GPIO_PuPd_NOPULL
-#define nRF_IRQ_OTYPE GPIO_OType_PP
-#define nRF_IRQ_SPEED GPIO_Speed_100MHz
-#define nRF_IRQ_EXTI_Line (1<<nRF_IRQ_PIN)
+	#define nRF_CE_PORT GPIOD
+	#define nRF_CE_PIN 9
+	#define nRF_CE_MODE GPIO_Mode_OUT
+	#define nRF_CE_PULL GPIO_PuPd_NOPULL
+	#define nRF_CE_OTYPE GPIO_OType_PP
+	#define nRF_CE_SPEED GPIO_Speed_100MHz
+	#define nRF_CE_INITSTATE Bit_RESET
 
-#define nRF_MISO_PORT PORTB
-#define nRF_MISO_PIN 14
-#define nRF_MISO_MODE GPIO_Mode_AF
-#define nRF_MISO_PULL GPIO_PuPd_NOPULL
-#define nRF_MISO_OTYPE GPIO_OType_PP
-#define nRF_MISO_SPEED GPIO_Speed_100MHz
-#define nRF_MISO_AF GPIO_AF_SPI2 //AF5
+	#define nRF_IRQ_PORT GPIOD
+	#define nRF_IRQ_PIN 8
+	#define nRF_IRQ_MODE GPIO_Mode_IN
+	#define nRF_IRQ_PULL GPIO_PuPd_NOPULL
+	#define nRF_IRQ_OTYPE GPIO_OType_PP
+	#define nRF_IRQ_SPEED GPIO_Speed_100MHz
+	#define nRF_IRQ_EXTI_Line (1<<nRF_IRQ_PIN)
 
-#define nRF_MOSI_PORT PORTB
-#define nRF_MOSI_PIN 15
-#define nRF_MOSI_MODE GPIO_Mode_AF
-#define nRF_MOSI_PULL GPIO_PuPd_NOPULL
-#define nRF_MOSI_OTYPE GPIO_OType_PP
-#define nRF_MOSI_SPEED GPIO_Speed_100MHz
-#define nRF_MOSI_AF GPIO_AF_SPI2 //AF5
+	#define nRF_MISO_PORT GPIOB
+	#define nRF_MISO_PIN 14
+	#define nRF_MISO_MODE GPIO_Mode_AF
+	#define nRF_MISO_PULL GPIO_PuPd_NOPULL
+	#define nRF_MISO_OTYPE GPIO_OType_PP
+	#define nRF_MISO_SPEED GPIO_Speed_100MHz
+	#define nRF_MISO_AF GPIO_AF_SPI2 //AF5
 
-#define nRF_SCK_PORT PORTB
-#define nRF_SCK_PIN 13
-#define nRF_SCK_MODE GPIO_Mode_AF
-#define nRF_SCK_PULL GPIO_PuPd_NOPULL
-#define nRF_SCK_OTYPE GPIO_OType_PP
-#define nRF_SCK_SPEED GPIO_Speed_100MHz
-#define nRF_SCK_AF GPIO_AF_SPI2 //AF5
+	#define nRF_MOSI_PORT GPIOB
+	#define nRF_MOSI_PIN 15
+	#define nRF_MOSI_MODE GPIO_Mode_AF
+	#define nRF_MOSI_PULL GPIO_PuPd_NOPULL
+	#define nRF_MOSI_OTYPE GPIO_OType_PP
+	#define nRF_MOSI_SPEED GPIO_Speed_100MHz
+	#define nRF_MOSI_AF GPIO_AF_SPI2 //AF5
 
-#define nRF_SS_PORT PORTB
-#define nRF_SS_PIN 12
-#define nRF_SS_MODE GPIO_Mode_OUT
-#define nRF_SS_PULL GPIO_PuPd_NOPULL
-#define nRF_SS_OTYPE GPIO_OType_PP
-#define nRF_SS_SPEED GPIO_Speed_100MHz
-#define nRF_SS_INITSTATE Bit_RESET
+	#define nRF_SCK_PORT GPIOB
+	#define nRF_SCK_PIN 13
+	#define nRF_SCK_MODE GPIO_Mode_AF
+	#define nRF_SCK_PULL GPIO_PuPd_NOPULL
+	#define nRF_SCK_OTYPE GPIO_OType_PP
+	#define nRF_SCK_SPEED GPIO_Speed_100MHz
+	#define nRF_SCK_AF GPIO_AF_SPI2 //AF5
+
+	#define nRF_SS_PORT GPIOB
+	#define nRF_SS_PIN 12
+	#define nRF_SS_MODE GPIO_Mode_OUT
+	#define nRF_SS_PULL GPIO_PuPd_NOPULL
+	#define nRF_SS_OTYPE GPIO_OType_PP
+	#define nRF_SS_SPEED GPIO_Speed_100MHz
+	#define nRF_SS_INITSTATE Bit_RESET
 
 // OLED
 /*
@@ -489,29 +501,29 @@
 71	PA12	I/O	USB_OTG_FS_DP
 69	PA10	I/O	USB_OTG_FS_ID
 */
-#define USB_DM_PORT GPIOA
-#define USB_DM_PIN 11
-#define USB_DM_MODE GPIO_Mode_AF
-#define USB_DM_PULL GPIO_PuPd_NOPULL
-#define USB_DM_OTYPE GPIO_OType_PP
-#define USB_DM_SPEED GPIO_Speed_100MHz
-#define USB_DM_AF GPIO_AF_OTG_FS //AF10
+	#define USB_DM_PORT GPIOA
+	#define USB_DM_PIN 11
+	#define USB_DM_MODE GPIO_Mode_AF
+	#define USB_DM_PULL GPIO_PuPd_NOPULL
+	#define USB_DM_OTYPE GPIO_OType_PP
+	#define USB_DM_SPEED GPIO_Speed_100MHz
+	#define USB_DM_AF GPIO_AF_OTG_FS //AF10
 
-#define USB_DP_PORT GPIOA
-#define USB_DP_PIN 12
-#define USB_DP_MODE GPIO_Mode_AF
-#define USB_DP_PULL GPIO_PuPd_NOPULL
-#define USB_DP_OTYPE GPIO_OType_PP
-#define USB_DP_SPEED GPIO_Speed_100MHz
-#define USB_DP_AF GPIO_AF_OTG_FS //AF10
+	#define USB_DP_PORT GPIOA
+	#define USB_DP_PIN 12
+	#define USB_DP_MODE GPIO_Mode_AF
+	#define USB_DP_PULL GPIO_PuPd_NOPULL
+	#define USB_DP_OTYPE GPIO_OType_PP
+	#define USB_DP_SPEED GPIO_Speed_100MHz
+	#define USB_DP_AF GPIO_AF_OTG_FS //AF10
 
-#define USB_ID_PORT GPIOA
-#define USB_ID_PIN 10
-#define USB_ID_MODE GPIO_Mode_AF
-#define USB_ID_PULL GPIO_PuPd_NOPULL
-#define USB_ID_OTYPE GPIO_OType_PP
-#define USB_ID_SPEED GPIO_Speed_100MHz
-#define USB_ID_AF GPIO_AF_OTG_FS //AF10
+	#define USB_ID_PORT GPIOA
+	#define USB_ID_PIN 10
+	#define USB_ID_MODE GPIO_Mode_AF
+	#define USB_ID_PULL GPIO_PuPd_NOPULL
+	#define USB_ID_OTYPE GPIO_OType_PP
+	#define USB_ID_SPEED GPIO_Speed_100MHz
+	#define USB_ID_AF GPIO_AF_OTG_FS //AF10
 
 // SD CARD
 /*

@@ -44,6 +44,9 @@ initialization(void){
 
 	// do the initialization of the USB
 	initialize_USB();
+
+	// do the initialization of the nRF24L01p
+	//initialize_nRF24L01p();
 }
 
 

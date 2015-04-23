@@ -675,10 +675,17 @@ ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char*
 			  for (c = 0; c < maxColumns; c++)
 			  {
 				  // TODO: interpret text with \r or \n
-				  if(str[i]!=0x00 && i<totLength){
+				  if (str[i] == '\n'){
+					  c=maxColumns;
+					  i++;
+				  } else if (str[i] == '\t'){
+					  i++;
+					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
+					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
+					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
+					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);
+				  } else if(str[i]!=0x00 && i<totLength){
 					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), str[i++], font, ENABLE);
-				  } else if (str[i] == '\n') {
-					  l++;
 				  } else { break; }
 			  }
 		  }

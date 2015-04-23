@@ -43,16 +43,9 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 		// print the home screen
 		ssd1306_setTextBlock(0,0,127,50,
 				"An Analog Datalogger\n"
-				"REV A.\n"
-				"Under Construction\n",
+				"\t\tREV A.\n\n"
+				"  Under Construction\n",
 				Font_System5x8, 0);
-		delay_milli(3000);
-		ssd1306_setTextBlock(0,0,127,50,
-				"An Analog Datalogger         REV A.       "
-				"                      "
-				"Under Construction.",
-				Font_System5x8, 0);
-
 
 		// make counter variable
 		uint32_t counter = 0;
@@ -82,7 +75,7 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 					ssd1306_clearArea(0,tmp.y-stringHeigth, stringWidth, tmp.y);
 					ssd1306_setString(0,tmp.y-stringHeigth-1,nr,Font_System5x8);
 
-					printf(" -- loop nr %ld \r\n", counter++);
+					printf(" -- loop nr %ld \r\n", counter);
 					delay_milli(1000);
 			}
 
