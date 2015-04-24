@@ -2,8 +2,8 @@
 - [ ] SD Filemenu
 - [ ] General filemenu
 
->SD Filemenu: Overview of all the items on the SD card.
->> __Structure__:
+>**SD Filemenu**: Overview of all the items on the SD card.
+>> _Structure_:
 
 >> Call menustructure every update of the screen; decide wich items need to be updated.
 
