@@ -1,9 +1,14 @@
 ###__Application development__
-Nr | Application description | Status
------------- | ------------ | -------------
-1 | SD Filemenu | TO DO
+Application description | Status
+------------ | -------------
+SD Filemenu | TO DO
 
->####1
->> Overview of all the items on the SD card.
+>SD Filemenu: Overview of all the items on the SD card.
+>> __Structure__:
+
+>> Call menustructure every update of the screen; decide wich items need to be updated.
+
+>> Pass the current update counter; pass the menu structure struct
+>>
 
 ###Design notes
