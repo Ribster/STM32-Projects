@@ -52,6 +52,12 @@ void
 SD_SDIO_DMA_IRQHANDLER(void);
 
 void
+DMA2_Stream0_IRQHandler(void);
+
+void
+DMA2_Stream5_IRQHandler(void);
+
+void
 OTG_FS_IRQHandler(void);
 void
 OTG_FS_WKUP_IRQHandler(void);

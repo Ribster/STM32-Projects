@@ -899,8 +899,8 @@ ssd1306_firstInit(void){
 		/* Enable the global Interrupt */
 		nvic_initInterrupt(
 				OLED_TIMER_IRQn,
-				0,
-				1);
+				0xF,
+				0);
 
 		rcc_setTIMClock(OLED_TIMER, ENABLE);
 		/* Time base configuration */

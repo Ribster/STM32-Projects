@@ -22,7 +22,7 @@ initialize_AFE(void){
 				AFE_CS_PIN,
 				AFE_CS_PULL,
 				AFE_CS_SPEED);
-		GPIO_WriteBit(AFE_CS_PORT, (1<<AFE_CS_PIN), AFE_CS_INITSTATE);
+		//GPIO_WriteBit(AFE_CS_PORT, (1<<AFE_CS_PIN), AFE_CS_INITSTATE);
 		// INT PIN
 		gpio_initStandard(
 				AFE_INT_PORT,
@@ -31,7 +31,7 @@ initialize_AFE(void){
 				AFE_INT_PIN,
 				AFE_INT_PULL,
 				AFE_INT_SPEED);
-		GPIO_WriteBit(AFE_INT_PORT, (1<<AFE_INT_PIN), AFE_INT_INITSTATE);
+		//GPIO_WriteBit(AFE_INT_PORT, (1<<AFE_INT_PIN), AFE_INT_INITSTATE);
 		// SYNC 1
 		gpio_initStandard(
 				AFE_SYNC1_PORT,
@@ -67,6 +67,9 @@ initialize_AFE(void){
 				AFE_EXT_SYNC_PIN,
 				AFE_EXT_SYNC_PULL,
 				AFE_EXT_SYNC_SPEED);
+
+
+
 		// MISO PIN
 		gpio_initAF(
 				AFE_MISO_PORT,
@@ -86,6 +89,7 @@ initialize_AFE(void){
 				AFE_MOSI_SPEED,
 				AFE_MOSI_AF);
 		// SCK PIN
+		//rcc_setGPIOClock(AFE_SCK_PORT, ENABLE);
 		gpio_initAF(
 				AFE_SCK_PORT,
 				AFE_SCK_MODE,
@@ -97,7 +101,6 @@ initialize_AFE(void){
 
 	// initialize SPI
 		//rcc_setSPIClock(AFE_SPI, ENABLE);
-
 		initialize_SPI(
 				AFE_SPI,
 				AFE_SPI_Direction,
@@ -111,6 +114,13 @@ initialize_AFE(void){
 				AFE_SPI_CRCPolynomial);
 		//SPI_Cmd(AFE_SPI, ENABLE);
 	// initialize DMA
+		// clear RX & TX buffer
+		memset((void*)afe_DMA_RX_Buffer, 0, sizeof(afe_DMA_RX_Buffer) );
+		//memset((void*)afe_DMA_TX_Buffer, 0, AFE_DMA_BufferSize);
+		for(uint32_t j=0;j<sizeof(afe_DMA_TX_Buffer);j++){
+			afe_DMA_TX_Buffer[j] = j%256;
+		}
+
 		// TX STREAM
 		DMA_initNormal(
 				AFE_DMA_TX_DMAStream,
@@ -118,7 +128,7 @@ initialize_AFE(void){
 				AFE_DMA_PeripheralBaseAddr,
 				(uint32_t)afe_DMA_TX_Buffer,
 				AFE_DMA_TX_DIR,
-				AFE_DMA_BufferSize,
+				sizeof(afe_DMA_TX_Buffer),
 				AFE_DMA_PeripheralInc,
 				AFE_DMA_MemoryInc,
 				AFE_DMA_PeripheralDataSize,
@@ -137,7 +147,7 @@ initialize_AFE(void){
 				AFE_DMA_PeripheralBaseAddr,
 				(uint32_t)afe_DMA_RX_Buffer,
 				AFE_DMA_RX_DIR,
-				AFE_DMA_BufferSize,
+				sizeof(afe_DMA_RX_Buffer),
 				AFE_DMA_PeripheralInc,
 				AFE_DMA_MemoryInc,
 				AFE_DMA_PeripheralDataSize,
@@ -150,71 +160,44 @@ initialize_AFE(void){
 				AFE_DMA_PeripheralBurst
 				);
 		// USE DMA MODE
-		  GPIO_WriteBit(AFE_CS_PORT, AFE_CS_PIN, Bit_RESET);
-		  GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_RESET);
-		  GPIO_WriteBit(AFE_SYNC1_PORT, AFE_SYNC1_PIN, Bit_SET);
-		  /* Enable DMA SPI TX Stream */
-		  DMA_Cmd(AFE_DMA_TX_DMAStream,ENABLE);
 
-		  /* Enable DMA SPI RX Stream */
-		  DMA_Cmd(AFE_DMA_RX_DMAStream,ENABLE);
+		//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
 
-		  /* Enable SPI DMA TX Requests */
-		  SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Tx, ENABLE);
+		nvic_initInterrupt(AFE_DMA_RX_DMAIRQ,
+				0,
+				0);
 
-		  /* Enable SPI DMA RX Requests */
-		  SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Rx, ENABLE);
+		nvic_initInterrupt(AFE_DMA_TX_DMAIRQ,
+				0,
+				1);
 
-		  // clear TX buffer
-		  	  //memset((void*)afe_DMA_TX_Buffer, 0, AFE_DMA_BufferSize);
-		  for(uint32_t j=0;j<AFE_DMA_BufferSize;j++){
-			  afe_DMA_TX_Buffer[j] = j%256;
-		  }
+		/* Enable DMA SPI TX Stream */
+		DMA_Cmd(AFE_DMA_TX_DMAStream,ENABLE);
 
-		  /* Enable the SPI peripheral */
-		  SPI_Cmd(AFE_SPI, ENABLE);
+		/* Enable DMA SPI RX Stream */
+		DMA_Cmd(AFE_DMA_RX_DMAStream,ENABLE);
 
-		  while(DMA_GetFlagStatus(AFE_DMA_RX_DMAStream,AFE_DMA_RX_TransferHalfCompleteFlag)==RESET);
+		/* Enable SPI DMA RX TX Requests */
+		SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Tx, ENABLE);
+		SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Rx, ENABLE);
 
-		  GPIO_WriteBit(AFE_SYNC1_PORT, AFE_SYNC1_PIN, Bit_RESET);
-#ifdef DBG
-		  printf("Halftime Complete from AFE\r\n");
-#endif
+		afe_read();
+}
 
-		  while (DMA_GetFlagStatus(AFE_DMA_TX_DMAStream,AFE_DMA_TX_TransferCompleteFlag)==RESET);
-		  while (DMA_GetFlagStatus(AFE_DMA_RX_DMAStream,AFE_DMA_RX_TransferCompleteFlag)==RESET);
+void
+afe_read(void){
+	DMA_ClearFlag(AFE_DMA_RX_DMAStream, AFE_DMA_RX_TransferCompleteFlag);
+	DMA_ClearITPendingBit(AFE_DMA_RX_DMAStream, DMA_IT_TCIF0);
 
-		  GPIO_WriteBit(AFE_CS_PORT, AFE_CS_PIN, Bit_SET);
-		  GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_SET);
-#ifdef DBG
-		  printf("Received data from AFE\r\n");
-#endif
-		  /* Disable DMA SPI TX Stream */
-		  DMA_Cmd(AFE_DMA_TX_DMAStream,DISABLE);
+	DMA_ClearFlag(AFE_DMA_TX_DMAStream, AFE_DMA_TX_TransferCompleteFlag);
+	DMA_ClearITPendingBit(AFE_DMA_TX_DMAStream, DMA_IT_TCIF5);
 
-		  /* Disable DMA SPI RX Stream */
-		  DMA_Cmd(AFE_DMA_RX_DMAStream,DISABLE);
+	DMA_ITConfig(AFE_DMA_RX_DMAStream, DMA_IT_TCIF0, ENABLE);
+	DMA_ITConfig(AFE_DMA_TX_DMAStream, DMA_IT_TCIF5, ENABLE);
 
-		  /* Disable SPI DMA TX Requsts */
-		  SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Tx, DISABLE);
+	GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_RESET);
 
-		  /* Disable SPI DMA RX Requsts */
-		  SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Rx, DISABLE);
-
-		  /* Disable the SPI peripheral */
-		  SPI_Cmd(AFE_SPI, DISABLE);
-#ifdef DBG
-		  printf("RX buffer: \r\n");
-		  for(uint32_t i= 0; i<AFE_DMA_BufferSize; i++){
-			  if(i!=0){
-				  printf(", ");
-			  }
-			  printf("%04ld:0x%x", i+1, afe_DMA_RX_Buffer[i]);
-			  if(i%1000==0){
-				  printf("\r\n");
-			  }
-		  }
-		  //fwrite((void*)afe_DMA_RX_Buffer, AFE_DMA_BufferSize, 1, stdout);
-		  printf("\r\n");
-#endif
+	/* Enable the SPI peripheral */
+	SPI_Cmd(AFE_SPI, ENABLE);
+	printf("Set DMA for transfer \r\n");
 }

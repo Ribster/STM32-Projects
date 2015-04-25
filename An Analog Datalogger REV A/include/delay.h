@@ -11,6 +11,7 @@
 #include "stm32f4xx.h"
 
 #include "rtc.h"
+#include "gpio.h"
 
 // constants
 #define SYSTICK_FREQUENCY_HZ	1000

@@ -220,20 +220,21 @@
 	 */
 #define AFE_SPI SPI1
 #define AFE_SPI_IRQn SPI1_IRQn
-#define AFE_DMA_BufferSize 5120
+#define AFE_DMA_BufferSize 50
 	// SPI Config
 		#define AFE_SPI_Direction SPI_Direction_2Lines_FullDuplex
-		#define AFE_SPI_Mode SPI_Mode_Master
+		#define AFE_SPI_Mode SPI_Mode_Slave
 		#define AFE_SPI_DataSize SPI_DataSize_8b
 		#define AFE_SPI_CPOL SPI_CPOL_Low
 		#define AFE_SPI_CPHA SPI_CPHA_1Edge
 		#define AFE_SPI_NSS SPI_NSS_Soft
-		#define AFE_SPI_BaudRatePrescaler SPI_BaudRatePrescaler_2
+		#define AFE_SPI_BaudRatePrescaler SPI_BaudRatePrescaler_16
 		#define AFE_SPI_FirstBit SPI_FirstBit_MSB
 		#define AFE_SPI_CRCPolynomial 7
 	// DMA SPI from Memory 2 Peripheral
 		// TX STREAM
 		#define AFE_DMA_TX_DMAStream DMA2_Stream5
+		#define AFE_DMA_TX_DMAIRQ DMA2_Stream5_IRQn
 		#define AFE_DMA_TX_DMAChannel DMA_Channel_3
 		#define AFE_DMA_TX_TransferCompleteFlag DMA_FLAG_TCIF5
 		#define AFE_DMA_TX_TransferHalfCompleteFlag DMA_FLAG_HTIF5
@@ -242,13 +243,14 @@
 
 		// RX STREAM
 		#define AFE_DMA_RX_DMAStream DMA2_Stream0
+		#define AFE_DMA_RX_DMAIRQ DMA2_Stream0_IRQn
 		#define AFE_DMA_RX_DMAChannel DMA_Channel_3
 		#define AFE_DMA_RX_TransferCompleteFlag DMA_FLAG_TCIF0
 		#define AFE_DMA_RX_TransferHalfCompleteFlag DMA_FLAG_HTIF0
 		#define AFE_DMA_RX_DMARequest SPI_I2S_DMAReq_Rx
 		#define AFE_DMA_RX_DIR DMA_DIR_PeripheralToMemory
 
-		#define AFE_DMA_PeripheralBaseAddr (uint32_t)&(AFE_SPI->DR)
+		#define AFE_DMA_PeripheralBaseAddr (uint32_t)(&AFE_SPI->DR)
 		//#define AFE_DMA_Memory0BaseAddr //heap pointer
 		#define AFE_DMA_PeripheralInc DMA_PeripheralInc_Disable
 		#define AFE_DMA_MemoryInc DMA_MemoryInc_Enable
@@ -257,7 +259,7 @@
 		#define AFE_DMA_Mode DMA_Mode_Normal
 		#define AFE_DMA_Priority DMA_Priority_High
 		#define AFE_DMA_FIFOMode DMA_FIFOMode_Disable
-		#define AFE_DMA_FIFOThreshold DMA_FIFOThreshold_HalfFull
+		#define AFE_DMA_FIFOThreshold DMA_FIFOThreshold_1QuarterFull
 		#define AFE_DMA_MemoryBurst DMA_MemoryBurst_Single
 		#define AFE_DMA_PeripheralBurst DMA_PeripheralBurst_Single
 
@@ -273,8 +275,8 @@
 	#define AFE_CS_PORT GPIOA
 	#define AFE_CS_PIN 4
 	#define AFE_CS_MODE GPIO_Mode_OUT
-	#define AFE_CS_PULL GPIO_PuPd_NOPULL
-	#define AFE_CS_OTYPE GPIO_OType_PP
+	#define AFE_CS_PULL GPIO_PuPd_UP
+	#define AFE_CS_OTYPE GPIO_OType_OD
 	#define AFE_CS_SPEED GPIO_Speed_100MHz
 	#define AFE_CS_INITSTATE Bit_SET
 	// MISO PIN
@@ -443,7 +445,7 @@
 	#define OLED_DMA_MemoryInc DMA_MemoryInc_Enable
 	#define OLED_DMA_PeripheralDataSize DMA_PeripheralDataSize_Byte
 	#define OLED_DMA_MemoryDataSize DMA_MemoryDataSize_Byte
-	#define OLED_DMA_Mode DMA_Mode_Normal
+	#define OLED_DMA_Mode DMA_Priority_Low
 	#define OLED_DMA_Priority DMA_Priority_High
 	#define OLED_DMA_FIFOMode DMA_FIFOMode_Disable
 	#define OLED_DMA_FIFOThreshold DMA_FIFOThreshold_1QuarterFull
@@ -660,7 +662,7 @@
 	#define TERMINAL_FLOWCONTROL USART_HardwareFlowControl_None
 	#define TERMINAL_MODE USART_Mode_Rx | USART_Mode_Tx
 	#define TERMINAL_IT_RX USART_IT_RXNE
-	#define TERMINAL_IT_RX_IRQChannelPreemptionPriority 0
+	#define TERMINAL_IT_RX_IRQChannelPreemptionPriority 0x02
 	#define TERMINAL_IT_RX_IRQChannelSubPriority 0
 	#define TERMINAL_IT_RX_MAXSTRINGLENGTH 512
 	extern char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];

@@ -30,4 +30,10 @@
 void
 initialization(void);
 
+void
+initialization_prefix(char* str);
+
+void
+initialization_suffix(void);
+
 #endif /* INITIALIZATION_H_ */

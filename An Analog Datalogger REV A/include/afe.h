@@ -20,8 +20,14 @@
 
 #include <stdio.h>
 
+extern volatile uint8_t afe_DMA_TX_Buffer[AFE_DMA_BufferSize];
+extern volatile uint8_t afe_DMA_RX_Buffer[AFE_DMA_BufferSize];
+
 // prototypes
 void
 initialize_AFE(void);
+
+void
+afe_read(void);
 
 #endif /* AFE_H_ */

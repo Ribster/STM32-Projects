@@ -18,4 +18,5 @@ nvic_initInterrupt(uint8_t NVIC_IRQChannel,
 	tmp.NVIC_IRQChannelSubPriority = NVIC_IRQChannelSubPriority;
 	tmp.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&tmp);
+
 }

@@ -7,6 +7,8 @@
 
 #include "uart.h"
 
+char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
+
 // implementation
 void
 initialize_UART(void){

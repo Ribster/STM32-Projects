@@ -31,8 +31,9 @@ delay_interruptHandler(void){
 		delay_microBuffer--;
 	}
 	// set time on OLED screen
-	if(delay_totalBuffer%1000 == 0){
+	if(delay_totalBuffer%500 == 0){
 		rtc_setTimeToOLED();
+		leds_toggleLed(ledList_Green);
 	}
 }
 uint32_t

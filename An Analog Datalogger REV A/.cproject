@@ -49,6 +49,11 @@
 									<listOptionValue builtIn="false" value="&quot;../libs/cmsis/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../libs/StdPeriph/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../libs/misc/include&quot;"/>
+									<listOptionValue builtIn="false" value="../libs/fatfs/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_conf/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/cdc/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/core/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/otg/inc"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.241577710" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F40_41xxx"/>
@@ -64,6 +69,11 @@
 									<listOptionValue builtIn="false" value="&quot;../libs/cmsis/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../libs/StdPeriph/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../libs/misc/include&quot;"/>
+									<listOptionValue builtIn="false" value="../libs/fatfs/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_conf/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/cdc/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/core/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/otg/inc"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.1210611368" name="Language standard" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.gnu11" valueType="enumerated"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.2134208728" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
@@ -188,6 +198,11 @@
 									<listOptionValue builtIn="false" value="&quot;../libs/cmsis/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../libs/StdPeriph/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../libs/misc/include&quot;"/>
+									<listOptionValue builtIn="false" value="../libs/fatfs/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_conf"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/cdc/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/core/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/otg/inc"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.709167544" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="STM32F40_41xxx"/>
@@ -202,6 +217,11 @@
 									<listOptionValue builtIn="false" value="&quot;../libs/cmsis/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../libs/StdPeriph/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../libs/misc/include&quot;"/>
+									<listOptionValue builtIn="false" value="../libs/fatfs/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_conf"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/cdc/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/core/inc"/>
+									<listOptionValue builtIn="false" value="../libs/usb/usb_lib/otg/inc"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.855667047" name="Language standard" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.gnu11" valueType="enumerated"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.669938790" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">

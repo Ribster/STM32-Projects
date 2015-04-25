@@ -17,6 +17,8 @@
 
 #include <stdio.h>
 
+extern char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
+
 // prototypes
 void
 initialize_UART(void);

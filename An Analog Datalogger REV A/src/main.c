@@ -32,7 +32,7 @@
 	#include "ff.h"
 
 // global variables
-char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
+
 
 
 // main routine
@@ -75,8 +75,10 @@ char TERMINAL_receiverbuffer[TERMINAL_IT_RX_MAXSTRINGLENGTH];
 					ssd1306_clearArea(0,tmp.y-stringHeigth, stringWidth, tmp.y);
 					ssd1306_setString(0,tmp.y-stringHeigth-1,nr,Font_System5x8);
 
+					afe_read();
+
 					printf(" -- loop nr %ld \r\n", counter);
-					delay_milli(1000);
+					delay_milli(3000);
 			}
 
 

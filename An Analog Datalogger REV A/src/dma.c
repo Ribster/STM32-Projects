@@ -51,12 +51,11 @@ DMA_initNormal(DMA_Stream_TypeDef* DMAx,
 	tmp.DMA_PeripheralInc = DMA_PeripheralInc;
 	tmp.DMA_Priority = DMA_Priority;
 
-	/* Configure Tx DMA */
 	tmp.DMA_Channel = DMA_Channel;
 	tmp.DMA_DIR = DMA_DIR;
 	tmp.DMA_Memory0BaseAddr = DMA_Memory0BaseAddr;
 	DMA_Init(DMAx, &tmp);
-	DMA_Cmd(DMAx, ENABLE);
+	//DMA_Cmd(DMAx, ENABLE);
 }
 
 

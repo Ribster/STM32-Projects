@@ -35,11 +35,11 @@ char *dec32(unsigned long i)
 void
 initialize_SDIO(void){
 	  /* Configure the NVIC Preemption Priority Bits */
-	  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+	  //NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
 
 	  nvic_initInterrupt(
 			  SDIO_IRQn,
-			  0,
+			  1,
 			  0);
 
 

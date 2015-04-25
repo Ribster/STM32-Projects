@@ -109,6 +109,7 @@ void PendSV_Handler(void)
 void
 SysTick_Handler(void){
 	// the delay function
+
 	delay_interruptHandler();
 	encoder_readEncoderOne();
 	encoder_readEncoderTwo();
@@ -116,6 +117,7 @@ SysTick_Handler(void){
 
 void
 EXTI15_10_IRQHandler(void){
+	//printf("EXTI interrupt! \r\n");
 	pushbuttons_interruptHandler_UP();
 	pushbuttons_interruptHandler_DOWN();
 	pushbuttons_interruptHandler_LEFT();
@@ -125,16 +127,19 @@ EXTI15_10_IRQHandler(void){
 }
 void
 USART2_IRQHandler(void){
+	printf("USART2 interrupt! \r\n");
 	uart_interruptHandlerTerminal();
 }
 void
 TIM8_UP_TIM13_IRQHandler(void){
+	//printf("ssd1306 interrupt! \r\n");
 	ssd1306_interruptHandler();
 }
 
 void
 SDIO_IRQHandler(void)
 {
+	//printf("SDIO interrupt! \r\n");
   /* Process All SDIO Interrupt Sources */
   SD_ProcessIRQSrc();
 }
@@ -147,16 +152,55 @@ SDIO_IRQHandler(void)
   */
 void
 SD_SDIO_DMA_IRQHANDLER(void){
+	//printf("SDIO DMA interrupt! \r\n");
 	SD_ProcessDMAIRQ();
+}
+
+// AFE_DMA_RX
+void
+DMA2_Stream0_IRQHandler(void){
+	printf("AFE DMA RX interrupt! \r\n");
+	if(DMA_GetITStatus(AFE_DMA_RX_DMAStream, DMA_IT_TCIF0) == SET){
+
+		DMA_ClearFlag(AFE_DMA_RX_DMAStream, AFE_DMA_RX_TransferCompleteFlag);
+		DMA_ClearITPendingBit(AFE_DMA_RX_DMAStream, DMA_IT_TCIF0);
+		DMA_ITConfig(AFE_DMA_RX_DMAStream, DMA_IT_TCIF0, DISABLE);
+
+
+		/* Disable the SPI peripheral */
+		SPI_Cmd(AFE_SPI, DISABLE);
+
+		GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_SET);
+
+	}
+}
+
+// AFE_DMA_TX
+void
+DMA2_Stream5_IRQHandler(void){
+	printf("AFE DMA TX interrupt! \r\n");
+	if(DMA_GetITStatus(AFE_DMA_TX_DMAStream, DMA_IT_TCIF5) == SET){
+
+		DMA_ClearFlag(AFE_DMA_TX_DMAStream, AFE_DMA_TX_TransferCompleteFlag);
+		DMA_ClearITPendingBit(AFE_DMA_TX_DMAStream, DMA_IT_TCIF5);
+		DMA_ITConfig(AFE_DMA_TX_DMAStream, DMA_IT_TCIF5, DISABLE);
+
+		/* Disable the SPI peripheral */
+		SPI_Cmd(AFE_SPI, DISABLE);
+
+		GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_SET);
+	}
 }
 
 void OTG_FS_IRQHandler(void)
 {
+	printf("OTG interrupt! \r\n");
   USBD_OTG_ISR_Handler (&USB_OTG_dev);
 }
 
 void OTG_FS_WKUP_IRQHandler(void)
 {
+	printf("OTG wakeup interrupt! \r\n");
   if(USB_OTG_dev.cfg.low_power)
   {
     *(uint32_t *)(0xE000ED10) &= 0xFFFFFFF9 ;
