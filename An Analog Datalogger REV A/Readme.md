@@ -1,4 +1,5 @@
 ###__Application development__
+<<<<<<< HEAD
 - [ ] SD card detection on startup
 - [ ] Init list peripherals on startup
 - [ ] General file menu
@@ -37,6 +38,18 @@
 >> Pass the current update counter; pass the menu structure struct -> decide what menu needs to be rendered + scrolling selection of current item
 
 >> Make 
+=======
+- [ ] SD Filemenu
+- [ ] General filemenu
+
+>**SD Filemenu**: Overview of all the items on the SD card.
+>> _Structure_:
+
+>> Call menustructure every update of the screen; decide wich items need to be updated.
+
+>> Pass the current update counter; pass the menu structure struct -> decide what menu needs to be rendered
+>>
+>>>>>>> origin/master
 
 
 
