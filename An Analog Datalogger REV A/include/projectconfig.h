@@ -18,7 +18,7 @@
 
 
 // Project version
-#define PROJVER "0.0.000"
+#define PROJVER "0.0.001"
 
 #define DBG
 //#define DBGIO

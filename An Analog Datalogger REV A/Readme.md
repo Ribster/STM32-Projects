@@ -1,10 +1,38 @@
 ###__Application development__
+- [ ] Initialization on OLED
 - [ ] SD card detection on startup
 - [ ] Init list peripherals on startup
 - [ ] General file menu
 - [ ] SD file menu
 - [ ] Menu scrolling sideways on selected item
 
+>**Initialization on OLED**
+
+>> _List_:
+
+>> - UART
+
+>> - LEDS
+
+>> - Pushbuttons
+
+>> - Encoders
+
+>> - Systick
+
+>> - RTC
+
+>> - AFE
+
+>> - RNG
+
+>> - SD
+
+>> - SSD1306
+
+>> - USB
+
+>> - nRF
 
 >**General Filemenu**
 

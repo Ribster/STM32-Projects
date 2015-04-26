@@ -40,12 +40,7 @@
 		// setup initialization
 		initialization();
 
-		// print the home screen
-		ssd1306_setTextBlock(0,0,127,50,
-				"An Analog Datalogger\n"
-				"\t\tREV A.\n\n"
-				"  Under Construction\n",
-				Font_System5x8, 0);
+
 
 		// make counter variable
 		uint32_t counter = 0;
@@ -78,7 +73,7 @@
 					afe_read();
 
 					printf(" -- loop nr %ld \r\n", counter);
-					delay_milli(3000);
+					delay_milli(1000);
 			}
 
 

@@ -53,7 +53,7 @@ initialize_UART(void){
     setvbuf(stdin, NULL, _IONBF, 0);
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
-#ifdef DBG
+#ifdef DBGIO
 	printf("\r\nTesting uart after initialization!!\r\n");
 #endif
 }
