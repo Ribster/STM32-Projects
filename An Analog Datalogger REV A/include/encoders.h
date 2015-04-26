@@ -14,6 +14,7 @@
 #include "projectconfig.h"
 #include "gpio.h"
 #include "rcc.h"
+#include "menustructure.h"
 
 void
 initialize_encoderOne(void);

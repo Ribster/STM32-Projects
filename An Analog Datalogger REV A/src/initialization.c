@@ -69,14 +69,17 @@ initialization(void){
 	initialization_suffix(initialization_list_SSD1306);
 
 	// do the initialization of the USB
-	//initialization_prefix(initialization_list_USB);
-		//initialize_USB();
-	//initialization_suffix(initialization_list_USB);
+/*	initialization_prefix(initialization_list_USB);
+		initialize_USB();
+	initialization_suffix(initialization_list_USB);*/
 
 	// do the initialization of the nRF24L01p
-	//initialization_prefix(initialization_list_nRF);
-		//initialize_nRF24L01p();
-	//initialization_suffix(initialization_list_nRF);
+/*	initialization_prefix(initialization_list_nRF);
+		initialize_nRF24L01p();
+	initialization_suffix(initialization_list_nRF);*/
+
+	// initialization of the menu structure
+	initialize_menuStructure();
 
 	// initialize Homescreen
 
@@ -93,7 +96,6 @@ initialization(void){
 
 	// print initializations
 	delay_milli(OLED_DELAY_STARTUP);
-	ssd1306_clearArea(OLED_TEXTBLOCK_DIMENSIONS);
 	initialization_printList();
 }
 void
@@ -148,6 +150,9 @@ initialization_printList(void){
 	ssd1306_setCheckBoxWithText(0,0,initialization_list_BUFFER[initialization_list_nRF], Font_System5x8, initialization_list_STATES[initialization_list_nRF]);
 
 	delay_milli(OLED_DELAY_STARTUP);
+	ssd1306_clearArea(OLED_TEXTBLOCK_DIMENSIONS);
+
+	menu_enable = 0x01;
 }
 
 

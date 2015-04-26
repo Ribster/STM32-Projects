@@ -204,6 +204,7 @@ ssd1306_interruptHandler(void){
 	if(TIM_GetITStatus(OLED_TIMER, OLED_TIMER_ITFlag)){
 		TIM_ClearITPendingBit(OLED_TIMER, OLED_TIMER_ITFlag);
 		leds_setLed(ledList_White1, ENABLE);
+		menustructure_render();
 		ssd1306_transmitPixelBuffer();
 		leds_setLed(ledList_White1, DISABLE);
 	}

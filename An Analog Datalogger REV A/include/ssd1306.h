@@ -20,6 +20,7 @@
 #include "delay.h"
 #include "dma.h"
 #include "spi.h"
+#include "menustructure.h"
 
 #include "fonts/smallfonts.h"
 

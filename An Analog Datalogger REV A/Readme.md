@@ -1,38 +1,11 @@
 ###__Application development__
-- [ ] Initialization on OLED
+
 - [ ] SD card detection on startup
-- [ ] Init list peripherals on startup
 - [ ] General file menu
 - [ ] SD file menu
 - [ ] Menu scrolling sideways on selected item
-
->**Initialization on OLED**
-
->> _List_:
-
->> - UART
-
->> - LEDS
-
->> - Pushbuttons
-
->> - Encoders
-
->> - Systick
-
->> - RTC
-
->> - AFE
-
->> - RNG
-
->> - SD
-
->> - SSD1306
-
->> - USB
-
->> - nRF
+- [x] Init list peripherals on startup
+- [x] Initialization on OLED
 
 >**General Filemenu**
 
@@ -64,8 +37,33 @@
 
 >> Pass the current update counter; pass the menu structure struct -> decide what menu needs to be rendered + scrolling selection of current item
 
->> Make 
+>**Initialization on OLED**
 
+>> _List_:
+
+>> - UART
+
+>> - LEDS
+
+>> - Pushbuttons
+
+>> - Encoders
+
+>> - Systick
+
+>> - RTC
+
+>> - AFE
+
+>> - RNG
+
+>> - SD
+
+>> - SSD1306
+
+>> - USB
+
+>> - nRF
 
 
 ###Design notes

@@ -27,6 +27,7 @@
 #include "sdio.h"
 #include "afe.h"
 #include "usb.h"
+#include "menustructure.h"
 //#include "nRF24L01p.h"
 
 typedef enum initialization_list_t{

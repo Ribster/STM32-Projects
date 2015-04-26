@@ -31,7 +31,8 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/delay.h \
  ../include/rtc.h ../include/projectconfig.h ../include/rcc.h \
  ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
- ../include/leds.h ../include/encoders.h ../include/dma.h \
+ ../include/leds.h ../include/encoders.h ../include/menustructure.h \
+ ../include/initialization.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
  ../include/fonts/smallfonts.h ../libs/usb/usb_lib/otg/inc/usb_defines.h \
  ../libs/usb/usb_conf/inc/usb_conf.h ../include/uart.h \
@@ -140,6 +141,10 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
 ../include/leds.h:
 
 ../include/encoders.h:
+
+../include/menustructure.h:
+
+../include/initialization.h:
 
 ../include/dma.h:
 

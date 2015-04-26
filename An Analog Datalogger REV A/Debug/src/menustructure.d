@@ -1,4 +1,4 @@
-src/leds.o: ../src/leds.c ../include/leds.h \
+src/menustructure.o: ../src/menustructure.c ../include/menustructure.h \
  ../libs/cmsis/include/stm32f4xx.h ../libs/cmsis/include/core_cm4.h \
  ../libs/cmsis/include/core_cmInstr.h ../libs/cmsis/include/core_cmFunc.h \
  ../libs/cmsis/include/core_cm4_simd.h \
@@ -29,13 +29,15 @@ src/leds.o: ../src/leds.c ../include/leds.h \
  ../libs/StdPeriph/include/stm32f4xx_dac.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
- ../include/delay.h ../include/rtc.h ../include/rcc.h \
- ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
- ../include/leds.h ../include/dma.h \
+ ../include/initialization.h ../include/delay.h ../include/rtc.h \
+ ../include/rcc.h ../include/ssd1306.h ../include/gpio.h \
+ ../include/nvic.h ../include/leds.h ../include/encoders.h \
+ ../include/menustructure.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
- ../include/menustructure.h ../include/initialization.h ../include/uart.h \
- ../include/pushbuttons.h ../include/encoders.h ../include/rng.h \
- ../include/sdio.h ../libs/fatfs/inc/diskio.h ../libs/fatfs/inc/integer.h \
+ ../include/fonts/smallfonts.h ../libs/usb/usb_lib/otg/inc/usb_defines.h \
+ ../libs/usb/usb_conf/inc/usb_conf.h ../include/uart.h \
+ ../include/pushbuttons.h ../include/rng.h ../include/sdio.h \
+ ../libs/fatfs/inc/diskio.h ../libs/fatfs/inc/integer.h \
  ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h ../include/afe.h \
  ../include/usb.h ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
  ../libs/usb/usb_lib/core/inc/usbd_ioreq.h \
@@ -44,7 +46,6 @@ src/leds.o: ../src/leds.c ../include/leds.h \
  ../libs/usb/usb_lib/core/inc/usbd_core.h \
  ../libs/usb/usb_lib/otg/inc/usb_dcd.h \
  ../libs/usb/usb_lib/otg/inc/usb_core.h \
- ../libs/usb/usb_conf/inc/usb_conf.h \
  ../libs/usb/usb_lib/otg/inc/usb_regs.h \
  ../libs/usb/usb_lib/otg/inc/usb_defines.h \
  ../libs/usb/usb_lib/core/inc/usbd_usr.h \
@@ -53,10 +54,9 @@ src/leds.o: ../src/leds.c ../include/leds.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_vcp.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
  ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h \
- ../libs/usb/usb_lib/otg/inc/usb_dcd.h ../include/fonts/smallfonts.h \
- ../libs/usb/usb_lib/otg/inc/usb_defines.h
+ ../libs/usb/usb_lib/otg/inc/usb_dcd.h
 
-../include/leds.h:
+../include/menustructure.h:
 
 ../libs/cmsis/include/stm32f4xx.h:
 
@@ -126,6 +126,8 @@ src/leds.o: ../src/leds.c ../include/leds.h \
 
 ../include/projectconfig.h:
 
+../include/initialization.h:
+
 ../include/delay.h:
 
 ../include/rtc.h:
@@ -140,21 +142,25 @@ src/leds.o: ../src/leds.c ../include/leds.h \
 
 ../include/leds.h:
 
+../include/encoders.h:
+
+../include/menustructure.h:
+
 ../include/dma.h:
 
 ../libs/StdPeriph/include/stm32f4xx_dma2d.h:
 
 ../include/spi.h:
 
-../include/menustructure.h:
+../include/fonts/smallfonts.h:
 
-../include/initialization.h:
+../libs/usb/usb_lib/otg/inc/usb_defines.h:
+
+../libs/usb/usb_conf/inc/usb_conf.h:
 
 ../include/uart.h:
 
 ../include/pushbuttons.h:
-
-../include/encoders.h:
 
 ../include/rng.h:
 
@@ -186,8 +192,6 @@ src/leds.o: ../src/leds.c ../include/leds.h \
 
 ../libs/usb/usb_lib/otg/inc/usb_core.h:
 
-../libs/usb/usb_conf/inc/usb_conf.h:
-
 ../libs/usb/usb_lib/otg/inc/usb_regs.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_defines.h:
@@ -205,7 +209,3 @@ src/leds.o: ../src/leds.c ../include/leds.h \
 ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_dcd.h:
-
-../include/fonts/smallfonts.h:
-
-../libs/usb/usb_lib/otg/inc/usb_defines.h:

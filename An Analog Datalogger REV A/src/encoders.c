@@ -116,6 +116,9 @@ encoder_readEncoderOne(void){
 	encoder_parameterEncoderOneNew = TIM_GetCounter(ENC_1_TIMER);
 	encoder_parameterEncoderOneDifference = encoder_parameterEncoderOneNew - encoder_parameterEncoderOneOld;
 	encoder_parameterEncoderOneTotal += encoder_parameterEncoderOneDifference;
+	if(encoder_parameterEncoderOneDifference!=0){
+		leds_toggleLed(ledList_Blue);
+	}
 }
 void
 encoder_readEncoderTwo(void){
@@ -123,6 +126,14 @@ encoder_readEncoderTwo(void){
 	encoder_parameterEncoderTwoNew = TIM_GetCounter(ENC_2_TIMER);
 	encoder_parameterEncoderTwoDifference = encoder_parameterEncoderTwoNew - encoder_parameterEncoderTwoOld;
 	encoder_parameterEncoderTwoTotal += encoder_parameterEncoderTwoDifference;
+	if(encoder_parameterEncoderTwoDifference!=0){
+		leds_toggleLed(ledList_Blue);
+		if(encoder_parameterEncoderTwoDifference>0){
+			menustructure_stepMenuDown();
+		}else{
+			menustructure_stepMenuUp();
+		}
+	}
 }
 
 int16_t

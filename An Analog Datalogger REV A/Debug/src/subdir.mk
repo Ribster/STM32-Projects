@@ -13,6 +13,7 @@ C_SRCS += \
 ../src/interrupts.c \
 ../src/leds.c \
 ../src/main.c \
+../src/menustructure.c \
 ../src/nvic.c \
 ../src/pushbuttons.c \
 ../src/rcc.c \
@@ -34,6 +35,7 @@ OBJS += \
 ./src/interrupts.o \
 ./src/leds.o \
 ./src/main.o \
+./src/menustructure.o \
 ./src/nvic.o \
 ./src/pushbuttons.o \
 ./src/rcc.o \
@@ -55,6 +57,7 @@ C_DEPS += \
 ./src/interrupts.d \
 ./src/leds.d \
 ./src/main.d \
+./src/menustructure.d \
 ./src/nvic.d \
 ./src/pushbuttons.d \
 ./src/rcc.d \
