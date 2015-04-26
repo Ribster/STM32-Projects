@@ -33,7 +33,8 @@ src/rtc.o: ../src/rtc.c ../include/rtc.h \
  ../include/nvic.h ../include/ssd1306.h ../include/leds.h \
  ../include/encoders.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
- ../include/fonts/smallfonts.h
+ ../include/fonts/smallfonts.h ../libs/usb/usb_lib/otg/inc/usb_defines.h \
+ ../libs/usb/usb_conf/inc/usb_conf.h
 
 ../include/rtc.h:
 
@@ -128,3 +129,7 @@ src/rtc.o: ../src/rtc.c ../include/rtc.h \
 ../include/spi.h:
 
 ../include/fonts/smallfonts.h:
+
+../libs/usb/usb_lib/otg/inc/usb_defines.h:
+
+../libs/usb/usb_conf/inc/usb_conf.h:

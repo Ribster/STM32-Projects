@@ -33,18 +33,18 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
  ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
  ../include/leds.h ../include/encoders.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
- ../include/fonts/smallfonts.h ../include/uart.h ../include/pushbuttons.h \
- ../include/rng.h ../include/sdio.h ../libs/fatfs/inc/diskio.h \
- ../libs/fatfs/inc/integer.h ../libs/fatfs/inc/ff.h \
- ../libs/fatfs/inc/ffconf.h ../include/afe.h ../include/usb.h \
- ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
+ ../include/fonts/smallfonts.h ../libs/usb/usb_lib/otg/inc/usb_defines.h \
+ ../libs/usb/usb_conf/inc/usb_conf.h ../include/uart.h \
+ ../include/pushbuttons.h ../include/rng.h ../include/sdio.h \
+ ../libs/fatfs/inc/diskio.h ../libs/fatfs/inc/integer.h \
+ ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h ../include/afe.h \
+ ../include/usb.h ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
  ../libs/usb/usb_lib/core/inc/usbd_ioreq.h \
  ../libs/usb/usb_lib/core/inc/usbd_def.h \
  ../libs/usb/usb_conf/inc/usbd_conf.h \
  ../libs/usb/usb_lib/core/inc/usbd_core.h \
  ../libs/usb/usb_lib/otg/inc/usb_dcd.h \
  ../libs/usb/usb_lib/otg/inc/usb_core.h \
- ../libs/usb/usb_conf/inc/usb_conf.h \
  ../libs/usb/usb_lib/otg/inc/usb_regs.h \
  ../libs/usb/usb_lib/otg/inc/usb_defines.h \
  ../libs/usb/usb_lib/core/inc/usbd_usr.h \
@@ -149,6 +149,10 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
 
 ../include/fonts/smallfonts.h:
 
+../libs/usb/usb_lib/otg/inc/usb_defines.h:
+
+../libs/usb/usb_conf/inc/usb_conf.h:
+
 ../include/uart.h:
 
 ../include/pushbuttons.h:
@@ -182,8 +186,6 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
 ../libs/usb/usb_lib/otg/inc/usb_dcd.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_core.h:
-
-../libs/usb/usb_conf/inc/usb_conf.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_regs.h:
 

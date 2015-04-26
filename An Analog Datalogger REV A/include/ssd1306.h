@@ -23,10 +23,15 @@
 
 #include "fonts/smallfonts.h"
 
+#include "usb_defines.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+
+//#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
 
 // enumerations // commands // structs
 
@@ -202,6 +207,13 @@ typedef struct xypair_t{
 	uint8_t y;
 }xypair_t;
 
+typedef struct xycorners_t{
+	xypair_t topLeft;
+	xypair_t topRight;
+	xypair_t bottomLeft;
+	xypair_t bottomRight;
+}xycorners_t;
+
 // prototypes
 	// initialization
 	void
@@ -236,6 +248,8 @@ typedef struct xypair_t{
 	ssd1306_setViewMode(SSD1306_VIEWMODE_t newVal);
 	xypair_t
 	ssd1306_getScreenDimensions(void);
+	xycorners_t
+	ssd1306_getAdjustedPoints(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
 	// pixels
 	uint8_t
 	ssd1306_getPixel(uint8_t x, uint8_t y);
@@ -265,7 +279,8 @@ typedef struct xypair_t{
 	ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
 	void
 	ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftLine);
-
+	void
+	ssd1306_setCheckBoxWithText(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t checked);
 	// lines
 	void
 	ssd1306_setLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
@@ -276,7 +291,16 @@ typedef struct xypair_t{
 	ssd1306_setCircle(uint8_t x, uint8_t y, uint16_t radius);
 	void
 	ssd1306_clearCircle(uint8_t x, uint8_t y, uint16_t radius);
+	// semi-circles
+	void
+	ssd1306_setSemiCircle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t radius);
+	void
+	ssd1306_setSemiCircleOutline(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t radius);
 	// area's
+	void
+	ssd1306_setOutline(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
+	void
+	ssd1306_setOutlineRounded(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t radius);
 	void
 	ssd1306_setArea(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
 	void

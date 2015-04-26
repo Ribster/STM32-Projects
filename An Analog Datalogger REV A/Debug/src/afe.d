@@ -32,7 +32,9 @@ src/afe.o: ../src/afe.c ../include/afe.h \
  ../include/gpio.h ../include/rcc.h ../include/nvic.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/delay.h \
  ../include/rtc.h ../include/ssd1306.h ../include/leds.h \
- ../include/encoders.h ../include/spi.h ../include/fonts/smallfonts.h
+ ../include/encoders.h ../include/spi.h ../include/fonts/smallfonts.h \
+ ../libs/usb/usb_lib/otg/inc/usb_defines.h \
+ ../libs/usb/usb_conf/inc/usb_conf.h
 
 ../include/afe.h:
 
@@ -127,3 +129,7 @@ src/afe.o: ../src/afe.c ../include/afe.h \
 ../include/spi.h:
 
 ../include/fonts/smallfonts.h:
+
+../libs/usb/usb_lib/otg/inc/usb_defines.h:
+
+../libs/usb/usb_conf/inc/usb_conf.h:

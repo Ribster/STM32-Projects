@@ -80,19 +80,20 @@ initialization(void){
 
 	// initialize Homescreen
 
-	ssd1306_setLine(0, 55, 127, 55);
+	ssd1306_setLine(OLED_LINE_DIMENSIONS);
 
 	char* verString = "VER:";
-	char* startString = " An Analog Datalogger\nREV A.\t";
-	char* endString = "\n by Robbe Van Assche";
+	char* startString = " An Analog Datalogger  REV A. ";
+	char* endString = "\n\n by Robbe Van Assche";
 	char* newString = malloc(strlen(startString) + strlen(verString) + strlen(PROJVER) + strlen(endString));
 	sprintf(newString, "%s%s%s%s", startString, verString, PROJVER, endString);
-	ssd1306_setTextBlock(0,0,127,53,
+	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
 			newString,
 			Font_System5x8, 0);
 
 	// print initializations
-	delay_milli(2500);
+	delay_milli(OLED_DELAY_STARTUP);
+	ssd1306_clearArea(OLED_TEXTBLOCK_DIMENSIONS);
 	initialization_printList();
 }
 void
@@ -121,7 +122,32 @@ initialization_addString(initialization_list_t addVal, char* str){
 void
 initialization_printList(void){
 	// print an initialization list on the SSD1306
+	ssd1306_clearArea(OLED_TEXTBLOCK_DIMENSIONS);
+	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
+			"   Features:",
+			Font_8x8, 0);
+	ssd1306_setCheckBoxWithText(0,30,initialization_list_BUFFER[initialization_list_UART], Font_System5x8, initialization_list_STATES[initialization_list_UART]);
+	ssd1306_setCheckBoxWithText(0,20,initialization_list_BUFFER[initialization_list_LEDs], Font_System5x8, initialization_list_STATES[initialization_list_LEDs]);
+	ssd1306_setCheckBoxWithText(0,10,initialization_list_BUFFER[initialization_list_Pushbuttons], Font_System5x8, initialization_list_STATES[initialization_list_Pushbuttons]);
+	ssd1306_setCheckBoxWithText(0,0,initialization_list_BUFFER[initialization_list_Encoders], Font_System5x8, initialization_list_STATES[initialization_list_Encoders]);
 
+	ssd1306_setCheckBoxWithText(70,30,initialization_list_BUFFER[initialization_list_Systick], Font_System5x8, initialization_list_STATES[initialization_list_Systick]);
+	ssd1306_setCheckBoxWithText(70,20,initialization_list_BUFFER[initialization_list_RTC], Font_System5x8, initialization_list_STATES[initialization_list_RTC]);
+	ssd1306_setCheckBoxWithText(70,10,initialization_list_BUFFER[initialization_list_AFE], Font_System5x8, initialization_list_STATES[initialization_list_AFE]);
+	ssd1306_setCheckBoxWithText(70,0,initialization_list_BUFFER[initialization_list_RNG], Font_System5x8, initialization_list_STATES[initialization_list_RNG]);
+
+	delay_milli(OLED_DELAY_STARTUP);
+
+	ssd1306_clearArea(OLED_TEXTBLOCK_DIMENSIONS);
+	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
+			"   Features:",
+			Font_8x8, 0);
+	ssd1306_setCheckBoxWithText(0,30,initialization_list_BUFFER[initialization_list_SD], Font_System5x8, initialization_list_STATES[initialization_list_SD]);
+	ssd1306_setCheckBoxWithText(0,20,initialization_list_BUFFER[initialization_list_SSD1306], Font_System5x8, initialization_list_STATES[initialization_list_SSD1306]);
+	ssd1306_setCheckBoxWithText(0,10,initialization_list_BUFFER[initialization_list_USB], Font_System5x8, initialization_list_STATES[initialization_list_USB]);
+	ssd1306_setCheckBoxWithText(0,0,initialization_list_BUFFER[initialization_list_nRF], Font_System5x8, initialization_list_STATES[initialization_list_nRF]);
+
+	delay_milli(OLED_DELAY_STARTUP);
 }
 
 

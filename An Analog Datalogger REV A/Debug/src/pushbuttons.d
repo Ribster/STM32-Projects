@@ -33,7 +33,9 @@ src/pushbuttons.o: ../src/pushbuttons.c ../include/pushbuttons.h \
  ../include/delay.h ../include/rtc.h ../include/rcc.h \
  ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
  ../include/dma.h ../libs/StdPeriph/include/stm32f4xx_dma2d.h \
- ../include/spi.h ../include/fonts/smallfonts.h ../include/encoders.h
+ ../include/spi.h ../include/fonts/smallfonts.h \
+ ../libs/usb/usb_lib/otg/inc/usb_defines.h \
+ ../libs/usb/usb_conf/inc/usb_conf.h ../include/encoders.h
 
 ../include/pushbuttons.h:
 
@@ -126,5 +128,9 @@ src/pushbuttons.o: ../src/pushbuttons.c ../include/pushbuttons.h \
 ../include/spi.h:
 
 ../include/fonts/smallfonts.h:
+
+../libs/usb/usb_lib/otg/inc/usb_defines.h:
+
+../libs/usb/usb_conf/inc/usb_conf.h:
 
 ../include/encoders.h:

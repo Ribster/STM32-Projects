@@ -494,6 +494,17 @@ ssd1306_getScreenDimensions(void){
 	}
 	return tmp;
 }
+xycorners_t
+ssd1306_getAdjustedPoints(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1){
+	xycorners_t tmp;
+	xypair_t xy0 = ssd1306_adjustCoordinate(x0,y0);
+	xypair_t xy1 = ssd1306_adjustCoordinate(x1,y1);
+	tmp.topLeft.x = MIN(xy0.x,xy1.x); tmp.topLeft.y = MAX(xy0.y,xy1.y);
+	tmp.topRight.x = MAX(xy0.x,xy1.x); tmp.topRight.y = MAX(xy0.y,xy1.y);
+	tmp.bottomLeft.x = MIN(xy0.x,xy1.x); tmp.bottomLeft.y = MIN(xy0.y,xy1.y);
+	tmp.bottomRight.x = MAX(xy0.x,xy1.x); tmp.bottomRight.y = MIN(xy0.y,xy1.y);
+	return tmp;
+}
 // pixels
 uint8_t
 ssd1306_getPixel(uint8_t x, uint8_t y){
@@ -654,18 +665,13 @@ ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF
 void
 ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftLines){
 // old version
-	xypair_t xy0 = ssd1306_adjustCoordinate(x0,y0);
-	xypair_t xy1 = ssd1306_adjustCoordinate(x1,y1);
-	xypair_t topLeft; topLeft.x = MIN(xy0.x,xy1.x); topLeft.y = MAX(xy0.y,xy1.y);
-	xypair_t topRight; topRight.x = MAX(xy0.x,xy1.x); topRight.y = MAX(xy0.y,xy1.y);
-	xypair_t bottomLeft; bottomLeft.x = MIN(xy0.x,xy1.x); bottomLeft.y = MIN(xy0.y,xy1.y);
-	xypair_t bottomRight; bottomRight.x = MAX(xy0.x,xy1.x); bottomRight.y = MAX(xy0.y,xy1.y);
+	xycorners_t tmp = ssd1306_getAdjustedPoints(x0,y0,x1,y1);
 
-	uint32_t maxColumns = (bottomRight.x - bottomLeft.x) / (font.u8Width+1);
-	uint32_t maxLines = (topLeft.y - bottomLeft.y) / (font.u8Height+1);
+	uint32_t maxColumns = (tmp.bottomRight.x - tmp.bottomLeft.x) / (font.u8Width+1);
+	uint32_t maxLines = (tmp.topLeft.y - tmp.bottomLeft.y) / (font.u8Height+1);
 	uint32_t totLength = strlen(str);
 	// clear the text block
-	ssd1306_alterArea(bottomLeft.x, bottomLeft.y, topRight.x, topRight.y, Bit_RESET);
+	ssd1306_alterArea(tmp.bottomLeft.x, tmp.bottomLeft.y, tmp.topRight.x, tmp.topRight.y, Bit_RESET);
 	// write every line until the string is printed
 		  uint32_t c, l;
 		  // total lines * height of a line
@@ -680,15 +686,23 @@ ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char*
 					  i++;
 				  } else if (str[i] == '\t'){
 					  i++;
-					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
-					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
-					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
-					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);
+					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
+					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
+					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
+					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);
 				  } else if(str[i]!=0x00 && i<totLength){
-					  ssd1306_alterCharacter(topLeft.x + (c * (font.u8Width + 1)), topLeft.y - (l * (font.u8Height+1)), str[i++], font, ENABLE);
+					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), str[i++], font, ENABLE);
 				  } else { break; }
 			  }
 		  }
+}
+void
+ssd1306_setCheckBoxWithText(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t checked){
+	y+=3;
+	ssd1306_setOutlineRounded(x,y,x+8,y+8,2);
+	if(checked >0) {
+	ssd1306_setArea(x+2,y+2,x+6,y+7);}
+	ssd1306_setString(x+((font.u8Width+1)*2),y-1,str,font);
 }
 // lines
 void
@@ -764,7 +778,79 @@ ssd1306_alterCircle(uint8_t x0, uint8_t y0, uint16_t radius, BitAction newVal){
 	    }
 	  }
 }
+// semi-circles
+void
+ssd1306_setSemiCircle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t radius){
+
+}
+void
+ssd1306_setSemiCircleOutline(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t radius){
+	// reference : http://en.wikipedia.org/wiki/Midpoint_circle_algorithm
+
+	if(x0==x1 || y0==y1) return;	// donkey proofing
+
+	xycorners_t tmp = ssd1306_getAdjustedPoints(x0,y0,x1,y1);
+	uint8_t xComp = (x0>x1)?(1):(0);
+	uint8_t yComp = (y0>y1)?(1):(0);
+	uint8_t quadrant = xComp<<4 | yComp;
+
+	int x = radius;
+	int y = 0;
+	int radiusError = 1-x;
+
+	while(x >= y)
+	{
+		switch(quadrant){
+			case 0x10: // Quadrant 1
+				ssd1306_alterPixel(x + tmp.bottomLeft.x,  y + tmp.bottomLeft.y, Bit_SET); // 1
+				ssd1306_alterPixel(y + tmp.bottomLeft.x,  x + tmp.bottomLeft.y, Bit_SET); // 2
+				break;
+			case 0x00: // Quadrant 2
+				ssd1306_alterPixel(-x + tmp.bottomRight.x,  y + tmp.bottomRight.y, Bit_SET); // 3
+				ssd1306_alterPixel(-y + tmp.bottomRight.x,  x + tmp.bottomRight.y, Bit_SET); // 4
+				break;
+			case 0x01: // Quadrant 3
+				ssd1306_alterPixel(-x + tmp.topRight.x, -y + tmp.topRight.y, Bit_SET); // 5
+				ssd1306_alterPixel(-y + tmp.topRight.x, -x + tmp.topRight.y, Bit_SET); // 6
+				break;
+			case 0x11: // Quadrant 4
+				ssd1306_alterPixel(x + tmp.topLeft.x, -y + tmp.topLeft.y, Bit_SET); // 7
+				ssd1306_alterPixel(y + tmp.topLeft.x, -x + tmp.topLeft.y, Bit_SET); // 8
+				break;
+		}
+	  y++;
+	  if (radiusError<0)
+	  {
+		radiusError += 2 * y + 1;
+	  }
+	  else
+	  {
+		x--;
+		radiusError += 2 * (y - x) + 1;
+	  }
+	}
+}
 // area's
+void
+ssd1306_setOutline(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1){
+	xycorners_t tmp = ssd1306_getAdjustedPoints(x0,y0,x1,y1);
+	ssd1306_alterLine(tmp.bottomLeft.x, tmp.bottomLeft.y, tmp.topLeft.x, tmp.topLeft.y, Bit_SET);
+	ssd1306_alterLine(tmp.topLeft.x, tmp.topLeft.y, tmp.topRight.x, tmp.topRight.y, Bit_SET);
+	ssd1306_alterLine(tmp.topRight.x, tmp.topRight.y, tmp.bottomRight.x, tmp.bottomRight.y, Bit_SET);
+	ssd1306_alterLine(tmp.bottomLeft.x, tmp.bottomLeft.y, tmp.bottomRight.x, tmp.bottomRight.y, Bit_SET);
+}
+void
+ssd1306_setOutlineRounded(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t radius){
+	xycorners_t tmp = ssd1306_getAdjustedPoints(x0,y0,x1,y1);
+	ssd1306_alterLine(tmp.bottomLeft.x, tmp.bottomLeft.y+radius, tmp.topLeft.x, tmp.topLeft.y-radius, Bit_SET);
+	ssd1306_setSemiCircleOutline(tmp.topLeft.x, tmp.topLeft.y-radius, tmp.topLeft.x+radius, tmp.topLeft.y, radius);
+	ssd1306_alterLine(tmp.topLeft.x+radius, tmp.topLeft.y, tmp.topRight.x-radius, tmp.topRight.y, Bit_SET);
+	ssd1306_setSemiCircleOutline(tmp.topRight.x, tmp.topRight.y-radius, tmp.topRight.x-radius, tmp.topRight.y, radius);
+	ssd1306_alterLine(tmp.topRight.x, tmp.topRight.y-radius, tmp.bottomRight.x, tmp.bottomRight.y+radius, Bit_SET);
+	ssd1306_setSemiCircleOutline(tmp.bottomRight.x, tmp.bottomRight.y+radius, tmp.bottomRight.x-radius, tmp.bottomRight.y, radius);
+	ssd1306_alterLine(tmp.bottomLeft.x+radius, tmp.bottomLeft.y, tmp.bottomRight.x-radius, tmp.bottomRight.y, Bit_SET);
+	ssd1306_setSemiCircleOutline(tmp.bottomLeft.x, tmp.bottomLeft.y+radius, tmp.bottomLeft.x+radius, tmp.bottomLeft.y, radius);
+}
 void
 ssd1306_setArea(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1){
 	ssd1306_alterArea(x0, y0, x1, y1, Bit_SET);

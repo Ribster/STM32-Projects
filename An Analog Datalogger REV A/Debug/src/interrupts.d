@@ -33,9 +33,11 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
  ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
  ../include/leds.h ../include/encoders.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
- ../include/fonts/smallfonts.h ../include/pushbuttons.h ../include/uart.h \
- ../include/sdio.h ../libs/fatfs/inc/diskio.h ../libs/fatfs/inc/integer.h \
- ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h ../include/usb.h \
+ ../include/fonts/smallfonts.h ../libs/usb/usb_lib/otg/inc/usb_defines.h \
+ ../libs/usb/usb_conf/inc/usb_conf.h ../include/pushbuttons.h \
+ ../include/uart.h ../include/sdio.h ../libs/fatfs/inc/diskio.h \
+ ../libs/fatfs/inc/integer.h ../libs/fatfs/inc/ff.h \
+ ../libs/fatfs/inc/ffconf.h ../include/usb.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
  ../libs/usb/usb_lib/core/inc/usbd_ioreq.h \
  ../libs/usb/usb_lib/core/inc/usbd_def.h \
@@ -43,7 +45,6 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
  ../libs/usb/usb_lib/core/inc/usbd_core.h \
  ../libs/usb/usb_lib/otg/inc/usb_dcd.h \
  ../libs/usb/usb_lib/otg/inc/usb_core.h \
- ../libs/usb/usb_conf/inc/usb_conf.h \
  ../libs/usb/usb_lib/otg/inc/usb_regs.h \
  ../libs/usb/usb_lib/otg/inc/usb_defines.h \
  ../libs/usb/usb_lib/core/inc/usbd_usr.h \
@@ -148,6 +149,10 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
 
 ../include/fonts/smallfonts.h:
 
+../libs/usb/usb_lib/otg/inc/usb_defines.h:
+
+../libs/usb/usb_conf/inc/usb_conf.h:
+
 ../include/pushbuttons.h:
 
 ../include/uart.h:
@@ -177,8 +182,6 @@ src/interrupts.o: ../src/interrupts.c ../include/interrupts.h \
 ../libs/usb/usb_lib/otg/inc/usb_dcd.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_core.h:
-
-../libs/usb/usb_conf/inc/usb_conf.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_regs.h:
 

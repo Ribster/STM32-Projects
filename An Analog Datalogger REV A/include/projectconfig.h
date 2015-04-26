@@ -13,12 +13,10 @@
 #include "stm32f4xx_rcc.h"
 
 // general macro's
-#define MIN(a,b) (((a)<(b))?(a):(b))
-#define MAX(a,b) (((a)>(b))?(a):(b))
 
 
 // Project version
-#define PROJVER "0.0.001"
+#define PROJVER "0.0.002"
 
 #define DBG
 //#define DBGIO
@@ -496,6 +494,12 @@
 	#define OLED_SS_OTYPE GPIO_OType_PP
 	#define OLED_SS_SPEED GPIO_Speed_100MHz
 	#define OLED_SS_INITSTATE Bit_RESET
+
+
+// APPLICATION
+#define OLED_TEXTBLOCK_DIMENSIONS 0,0,127,53
+#define OLED_LINE_DIMENSIONS 0,55,127,55
+#define OLED_DELAY_STARTUP 2000
 
 // USB
 /*
