@@ -8,6 +8,9 @@
 #ifndef AFE_H_
 #define AFE_H_
 
+#include "stm32f4xx.h"
+#include "stm32f4xx_gpio.h"
+
 #include "projectconfig.h"
 
 #include "gpio.h"

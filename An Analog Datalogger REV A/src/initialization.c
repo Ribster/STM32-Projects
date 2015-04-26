@@ -19,6 +19,8 @@ initialization(void){
 	initialize_LEDS();
 	initialization_suffix();
 
+
+
 	// do the initialization of the pushbuttons
 	initialization_prefix("Pushbuttons");
 	initialize_pushButtons();
@@ -30,6 +32,7 @@ initialization(void){
 	initialize_encoderTwo();
 	initialization_suffix();
 
+
 	// do the initialization of the systick timer
 	initialization_prefix("Systick");
 	delay_setup();
@@ -38,6 +41,11 @@ initialization(void){
 	// do the initialization of the RTC
 	initialization_prefix("RTC");
 	initialize_RTC();
+	initialization_suffix();
+
+	// do the intialization of the AFE
+	initialization_prefix("AFE");
+	initialize_AFE();
 	initialization_suffix();
 
 	// do the initialization of the Random Number Generator
@@ -55,10 +63,8 @@ initialization(void){
 	initialize_SSD1306();
 	initialization_suffix();
 
-	// do the intialization of the AFE
-	initialization_prefix("AFE");
-	initialize_AFE();
-	initialization_suffix();
+
+
 
 	// do the initialization of the USB
 	//initialization_prefix("USB");

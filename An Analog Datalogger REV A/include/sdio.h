@@ -24,6 +24,9 @@
 void
 initialize_SDIO(void);
 
+void
+sdio_test(void);
+
 // Prototypes
 void
 SD_LowLevel_DeInit(void);

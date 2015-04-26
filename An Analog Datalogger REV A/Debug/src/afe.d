@@ -1,4 +1,4 @@
-src/afe.o: ../src/afe.c ../include/afe.h ../include/projectconfig.h \
+src/afe.o: ../src/afe.c ../include/afe.h \
  ../libs/cmsis/include/stm32f4xx.h ../libs/cmsis/include/core_cm4.h \
  ../libs/cmsis/include/core_cmInstr.h ../libs/cmsis/include/core_cmFunc.h \
  ../libs/cmsis/include/core_cm4_simd.h \
@@ -28,15 +28,13 @@ src/afe.o: ../src/afe.c ../include/afe.h ../include/projectconfig.h \
  ../libs/StdPeriph/include/stm32f4xx_can.h \
  ../libs/StdPeriph/include/stm32f4xx_dac.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
- ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/gpio.h \
- ../include/rcc.h ../include/nvic.h ../include/dma.h \
+ ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
+ ../include/gpio.h ../include/rcc.h ../include/nvic.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/delay.h \
  ../include/rtc.h ../include/ssd1306.h ../include/leds.h \
  ../include/encoders.h ../include/spi.h ../include/fonts/smallfonts.h
 
 ../include/afe.h:
-
-../include/projectconfig.h:
 
 ../libs/cmsis/include/stm32f4xx.h:
 
@@ -103,6 +101,8 @@ src/afe.o: ../src/afe.c ../include/afe.h ../include/projectconfig.h \
 ../libs/StdPeriph/include/stm32f4xx_dcmi.h:
 
 ../libs/StdPeriph/include/stm32f4xx_fsmc.h:
+
+../include/projectconfig.h:
 
 ../include/gpio.h:
 

@@ -42,7 +42,6 @@ initialize_SDIO(void){
 			  1,
 			  0);
 
-
 	  memset(&fs32, 0, sizeof(FATFS));
 
 	  	res = f_mount(0, &fs32);
@@ -53,6 +52,10 @@ initialize_SDIO(void){
 	  #endif
 
 	  	memset(&fil, 0, sizeof(FIL));
+}
+
+void
+sdio_test(void){
 
 	  	res = f_open(&fil, "MESSAGE.TXT", FA_READ);
 
@@ -218,9 +221,7 @@ initialize_SDIO(void){
 	    		printf("res = %d f_close DIR.TXT\r\n", res);
 	  #endif
 	    }
-
 }
-
 
 /**
   * @brief  DeInitializes the SDIO interface.

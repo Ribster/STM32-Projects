@@ -220,7 +220,7 @@
 	 */
 #define AFE_SPI SPI1
 #define AFE_SPI_IRQn SPI1_IRQn
-#define AFE_DMA_BufferSize 50
+#define AFE_DMA_BufferSize 512
 	// SPI Config
 		#define AFE_SPI_Direction SPI_Direction_2Lines_FullDuplex
 		#define AFE_SPI_Mode SPI_Mode_Slave
@@ -233,24 +233,24 @@
 		#define AFE_SPI_CRCPolynomial 7
 	// DMA SPI from Memory 2 Peripheral
 		// TX STREAM
-		#define AFE_DMA_TX_DMAStream DMA2_Stream5
-		#define AFE_DMA_TX_DMAIRQ DMA2_Stream5_IRQn
+		#define AFE_DMA_TX_DMAStream DMA2_Stream3
+		#define AFE_DMA_TX_DMAIRQ DMA2_Stream3_IRQn
 		#define AFE_DMA_TX_DMAChannel DMA_Channel_3
-		#define AFE_DMA_TX_TransferCompleteFlag DMA_FLAG_TCIF5
-		#define AFE_DMA_TX_TransferHalfCompleteFlag DMA_FLAG_HTIF5
+		#define AFE_DMA_TX_TransferCompleteFlag DMA_FLAG_TCIF3
+		#define AFE_DMA_TX_TransferHalfCompleteFlag DMA_FLAG_HTIF3
 		#define AFE_DMA_TX_DMARequest SPI_I2S_DMAReq_Tx
 		#define AFE_DMA_TX_DIR DMA_DIR_MemoryToPeripheral
 
 		// RX STREAM
-		#define AFE_DMA_RX_DMAStream DMA2_Stream0
-		#define AFE_DMA_RX_DMAIRQ DMA2_Stream0_IRQn
+		#define AFE_DMA_RX_DMAStream DMA2_Stream2
+		#define AFE_DMA_RX_DMAIRQ DMA2_Stream2_IRQn
 		#define AFE_DMA_RX_DMAChannel DMA_Channel_3
-		#define AFE_DMA_RX_TransferCompleteFlag DMA_FLAG_TCIF0
-		#define AFE_DMA_RX_TransferHalfCompleteFlag DMA_FLAG_HTIF0
+		#define AFE_DMA_RX_TransferCompleteFlag DMA_FLAG_TCIF2
+		#define AFE_DMA_RX_TransferHalfCompleteFlag DMA_FLAG_HTIF2
 		#define AFE_DMA_RX_DMARequest SPI_I2S_DMAReq_Rx
 		#define AFE_DMA_RX_DIR DMA_DIR_PeripheralToMemory
 
-		#define AFE_DMA_PeripheralBaseAddr (uint32_t)(&AFE_SPI->DR)
+		#define AFE_DMA_PeripheralBaseAddr (uint32_t)(&(AFE_SPI->DR))
 		//#define AFE_DMA_Memory0BaseAddr //heap pointer
 		#define AFE_DMA_PeripheralInc DMA_PeripheralInc_Disable
 		#define AFE_DMA_MemoryInc DMA_MemoryInc_Enable
@@ -259,7 +259,7 @@
 		#define AFE_DMA_Mode DMA_Mode_Normal
 		#define AFE_DMA_Priority DMA_Priority_High
 		#define AFE_DMA_FIFOMode DMA_FIFOMode_Disable
-		#define AFE_DMA_FIFOThreshold DMA_FIFOThreshold_1QuarterFull
+		#define AFE_DMA_FIFOThreshold DMA_FIFOThreshold_Full
 		#define AFE_DMA_MemoryBurst DMA_MemoryBurst_Single
 		#define AFE_DMA_PeripheralBurst DMA_PeripheralBurst_Single
 
@@ -445,7 +445,7 @@
 	#define OLED_DMA_MemoryInc DMA_MemoryInc_Enable
 	#define OLED_DMA_PeripheralDataSize DMA_PeripheralDataSize_Byte
 	#define OLED_DMA_MemoryDataSize DMA_MemoryDataSize_Byte
-	#define OLED_DMA_Mode DMA_Priority_Low
+	#define OLED_DMA_Mode DMA_Mode_Normal
 	#define OLED_DMA_Priority DMA_Priority_High
 	#define OLED_DMA_FIFOMode DMA_FIFOMode_Disable
 	#define OLED_DMA_FIFOThreshold DMA_FIFOThreshold_1QuarterFull
@@ -556,8 +556,8 @@
 #define SD_SDIO_DMA                   DMA2
 #define SD_SDIO_DMA_CLK               RCC_AHB1Periph_DMA2
 
-#define SD_SDIO_DMA_STREAM3	          3
-//#define SD_SDIO_DMA_STREAM6           6
+//#define SD_SDIO_DMA_STREAM3	          3
+#define SD_SDIO_DMA_STREAM6           6
 
 #ifdef SD_SDIO_DMA_STREAM3
 	#undef SD_SDIO_DMA_STREAM6

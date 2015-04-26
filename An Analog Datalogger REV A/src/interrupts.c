@@ -158,37 +158,71 @@ SD_SDIO_DMA_IRQHANDLER(void){
 
 // AFE_DMA_RX
 void
-DMA2_Stream0_IRQHandler(void){
+DMA2_Stream2_IRQHandler(void){
+#ifdef DBGIO
 	printf("AFE DMA RX interrupt! \r\n");
-	if(DMA_GetITStatus(AFE_DMA_RX_DMAStream, DMA_IT_TCIF0) == SET){
+#endif
+	if(DMA_GetITStatus(AFE_DMA_RX_DMAStream, DMA_IT_HTIF2) == SET){
+#ifdef DBGIO
+		printf(" RX HT\r\n");
+#endif
+		DMA_ClearFlag(AFE_DMA_RX_DMAStream, DMA_FLAG_HTIF2);
+		DMA_ClearITPendingBit(AFE_DMA_RX_DMAStream, DMA_IT_HTIF2);
+		DMA_ITConfig(AFE_DMA_RX_DMAStream, DMA_IT_HT, DISABLE);
+	}
+	if(DMA_GetITStatus(AFE_DMA_RX_DMAStream, DMA_IT_TCIF2) == SET){
+#ifdef DBGIO
+		printf(" RX TC\r\n");
+#endif
+		DMA_ClearFlag(AFE_DMA_RX_DMAStream, DMA_FLAG_TCIF2);
+		DMA_ClearITPendingBit(AFE_DMA_RX_DMAStream, DMA_IT_TCIF2);
+		DMA_ITConfig(AFE_DMA_RX_DMAStream, DMA_IT_TC, DISABLE);
 
-		DMA_ClearFlag(AFE_DMA_RX_DMAStream, AFE_DMA_RX_TransferCompleteFlag);
-		DMA_ClearITPendingBit(AFE_DMA_RX_DMAStream, DMA_IT_TCIF0);
-		DMA_ITConfig(AFE_DMA_RX_DMAStream, DMA_IT_TCIF0, DISABLE);
 
+		/* Enable DMA SPI RX Stream */
+		DMA_Cmd(AFE_DMA_RX_DMAStream,DISABLE);
 
-		/* Disable the SPI peripheral */
-		SPI_Cmd(AFE_SPI, DISABLE);
-
-		GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_SET);
-
+		SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Rx, DISABLE);
 	}
 }
 
 // AFE_DMA_TX
 void
-DMA2_Stream5_IRQHandler(void){
+DMA2_Stream3_IRQHandler(void){
+#ifdef DBGIO
 	printf("AFE DMA TX interrupt! \r\n");
-	if(DMA_GetITStatus(AFE_DMA_TX_DMAStream, DMA_IT_TCIF5) == SET){
+#endif
+	if(DMA_GetITStatus(AFE_DMA_TX_DMAStream, DMA_IT_HTIF3) == SET){
+#ifdef DBGIO
+		printf(" TX HT\r\n");
+#endif
+		DMA_ClearFlag(AFE_DMA_TX_DMAStream, DMA_FLAG_HTIF3);
+		DMA_ClearITPendingBit(AFE_DMA_TX_DMAStream, DMA_IT_HTIF3);
+		DMA_ITConfig(AFE_DMA_TX_DMAStream, DMA_IT_HT, DISABLE);
+	}
+	if(DMA_GetITStatus(AFE_DMA_TX_DMAStream, DMA_IT_TCIF3) == SET){
+#ifdef DBGIO
+		printf(" TX TC\r\n");
+#endif
+		DMA_ClearFlag(AFE_DMA_TX_DMAStream, DMA_FLAG_TCIF3);
+		DMA_ClearITPendingBit(AFE_DMA_TX_DMAStream, DMA_IT_TCIF3);
+		DMA_ITConfig(AFE_DMA_TX_DMAStream, DMA_IT_TC, DISABLE);
 
-		DMA_ClearFlag(AFE_DMA_TX_DMAStream, AFE_DMA_TX_TransferCompleteFlag);
-		DMA_ClearITPendingBit(AFE_DMA_TX_DMAStream, DMA_IT_TCIF5);
-		DMA_ITConfig(AFE_DMA_TX_DMAStream, DMA_IT_TCIF5, DISABLE);
 
-		/* Disable the SPI peripheral */
+
+		/* Enable DMA SPI TX Stream */
+		DMA_Cmd(AFE_DMA_TX_DMAStream,DISABLE);
+
+		SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Tx, DISABLE);
+
+		while (AFE_DMA_RX_DMAStream->CR & DMA_SxCR_EN);
+		while (AFE_DMA_TX_DMAStream->CR & DMA_SxCR_EN);
+
 		SPI_Cmd(AFE_SPI, DISABLE);
 
-		GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_SET);
+		GPIO_WriteBit(AFE_CS_PORT, AFE_CS_PIN, Bit_SET);
+
+		//GPIO_WriteBit(AFE_INT_PORT, AFE_INT_PIN, Bit_SET);
 	}
 }
 
