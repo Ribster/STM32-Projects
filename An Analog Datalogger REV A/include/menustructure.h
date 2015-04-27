@@ -44,7 +44,7 @@ void
 menustructure_attachMenuItem(menuItem_t* sourceItem, menuItem_t* attachItem);
 
 void
-menustructure_printAllMenuItems(menuItem_t* menuStructure);
+menustructure_showMenu(menuItem_t* parentItem);
 
 void
 menustructure_printMenuItem(menuItem_t* menuStructure);
@@ -60,6 +60,12 @@ menustructure_stepMenuUp(void);
 
 void
 menustructure_stepMenuDown(void);
+
+void
+menustructure_stepMenuEnter(void);
+
+void
+menustructure_stepMenuBack(void);
 
 void
 menustructure_menuFunctionSDCardinfo(void);

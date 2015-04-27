@@ -28,7 +28,9 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* Go to infinite loop when Hard Fault exception occurs */
+#ifdef DBG
 	printf("Hardfault!!");
+#endif
   while (1)
   {
   }
@@ -42,7 +44,9 @@ void HardFault_Handler(void)
 void MemManage_Handler(void)
 {
   /* Go to infinite loop when Memory Manage exception occurs */
+#ifdef DBG
 	printf("Memory Manage exception!!");
+#endif
   while (1)
   {
   }
@@ -56,7 +60,9 @@ void MemManage_Handler(void)
 void BusFault_Handler(void)
 {
   /* Go to infinite loop when Bus Fault exception occurs */
+#ifdef DBG
 	printf("Busfault!!");
+#endif
   while (1)
   {
   }
@@ -70,7 +76,9 @@ void BusFault_Handler(void)
 void UsageFault_Handler(void)
 {
   /* Go to infinite loop when Usage Fault exception occurs */
+#ifdef DBG
 	printf("UsageFault!!");
+#endif
   while (1)
   {
   }
@@ -83,7 +91,9 @@ void UsageFault_Handler(void)
   */
 void SVC_Handler(void)
 {
+#ifdef DBG
 	printf("SVC Handler!!");
+#endif
 }
 
 /**
@@ -93,7 +103,9 @@ void SVC_Handler(void)
   */
 void DebugMon_Handler(void)
 {
+#ifdef DBG
 	printf("Debug Monitor!!");
+#endif
 }
 
 /**
@@ -103,7 +115,9 @@ void DebugMon_Handler(void)
   */
 void PendSV_Handler(void)
 {
+#ifdef DBG
 	printf("PendSVC!!");
+#endif
 }
 
 void
@@ -127,19 +141,25 @@ EXTI15_10_IRQHandler(void){
 }
 void
 USART2_IRQHandler(void){
+#ifdef DBG
 	printf("USART2 interrupt! \r\n");
+#endif
 	uart_interruptHandlerTerminal();
 }
 void
 TIM8_UP_TIM13_IRQHandler(void){
-	//printf("ssd1306 interrupt! \r\n");
+#ifdef DBGIO
+	printf("ssd1306 interrupt! \r\n");
+#endif
 	ssd1306_interruptHandler();
 }
 
 void
 SDIO_IRQHandler(void)
 {
-	//printf("SDIO interrupt! \r\n");
+#ifdef DBGIO
+	printf("SDIO interrupt! \r\n");
+#endif
   /* Process All SDIO Interrupt Sources */
   SD_ProcessIRQSrc();
 }
@@ -152,7 +172,9 @@ SDIO_IRQHandler(void)
   */
 void
 SD_SDIO_DMA_IRQHANDLER(void){
-	//printf("SDIO DMA interrupt! \r\n");
+#ifdef DBGIO
+	printf("SDIO DMA interrupt! \r\n");
+#endif
 	SD_ProcessDMAIRQ();
 }
 
@@ -177,7 +199,6 @@ DMA2_Stream2_IRQHandler(void){
 		DMA_ClearFlag(AFE_DMA_RX_DMAStream, DMA_FLAG_TCIF2);
 		DMA_ClearITPendingBit(AFE_DMA_RX_DMAStream, DMA_IT_TCIF2);
 		DMA_ITConfig(AFE_DMA_RX_DMAStream, DMA_IT_TC, DISABLE);
-
 
 		/* Enable DMA SPI RX Stream */
 		DMA_Cmd(AFE_DMA_RX_DMAStream,DISABLE);
@@ -207,8 +228,6 @@ DMA2_Stream3_IRQHandler(void){
 		DMA_ClearFlag(AFE_DMA_TX_DMAStream, DMA_FLAG_TCIF3);
 		DMA_ClearITPendingBit(AFE_DMA_TX_DMAStream, DMA_IT_TCIF3);
 		DMA_ITConfig(AFE_DMA_TX_DMAStream, DMA_IT_TC, DISABLE);
-
-
 
 		/* Enable DMA SPI TX Stream */
 		DMA_Cmd(AFE_DMA_TX_DMAStream,DISABLE);

@@ -1,3 +1,6 @@
+###__Ifdefs on features__###
+
+
 ###__Application development__
 
 - [ ] SD card detection on startup

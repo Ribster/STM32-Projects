@@ -55,7 +55,6 @@ initialize_AFE(void){
 				AFE_MOSI_SPEED,
 				AFE_MOSI_AF);
 		// SCK PIN
-		//rcc_setGPIOClock(AFE_SCK_PORT, ENABLE);
 		gpio_initAF(
 				AFE_SCK_PORT,
 				AFE_SCK_MODE,
@@ -73,7 +72,6 @@ initialize_AFE(void){
 				AFE_CS_PIN,
 				AFE_CS_PULL,
 				AFE_CS_SPEED);
-		//GPIO_WriteBit(AFE_CS_PORT, (1<<AFE_CS_PIN), AFE_CS_INITSTATE);
 		// INT PIN
 		gpio_initStandard(
 				AFE_INT_PORT,

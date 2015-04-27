@@ -10,6 +10,7 @@
 
 #include "projectconfig.h"
 #include "leds.h"
+#include "menustructure.h"
 
 // prototype
 void

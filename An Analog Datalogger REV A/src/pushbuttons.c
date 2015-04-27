@@ -111,10 +111,12 @@ void
 pushbuttons_interruptHandler_UP(void){
 	  if(EXTI_GetITStatus(PB_EXTI_Line_0) != RESET)
 	  {
-	    leds_toggleLed(ledList_White1);
-
-	    /* Clear the EXTI line XX pending bit */
-	    EXTI_ClearITPendingBit(PB_EXTI_Line_0);
+		/* Clear the EXTI line XX pending bit */
+		EXTI_ClearITPendingBit(PB_EXTI_Line_0);
+#ifdef DBG
+		printf("Pushbutton UP\r\n");
+#endif
+		menustructure_stepMenuUp();
 	  }
 }
 
@@ -122,10 +124,12 @@ void
 pushbuttons_interruptHandler_LEFT(void){
 	  if(EXTI_GetITStatus(PB_EXTI_Line_1) != RESET)
 	  {
-	    leds_toggleLed(ledList_Blue);
-
-	    /* Clear the EXTI line XX pending bit */
-	    EXTI_ClearITPendingBit(PB_EXTI_Line_1);
+		/* Clear the EXTI line XX pending bit */
+		EXTI_ClearITPendingBit(PB_EXTI_Line_1);
+#ifdef DBG
+		printf("Pushbutton LEFT\r\n");
+#endif
+		menustructure_stepMenuBack();
 	  }
 }
 
@@ -133,10 +137,11 @@ void
 pushbuttons_interruptHandler_MIDDLE(void){
 	  if(EXTI_GetITStatus(PB_EXTI_Line_2) != RESET)
 	  {
-	    leds_toggleLed(ledList_Orange);
-
-	    /* Clear the EXTI line XX pending bit */
-	    EXTI_ClearITPendingBit(PB_EXTI_Line_2);
+		/* Clear the EXTI line XX pending bit */
+		EXTI_ClearITPendingBit(PB_EXTI_Line_2);
+#ifdef DBG
+		printf("Pushbutton MIDDLE\r\n");
+#endif
 	  }
 }
 
@@ -144,10 +149,11 @@ void
 pushbuttons_interruptHandler_RIGHT(void){
 	  if(EXTI_GetITStatus(PB_EXTI_Line_3) != RESET)
 	  {
-	    leds_toggleLed(ledList_Green);
-
-	    /* Clear the EXTI line XX pending bit */
-	    EXTI_ClearITPendingBit(PB_EXTI_Line_3);
+		/* Clear the EXTI line XX pending bit */
+		EXTI_ClearITPendingBit(PB_EXTI_Line_3);
+#ifdef DBG
+		printf("Pushbutton RIGHT\r\n");
+#endif
 	  }
 }
 
@@ -155,10 +161,12 @@ void
 pushbuttons_interruptHandler_DOWN(void){
 	  if(EXTI_GetITStatus(PB_EXTI_Line_4) != RESET)
 	  {
-	    leds_toggleLed(ledList_White2);
-
-	    /* Clear the EXTI line XX pending bit */
-	    EXTI_ClearITPendingBit(PB_EXTI_Line_4);
+		/* Clear the EXTI line XX pending bit */
+		EXTI_ClearITPendingBit(PB_EXTI_Line_4);
+#ifdef DBG
+		printf("Pushbutton DOWN\r\n");
+#endif
+		menustructure_stepMenuDown();
 	  }
 }
 
@@ -166,13 +174,11 @@ void
 pushbuttons_interruptHandler_ENTER(void){
 	  if(EXTI_GetITStatus(PB_EXTI_Line_5) != RESET)
 	  {
-	    leds_toggleLed(ledList_White1);
-	    leds_toggleLed(ledList_Blue);
-	    leds_toggleLed(ledList_Orange);
-	    leds_toggleLed(ledList_Green);
-	    leds_toggleLed(ledList_White2);
-
-	    /* Clear the EXTI line XX pending bit */
-	    EXTI_ClearITPendingBit(PB_EXTI_Line_5);
+		/* Clear the EXTI line XX pending bit */
+		EXTI_ClearITPendingBit(PB_EXTI_Line_5);
+#ifdef DBG
+		printf("Pushbutton ENTER\r\n");
+#endif
+		menustructure_stepMenuEnter();
 	  }
 }

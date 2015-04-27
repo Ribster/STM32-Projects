@@ -179,6 +179,8 @@ initialize_SSD1306(void){
 
 	// initialize routine
 	ssd1306_firstInit();
+
+	menu_enable = 0x00;
 }
 // pixel buffer
 void
@@ -615,6 +617,7 @@ void
 ssd1306_setString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font){
 	ssd1306_alterString(x,y,str,font,Bit_SET);
 }
+
 void
 ssd1306_clearString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font){
 	ssd1306_alterString(x,y,str,font,Bit_RESET);
@@ -659,7 +662,7 @@ ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF
 	uint8_t stringLength = strlen(str);
 	uint8_t stringWidth = stringLength*font.u8Width+(stringLength-1);
 	uint8_t stringHeigth = font.u8Height;
-	ssd1306_setArea(x-padding, y-padding, x+padding+stringWidth, y+padding+stringHeigth);
+	ssd1306_setArea(x-padding, y-padding+1, x+padding+stringWidth, y+padding+stringHeigth);
 	// clear string
 	ssd1306_alterString(x,y,str,font,Bit_RESET);
 }

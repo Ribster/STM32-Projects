@@ -18,66 +18,92 @@ initialization(void){
 	initialization_initStringList();
 
 	// do the initialization of the UART
-	initialization_prefix(initialization_list_UART);
-		initialize_UART();
-	initialization_suffix(initialization_list_UART);
+	#ifdef FEATURE_TERMINAL
+		initialization_prefix(initialization_list_UART);
+			initialize_UART();
+		initialization_suffix(initialization_list_UART);
+	#endif /* FEATURE_TERMINAL */
 
 	// do the initialization of the leds
-	initialization_prefix(initialization_list_LEDs);
-		initialize_LEDS();
-	initialization_suffix(initialization_list_LEDs);
+	#ifdef FEATURE_LEDS
+		initialization_prefix(initialization_list_LEDs);
+			initialize_LEDS();
+		initialization_suffix(initialization_list_LEDs);
+	#endif /* FEATURE_LEDS */
 
 	// do the initialization of the pushbuttons
-	initialization_prefix(initialization_list_Pushbuttons);
-		initialize_pushButtons();
-	initialization_suffix(initialization_list_Pushbuttons);
+	#ifdef FEATURE_PUSHBUTTONS
+		initialization_prefix(initialization_list_Pushbuttons);
+			initialize_pushButtons();
+		initialization_suffix(initialization_list_Pushbuttons);
+	#endif /* FEATURE_PUSHBUTTONS */
 
 	// do the initialization of the encoders
-	initialization_prefix(initialization_list_Encoders);
-		initialize_encoderOne();
-		initialize_encoderTwo();
-	initialization_suffix(initialization_list_Encoders);
+	#ifdef FEATURE_ENCODERS
+		initialization_prefix(initialization_list_Encoders);
+			initialize_encoderOne();
+			initialize_encoderTwo();
+		initialization_suffix(initialization_list_Encoders);
+	#endif /* FEATURE_ENCODERS */
 
 	// do the initialization of the systick timer
-	initialization_prefix(initialization_list_Systick);
-		delay_setup();
-	initialization_suffix(initialization_list_Systick);
+	#ifdef FEATURE_SYSTICK
+		initialization_prefix(initialization_list_Systick);
+			delay_setup();
+		initialization_suffix(initialization_list_Systick);
+	#endif /* FEATURE_SYSTICK */
 
 	// do the initialization of the RTC
-	initialization_prefix(initialization_list_RTC);
-		initialize_RTC();
-	initialization_suffix(initialization_list_RTC);
+	#ifdef FEATURE_RTC
+		initialization_prefix(initialization_list_RTC);
+			initialize_RTC();
+		initialization_suffix(initialization_list_RTC);
+	#endif /* FEATURE_RTC */
 
 	// do the intialization of the AFE
-	initialization_prefix(initialization_list_AFE);
-		initialize_AFE();
-	initialization_suffix(initialization_list_AFE);
+	#ifdef FEATURE_AFE
+		initialization_prefix(initialization_list_AFE);
+			initialize_AFE();
+		initialization_suffix(initialization_list_AFE);
+	#endif /* FEATURE_AFE */
 
 	// do the initialization of the Random Number Generator
-	initialization_prefix(initialization_list_RNG);
-		initialize_RNG();
-	initialization_suffix(initialization_list_RNG);
+	#ifdef FEATURE_RNG
+		initialization_prefix(initialization_list_RNG);
+			initialize_RNG();
+		initialization_suffix(initialization_list_RNG);
+	#endif /* FEATURE_RNG */
 
 	// do the initialization of the SD card
-	initialization_prefix(initialization_list_SD);
-		initialize_SDIO();
-	initialization_suffix(initialization_list_SD);
+	#ifdef FEATURE_SD
+		initialization_prefix(initialization_list_SD);
+			initialize_SDIO();
+		initialization_suffix(initialization_list_SD);
+	#endif /* FEATURE_SD */
 
 	// do the initialization of the OLED -- This needs to be done after the systick initialization!!
-	initialization_prefix(initialization_list_SSD1306);
-		initialize_SSD1306();
-	initialization_suffix(initialization_list_SSD1306);
+	#ifdef FEATURE_SSD1306
+		initialization_prefix(initialization_list_SSD1306);
+			initialize_SSD1306();
+		initialization_suffix(initialization_list_SSD1306);
+	#endif /* FEATURE_SSD1306 */
 
 	// do the initialization of the USB
-/*	initialization_prefix(initialization_list_USB);
-		initialize_USB();
-	initialization_suffix(initialization_list_USB);*/
+	#ifdef FEATURE_USB
+		initialization_prefix(initialization_list_USB);
+			initialize_USB();
+		initialization_suffix(initialization_list_USB);
+	#endif /* FEATURE_USB */
 
 	// do the initialization of the nRF24L01p
-/*	initialization_prefix(initialization_list_nRF);
-		initialize_nRF24L01p();
-	initialization_suffix(initialization_list_nRF);*/
+	#ifdef FEATURE_nRF24L01p
+		initialization_prefix(initialization_list_nRF);
+			initialize_nRF24L01p();
+		initialization_suffix(initialization_list_nRF);
+	#endif /* FEATURE_nRF24L01p */
 
+
+#ifdef FEATURE_SSD1306
 	// initialization of the menu structure
 	initialize_menuStructure();
 
@@ -97,6 +123,9 @@ initialization(void){
 	// print initializations
 	delay_milli(OLED_DELAY_STARTUP);
 	initialization_printList();
+
+	menu_enable = 0x01;
+#endif /* FEATURE_SSD1306 */
 }
 void
 initialization_initStringList(void){
@@ -151,8 +180,6 @@ initialization_printList(void){
 
 	delay_milli(OLED_DELAY_STARTUP);
 	ssd1306_clearArea(OLED_TEXTBLOCK_DIMENSIONS);
-
-	menu_enable = 0x01;
 }
 
 

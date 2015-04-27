@@ -16,10 +16,26 @@
 
 
 // Project version
-#define PROJVER "0.0.003"
+#define PROJVER "0.0.004"
 
 #define DBG
 //#define DBGIO
+
+
+#define FEATURE_TERMINAL
+#define FEATURE_LEDS
+#define FEATURE_PUSHBUTTONS
+#define FEATURE_ENCODERS
+#define FEATURE_SYSTICK
+#define FEATURE_RTC
+#define FEATURE_AFE
+#define FEATURE_RNG
+#define FEATURE_SD
+#define FEATURE_SSD1306
+//#define FEATURE_USB
+//#define FEATURE_nRF24L01p
+
+
 
 // LEDS
 /*
@@ -92,6 +108,8 @@
 	58	PD11	I/O	GPIO_EXTI11	INPUT4
 	57	PD10	I/O	GPIO_EXTI10	INPUT5
 	*/
+	#define PB_DEBOUNCE_DELAY_MS 50
+
 	#define PB_IT_IRQChannelPreemptionPriority 0x0F
 	#define PB_IT_IRQChannelSubPriority 0x0F
 	// UP
@@ -216,9 +234,20 @@
 36	PB1	I/O		GPIO_EXTI1	AFE_SYNC3
 38	PE7	I/O		GPIO_EXTI7	EXT_SYNC
 	 */
+#define AFE_DUMMY_SMALL
+//#define AFE_DUMMY_BIG
+
+#ifdef AFE_DUMMY_SMALL
+	#define AFE_DMA_BufferSize 512
+#elif defined(AFE_DUMMY_BIG)
+#define AFE_DMA_BufferSize 5120
+#endif
+
 #define AFE_SPI SPI1
 #define AFE_SPI_IRQn SPI1_IRQn
-#define AFE_DMA_BufferSize 512
+
+
+
 	// SPI Config
 		#define AFE_SPI_Direction SPI_Direction_2Lines_FullDuplex
 		#define AFE_SPI_Mode SPI_Mode_Slave
@@ -272,11 +301,10 @@
 	// CHIPSELECT PIN
 	#define AFE_CS_PORT GPIOA
 	#define AFE_CS_PIN 4
-	#define AFE_CS_MODE GPIO_Mode_OUT
+	#define AFE_CS_MODE GPIO_Mode_IN
 	#define AFE_CS_PULL GPIO_PuPd_UP
-	#define AFE_CS_OTYPE GPIO_OType_OD
+	#define AFE_CS_OTYPE GPIO_OType_PP
 	#define AFE_CS_SPEED GPIO_Speed_100MHz
-	#define AFE_CS_INITSTATE Bit_SET
 	// MISO PIN
 	#define AFE_MISO_PORT GPIOA
 	#define AFE_MISO_PIN 6
@@ -497,6 +525,12 @@
 
 
 // APPLICATION
+#define OLED_MENUWRITING_START 0,53
+#define OLED_MENUWRITING_END 127,0
+#define OLED_MENUWRITING_FONT Font_System5x8
+
+#define OLED_MENUWRITING_MINIMUMWIDTH_CHARSIZE 22
+
 #define OLED_TEXTBLOCK_DIMENSIONS 0,0,127,53
 #define OLED_LINE_DIMENSIONS 0,55,127,55
 #define OLED_DELAY_STARTUP 2000
