@@ -42,37 +42,6 @@ initialize_menuStructure(void){
 	menustructure_addItem(menu_AFE, "AFE Record", menustructure_menuFunctionAFERecord);
 
 	menu_currentRef = &menu_MAIN;
-
-#ifdef DBG
-	/*
-	menu_enable = 0x01;
-	delay_milli(1500);
-
-	menu_currentRef = menu_RTC;
-	menu_enable = 0x01;
-	delay_milli(1500);
-
-	menu_currentRef = menu_SD;
-	menu_enable = 0x01;
-	delay_milli(1500);
-
-	menu_currentRef = menu_USB;
-	menu_enable = 0x01;
-	delay_milli(1500);
-
-	menu_currentRef = menu_AFE;
-	menu_enable = 0x01;
-	delay_milli(1500);
-
-	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
-	menu_enable = 0x00;
-	menu_currentRef = &menu_MAIN;
-*/
-#endif
-
-#ifdef DGBIO
-	menustructure_printAllMenuItems(&menu_MAIN);
-#endif
 }
 
 menuItem_t*
@@ -212,7 +181,7 @@ menustructure_printMenuItemRow(menuItem_t* menuStructure){
 
 void
 menustructure_render(void){
-	if(menu_enable != 0x00 && initialization_list_STATES[initialization_list_SSD1306] != 0x00){
+	if(menu_enable != 0x00 && initialization_list_STATES[initialization_list_SSD1306] != 0x00 && initialization_list_STATES[initialization_list_General] != 0x00){
 		// clear the screen
 		ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 

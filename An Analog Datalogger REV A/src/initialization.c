@@ -105,27 +105,30 @@ initialization(void){
 
 #ifdef FEATURE_SSD1306
 	// initialization of the menu structure
-	initialize_menuStructure();
+		initialize_menuStructure();
 
 	// initialize Homescreen
+		ssd1306_setLine(OLED_LINE_DIMENSIONS);
+		char* verString = "VER:";
+		char* startString = " An Analog Datalogger  REV A. ";
+		char* endString = "\n\n by Robbe Van Assche";
+		char* newString = malloc(strlen(startString) + strlen(verString) + strlen(PROJVER) + strlen(endString));
+		sprintf(newString, "%s%s%s%s", startString, verString, PROJVER, endString);
+		ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
+				newString,
+				Font_System5x8, 0);
 
-	ssd1306_setLine(OLED_LINE_DIMENSIONS);
+	// print initializations of all features
+		delay_milli(OLED_DELAY_STARTUP);
+		initialization_printList();
 
-	char* verString = "VER:";
-	char* startString = " An Analog Datalogger  REV A. ";
-	char* endString = "\n\n by Robbe Van Assche";
-	char* newString = malloc(strlen(startString) + strlen(verString) + strlen(PROJVER) + strlen(endString));
-	sprintf(newString, "%s%s%s%s", startString, verString, PROJVER, endString);
-	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
-			newString,
-			Font_System5x8, 0);
-
-	// print initializations
-	delay_milli(OLED_DELAY_STARTUP);
-	initialization_printList();
-
-	menu_enable = 0x01;
+	// enable the menustructure update
+		menu_enable = 0x01;
 #endif /* FEATURE_SSD1306 */
+
+	// finalize the initialization routine
+	initialization_prefix(initialization_list_General);
+	initialization_suffix(initialization_list_General);
 }
 void
 initialization_initStringList(void){
@@ -141,6 +144,7 @@ initialization_initStringList(void){
 	initialization_addString(initialization_list_SSD1306, "SSD1306");
 	initialization_addString(initialization_list_USB, "USB");
 	initialization_addString(initialization_list_nRF, "nRF24L01+");
+	initialization_addString(initialization_list_General, "All initializations");
 }
 
 void

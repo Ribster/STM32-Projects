@@ -14,6 +14,7 @@ C_SRCS += \
 ../src/leds.c \
 ../src/main.c \
 ../src/menustructure.c \
+../src/nRF24L01p.c \
 ../src/nvic.c \
 ../src/pushbuttons.c \
 ../src/rcc.c \
@@ -36,6 +37,7 @@ OBJS += \
 ./src/leds.o \
 ./src/main.o \
 ./src/menustructure.o \
+./src/nRF24L01p.o \
 ./src/nvic.o \
 ./src/pushbuttons.o \
 ./src/rcc.o \
@@ -58,6 +60,7 @@ C_DEPS += \
 ./src/leds.d \
 ./src/main.d \
 ./src/menustructure.d \
+./src/nRF24L01p.d \
 ./src/nvic.d \
 ./src/pushbuttons.d \
 ./src/rcc.d \

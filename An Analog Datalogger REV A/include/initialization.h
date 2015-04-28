@@ -31,7 +31,7 @@
 //#include "nRF24L01p.h"
 
 
-#define initialization_list_SIZE ((uint32_t)initialization_list_nRF+1)
+
 
 typedef enum initialization_list_t{
 	initialization_list_UART,
@@ -45,8 +45,11 @@ typedef enum initialization_list_t{
 	initialization_list_SD,
 	initialization_list_SSD1306,
 	initialization_list_USB,
-	initialization_list_nRF
+	initialization_list_nRF,
+	initialization_list_General
 }initialization_list_t;
+
+#define initialization_list_SIZE ((uint32_t)initialization_list_General+1)
 
 extern char* initialization_list_BUFFER[initialization_list_SIZE];
 extern uint8_t initialization_list_STATES[initialization_list_SIZE];

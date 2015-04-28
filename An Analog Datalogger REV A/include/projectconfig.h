@@ -16,7 +16,7 @@
 
 
 // Project version
-#define PROJVER "0.0.004"
+#define PROJVER "0.0.005"
 
 #define DBG
 //#define DBGIO
@@ -32,7 +32,7 @@
 #define FEATURE_RNG
 #define FEATURE_SD
 #define FEATURE_SSD1306
-//#define FEATURE_USB
+#define FEATURE_USB
 //#define FEATURE_nRF24L01p
 
 
@@ -540,7 +540,16 @@
 70	PA11	I/O	USB_OTG_FS_DM
 71	PA12	I/O	USB_OTG_FS_DP
 69	PA10	I/O	USB_OTG_FS_ID
+
+	PA9		used in usb library
+	PA8		used in usb library
 */
+	// initialization of usb pins is found in the usb_bsp.c file.
+	// configuration is found in the usb_conf.h file
+	// here the macro USE_USB_OTG_FS is used
+
+
+/*
 	#define USB_DM_PORT GPIOA
 	#define USB_DM_PIN 11
 	#define USB_DM_MODE GPIO_Mode_AF
@@ -564,6 +573,8 @@
 	#define USB_ID_OTYPE GPIO_OType_PP
 	#define USB_ID_SPEED GPIO_Speed_100MHz
 	#define USB_ID_AF GPIO_AF_OTG_FS //AF10
+*/
+
 
 // SD CARD
 /*
