@@ -13,6 +13,7 @@
 #include "projectconfig.h"
 #include "gpio.h"
 #include "nvic.h"
+#include "delay.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -20,24 +21,6 @@
 // fatfs library
 #include "diskio.h"
 #include "ff.h"
-
-void
-initialize_SDIO(void);
-
-void
-sdio_test(void);
-
-// Prototypes
-void
-SD_LowLevel_DeInit(void);
-void
-SD_LowLevel_Init(void);
-void
-SD_LowLevel_DMA_TxConfig(uint32_t *BufferSRC, uint32_t BufferSize);
-void
-SD_LowLevel_DMA_RxConfig(uint32_t *BufferDST, uint32_t BufferSize);
-
-
 
 typedef enum
 {
@@ -210,6 +193,40 @@ typedef struct
   uint16_t RCA;
   uint8_t CardType;
 } SD_CardInfo;
+
+void
+initialize_SDIO(void);
+
+void
+sdio_test(void);
+
+void
+sdio_printCardInfo(SD_CardInfo* cardInfo);
+void
+sdio_printCardStatus(SD_CardStatus* cardStatus);
+
+// Prototypes
+char*
+dec32(unsigned long i);
+void
+SD_LowLevel_DeInit(void);
+void
+SD_LowLevel_Init(void);
+void
+SD_LowLevel_DMA_TxConfig(uint32_t *BufferSRC, uint32_t BufferSize);
+void
+SD_LowLevel_DMA_RxConfig(uint32_t *BufferDST, uint32_t BufferSize);
+
+
+extern FRESULT res;
+extern FILINFO fno;
+extern FIL fil;
+extern DIR dir;
+extern FATFS fs32;
+extern SD_CardInfo cardInfo;
+extern char* path;
+
+
 
 /**
   * @}

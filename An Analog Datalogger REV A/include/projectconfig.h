@@ -16,7 +16,7 @@
 
 
 // Project version
-#define PROJVER "0.0.07"
+#define PROJVER "0.0.08"
 
 #define DBG
 //#define DBGIO
@@ -533,7 +533,7 @@
 #define OLED_MENUWRITING_FONT Font_System5x8
 #define OLED_SUBMENUWRITING_HEADER_FONT Font_8x8
 #define OLED_SUBMENUWRITING_SUBITEMS_FONT Font_System3x6
-#define OLED_SUBMENUWRITING_SPACINGPIXELS_FROMHEADER 3
+#define OLED_SUBMENUWRITING_SPACINGPIXELS_FROMHEADER 1
 #define OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS 2
 
 	// here the orientation of stepping is from user viewpoint

@@ -13,6 +13,9 @@ xypair_t menu_currentPosition;
 uint8_t menu_enable;
 uint32_t menu_menuID;
 
+static inline void
+menustructure_attachMenuItem(menuItem_t* sourceItem, menuItem_t* attachItem);
+
 void
 initialize_menuStructure(void){
 	menu_menuID = 0x00;
@@ -20,32 +23,33 @@ initialize_menuStructure(void){
 	menu_MAIN.selected = 0x01;
 	menu_enable = 0x00;
 
+	menuItem_t* menu_TERMINAL = menustructure_addItem(&menu_MAIN, "Terminal", 0x00);
 	menuItem_t* menu_RTC = menustructure_addItem(&menu_MAIN, "RTC", 0x00);
 	menuItem_t* menu_SD = menustructure_addItem(&menu_MAIN, "SD Card", 0x00);
 	menuItem_t* menu_USB = menustructure_addItem(&menu_MAIN, "USB", 0x00);
 	menuItem_t* menu_AFE = menustructure_addItem(&menu_MAIN, "AFE", 0x00);
-	menuItem_t* menu_TERMINAL = menustructure_addItem(&menu_MAIN, "Terminal", 0x00);
 
-	menustructure_addItem(menu_SD, "SD Card Info", menustructure_menuFunctionSDCardinfo);
-	menustructure_addItem(menu_SD, "File Structure", menustructure_menuFunctionSDFilestructure);
-	menustructure_addItem(menu_SD, "SD Card test", 0x00);
-	menustructure_addItem(menu_SD, "SD Card Settings", menustructure_menuFunctionSDSdsettings);
+	menustructure_addItem(menu_SD, "SD Card Info", menustructure_menuFunction_SD_Cardinfo);
+	menustructure_addItem(menu_SD, "File Structure", menustructure_menuFunction_SD_Filestructure);
+	menustructure_addItem(menu_SD, "SD Card test", menustructure_menuFunction_SD_CardTest);
+	menustructure_addItem(menu_SD, "SD Card Settings", menustructure_menuFunction_SD_Sdsettings);
 
-	menustructure_addItem(menu_RTC, "RTC Info", menustructure_menuFunctionRTCRtcinfo);
-	menustructure_addItem(menu_RTC, "Adjust RTC", menustructure_menuFunctionRTCAdjustrtc);
-	menustructure_addItem(menu_RTC, "RTC Settings", menustructure_menuFunctionRTCRtcsettings);
+	menustructure_addItem(menu_RTC, "RTC Info", menustructure_menuFunction_RTC_Rtcinfo);
+	menustructure_addItem(menu_RTC, "Adjust RTC", menustructure_menuFunction_RTC_Adjustrtc);
+	menustructure_addItem(menu_RTC, "RTC Settings", menustructure_menuFunction_RTC_Rtcsettings);
 
-	menustructure_addItem(menu_USB, "USB Info", menustructure_menuFunctionUSBInfo);
-	menustructure_addItem(menu_USB, "USB Test", 0x00);
-	menustructure_addItem(menu_USB, "USB Settings", 0x00);
+	menustructure_addItem(menu_USB, "USB Info", menustructure_menuFunction_USB_Info);
+	menustructure_addItem(menu_USB, "USB Test", menustructure_menuFunction_USB_Test);
+	menustructure_addItem(menu_USB, "USB Settings", menustructure_menuFunction_USB_Settings);
 
-	menustructure_addItem(menu_AFE, "AFE Info", menustructure_menuFunctionAFEInfo);
-	menustructure_addItem(menu_AFE, "AFE Record", menustructure_menuFunctionAFERecord);
-	menustructure_addItem(menu_AFE, "AFE Settings", menustructure_menuFunctionAFEInfo);
+	menustructure_addItem(menu_AFE, "AFE Info", menustructure_menuFunction_AFE_Info);
+	menustructure_addItem(menu_AFE, "AFE Record", menustructure_menuFunction_AFE_Record);
+	menustructure_addItem(menu_AFE, "AFE Settings", menustructure_menuFunction_AFE_Settings);
 
-	menustructure_addItem(menu_TERMINAL, "Terminal Info", 0x00);
-	menustructure_addItem(menu_TERMINAL, "Terminal Test", 0x00);
-	menustructure_addItem(menu_TERMINAL, "Terminal Settings", 0x00);
+	menustructure_addItem(menu_TERMINAL, "Terminal Info", menustructure_menuFunction_TERMINAL_Info);
+	menustructure_addItem(menu_TERMINAL, "Terminal Test", menustructure_menuFunction_TERMINAL_Test);
+	menustructure_addItem(menu_TERMINAL, "Terminal Output", menustructure_menuFunction_TERMINAL_Output);
+	menustructure_addItem(menu_TERMINAL, "Terminal Settings", menustructure_menuFunction_TERMINAL_Settings);
 
 	menu_currentRef = &menu_MAIN;
 }
@@ -65,7 +69,7 @@ menustructure_addItem(menuItem_t* upperMenuItem, char* label, void(*func)(void))
 	return tmp;
 }
 
-void
+static inline void
 menustructure_attachMenuItem(menuItem_t* sourceItem, menuItem_t* attachItem){
 	// sourceitem is for example an item from lvl one.
 	// check if lowermenuitem is not null
@@ -291,65 +295,170 @@ menustructure_stepMenu(uint8_t direction){
 	lastMoved = delay_getMillis();
 }
 
+
+// SD CARD ROUTINES
 void
-menustructure_menuFunctionSDCardinfo(void){
+menustructure_menuFunction_SD_CardTest(void){
 	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"CARDTEST",
+			OLED_SUBMENUWRITING_HEADER_FONT);
+}
+
+void
+menustructure_menuFunction_SD_Cardinfo(void){
+	xypair_t tmp;
+
+	// get information
+	SD_Error result = SD_GetCardInfo(&cardInfo);
+
+	sdio_printCardInfo(&cardInfo);
 
 	// header
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
-			"SD CARD INFO",
+			"CARD INFO",
 			OLED_SUBMENUWRITING_HEADER_FONT);
 
-	// show sd card name
-		// print the subitem
+	if(result == SD_OK){
+		// show sd card size
+			// print the subitem
+			tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+			tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+					OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+					"CARD SIZE: ",
+					OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			// print the size
+			uint64_t cc = cardInfo.SD_csd.DeviceSize/(1024/cardInfo.CardBlockSize);
+			uint8_t pow=1;
+			while(cc>1000){
+				cc = cc/1000;
+				pow++;
+			}
+			uint32_t total = (uint32_t)cc;
+			char mib[] = " MB";
+			char gib[] = " GB";
+
+			tmp = ssd1306_setString(tmp.x,tmp.y,dec32(total), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			switch(pow){
+			case 1: tmp = ssd1306_setString(tmp.x,tmp.y,mib, OLED_SUBMENUWRITING_SUBITEMS_FONT); break;
+			case 2: tmp = ssd1306_setString(tmp.x,tmp.y,gib, OLED_SUBMENUWRITING_SUBITEMS_FONT); break;
+			}
+
+		// show sd card available size
+			tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+			tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+					OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+					"BLOCK SIZE: ",
+					OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.CardBlockSize), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+		// show sd card mounted
+		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+		tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+				"CARD TYPE: ",
+				OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		switch(cardInfo.CardType){
+		case SDIO_STD_CAPACITY_SD_CARD_V1_1:
+			tmp = ssd1306_setString(tmp.x,tmp.y,"STD CARD V1.1", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			break;
+		case SDIO_STD_CAPACITY_SD_CARD_V2_0:
+			tmp = ssd1306_setString(tmp.x,tmp.y,"STD CARD V2.0", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			break;
+		case SDIO_HIGH_CAPACITY_SD_CARD:
+			tmp = ssd1306_setString(tmp.x,tmp.y,"SDHC", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			break;
+		case SDIO_MULTIMEDIA_CARD:
+			tmp = ssd1306_setString(tmp.x,tmp.y,"MMC", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			break;
+		case SDIO_SECURE_DIGITAL_IO_CARD:
+			tmp = ssd1306_setString(tmp.x,tmp.y,"SDIO CARD", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			break;
+		case SDIO_HIGH_SPEED_MULTIMEDIA_CARD:
+			tmp = ssd1306_setString(tmp.x,tmp.y,"HSMMC", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			break;
+		case SDIO_SECURE_DIGITAL_IO_COMBO_CARD:
+			tmp = ssd1306_setString(tmp.x,tmp.y,"SDIO COMBO", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			break;
+		case SDIO_HIGH_CAPACITY_MMC_CARD:
+			tmp = ssd1306_setString(tmp.x,tmp.y,"HCMMC", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			break;
+
+		}
+
+		// show sd card drive number
+		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+		tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+				"SER. NR: ",
+				OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.SD_cid.ProdSN), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+		// show sd card drive number
+		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+		tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+				"MAX. FREQ: ",
+				OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.SD_csd.MaxBusClkFrec), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y," MHZ", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+
+
+		// show sd card drive number
+		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X+66;
+		tmp.y = OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1;
+		tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+				"MAX. W. BLOCK: ",
+				OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.SD_csd.MaxWrBlockLen), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+		// show sd card drive number
+		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X+66;
+		tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+				"MAX. R. BLOCK: ",
+				OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.SD_csd.RdBlockLen), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+
+		// show sd card drive number
+		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X+66;
+		tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+				"RCA: ",
+				OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.RCA), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	} else {
+		// print error message
 		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
 		tmp = ssd1306_setStringBelowPreviousDifferentFont(tmp,
 				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMHEADER,
-				"CARD NAME: ",
+				"ERROR CONNECTING SD CARD",
 				OLED_SUBMENUWRITING_HEADER_FONT,
 				OLED_SUBMENUWRITING_SUBITEMS_FONT);
-		// get sd card name
+	}
 
-		// print the name
-		tmp = ssd1306_setString(tmp.x,tmp.y,"TESTING 124", OLED_SUBMENUWRITING_SUBITEMS_FONT);
 
-	// show sd card size
-	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
-	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
-			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
-			"CARD SIZE: ",
-			OLED_SUBMENUWRITING_SUBITEMS_FONT);
-
-	// show sd card available size
-	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
-	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
-			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
-			"AVAIL. SIZE: ",
-			OLED_SUBMENUWRITING_SUBITEMS_FONT);
-
-	// show sd card mounted
-	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
-	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
-			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
-			"CARD MOUNTED: ",
-			OLED_SUBMENUWRITING_SUBITEMS_FONT);
-
-	// show sd card drive number
-	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
-	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
-			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
-			"DRIVE NR: ",
-			OLED_SUBMENUWRITING_SUBITEMS_FONT);
 
 }
 
 void
-menustructure_menuFunctionSDFilestructure(void){
-	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
-			"SD FILESTRUCTURE",
-			Font_8x8, 0);
+menustructure_menuFunction_SD_Filestructure(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"FILESTRUCTURE",
+			OLED_SUBMENUWRITING_HEADER_FONT);
 	// remember current
 
 	// map the structure in RAM to how deep you are momentarily
@@ -357,42 +466,160 @@ menustructure_menuFunctionSDFilestructure(void){
 }
 
 void
-menustructure_menuFunctionSDSdsettings(void){
-	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
-			"SD SETTINGS",
-			Font_8x8, 0);
+menustructure_menuFunction_SD_Sdsettings(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"CARD SETTINGS",
+			OLED_SUBMENUWRITING_HEADER_FONT);
 }
 
+// RTC ROUTINES
+
 void
-menustructure_menuFunctionRTCRtcinfo(void){
-	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
+menustructure_menuFunction_RTC_Rtcinfo(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
 			"RTC INFO",
-			Font_8x8, 0);
+			OLED_SUBMENUWRITING_HEADER_FONT);
 }
 
 void
-menustructure_menuFunctionRTCAdjustrtc(void){
-	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
-			"SET RTC",
-			Font_8x8, 0);
+menustructure_menuFunction_RTC_Adjustrtc(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"ADJUST RTC",
+			OLED_SUBMENUWRITING_HEADER_FONT);
 }
 
 void
-menustructure_menuFunctionRTCRtcsettings(void){
+menustructure_menuFunction_RTC_Rtcsettings(void){
+	xypair_t tmp;
 
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"RTC SETTINGS",
+			OLED_SUBMENUWRITING_HEADER_FONT);
+}
+
+// USB ROUTINES
+void
+menustructure_menuFunction_USB_Test(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"USB TEST",
+			OLED_SUBMENUWRITING_HEADER_FONT);
+}
+void
+menustructure_menuFunction_USB_Settings(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"USB SETTINGS",
+			OLED_SUBMENUWRITING_HEADER_FONT);
 }
 
 void
-menustructure_menuFunctionUSBInfo(void){
+menustructure_menuFunction_USB_Info(void){
+	xypair_t tmp;
 
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"USB INFO",
+			OLED_SUBMENUWRITING_HEADER_FONT);
+}
+
+// AFE ROUTINES
+void
+menustructure_menuFunction_AFE_Settings(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"AFE SETTINGS",
+			OLED_SUBMENUWRITING_HEADER_FONT);
 }
 
 void
-menustructure_menuFunctionAFEInfo(void){
+menustructure_menuFunction_AFE_Info(void){
+	xypair_t tmp;
 
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"AFE INFO",
+			OLED_SUBMENUWRITING_HEADER_FONT);
 }
 
 void
-menustructure_menuFunctionAFERecord(void){
+menustructure_menuFunction_AFE_Record(void){
+	xypair_t tmp;
 
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"AFE RECORDING",
+			OLED_SUBMENUWRITING_HEADER_FONT);
+}
+
+// TERMINAL ROUTINES
+
+void
+menustructure_menuFunction_TERMINAL_Info(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"TERM. INFO",
+			OLED_SUBMENUWRITING_HEADER_FONT);
+}
+
+void
+menustructure_menuFunction_TERMINAL_Test(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"TERM TEST",
+			OLED_SUBMENUWRITING_HEADER_FONT);
+}
+
+void
+menustructure_menuFunction_TERMINAL_Output(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"TERM VIEW",
+			OLED_SUBMENUWRITING_HEADER_FONT);
+}
+
+void
+menustructure_menuFunction_TERMINAL_Settings(void){
+	xypair_t tmp;
+
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"TERM SETTINGS",
+			OLED_SUBMENUWRITING_HEADER_FONT);
 }

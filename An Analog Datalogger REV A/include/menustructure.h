@@ -20,6 +20,10 @@
 #include "delay.h"
 #include "sdio.h"
 
+// fatfs library
+#include "diskio.h"
+#include "ff.h"
+
 extern uint8_t menu_enable;
 
 typedef struct menuItem_t{
@@ -40,8 +44,7 @@ initialize_menuStructure(void);
 menuItem_t*
 menustructure_addItem(menuItem_t* upperMenuItem, char* label, void(*func)(void));
 
-void
-menustructure_attachMenuItem(menuItem_t* sourceItem, menuItem_t* attachItem);
+
 
 void
 menustructure_showMenu(menuItem_t* parentItem);
@@ -58,33 +61,61 @@ menustructure_render(void);
 void
 menustructure_stepMenu(uint8_t direction);
 
+// SD CARD ROUTINES
 void
-menustructure_menuFunctionSDCardinfo(void);
+menustructure_menuFunction_SD_Cardinfo(void);
 
 void
-menustructure_menuFunctionSDFilestructure(void);
+menustructure_menuFunction_SD_Filestructure(void);
 
 void
-menustructure_menuFunctionSDSdsettings(void);
+menustructure_menuFunction_SD_CardTest(void);
 
 void
-menustructure_menuFunctionRTCRtcinfo(void);
+menustructure_menuFunction_SD_Sdsettings(void);
+
+// RTC ROUTINES
+void
+menustructure_menuFunction_RTC_Rtcinfo(void);
 
 void
-menustructure_menuFunctionRTCAdjustrtc(void);
+menustructure_menuFunction_RTC_Adjustrtc(void);
 
 void
-menustructure_menuFunctionRTCRtcsettings(void);
+menustructure_menuFunction_RTC_Rtcsettings(void);
+
+// USB ROUTINES
+void
+menustructure_menuFunction_USB_Info(void);
+void
+menustructure_menuFunction_USB_Test(void);
+void
+menustructure_menuFunction_USB_Settings(void);
+
+
+// AFE ROUTINES
+void
+menustructure_menuFunction_AFE_Info(void);
 
 void
-menustructure_menuFunctionUSBInfo(void);
+menustructure_menuFunction_AFE_Record(void);
 
 void
-menustructure_menuFunctionAFEInfo(void);
+menustructure_menuFunction_AFE_Settings(void);
+
+// TERMINAL ROUTINES
 
 void
-menustructure_menuFunctionAFERecord(void);
+menustructure_menuFunction_TERMINAL_Info(void);
 
+void
+menustructure_menuFunction_TERMINAL_Test(void);
+
+void
+menustructure_menuFunction_TERMINAL_Output(void);
+
+void
+menustructure_menuFunction_TERMINAL_Settings(void);
 
 
 #endif /* MENUSTRUCTURE_H_ */

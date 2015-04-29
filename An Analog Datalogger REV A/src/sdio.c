@@ -13,7 +13,9 @@ FILINFO fno;
 FIL fil;
 DIR dir;
 FATFS fs32;
+SD_CardInfo cardInfo;
 char* path;
+
 
 char *dec32(unsigned long i)
 {
@@ -34,24 +36,136 @@ char *dec32(unsigned long i)
 
 void
 initialize_SDIO(void){
-	  /* Configure the NVIC Preemption Priority Bits */
-	  //NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
+	/* Configure the NVIC Preemption Priority Bits */
+	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
 
-	  nvic_initInterrupt(
-			  SDIO_IRQn,
-			  1,
-			  0);
+	nvic_initInterrupt(
+		  SDIO_IRQn,
+		  1,
+		  0);
 
-	  memset(&fs32, 0, sizeof(FATFS));
+	memset(&fs32, 0, sizeof(FATFS));
 
-	  	res = f_mount(0, &fs32);
+	res = f_mount(0, &fs32);
 
-	  #ifdef DBG
-	  	if (res != FR_OK)
-	  		printf("res = %d f_mount\r\n", res);
-	  #endif
+	#ifdef DBG
+	if (res != FR_OK)
+		printf("res = %d f_mount\r\n", res);
+	#endif
 
-	  	memset(&fil, 0, sizeof(FIL));
+	memset(&fil, 0, sizeof(FIL));
+
+
+	res = f_open(&fil, "DIR.TXT", FA_CREATE_ALWAYS | FA_WRITE);
+
+  #ifdef DBG
+  	if (res != FR_OK)
+  		printf("res = %d f_open DIR.TXT\r\n", res);
+  #endif
+
+    if (res == FR_OK)
+    {
+      UINT BytesWritten;
+
+  		path = "";
+
+  		res = f_opendir(&dir, path);
+
+  #ifdef DBG
+  		if (res != FR_OK)
+  			printf("res = %d f_opendir\r\n", res);
+  #endif
+
+  		if (res == FR_OK)
+  		{
+  			while(1)
+  			{
+          char str[256];
+          char *s = str;
+  				char *fn;
+
+  				res = f_readdir(&dir, &fno);
+
+  #ifdef DBG
+  				if (res != FR_OK)
+  					printf("res = %d f_readdir\r\n", res);
+  #endif
+
+  				if ((res != FR_OK) || (fno.fname[0] == 0))
+  					break;
+
+  #if _USE_LFN
+  				fn = *fno.lfname ? fno.lfname : fno.fname;
+  #else
+  				fn = fno.fname;
+  #endif
+
+  #ifdef DBG
+  				printf("%c%c%c%c ",
+  					((fno.fattrib & AM_DIR) ? 'D' : '-'),
+  					((fno.fattrib & AM_RDO) ? 'R' : '-'),
+  					((fno.fattrib & AM_SYS) ? 'S' : '-'),
+  					((fno.fattrib & AM_HID) ? 'H' : '-') );
+
+  				printf("%10d ", (unsigned long)fno.fsize);
+
+  				printf("%s/%s\r\n", path, fn);
+  #endif
+
+  		  	*s++ = ((fno.fattrib & AM_DIR) ? 'D' : '-');
+  				*s++ = ((fno.fattrib & AM_RDO) ? 'R' : '-');
+    			*s++ = ((fno.fattrib & AM_SYS) ? 'S' : '-');
+  	  		*s++ = ((fno.fattrib & AM_HID) ? 'H' : '-');
+
+          *s++ = ' ';
+
+          strcpy(s, dec32(fno.fsize));
+          s += strlen(s);
+
+          *s++ = ' ';
+
+          strcpy(s, path);
+          s += strlen(s);
+
+          *s++ = '/';
+
+          strcpy(s, fn);
+          s += strlen(s);
+
+          *s++ = 0x0D;
+          *s++ = 0x0A;
+          *s++ = 0;
+
+          res = f_write(&fil, str, strlen(str), &BytesWritten);
+  			}
+  		}
+
+    	res = f_close(&fil); // DIR.TXT
+
+  #ifdef DBG
+   		if (res != FR_OK)
+    		printf("res = %d f_close DIR.TXT\r\n", res);
+  #endif
+    }
+
+//    	SD_Error result = SD_GetCardInfo(&cardInfo);
+//
+//    	printf("res = %d SD_GetCardInfo\r\n", result);
+//
+//    	if(result == SD_OK){
+//    		sdio_printCardInfo(&cardInfo);
+//    	}
+//
+//    	delay_milli(100);
+
+//    	SD_CardStatus cardStatus;
+//    	result = SD_GetCardStatus(&cardStatus);
+//
+//    	printf("res = %d SD_GetCardStatus\r\n", result);
+//
+//    	if(result == SD_OK){
+//    		sdio_printCardStatus(&cardStatus);
+//    	}
 }
 
 void
@@ -221,6 +335,74 @@ sdio_test(void){
 	    		printf("res = %d f_close DIR.TXT\r\n", res);
 	  #endif
 	    }
+}
+
+void
+sdio_printCardInfo(SD_CardInfo* cardInfo){
+	printf("Card block size: %ld\r\n", cardInfo->CardBlockSize);
+	printf("Card capacity: %lld\r\n", cardInfo->CardCapacity);
+	printf("Card type: %d\r\n", cardInfo->CardType);
+	printf("RCA: %d\r\n", cardInfo->RCA);
+	printf("CID CRC: %d\r\n", cardInfo->SD_cid.CID_CRC);
+	printf("Manufacturing data: %d\r\n", cardInfo->SD_cid.ManufactDate);
+	printf("OEM/Application ID: %d\r\n", cardInfo->SD_cid.OEM_AppliID);
+	printf("Product Name part1: %ld\r\n", cardInfo->SD_cid.ProdName1);
+	printf("Product Name part2: %d\r\n", cardInfo->SD_cid.ProdName2);
+	printf("Product Revision: %d\r\n", cardInfo->SD_cid.ProdRev);
+	printf("Product Serial Number: %ld\r\n", cardInfo->SD_cid.ProdSN);
+	printf("Reserved1: %d\r\n", cardInfo->SD_cid.Reserved1);
+	printf("Reserved2: %d\r\n", cardInfo->SD_cid.Reserved2);
+	printf("CSD structure: %d\r\n", cardInfo->SD_csd.CSDStruct);
+	printf("CSD CRC: %d\r\n", cardInfo->SD_csd.CSD_CRC);
+	printf("Card command classes: %d\r\n", cardInfo->SD_csd.CardComdClasses);
+	printf("Content protection application: %d\r\n", cardInfo->SD_csd.ContentProtectAppli);
+	printf("Copy flag (OTP): %d\r\n", cardInfo->SD_csd.CopyFlag);
+	printf("DSR implemented: %d\r\n", cardInfo->SD_csd.DSRImpl);
+	printf("Device Size: %ld\r\n", cardInfo->SD_csd.DeviceSize);
+	printf("Device size multiplier: %d\r\n", cardInfo->SD_csd.DeviceSizeMul);
+	printf("ECC code: %d\r\n", cardInfo->SD_csd.ECC);
+	printf("Erase group size multiplier: %d\r\n", cardInfo->SD_csd.EraseGrMul);
+	printf("Erase group size: %d\r\n", cardInfo->SD_csd.EraseGrSize);
+	printf("File Format: %d\r\n", cardInfo->SD_csd.FileFormat);
+	printf("File format group: %d\r\n", cardInfo->SD_csd.FileFormatGrouop);
+	printf("Manufacturer default ECC: %d\r\n", cardInfo->SD_csd.ManDeflECC);
+	printf("Max. bus clock frequency: %d\r\n", cardInfo->SD_csd.MaxBusClkFrec);
+	printf("Max. read current @ VDD max: %d\r\n", cardInfo->SD_csd.MaxRdCurrentVDDMax);
+	printf("Max. read current @ VDD min: %d\r\n", cardInfo->SD_csd.MaxRdCurrentVDDMin);
+	printf("Max. write data block length: %d\r\n", cardInfo->SD_csd.MaxWrBlockLen);
+	printf("Max. write current @ VDD max: %d\r\n", cardInfo->SD_csd.MaxWrCurrentVDDMax);
+	printf("Max. write current @ VDD min: %d\r\n", cardInfo->SD_csd.MaxWrCurrentVDDMin);
+	printf("Partial blocks for read allowed: %d\r\n", cardInfo->SD_csd.PartBlockRead);
+	printf("Permanent write protection: %d\r\n", cardInfo->SD_csd.PermWrProtect);
+	printf("Max. read data block length: %d\r\n", cardInfo->SD_csd.RdBlockLen);
+	printf("Read block misalignment: %d\r\n", cardInfo->SD_csd.RdBlockMisalign);
+	printf("Reserved: %d\r\n", cardInfo->SD_csd.Reserved1);
+	printf("Reserved: %d\r\n", cardInfo->SD_csd.Reserved2);
+	printf("Reserved: %d\r\n", cardInfo->SD_csd.Reserved3);
+	printf("Reserved: %d\r\n", cardInfo->SD_csd.Reserved4);
+	printf("System specification version: %d\r\n", cardInfo->SD_csd.SysSpecVersion);
+	printf("Data read access-time 1: %d\r\n", cardInfo->SD_csd.TAAC);
+	printf("Data read access-time 2 in CLK cycles: %d\r\n", cardInfo->SD_csd.NSAC);
+	printf("Temporary write protection: %d\r\n", cardInfo->SD_csd.TempWrProtect);
+	printf("Write block misalignment: %d\r\n", cardInfo->SD_csd.WrBlockMisalign);
+	printf("Write protect group enable: %d\r\n", cardInfo->SD_csd.WrProtectGrEnable);
+	printf("Write protect group size: %d\r\n", cardInfo->SD_csd.WrProtectGrSize);
+	printf("Write speed factor: %d\r\n", cardInfo->SD_csd.WrSpeedFact);
+	printf("Partial blocks for write allowed: %d\r\n", cardInfo->SD_csd.WriteBlockPaPartial);
+}
+
+void
+sdio_printCardStatus(SD_CardStatus* cardStatus){
+	printf(": %ld\r\n", cardStatus->AU_SIZE);
+	printf(": %ld\r\n", cardStatus->DAT_BUS_WIDTH);
+	printf(": %ld\r\n", cardStatus->ERASE_OFFSET);
+	printf(": %ld\r\n", cardStatus->ERASE_SIZE);
+	printf(": %ld\r\n", cardStatus->ERASE_TIMEOUT);
+	printf(": %ld\r\n", cardStatus->PERFORMANCE_MOVE);
+	printf(": %ld\r\n", cardStatus->SD_CARD_TYPE);
+	printf(": %ld\r\n", cardStatus->SECURED_MODE);
+	printf(": %ld\r\n", cardStatus->SIZE_OF_PROTECTED_AREA);
+	printf(": %ld\r\n", cardStatus->SPEED_CLASS);
 }
 
 /**
