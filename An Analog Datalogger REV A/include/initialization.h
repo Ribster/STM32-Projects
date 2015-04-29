@@ -28,7 +28,7 @@
 #include "afe.h"
 #include "usb.h"
 #include "menustructure.h"
-//#include "nRF24L01p.h"
+#include "nRF24L01p.h"
 
 
 

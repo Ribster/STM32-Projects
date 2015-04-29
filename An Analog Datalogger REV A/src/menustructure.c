@@ -13,9 +13,6 @@ xypair_t menu_currentPosition;
 uint8_t menu_enable;
 uint32_t menu_menuID;
 
-inline static void
-menustructure_stepMenu(uint8_t direction);
-
 void
 initialize_menuStructure(void){
 	menu_menuID = 0x00;
@@ -143,14 +140,17 @@ menustructure_showMenu(menuItem_t* parentItem){
 				// check if it's possible to write the string
 					if(curPos.y>=(endPos.y+font.u8Height-1)){
 						// center the string
-						uint32_t prefix = (strLength-(strlen(startItem->label)*(font.u8Width+1)))/2;
 							if(startItem->selected != 0x00){
 								// write the string if checked
 								ssd1306_setArea(curPos.x,curPos.y+2, curPos.x+strLength, curPos.y-font.u8Height+1);
-								ssd1306_setStringInverted(curPos.x+prefix, curPos.y-font.u8Height,startItem->label,font, 0);
+								ssd1306_setStringInvertedCentered(curPos.y-font.u8Height,
+										startPos.x, endPos.x,
+										startItem->label,
+										font,
+										0);
 							} else {
 								// write the string if not checked
-								ssd1306_setString(curPos.x+prefix, curPos.y-font.u8Height,startItem->label,font);
+								ssd1306_setStringCentered(curPos.y-font.u8Height, startPos.x, endPos.x, startItem->label,font);
 							}
 							// set the new position
 							curPos.y -= (font.u8Height+2);
@@ -201,7 +201,7 @@ menustructure_render(void){
 	}
 }
 
-inline static void
+void
 menustructure_stepMenu(uint8_t direction){
 	if(delay_getMilliDifferenceSimple(lastMoved)>PB_DEBOUNCE_DELAY_MS){
 		if(direction == 0x00){
@@ -240,13 +240,39 @@ menustructure_stepMenu(uint8_t direction){
 			menu_enable = 0x01;
 		} else if (direction == 0x02){
 			// Stepping back (pointerwise: up)
+			menuItem_t* tmp = menu_currentRef;
+			if(tmp !=0x00){
+				// look for the item that is selected
+				// set that item as the parent menu item
+				while(tmp->leftMenuItem!=0x00){
+					tmp = tmp->leftMenuItem;
+				}
+
+				while(tmp->selected==0x00){
+					tmp = tmp->rightMenuItem;
+				}
+
+				if(tmp->upperMenuItem!=0x00){
+					menu_currentRef = tmp->upperMenuItem;
+				}
+
+				menu_enable = 0x01;
+			}
 
 		} else if (direction == 0x03){
 			// Stepping in (pointerwise: down)
-		}
+			menuItem_t* tmp = menu_currentRef->lowerMenuItem;
+			if(tmp !=0x00){
+				// look for the item that is selected
+				// set that item as the parent menu item
+				while(tmp->selected==0x00){
+					tmp = tmp->rightMenuItem;
+				}
+				menu_currentRef = tmp;
 
-
-		else {
+				menu_enable = 0x01;
+			}
+		} else {
 			// maybe you are in a functionptr..
 			if(menu_currentRef->fptr !=0x00){
 				// yup, you are in a function pointer..
@@ -266,69 +292,64 @@ menustructure_stepMenu(uint8_t direction){
 }
 
 void
-menustructure_stepMenuUp(void){
-	menustructure_stepMenu(0x00);
-}
-
-void
-menustructure_stepMenuDown(void){
-	menustructure_stepMenu(0x01);
-}
-
-void
-menustructure_stepMenuEnter(void){
-	if(delay_getMilliDifferenceSimple(lastMoved)>PB_DEBOUNCE_DELAY_MS){
-		menuItem_t* tmp = menu_currentRef->lowerMenuItem;
-		if(tmp !=0x00){
-			// look for the item that is selected
-			// set that item as the parent menu item
-			while(tmp->selected==0x00){
-				tmp = tmp->rightMenuItem;
-			}
-			menu_currentRef = tmp;
-
-			menu_enable = 0x01;
-		}
-	}
-	lastMoved = delay_getMillis();
-}
-
-void
-menustructure_stepMenuBack(void){
-	if(delay_getMilliDifferenceSimple(lastMoved)>PB_DEBOUNCE_DELAY_MS){
-		menuItem_t* tmp = menu_currentRef;
-		if(tmp !=0x00){
-			// look for the item that is selected
-			// set that item as the parent menu item
-			while(tmp->leftMenuItem!=0x00){
-				tmp = tmp->leftMenuItem;
-			}
-
-			while(tmp->selected==0x00){
-				tmp = tmp->rightMenuItem;
-			}
-
-			if(tmp->upperMenuItem!=0x00){
-				menu_currentRef = tmp->upperMenuItem;
-			}
-
-			menu_enable = 0x01;
-		}
-	}
-	lastMoved = delay_getMillis();
-}
-
-void
 menustructure_menuFunctionSDCardinfo(void){
+	xypair_t tmp;
+
+	// header
+	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
+			OLED_TEXTBLOCK_LEFTDOWN_X,
+			OLED_TEXTBLOCK_RIGHTUP_X,
+			"SD CARD INFO",
+			OLED_SUBMENUWRITING_HEADER_FONT);
+
 	// show sd card name
+		// print the subitem
+		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+		tmp = ssd1306_setStringBelowPreviousDifferentFont(tmp,
+				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMHEADER,
+				"CARD NAME: ",
+				OLED_SUBMENUWRITING_HEADER_FONT,
+				OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		// get sd card name
+
+		// print the name
+		tmp = ssd1306_setString(tmp.x,tmp.y,"TESTING 124", OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
 	// show sd card size
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"CARD SIZE: ",
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
 	// show sd card available size
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"AVAIL. SIZE: ",
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
 	// show sd card mounted
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"CARD MOUNTED: ",
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
 	// show sd card drive number
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"DRIVE NR: ",
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
 }
 
 void
 menustructure_menuFunctionSDFilestructure(void){
+	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
+			"SD FILESTRUCTURE",
+			Font_8x8, 0);
 	// remember current
 
 	// map the structure in RAM to how deep you are momentarily
@@ -337,17 +358,23 @@ menustructure_menuFunctionSDFilestructure(void){
 
 void
 menustructure_menuFunctionSDSdsettings(void){
-
+	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
+			"SD SETTINGS",
+			Font_8x8, 0);
 }
 
 void
 menustructure_menuFunctionRTCRtcinfo(void){
-
+	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
+			"RTC INFO",
+			Font_8x8, 0);
 }
 
 void
 menustructure_menuFunctionRTCAdjustrtc(void){
-
+	ssd1306_setTextBlock(OLED_TEXTBLOCK_DIMENSIONS,
+			"SET RTC",
+			Font_8x8, 0);
 }
 
 void

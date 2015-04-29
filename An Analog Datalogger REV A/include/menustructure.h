@@ -56,16 +56,7 @@ void
 menustructure_render(void);
 
 void
-menustructure_stepMenuUp(void);
-
-void
-menustructure_stepMenuDown(void);
-
-void
-menustructure_stepMenuEnter(void);
-
-void
-menustructure_stepMenuBack(void);
+menustructure_stepMenu(uint8_t direction);
 
 void
 menustructure_menuFunctionSDCardinfo(void);

@@ -45,11 +45,11 @@
 	ssd1306_alterPixel(uint8_t x, uint8_t y, BitAction newVal);
 	
 	// alter a character on the ssd1306
-	inline static void
+	inline static xypair_t
 	ssd1306_alterCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font, BitAction newVal);
 	
 	// alter a string on the ssd1306
-	inline static void
+	inline static xypair_t
 	ssd1306_alterString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, BitAction newVal);
 	
 	// alter a string with addition of a string border on the ssd1306
@@ -575,9 +575,10 @@ void
 ssd1306_clearCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font){
 	ssd1306_alterCharacter(x,y,ch,font,Bit_RESET);
 }
-inline static void
+inline static xypair_t
 ssd1306_alterCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font, BitAction newVal){
 	  uint8_t col, column[font.u8Width];
+	  xypair_t tmp;
 
 	  // Check if the requested character is available
 	  if ((ch >= font.u8FirstChar) && (ch <= font.u8LastChar))
@@ -612,23 +613,48 @@ ssd1306_alterCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font, B
 	      }
 	    }
 	  }
+
+	  // set the tmp structure for the last written pixels
+	  tmp.x = x+font.u8Width;
+	  tmp.y = y;
+
+	  return tmp;
 }
-void
+xypair_t
 ssd1306_setString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font){
-	ssd1306_alterString(x,y,str,font,Bit_SET);
+	return ssd1306_alterString(x,y,str,font,Bit_SET);
 }
 
-void
-ssd1306_clearString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font){
-	ssd1306_alterString(x,y,str,font,Bit_RESET);
+xypair_t
+ssd1306_setStringCentered(uint8_t y, uint8_t x0, uint8_t x1, const char* str, struct FONT_DEF font){
+	// calculate new starting x
+	uint8_t length = strlen(str);
+	length = (font.u8Width*length) + (length-1);
+	uint8_t dX = MAX(x1,x0)-MIN(x1,x0);
+	uint8_t prefix = (dX-length)/2;
+	return ssd1306_alterString(x0+prefix,y,str,font,Bit_SET);
 }
-inline static void
+xypair_t
+ssd1306_setStringBelowPreviousSameFont(xypair_t xy, uint8_t spacing, const char* str, struct FONT_DEF font){
+	return ssd1306_alterString(xy.x,xy.y-font.u8Height-spacing,str,font,Bit_SET);
+}
+xypair_t
+	ssd1306_setStringBelowPreviousDifferentFont(xypair_t xy, uint8_t spacing, const char* str, struct FONT_DEF previousFont, struct FONT_DEF currentFont){
+	return ssd1306_alterString(xy.x,xy.y-previousFont.u8Height-spacing,str,currentFont,Bit_SET);
+}
+xypair_t
+ssd1306_clearString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font){
+	return ssd1306_alterString(x,y,str,font,Bit_RESET);
+}
+inline static xypair_t
 ssd1306_alterString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, BitAction newVal){
 	  uint8_t l;
+	  xypair_t tmp;
 	  for (l = 0; l < strlen(str); l++)
 	  {
-		  ssd1306_alterCharacter(x + (l * (font.u8Width + 1)), y, str[l], font, newVal);
+		  tmp = ssd1306_alterCharacter(x + (l * (font.u8Width + 1)), y, str[l], font, newVal);
 	  }
+	  return tmp;
 }
 inline static void
 ssd1306_alterStringBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding, BitAction newVal){
@@ -656,7 +682,7 @@ ssd1306_clearStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT
 	// clear string
 	ssd1306_alterString(x,y,str,font,Bit_RESET);
 }
-void
+xypair_t
 ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding){
 	// set Area
 	uint8_t stringLength = strlen(str);
@@ -664,18 +690,31 @@ ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF
 	uint8_t stringHeigth = font.u8Height;
 	ssd1306_setArea(x-padding, y-padding+1, x+padding+stringWidth, y+padding+stringHeigth);
 	// clear string
-	ssd1306_alterString(x,y,str,font,Bit_RESET);
+	return ssd1306_alterString(x,y,str,font,Bit_RESET);
 }
-void
+xypair_t
+ssd1306_setStringInvertedCentered(uint8_t y, uint8_t x0, uint8_t x1, const char* str, struct FONT_DEF font, uint8_t padding){
+	// calculate new starting x
+	uint8_t length = strlen(str);
+	length = (font.u8Width*length) + (length-1);
+	uint8_t xMin = MIN(x1,x0);
+	uint8_t xMax = MAX(x1,x0);
+	uint8_t dX = xMax-xMin;
+	uint8_t prefix = (dX-length)/2;
+	ssd1306_setArea(xMin-padding, y-padding+1, xMax+padding, y+padding+font.u8Height);
+	return ssd1306_alterString(xMin+prefix,y,str,font,Bit_RESET);
+}
+xypair_t
 ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftLines){
 // old version
 	xycorners_t tmp = ssd1306_getAdjustedPoints(x0,y0,x1,y1);
+	xypair_t returnVal;
 
 	uint32_t maxColumns = (tmp.bottomRight.x - tmp.bottomLeft.x) / (font.u8Width+1);
 	uint32_t maxLines = (tmp.topLeft.y - tmp.bottomLeft.y) / (font.u8Height+1);
 	uint32_t totLength = strlen(str);
 	// clear the text block
-	ssd1306_alterArea(tmp.bottomLeft.x, tmp.bottomLeft.y, tmp.topRight.x, tmp.topRight.y, Bit_RESET);
+		//ssd1306_alterArea(tmp.bottomLeft.x, tmp.bottomLeft.y, tmp.topRight.x, tmp.topRight.y, Bit_RESET);
 	// write every line until the string is printed
 		  uint32_t c, l;
 		  // total lines * height of a line
@@ -693,12 +732,13 @@ ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char*
 					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
 					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
 					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);c++;
-					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);
+					  returnVal = ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), ' ', font, ENABLE);
 				  } else if(str[i]!=0x00 && i<totLength){
-					  ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), str[i++], font, ENABLE);
+					  returnVal = ssd1306_alterCharacter(tmp.topLeft.x + (c * (font.u8Width + 1)), tmp.topLeft.y - (l * (font.u8Height+1)), str[i++], font, ENABLE);
 				  } else { break; }
 			  }
 		  }
+	return returnVal;
 }
 void
 ssd1306_setCheckBoxWithText(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t checked){

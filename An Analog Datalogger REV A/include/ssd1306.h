@@ -268,17 +268,25 @@ typedef struct xycorners_t{
 	ssd1306_setCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font);
 	void
 	ssd1306_clearCharacter(uint8_t x, uint8_t y, uint8_t ch, struct FONT_DEF font);
-	void
+	xypair_t
 	ssd1306_setString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font);
-	void
+	xypair_t
+	ssd1306_setStringCentered(uint8_t y, uint8_t x0, uint8_t x1, const char* str, struct FONT_DEF font);
+	xypair_t
+	ssd1306_setStringBelowPreviousSameFont(xypair_t xy, uint8_t spacing, const char* str, struct FONT_DEF font);
+	xypair_t
+	ssd1306_setStringBelowPreviousDifferentFont(xypair_t xy, uint8_t spacing, const char* str, struct FONT_DEF previousFont, struct FONT_DEF currentFont);
+	xypair_t
 	ssd1306_clearString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font);
 	void
 	ssd1306_setStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
 	void
 	ssd1306_clearStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
-	void
+	xypair_t
 	ssd1306_setStringInverted(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
-	void
+	xypair_t
+	ssd1306_setStringInvertedCentered(uint8_t y, uint8_t x0, uint8_t x1, const char* str, struct FONT_DEF font, uint8_t padding);
+	xypair_t
 	ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char* str, struct FONT_DEF font, uint32_t shiftLine);
 	void
 	ssd1306_setCheckBoxWithText(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t checked);

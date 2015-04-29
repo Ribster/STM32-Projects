@@ -55,11 +55,11 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_vcp.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
  ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h \
- ../libs/usb/usb_lib/otg/inc/usb_dcd.h ../include/leds.h \
- ../include/pushbuttons.h ../include/delay.h ../include/dma.h \
- ../include/gpio.h ../include/rcc.h ../include/rtc.h ../include/sdio.h \
- ../include/spi.h ../include/ssd1306.h ../include/uart.h ../include/usb.h \
- ../include/encoders.h
+ ../libs/usb/usb_lib/otg/inc/usb_dcd.h ../include/nRF24L01p.h \
+ ../include/leds.h ../include/pushbuttons.h ../include/delay.h \
+ ../include/dma.h ../include/gpio.h ../include/rcc.h ../include/rtc.h \
+ ../include/sdio.h ../include/spi.h ../include/ssd1306.h \
+ ../include/uart.h ../include/usb.h ../include/encoders.h
 
 ../libs/cmsis/include/stm32f4xx.h:
 
@@ -216,6 +216,8 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
 ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_dcd.h:
+
+../include/nRF24L01p.h:
 
 ../include/leds.h:
 

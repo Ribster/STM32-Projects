@@ -129,9 +129,9 @@ encoder_readEncoderTwo(void){
 	if(encoder_parameterEncoderTwoDifference!=0){
 		leds_toggleLed(ledList_Blue);
 		if(encoder_parameterEncoderTwoDifference>0){
-			menustructure_stepMenuDown();
+			menustructure_stepMenu(OLED_MENU_STEP_DOWN);
 		}else{
-			menustructure_stepMenuUp();
+			menustructure_stepMenu(OLED_MENU_STEP_UP);
 		}
 	}
 }

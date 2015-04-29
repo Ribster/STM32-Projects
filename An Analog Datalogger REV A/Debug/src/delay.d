@@ -53,8 +53,9 @@ src/delay.o: ../src/delay.c ../include/delay.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_vcp.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
  ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h \
- ../libs/usb/usb_lib/otg/inc/usb_dcd.h ../include/spi.h \
- ../include/fonts/smallfonts.h ../libs/usb/usb_lib/otg/inc/usb_defines.h
+ ../libs/usb/usb_lib/otg/inc/usb_dcd.h ../include/nRF24L01p.h \
+ ../include/spi.h ../include/fonts/smallfonts.h \
+ ../libs/usb/usb_lib/otg/inc/usb_defines.h
 
 ../include/delay.h:
 
@@ -203,6 +204,8 @@ src/delay.o: ../src/delay.c ../include/delay.h \
 ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_dcd.h:
+
+../include/nRF24L01p.h:
 
 ../include/spi.h:
 

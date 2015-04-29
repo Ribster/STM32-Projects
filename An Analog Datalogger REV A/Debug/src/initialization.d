@@ -54,7 +54,7 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_vcp.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
  ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h \
- ../libs/usb/usb_lib/otg/inc/usb_dcd.h
+ ../libs/usb/usb_lib/otg/inc/usb_dcd.h ../include/nRF24L01p.h
 
 ../include/initialization.h:
 
@@ -209,3 +209,5 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
 ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_dcd.h:
+
+../include/nRF24L01p.h:

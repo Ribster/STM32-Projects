@@ -116,7 +116,7 @@ pushbuttons_interruptHandler_UP(void){
 #ifdef DBG
 		printf("Pushbutton UP\r\n");
 #endif
-		menustructure_stepMenuUp();
+		menustructure_stepMenu(OLED_MENU_STEP_UP);
 	  }
 }
 
@@ -129,7 +129,7 @@ pushbuttons_interruptHandler_LEFT(void){
 #ifdef DBG
 		printf("Pushbutton LEFT\r\n");
 #endif
-		menustructure_stepMenuBack();
+		menustructure_stepMenu(OLED_MENU_STEP_BACK);
 	  }
 }
 
@@ -154,6 +154,7 @@ pushbuttons_interruptHandler_RIGHT(void){
 #ifdef DBG
 		printf("Pushbutton RIGHT\r\n");
 #endif
+		menustructure_stepMenu(OLED_MENU_STEP_ENTER);
 	  }
 }
 
@@ -166,7 +167,7 @@ pushbuttons_interruptHandler_DOWN(void){
 #ifdef DBG
 		printf("Pushbutton DOWN\r\n");
 #endif
-		menustructure_stepMenuDown();
+		menustructure_stepMenu(OLED_MENU_STEP_DOWN);
 	  }
 }
 
@@ -179,6 +180,6 @@ pushbuttons_interruptHandler_ENTER(void){
 #ifdef DBG
 		printf("Pushbutton ENTER\r\n");
 #endif
-		menustructure_stepMenuEnter();
+		menustructure_stepMenu(OLED_MENU_STEP_ENTER);
 	  }
 }
