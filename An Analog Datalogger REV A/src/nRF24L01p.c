@@ -25,7 +25,7 @@ initialize_nRF24L01p(void){
 				nRF_IRQ_PULL,
 				nRF_IRQ_SPEED);
 		nvic_initInterrupt(
-				nRF_IRQ_EXTI_Line,
+				nRF_IRQ_EXTI_IRQn,
 				0xFF,
 				0);
 		// SS PIN
@@ -79,6 +79,7 @@ initialize_nRF24L01p(void){
 				nRF_SPI_BaudRatePrescaler,
 				nRF_SPI_FirstBit,
 				nRF_SPI_CRCPolynomial);
+
 		SPI_Cmd(nRF_SPI, ENABLE);
 
 

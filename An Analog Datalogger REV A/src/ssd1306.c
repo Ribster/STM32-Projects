@@ -867,9 +867,11 @@ inline static void
 ssd1306_alterArea(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, BitAction newval){
 	uint8_t xMin = MIN(x0,x1), xMax = MAX(x0,x1);
 	uint8_t yMin = MIN(y0,y1), yMax = MAX(y0,y1);
-	uint8_t i;
-	for(i=0; i<yMax-yMin; i++){
-		ssd1306_alterLine(xMin, yMin+i, xMax, yMin+i, newval);
+
+	for (uint8_t x = xMin; x <= xMax; ++x) {
+		for (uint8_t y = yMin; y < yMax; ++y) {
+			ssd1306_alterPixel(x,y,newval);
+		}
 	}
 }
 

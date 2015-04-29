@@ -18,16 +18,16 @@
 #include "ssd1306.h"
 #include "gpio.h"
 #include "delay.h"
+#include "sdio.h"
 
 extern uint8_t menu_enable;
 
 typedef struct menuItem_t{
 	uint8_t menuLevel;
-	struct menuItem_t* upperMenuItem;
-	struct menuItem_t* lowerMenuItem;
-	struct menuItem_t* previousMenuRef;
-	struct menuItem_t* currentMenuRef;
-	struct menuItem_t* nextMenuRef;
+	struct menuItem_t* upperMenuItem; // hierarchical higher
+	struct menuItem_t* lowerMenuItem; // hierarchical lower
+	struct menuItem_t* leftMenuItem;  // hierarchical same level, left side
+	struct menuItem_t* rightMenuItem; // hierarchical same level, right side
 	char* label;
 	uint8_t selected;
 	uint32_t menuID;

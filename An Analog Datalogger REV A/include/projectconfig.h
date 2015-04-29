@@ -16,7 +16,7 @@
 
 
 // Project version
-#define PROJVER "0.0.005"
+#define PROJVER "0.0.06"
 
 #define DBG
 //#define DBGIO
@@ -33,7 +33,7 @@
 #define FEATURE_SD
 #define FEATURE_SSD1306
 #define FEATURE_USB
-//#define FEATURE_nRF24L01p
+#define FEATURE_nRF24L01p
 
 
 
@@ -399,6 +399,9 @@
 	#define nRF_IRQ_OTYPE GPIO_OType_PP
 	#define nRF_IRQ_SPEED GPIO_Speed_100MHz
 	#define nRF_IRQ_EXTI_Line (1<<nRF_IRQ_PIN)
+	#define nRF_IRQ_EXTI_IRQn EXTI9_5_IRQn
+
+#define test
 
 	#define nRF_MISO_PORT GPIOB
 	#define nRF_MISO_PIN 14
@@ -736,8 +739,8 @@
 /*
 8	PC14-OSC32_IN	I/O	RCC_OSC32_IN
 9	PC15-OSC32_OUT	I/O	RCC_OSC32_OUT*/
-	#define RTC_CLOCK_SOURCE_LSE          /* LSE used as RTC source clock */
-	//#define RTC_CLOCK_SOURCE_LSI     /* LSI used as RTC source clock. The RTC Clock */
+	//#define RTC_CLOCK_SOURCE_LSE          /* LSE used as RTC source clock */
+	#define RTC_CLOCK_SOURCE_LSI     /* LSI used as RTC source clock. The RTC Clock */
 	#define RTC_EXTI_Line EXTI_Line17
 	#define RTC_EXTI_Mode EXTI_Mode_Interrupt
 	#define RTC_EXTI_Trigger EXTI_Trigger_Rising

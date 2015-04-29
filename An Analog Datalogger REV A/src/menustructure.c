@@ -27,27 +27,35 @@ initialize_menuStructure(void){
 	menuItem_t* menu_SD = menustructure_addItem(&menu_MAIN, "SD Card", 0x00);
 	menuItem_t* menu_USB = menustructure_addItem(&menu_MAIN, "USB", 0x00);
 	menuItem_t* menu_AFE = menustructure_addItem(&menu_MAIN, "AFE", 0x00);
+	menuItem_t* menu_TERMINAL = menustructure_addItem(&menu_MAIN, "Terminal", 0x00);
 
 	menustructure_addItem(menu_SD, "SD Card Info", menustructure_menuFunctionSDCardinfo);
 	menustructure_addItem(menu_SD, "File Structure", menustructure_menuFunctionSDFilestructure);
-	menustructure_addItem(menu_SD, "SD Settings", menustructure_menuFunctionSDSdsettings);
+	menustructure_addItem(menu_SD, "SD Card test", 0x00);
+	menustructure_addItem(menu_SD, "SD Card Settings", menustructure_menuFunctionSDSdsettings);
 
 	menustructure_addItem(menu_RTC, "RTC Info", menustructure_menuFunctionRTCRtcinfo);
 	menustructure_addItem(menu_RTC, "Adjust RTC", menustructure_menuFunctionRTCAdjustrtc);
 	menustructure_addItem(menu_RTC, "RTC Settings", menustructure_menuFunctionRTCRtcsettings);
 
 	menustructure_addItem(menu_USB, "USB Info", menustructure_menuFunctionUSBInfo);
+	menustructure_addItem(menu_USB, "USB Test", 0x00);
+	menustructure_addItem(menu_USB, "USB Settings", 0x00);
 
 	menustructure_addItem(menu_AFE, "AFE Info", menustructure_menuFunctionAFEInfo);
 	menustructure_addItem(menu_AFE, "AFE Record", menustructure_menuFunctionAFERecord);
+	menustructure_addItem(menu_AFE, "AFE Settings", menustructure_menuFunctionAFEInfo);
+
+	menustructure_addItem(menu_TERMINAL, "Terminal Info", 0x00);
+	menustructure_addItem(menu_TERMINAL, "Terminal Test", 0x00);
+	menustructure_addItem(menu_TERMINAL, "Terminal Settings", 0x00);
 
 	menu_currentRef = &menu_MAIN;
 }
 
 menuItem_t*
 menustructure_addItem(menuItem_t* upperMenuItem, char* label, void(*func)(void)){
-	menuItem_t* tmp = malloc(sizeof(menuItem_t));
-	memset(tmp, 0x00, sizeof(menuItem_t));
+	menuItem_t* tmp = calloc(1,sizeof(menuItem_t));
 	if(tmp!=0){
 		tmp->upperMenuItem = upperMenuItem;
 		tmp->label = label;
@@ -75,11 +83,11 @@ menustructure_attachMenuItem(menuItem_t* sourceItem, menuItem_t* attachItem){
 		attachItem->selected = 0x01;
 	} else {
 		menuItem_t* tmp = sourceItem->lowerMenuItem;
-		while(tmp->nextMenuRef!=0x00){
-			tmp = tmp->nextMenuRef;
+		while(tmp->rightMenuItem!=0x00){
+			tmp = tmp->rightMenuItem;
 		}
-		tmp->nextMenuRef = attachItem;
-		attachItem->previousMenuRef = tmp;
+		tmp->rightMenuItem = attachItem;
+		attachItem->leftMenuItem = tmp;
 	}
 }
 
@@ -120,7 +128,7 @@ menustructure_showMenu(menuItem_t* parentItem){
 			if(totalCount<= lineCount){
 				strLength = MAX(strLength, strlen(tmp->label));
 			}
-			tmp = tmp->nextMenuRef;
+			tmp = tmp->rightMenuItem;
 		}
 			// define the actual max stringwidth
 			strLength *= (font.u8Width+1);
@@ -147,24 +155,25 @@ menustructure_showMenu(menuItem_t* parentItem){
 							// set the new position
 							curPos.y -= (font.u8Height+2);
 					}
-					startItem = startItem->nextMenuRef;
+					startItem = startItem->rightMenuItem;
 			}
 			menu_enable = 0x01;
 	} else if (parentItem->fptr != 0x00){
 		// go to function
+		parentItem->fptr();
 	}
 }
 
 void
 menustructure_printMenuItem(menuItem_t* menuStructure){
 	if(strlen(menuStructure->label)>8){
-		printf("Label:%s\tLevel:%d\tSelected:%d\tID:%ld\tUP:0x%lx\tDOWN:0x%08lx\tLeft:0x%08lx\tRight:0x%08lx\tCurrent:0x%08lx\tfptr:0x%08lx\r\n",
+		printf("Label:%s\tLevel:%d\tSelected:%d\tID:%ld\tUP:0x%lx\tDOWN:0x%08lx\tLeft:0x%08lx\tRight:0x%08lx\tfptr:0x%08lx\r\n",
 				menuStructure->label, menuStructure->menuLevel, menuStructure->selected, menuStructure->menuID, (uint32_t)menuStructure->upperMenuItem
-				, (uint32_t)menuStructure->lowerMenuItem, (uint32_t)menuStructure->previousMenuRef, (uint32_t)menuStructure->nextMenuRef, (uint32_t)menuStructure->currentMenuRef, (uint32_t)menuStructure->fptr);
+				, (uint32_t)menuStructure->lowerMenuItem, (uint32_t)menuStructure->leftMenuItem, (uint32_t)menuStructure->rightMenuItem, (uint32_t)menuStructure->fptr);
 	} else {
-		printf("Label:%s\t\tLevel:%d\tSelected:%d\tID:%ld\tUP:0x%08lx\tDOWN:0x%08lx\tLeft:0x%08lx\tRight:0x%08lx\tCurrent:0x%08lx\tfptr:0x%08lx\r\n",
+		printf("Label:%s\t\tLevel:%d\tSelected:%d\tID:%ld\tUP:0x%08lx\tDOWN:0x%08lx\tLeft:0x%08lx\tRight:0x%08lx\tfptr:0x%08lx\r\n",
 				menuStructure->label, menuStructure->menuLevel, menuStructure->selected, menuStructure->menuID, (uint32_t)menuStructure->upperMenuItem
-				, (uint32_t)menuStructure->lowerMenuItem, (uint32_t)menuStructure->previousMenuRef, (uint32_t)menuStructure->nextMenuRef, (uint32_t)menuStructure->currentMenuRef, (uint32_t)menuStructure->fptr);
+				, (uint32_t)menuStructure->lowerMenuItem, (uint32_t)menuStructure->leftMenuItem, (uint32_t)menuStructure->rightMenuItem, (uint32_t)menuStructure->fptr);
 	}
 }
 
@@ -175,7 +184,7 @@ menustructure_printMenuItemRow(menuItem_t* menuStructure){
 	while(tmp!=0x00){
 		menustructure_printMenuItem(tmp);
 		menustructure_printMenuItemRow(tmp->lowerMenuItem);
-		tmp = tmp->nextMenuRef;
+		tmp = tmp->rightMenuItem;
 	}
 }
 
@@ -196,16 +205,16 @@ inline static void
 menustructure_stepMenu(uint8_t direction){
 	if(delay_getMilliDifferenceSimple(lastMoved)>PB_DEBOUNCE_DELAY_MS){
 		if(direction == 0x00){
-			// Stepping up
+			// Stepping up (pointerwise : left)
 			if(menu_currentRef->lowerMenuItem != 0x00){
 				// there are items under the parent structure
 				menuItem_t* tmp = menu_currentRef->lowerMenuItem;
 				while(tmp->selected == 0x00){
-					tmp = tmp->nextMenuRef;
+					tmp = tmp->rightMenuItem;
 				}
-				if(tmp->previousMenuRef != 0x00){
+				if(tmp->leftMenuItem != 0x00){
 					tmp->selected = 0x00;
-					tmp->previousMenuRef->selected = 0x01;
+					tmp->leftMenuItem->selected = 0x01;
 				}
 			}
 #ifdef DBG
@@ -213,22 +222,44 @@ menustructure_stepMenu(uint8_t direction){
 #endif
 			menu_enable = 0x01;
 		} else if (direction == 0x01){
-			// Stepping down
+			// Stepping down (pointerwise: right)
 			if(menu_currentRef->lowerMenuItem != 0x00){
 				// there are items under the parent structure
 				menuItem_t* tmp = menu_currentRef->lowerMenuItem;
 				while(tmp->selected == 0x00){
-					tmp = tmp->nextMenuRef;
+					tmp = tmp->rightMenuItem;
 				}
-				if(tmp->nextMenuRef != 0x00){
+				if(tmp->rightMenuItem != 0x00){
 					tmp->selected = 0x00;
-					tmp->nextMenuRef->selected = 0x01;
+					tmp->rightMenuItem->selected = 0x01;
 				}
 			}
 #ifdef DBG
 			printf("Stepping DOWN! \r\n");
 #endif
 			menu_enable = 0x01;
+		} else if (direction == 0x02){
+			// Stepping back (pointerwise: up)
+
+		} else if (direction == 0x03){
+			// Stepping in (pointerwise: down)
+		}
+
+
+		else {
+			// maybe you are in a functionptr..
+			if(menu_currentRef->fptr !=0x00){
+				// yup, you are in a function pointer..
+				// now act accordingly of the function
+				if(direction == 0x00){
+					// stepping up
+
+				} else if(direction == 0x01){
+					// stepping down
+
+				}
+
+			}
 		}
 	}
 	lastMoved = delay_getMillis();
@@ -252,7 +283,7 @@ menustructure_stepMenuEnter(void){
 			// look for the item that is selected
 			// set that item as the parent menu item
 			while(tmp->selected==0x00){
-				tmp = tmp->nextMenuRef;
+				tmp = tmp->rightMenuItem;
 			}
 			menu_currentRef = tmp;
 
@@ -269,12 +300,12 @@ menustructure_stepMenuBack(void){
 		if(tmp !=0x00){
 			// look for the item that is selected
 			// set that item as the parent menu item
-			while(tmp->previousMenuRef!=0x00){
-				tmp = tmp->previousMenuRef;
+			while(tmp->leftMenuItem!=0x00){
+				tmp = tmp->leftMenuItem;
 			}
 
 			while(tmp->selected==0x00){
-				tmp = tmp->nextMenuRef;
+				tmp = tmp->rightMenuItem;
 			}
 
 			if(tmp->upperMenuItem!=0x00){
@@ -289,12 +320,19 @@ menustructure_stepMenuBack(void){
 
 void
 menustructure_menuFunctionSDCardinfo(void){
-
+	// show sd card name
+	// show sd card size
+	// show sd card available size
+	// show sd card mounted
+	// show sd card drive number
 }
 
 void
 menustructure_menuFunctionSDFilestructure(void){
+	// remember current
 
+	// map the structure in RAM to how deep you are momentarily
+	//
 }
 
 void
