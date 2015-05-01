@@ -35,6 +35,12 @@ delay_interruptHandler(void){
 		rtc_setTimeToOLED();
 		leds_toggleLed(ledList_Green);
 	}
+	if(delay_totalBuffer%100 == 0){
+		if(ssd1306_updateLater != 0x00){
+			ssd1306_updateLater--;
+			menu_enable = 0x01;
+		}
+	}
 }
 uint32_t
 delay_getMillis(void){

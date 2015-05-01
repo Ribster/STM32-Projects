@@ -72,6 +72,10 @@
 
 					//afe_read();
 
+					for (int var = 0; var < 8; ++var) {
+						sdio_test();
+					}
+
 					printf(" -- loop nr %ld \r\n", counter);
 					delay_milli(1500);
 			}

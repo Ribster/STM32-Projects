@@ -225,7 +225,7 @@ extern DIR dir;
 extern FATFS fs32;
 extern SD_CardInfo cardInfo;
 extern char* path;
-
+extern uint8_t sd_busy;
 
 
 /**

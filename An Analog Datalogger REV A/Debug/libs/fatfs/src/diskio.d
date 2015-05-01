@@ -54,8 +54,8 @@ libs/fatfs/src/diskio.o: ../libs/fatfs/src/diskio.c \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
  ../libs/usb/usb_lib/otg/inc/usb_dcd_int.h \
  ../libs/usb/usb_lib/otg/inc/usb_dcd.h ../include/nRF24L01p.h \
- ../include/spi.h ../libs/fatfs/inc/ff.h ../libs/fatfs/inc/ffconf.h \
- ../include/fonts/smallfonts.h ../libs/usb/usb_lib/otg/inc/usb_defines.h
+ ../include/spi.h ../include/fonts/smallfonts.h ../libs/fatfs/inc/ff.h \
+ ../libs/fatfs/inc/ffconf.h ../libs/usb/usb_lib/otg/inc/usb_defines.h
 
 ../libs/fatfs/inc/diskio.h:
 
@@ -205,10 +205,10 @@ libs/fatfs/src/diskio.o: ../libs/fatfs/src/diskio.c \
 
 ../include/spi.h:
 
+../include/fonts/smallfonts.h:
+
 ../libs/fatfs/inc/ff.h:
 
 ../libs/fatfs/inc/ffconf.h:
-
-../include/fonts/smallfonts.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_defines.h:

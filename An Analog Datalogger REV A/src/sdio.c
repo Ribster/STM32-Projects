@@ -14,6 +14,7 @@ FIL fil;
 DIR dir;
 FATFS fs32;
 SD_CardInfo cardInfo;
+uint8_t sd_busy;
 char* path;
 
 
@@ -48,10 +49,32 @@ initialize_SDIO(void){
 
 	res = f_mount(0, &fs32);
 
-	#ifdef DBG
-	if (res != FR_OK)
-		printf("res = %d f_mount\r\n", res);
-	#endif
+	SD_InitializeCards();
+	SD_GetCardInfo(&cardInfo);
+
+#ifdef DBG
+if (res != FR_OK)
+	memset(&fs32, 0, sizeof(FATFS));
+
+	res = f_mount(0, &fs32);
+	printf("res = %d f_mount\r\n", res);
+#endif
+
+	for (int var = 0; var < 8; ++var) {
+		sdio_test();
+	}
+
+}
+
+void
+sdio_test(void){
+
+	if(sd_busy == 0x01){
+		return;
+	}
+
+	sd_busy = 0x01;
+
 
 	memset(&fil, 0, sizeof(FIL));
 
@@ -107,7 +130,7 @@ initialize_SDIO(void){
   					((fno.fattrib & AM_SYS) ? 'S' : '-'),
   					((fno.fattrib & AM_HID) ? 'H' : '-') );
 
-  				printf("%10d ", (unsigned long)fno.fsize);
+  				printf("%10ld ", (unsigned long)fno.fsize);
 
   				printf("%s/%s\r\n", path, fn);
   #endif
@@ -137,6 +160,7 @@ initialize_SDIO(void){
           *s++ = 0;
 
           res = f_write(&fil, str, strlen(str), &BytesWritten);
+          res = f_sync(&fil);
   			}
   		}
 
@@ -148,193 +172,7 @@ initialize_SDIO(void){
   #endif
     }
 
-//    	SD_Error result = SD_GetCardInfo(&cardInfo);
-//
-//    	printf("res = %d SD_GetCardInfo\r\n", result);
-//
-//    	if(result == SD_OK){
-//    		sdio_printCardInfo(&cardInfo);
-//    	}
-//
-//    	delay_milli(100);
-
-//    	SD_CardStatus cardStatus;
-//    	result = SD_GetCardStatus(&cardStatus);
-//
-//    	printf("res = %d SD_GetCardStatus\r\n", result);
-//
-//    	if(result == SD_OK){
-//    		sdio_printCardStatus(&cardStatus);
-//    	}
-}
-
-void
-sdio_test(void){
-
-	  	res = f_open(&fil, "MESSAGE.TXT", FA_READ);
-
-	  #ifdef DBG
-	  	if (res != FR_OK)
-	  		printf("res = %d f_open MESSAGE.TXT\r\n", res);
-	  #endif
-
-	  	if (res == FR_OK)
-	  	{
-	  		UINT Total = 0;
-
-	  		while(1)
-	  		{
-	  			BYTE Buffer[512];
-	  			UINT BytesRead;
-	  			//UINT i;
-
-	  			res = f_read(&fil, Buffer, sizeof(Buffer), &BytesRead);
-
-	  #ifdef DBG
-	  			if (res != FR_OK)
-	  				printf("res = %d f_read MESSAGE.TXT\r\n", res);
-	  #endif
-
-	  			if (res != FR_OK)
-	  				break;
-
-	  			Total += BytesRead;
-
-	  #ifdef DBGX
-	  			for(i=0; i<BytesRead; i++)
-	  				putchar(Buffer[i]);
-	  #endif
-
-	  			if (BytesRead < sizeof(Buffer))
-	  				break;
-	  		}
-
-	  		res = f_close(&fil); // MESSAGE.TXT
-
-	  #ifdef DBG
-	  		if (res != FR_OK)
-	  			printf("res = %d f_close MESSAGE.TXT\r\n", res);
-
-	  		printf("Total = %d\r\n", Total);
-	  #endif
-
-	      res = f_open(&fil, "LENGTH.TXT", FA_CREATE_ALWAYS | FA_WRITE);
-
-	  #ifdef DBG
-	  		if (res != FR_OK)
-	  			printf("res = %d f_open LENGTH.TXT\r\n", res);
-	  #endif
-
-	      if (res == FR_OK)
-	      {
-	        UINT BytesWritten;
-	        char crlf[] = "\r\n";
-	        char *s = dec32(Total);
-
-	        res = f_write(&fil, s, strlen(s), &BytesWritten);
-
-	        res = f_write(&fil, crlf, strlen(crlf), &BytesWritten);
-
-	    		res = f_close(&fil); // LENGTH.TXT
-
-	  #ifdef DBG
-	    		if (res != FR_OK)
-	  	  		printf("res = %d f_close LENGTH.TXT\r\n", res);
-	  #endif
-	      }
-	  	}
-
-	    res = f_open(&fil, "DIR.TXT", FA_CREATE_ALWAYS | FA_WRITE);
-
-	  #ifdef DBG
-	  	if (res != FR_OK)
-	  		printf("res = %d f_open DIR.TXT\r\n", res);
-	  #endif
-
-	    if (res == FR_OK)
-	    {
-	      UINT BytesWritten;
-
-	  		path = "";
-
-	  		res = f_opendir(&dir, path);
-
-	  #ifdef DBG
-	  		if (res != FR_OK)
-	  			printf("res = %d f_opendir\r\n", res);
-	  #endif
-
-	  		if (res == FR_OK)
-	  		{
-	  			while(1)
-	  			{
-	          char str[256];
-	          char *s = str;
-	  				char *fn;
-
-	  				res = f_readdir(&dir, &fno);
-
-	  #ifdef DBG
-	  				if (res != FR_OK)
-	  					printf("res = %d f_readdir\r\n", res);
-	  #endif
-
-	  				if ((res != FR_OK) || (fno.fname[0] == 0))
-	  					break;
-
-	  #if _USE_LFN
-	  				fn = *fno.lfname ? fno.lfname : fno.fname;
-	  #else
-	  				fn = fno.fname;
-	  #endif
-
-	  #ifdef DBG
-	  				printf("%c%c%c%c ",
-	  					((fno.fattrib & AM_DIR) ? 'D' : '-'),
-	  					((fno.fattrib & AM_RDO) ? 'R' : '-'),
-	  					((fno.fattrib & AM_SYS) ? 'S' : '-'),
-	  					((fno.fattrib & AM_HID) ? 'H' : '-') );
-
-	  				printf("%10d ", (unsigned long)fno.fsize);
-
-	  				printf("%s/%s\r\n", path, fn);
-	  #endif
-
-	  		  	*s++ = ((fno.fattrib & AM_DIR) ? 'D' : '-');
-	  				*s++ = ((fno.fattrib & AM_RDO) ? 'R' : '-');
-	    			*s++ = ((fno.fattrib & AM_SYS) ? 'S' : '-');
-	  	  		*s++ = ((fno.fattrib & AM_HID) ? 'H' : '-');
-
-	          *s++ = ' ';
-
-	          strcpy(s, dec32(fno.fsize));
-	          s += strlen(s);
-
-	          *s++ = ' ';
-
-	          strcpy(s, path);
-	          s += strlen(s);
-
-	          *s++ = '/';
-
-	          strcpy(s, fn);
-	          s += strlen(s);
-
-	          *s++ = 0x0D;
-	          *s++ = 0x0A;
-	          *s++ = 0;
-
-	          res = f_write(&fil, str, strlen(str), &BytesWritten);
-	  			}
-	  		}
-
-	    	res = f_close(&fil); // DIR.TXT
-
-	  #ifdef DBG
-	   		if (res != FR_OK)
-	    		printf("res = %d f_close DIR.TXT\r\n", res);
-	  #endif
-	    }
+	sd_busy = 0x00;
 }
 
 void

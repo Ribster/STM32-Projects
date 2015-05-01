@@ -11,6 +11,9 @@
 // local variables
 	static SSD1306_OLED_t ssd1306_parameters; // stores the local variables of the ssd1306
 
+
+	volatile uint8_t ssd1306_updateLater;
+
 // local prototypes
 	// first initialization routine
 	static void

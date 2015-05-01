@@ -14,6 +14,7 @@ fileStructure_t* file_currentRef;
 uint8_t menu_enable;	// enable menu to be updated
 uint32_t menu_menuID;	// container for the unique menu ID's
 uint32_t file_fileID;	// container for the unique file ID's
+uint8_t file_Filestructure_Entered;
 
 static inline void
 menustructure_attachMenuItem(menuItem_t* sourceItem, menuItem_t* attachItem);
@@ -141,6 +142,8 @@ menustructure_showMenu(menuItem_t* parentItem){
 			strLength = MAX(strLength, minWidth);
 
 		// print every item out
+			// clear the screen
+			ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 			menuItem_t* startItem = parentItem->lowerMenuItem;
 			curPos.x = startPos.x;
 			curPos.y = startPos.y-2;
@@ -169,6 +172,9 @@ menustructure_showMenu(menuItem_t* parentItem){
 			menu_enable = 0x01;
 	} else if (parentItem->fptr != 0x00){
 		// go to function
+		if(parentItem->fptr == menustructure_menuFunction_SD_Filestructure){
+		}
+
 		parentItem->fptr();
 	}
 }
@@ -200,9 +206,6 @@ menustructure_printMenuItemRow(menuItem_t* menuStructure){
 void
 menustructure_render(void){
 	if(menu_enable != 0x00 && initialization_list_STATES[initialization_list_SSD1306] != 0x00 && initialization_list_STATES[initialization_list_General] != 0x00){
-		// clear the screen
-		ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
-
 		// show the menu items
 		menustructure_showMenu(menu_currentRef);
 
@@ -314,6 +317,10 @@ menustructure_stepMenu(uint8_t direction){
 				}
 				menu_currentRef = tmp;
 
+				if((tmp->fptr) == (menustructure_menuFunction_SD_Filestructure)){
+					file_Filestructure_Entered = 0x01;
+				}
+
 				menu_enable = 0x01;
 			} else if(menu_currentRef->fptr != 0x00){
 				// check if the functionpointer is filled in
@@ -396,6 +403,7 @@ fileStructure_t* tmp = file_currentRef;
 			file_currentRef = tmp->upperFileItem;
 		}
 	}
+	menu_enable = 0x01;
 }
 
 
@@ -407,7 +415,6 @@ menustructure_file_addItem(fileStructure_t* upperFileItem, char* label,
 		//tmp->upperFileItem = upperFileItem;
 		tmp->label = label;
 		tmp->size = size;
-		tmp->folder = folder;
 		tmp->DIR = ((attrib & AM_DIR) ? 'D' : '-');
 		tmp->RDO = ((attrib & AM_RDO) ? 'R' : '-');
 		tmp->SYS = ((attrib & AM_SYS) ? 'S' : '-');
@@ -473,7 +480,7 @@ menustructure_file_showMenu(fileStructure_t* parentItem, xypair_t xy0, xypair_t 
 			}
 
 			// write the lines
-			for(uint32_t i=0; i<totalLines; i++){
+			for(uint32_t i=0; i<(MIN(totalLines, totalCounter)); i++){
 				corners.topLeft.y = menustructure_file_showMenuItem(tmp, corners.topLeft.y, corners.topLeft.x, corners.topRight.x, font);
 				if(tmp->rightFileItem!=0x00){
 					tmp = tmp->rightFileItem;
@@ -564,26 +571,85 @@ menustructure_file_deleteMenu(fileStructure_t* parentItem){
 
 void
 menustructure_file_fillMenu(void){
-	menustructure_file_addItem(&file_MAIN, "FILE1", 200, 0, (AM_DIR)|(AM_RDO)|(AM_SYS)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILELONG2", 300, 0, (AM_DIR)|(AM_RDO)|(AM_SYS));
-	menustructure_file_addItem(&file_MAIN, "FILE3", 400, 0, (AM_DIR)|(AM_RDO));
-	menustructure_file_addItem(&file_MAIN, "FILELONG4", 500, 0, (AM_DIR));
-	menustructure_file_addItem(&file_MAIN, "FILE5", 600, 0, (AM_RDO)|(AM_SYS)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILELONG6", 700, 0, (AM_SYS)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILE7", 800, 0, (AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILELONG8", 900, 0, (AM_DIR)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILE1", 200, 0, (AM_SYS)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILELONG2", 300, 0, (AM_DIR)|(AM_RDO));
-	menustructure_file_addItem(&file_MAIN, "FILE3", 400, 0, (AM_DIR)|(AM_RDO)|(AM_SYS)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILELONG4", 500, 0, (AM_DIR)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILE5", 600, 0, (AM_DIR)|(AM_RDO)|(AM_SYS)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILELONG6", 700, 0, (AM_DIR)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILE7", 800, 0, (AM_DIR)|(AM_RDO)|(AM_SYS)|(AM_HID));
-	menustructure_file_addItem(&file_MAIN, "FILELONG8", 900, 0, (AM_DIR)|(AM_RDO));
+	//menustructure_file_addItem(&file_MAIN, "FILE1", 200, 0, (AM_DIR)|(AM_RDO)|(AM_SYS)|(AM_HID));
+	path = "";
+
+  		res = f_opendir(&dir, path);
+
+  #ifdef DBG
+  		if (res != FR_OK)
+  			printf("res = %d f_opendir\r\n", res);
+  #endif
+
+  		if (res == FR_OK)
+  		{
+  			while(1)
+  			{
+  				char *fn;
+
+  				res = f_readdir(&dir, &fno);
+
+  #ifdef DBG
+  				if (res != FR_OK)
+  					printf("res = %d f_readdir\r\n", res);
+  #endif
+
+  				if ((res != FR_OK) || (fno.fname[0] == 0))
+  					break;
+
+  #if _USE_LFN
+  				fn = *fno.lfname ? fno.lfname : fno.fname;
+  #else
+  				fn = fno.fname;
+  #endif
+
+  #ifdef DBG
+  				printf("%c%c%c%c ",
+  					((fno.fattrib & AM_DIR) ? 'D' : '-'),
+  					((fno.fattrib & AM_RDO) ? 'R' : '-'),
+  					((fno.fattrib & AM_SYS) ? 'S' : '-'),
+  					((fno.fattrib & AM_HID) ? 'H' : '-') );
+
+  				printf("%10ld ", (unsigned long)fno.fsize);
+
+  				printf("%s/%s\r\n", path, fn);
+  #endif
+
+				//add item to structure
+
+				char* tmp = calloc(strlen(fn),sizeof(char));
+
+
+				//res = f_write(&fil, str, strlen(str), &BytesWritten);
+				if(tmp != 0x00){
+					strcpy(tmp, fn);
+					menustructure_file_addItem(&file_MAIN, tmp, fno.fsize, 0, fno.fattrib);
+				}
+
+          }
+
+  			}
 }
 
 void
 menustructure_file_updateMenu(void){
+	// delete previous file menu
+	fileStructure_t* tmp = file_MAIN.lowerFileItem;
+	if(tmp!=0x00){
+		while(tmp->rightFileItem!=0x00){
+			tmp = tmp->rightFileItem;
+		}
+		while(tmp->leftFileItem!=0x00){
+			tmp = tmp->leftFileItem;
+			free(tmp->rightFileItem);
+		}
+		tmp = file_MAIN.lowerFileItem;
+		free(tmp);
+		file_MAIN.lowerFileItem = 0x00;
+		menustructure_file_fillMenu();
+	} else {
+		menustructure_file_fillMenu();
+	}
 
 }
 
@@ -591,6 +657,8 @@ menustructure_file_updateMenu(void){
 void
 menustructure_menuFunction_SD_CardTest(void){
 	xypair_t tmp;
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
@@ -603,8 +671,23 @@ void
 menustructure_menuFunction_SD_Cardinfo(void){
 	xypair_t tmp;
 
+	if(sd_busy != 0x00){
+		return;
+	}
+
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
+
+	sd_busy = 0x01;
+
 	// get information
-	SD_Error result = SD_GetCardInfo(&cardInfo);
+
+	memset(&cardInfo, 0, sizeof(SD_CardInfo));
+
+	SD_Error result = SD_InitializeCards();
+	result = SD_GetCardInfo(&cardInfo);
+
+	sd_busy = 0x00;
 
 	sdio_printCardInfo(&cardInfo);
 
@@ -631,8 +714,8 @@ menustructure_menuFunction_SD_Cardinfo(void){
 				pow++;
 			}
 			uint32_t total = (uint32_t)cc;
-			char mib[] = " MB";
-			char gib[] = " GB";
+			char mib[] = "MB";
+			char gib[] = "GB";
 
 			tmp = ssd1306_setString(tmp.x,tmp.y,dec32(total), OLED_SUBMENUWRITING_SUBITEMS_FONT);
 			switch(pow){
@@ -717,16 +800,6 @@ menustructure_menuFunction_SD_Cardinfo(void){
 				"MAX. R. BLOCK: ",
 				OLED_SUBMENUWRITING_SUBITEMS_FONT);
 		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.SD_csd.RdBlockLen), OLED_SUBMENUWRITING_SUBITEMS_FONT);
-
-
-		// show sd card drive number
-		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X+66;
-		tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
-				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
-				"RCA: ",
-				OLED_SUBMENUWRITING_SUBITEMS_FONT);
-		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.RCA), OLED_SUBMENUWRITING_SUBITEMS_FONT);
-
 	} else {
 		// print error message
 		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
@@ -736,13 +809,19 @@ menustructure_menuFunction_SD_Cardinfo(void){
 				OLED_SUBMENUWRITING_HEADER_FONT,
 				OLED_SUBMENUWRITING_SUBITEMS_FONT);
 	}
-
-
-
 }
 
 void
 menustructure_menuFunction_SD_Filestructure(void){
+	if(sd_busy != 0x00){
+		ssd1306_updateLater = 0x01;
+		return;
+	}
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
+	sd_busy = 0x01;
+
+
 	xypair_t leftup, rightdown;
 	leftup = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
@@ -756,21 +835,23 @@ menustructure_menuFunction_SD_Filestructure(void){
 	rightdown.y = OLED_TEXTBLOCK_LEFTDOWN_X;
 
 	// check if there is an existing file structure and make it updated
-		if(file_MAIN.lowerFileItem == 0x00){	// file structure is empty
+		if(file_Filestructure_Entered == 0x01 || file_MAIN.lowerFileItem == 0x00){	// file structure is empty
 			file_currentRef = &file_MAIN;
-			menustructure_file_fillMenu();
-		} else {
 			menustructure_file_updateMenu();
+			file_Filestructure_Entered = 0x00;
 		}
 
 	menustructure_file_showMenu(file_currentRef, leftup, rightdown, OLED_MENUWRITING_FONT);
+
 	menu_enable = 0x01;
+	sd_busy = 0x00;
 }
 
 void
 menustructure_menuFunction_SD_Sdsettings(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -783,7 +864,8 @@ menustructure_menuFunction_SD_Sdsettings(void){
 void
 menustructure_menuFunction_RTC_Rtcinfo(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -794,7 +876,8 @@ menustructure_menuFunction_RTC_Rtcinfo(void){
 void
 menustructure_menuFunction_RTC_Adjustrtc(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -805,7 +888,8 @@ menustructure_menuFunction_RTC_Adjustrtc(void){
 void
 menustructure_menuFunction_RTC_Rtcsettings(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -817,7 +901,8 @@ menustructure_menuFunction_RTC_Rtcsettings(void){
 void
 menustructure_menuFunction_USB_Test(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -827,7 +912,8 @@ menustructure_menuFunction_USB_Test(void){
 void
 menustructure_menuFunction_USB_Settings(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -838,7 +924,8 @@ menustructure_menuFunction_USB_Settings(void){
 void
 menustructure_menuFunction_USB_Info(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -850,7 +937,8 @@ menustructure_menuFunction_USB_Info(void){
 void
 menustructure_menuFunction_AFE_Settings(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -861,7 +949,8 @@ menustructure_menuFunction_AFE_Settings(void){
 void
 menustructure_menuFunction_AFE_Info(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -872,7 +961,8 @@ menustructure_menuFunction_AFE_Info(void){
 void
 menustructure_menuFunction_AFE_Record(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -885,7 +975,8 @@ menustructure_menuFunction_AFE_Record(void){
 void
 menustructure_menuFunction_TERMINAL_Info(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -896,7 +987,8 @@ menustructure_menuFunction_TERMINAL_Info(void){
 void
 menustructure_menuFunction_TERMINAL_Test(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -907,7 +999,8 @@ menustructure_menuFunction_TERMINAL_Test(void){
 void
 menustructure_menuFunction_TERMINAL_Output(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
@@ -918,7 +1011,8 @@ menustructure_menuFunction_TERMINAL_Output(void){
 void
 menustructure_menuFunction_TERMINAL_Settings(void){
 	xypair_t tmp;
-
+	// clear the screen
+	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,

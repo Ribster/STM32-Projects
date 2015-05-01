@@ -23,6 +23,7 @@
 #include "gpio.h"
 #include "delay.h"
 #include "sdio.h"
+#include "fonts/smallfonts.h"
 
 // fatfs library
 #include "diskio.h"
@@ -55,7 +56,6 @@ typedef struct fileStructure_t{
 	char RDO;
 	char SYS;
 	char HID;
-	uint8_t folder;
 	uint32_t size;
 	char* dirName;
 }fileStructure_t;

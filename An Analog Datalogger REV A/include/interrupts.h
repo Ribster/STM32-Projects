@@ -10,11 +10,13 @@
 
 #include "stm32f4xx.h"
 #include "projectconfig.h"
+
 #include "delay.h"
 #include "pushbuttons.h"
 #include "uart.h"
 #include "encoders.h"
 #include "ssd1306.h"
+#include "afe.h"
 #include "sdio.h"
 #include "usb.h"
 

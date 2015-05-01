@@ -34,9 +34,9 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
  ../include/leds.h ../include/encoders.h ../include/menustructure.h \
  ../include/initialization.h ../include/sdio.h ../libs/fatfs/inc/diskio.h \
  ../libs/fatfs/inc/integer.h ../libs/fatfs/inc/ff.h \
- ../libs/fatfs/inc/ffconf.h ../include/dma.h \
- ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
- ../include/fonts/smallfonts.h ../libs/usb/usb_lib/otg/inc/usb_defines.h \
+ ../libs/fatfs/inc/ffconf.h ../include/fonts/smallfonts.h \
+ ../include/dma.h ../libs/StdPeriph/include/stm32f4xx_dma2d.h \
+ ../include/spi.h ../libs/usb/usb_lib/otg/inc/usb_defines.h \
  ../libs/usb/usb_conf/inc/usb_conf.h ../include/uart.h \
  ../include/pushbuttons.h ../include/rng.h ../include/afe.h \
  ../include/usb.h ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
@@ -156,13 +156,13 @@ src/initialization.o: ../src/initialization.c ../include/initialization.h \
 
 ../libs/fatfs/inc/ffconf.h:
 
+../include/fonts/smallfonts.h:
+
 ../include/dma.h:
 
 ../libs/StdPeriph/include/stm32f4xx_dma2d.h:
 
 ../include/spi.h:
-
-../include/fonts/smallfonts.h:
 
 ../libs/usb/usb_lib/otg/inc/usb_defines.h:
 
