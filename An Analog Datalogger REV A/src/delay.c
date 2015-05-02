@@ -30,8 +30,17 @@ delay_interruptHandler(void){
 	if(delay_microBuffer != 0x00){
 		delay_microBuffer--;
 	}
+
+	if(sd_busy == 0x01){
+		leds_setLed(ledList_Orange, ENABLE);
+
+	} else {
+		leds_setLed(ledList_Orange, DISABLE);
+	}
+
 	// set time on OLED screen
 	if(delay_totalBuffer%1000 == 0){
+		afe_startReadout();
 		rtc_setTimeToOLED();
 		leds_toggleLed(ledList_Green);
 	}
@@ -41,6 +50,7 @@ delay_interruptHandler(void){
 			menu_enable = 0x01;
 		}
 	}
+
 }
 uint32_t
 delay_getMillis(void){

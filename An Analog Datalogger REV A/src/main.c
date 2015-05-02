@@ -40,8 +40,6 @@
 		// setup initialization
 		initialization();
 
-
-
 		// make counter variable
 		uint32_t counter = 0;
 
@@ -61,6 +59,7 @@
 
 				// Write the loopcounter
 					// make a loopcounter with RTC clock displayed
+				if(counter%1000 == 0){
 					#define printLength 11
 					char nr[printLength];
 					xypair_t tmp = ssd1306_getScreenDimensions();
@@ -69,15 +68,17 @@
 					sprintf(nr, "%010ld",counter);
 					ssd1306_clearArea(0,tmp.y-stringHeigth, stringWidth, tmp.y);
 					ssd1306_setString(0,tmp.y-stringHeigth-1,nr,Font_System5x8);
+				}
 
-					//afe_read();
 
-					for (int var = 0; var < 8; ++var) {
+
+					if(sd_writeAFE == 0x01){
 						sdio_test();
+						sd_writeAFE = 0x00;
 					}
 
-					printf(" -- loop nr %ld \r\n", counter);
-					delay_milli(1500);
+					//printf(" -- loop nr %ld \r\n", counter);
+					//delay_milli(5000);
 			}
 
 

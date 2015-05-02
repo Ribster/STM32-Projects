@@ -184,14 +184,6 @@ DMA2_Stream2_IRQHandler(void){
 #ifdef DBGIO
 	printf("AFE DMA RX interrupt! \r\n");
 #endif
-	if(DMA_GetITStatus(AFE_DMA_RX_DMAStream, DMA_IT_HTIF2) == SET){
-#ifdef DBGIO
-		printf(" RX HT\r\n");
-#endif
-		DMA_ClearFlag(AFE_DMA_RX_DMAStream, DMA_FLAG_HTIF2);
-		DMA_ClearITPendingBit(AFE_DMA_RX_DMAStream, DMA_IT_HTIF2);
-		DMA_ITConfig(AFE_DMA_RX_DMAStream, DMA_IT_HT, DISABLE);
-	}
 	if(DMA_GetITStatus(AFE_DMA_RX_DMAStream, DMA_IT_TCIF2) == SET){
 #ifdef DBGIO
 		printf(" RX TC\r\n");
@@ -213,17 +205,6 @@ DMA2_Stream3_IRQHandler(void){
 #ifdef DBGIO
 	printf("AFE DMA TX interrupt! \r\n");
 #endif
-	if(DMA_GetITStatus(AFE_DMA_TX_DMAStream, DMA_IT_HTIF3) == SET){
-#ifdef DBGIO
-		printf(" TX HT\r\n");
-#endif
-		DMA_ClearFlag(AFE_DMA_TX_DMAStream, DMA_FLAG_HTIF3);
-		DMA_ClearITPendingBit(AFE_DMA_TX_DMAStream, DMA_IT_HTIF3);
-		DMA_ITConfig(AFE_DMA_TX_DMAStream, DMA_IT_HT, DISABLE);
-#ifdef AFE_DUMMY_BIG
-		AFE_INT_PORT->ODR &= ~(1<<AFE_INT_PIN);
-#endif
-	}
 	if(DMA_GetITStatus(AFE_DMA_TX_DMAStream, DMA_IT_TCIF3) == SET){
 #ifdef DBGIO
 		printf(" TX TC\r\n");
@@ -245,6 +226,11 @@ DMA2_Stream3_IRQHandler(void){
 		//GPIO_WriteBit(AFE_CS_PORT, AFE_CS_PIN, Bit_SET);
 
 		afe_busy = 0x00;
+			leds_setLed(ledList_Blue, DISABLE);
+
+		afe_endReadout();
+
+
 	}
 }
 

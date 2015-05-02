@@ -7,22 +7,30 @@
 
 #include "afe.h"
 
-volatile uint8_t afe_DMA_RX_Buffer[AFE_DMA_BLOCKSIZE][AFE_DMA_BLOCKS][AFE_DMA_CAPTURES];
-volatile uint8_t afe_DMA_TX_Buffer[AFE_DMA_BLOCKSIZE][AFE_DMA_BLOCKS];
+volatile uint8_t afe_DMA_RX_Buffer[AFE_DMA_CAPTURES][AFE_DMA_BLOCKS][AFE_DMA_BLOCKSIZE];
+volatile uint8_t afe_DMA_TX_Buffer[AFE_DMA_BLOCKS][AFE_DMA_BLOCKSIZE];
 
 volatile uint8_t afe_busy;
 volatile uint8_t afe_currentPacket;
+volatile uint8_t afe_currentCaptureTransmission;
+volatile uint8_t afe_currentCaptureLogging;
 DMA_InitTypeDef afe_struct;
 
 void
 initialize_AFE(void){
 
-	// clear RX & TX buffer
-	memset((void*)afe_DMA_RX_Buffer, 0, sizeof(afe_DMA_RX_Buffer) );
-	//memset((void*)afe_DMA_TX_Buffer, 0, AFE_DMA_BufferSize);
-	for(uint32_t j=0;j<(AFE_DMA_DATABYTES+AFE_DMA_CLOCKCRCBYTES);j++){
-		uint8_t* ptr = (uint8_t*)afe_DMA_TX_Buffer;
-		*(ptr+j) = j%256;
+	for (uint32_t i = 0; i < AFE_DMA_CAPTURES; ++i) {
+		for (uint32_t j = 0; j < AFE_DMA_BLOCKS; ++j) {
+			for (uint32_t k = 0; k < AFE_DMA_BLOCKSIZE; ++k) {
+				afe_DMA_RX_Buffer[i][j][k]=0;
+			}
+		}
+	}
+
+	for (uint32_t i = 0; i < AFE_DMA_BLOCKS; ++i) {
+		for (uint32_t j = 0; j < AFE_DMA_BLOCKSIZE; ++j) {
+			afe_DMA_TX_Buffer[i][j] = j%256;
+		}
 	}
 
 
@@ -157,11 +165,68 @@ initialize_AFE(void){
 		afe_struct.DMA_MemoryDataSize = AFE_DMA_MemoryDataSize;
 		afe_struct.DMA_PeripheralInc = AFE_DMA_PeripheralInc;
 		afe_struct.DMA_Priority = AFE_DMA_Priority;
+
+		afe_currentCaptureTransmission = 0x00;
 }
 
 void
 afe_startReadout(void){
-	afe_currentPacket = 0x01;
+
+	// reset current packet
+	afe_currentPacket = 0x00;
+
+	// store time stamp
+
+
+	// reset transmission capture block
+	if(afe_currentCaptureTransmission >= (AFE_DMA_BLOCKS*2)){
+		afe_currentCaptureTransmission = 0x0;
+	}
+
+	afe_read();
+}
+
+void
+afe_endReadout(void){
+	// if the amount of blocks is sent increase packet
+	afe_currentPacket++;
+
+	printf("%d\r\n", afe_currentPacket);
+
+
+	if(afe_currentPacket == (AFE_DMA_BLOCKS/5) ){
+		// set the sync pin low
+		AFE_INT_PORT->ODR &= ~(1<<AFE_INT_PIN);
+
+	}
+
+	if(afe_currentPacket == AFE_DMA_BLOCKS){
+		// increase the capture for next transmission
+
+		printf("Read packet %d done\r\n", afe_currentPacket);
+
+		afe_currentCaptureTransmission++;
+
+		printf("Current capture %d\r\n", afe_currentCaptureTransmission);
+
+		// logging
+		if(afe_currentCaptureTransmission==AFE_DMA_BLOCKS || afe_currentCaptureTransmission == (AFE_DMA_BLOCKS*2)){
+			// log 10 captures in 1 file
+			afe_fileWrite();
+		}
+
+		// add time stamp to blocks
+
+	} else {
+		afe_read();
+	}
+
+}
+
+void
+afe_fileWrite(void){
+	printf("Logging captures %d to %d\r\n", afe_currentCaptureTransmission-AFE_DMA_BLOCKS, afe_currentCaptureTransmission);
+	sd_writeAFE = 0x01;
 }
 
 void
@@ -171,12 +236,15 @@ afe_read(void){
 	}
 
 	afe_busy = 0x01;
+		leds_setLed(ledList_Blue, ENABLE);
 
-	DMA_DeInit(AFE_DMA_TX_DMAStream);
-	DMA_DeInit(AFE_DMA_RX_DMAStream);
+	printf("tx ptr: 0x%lx, rx ptr: 0x%lx\r\n", (uint32_t)&(afe_DMA_TX_Buffer[afe_currentPacket][0]), (uint32_t)&(afe_DMA_RX_Buffer[afe_currentCaptureTransmission][afe_currentPacket][0]));
+
+	//DMA_DeInit(AFE_DMA_TX_DMAStream);
+	//DMA_DeInit(AFE_DMA_RX_DMAStream);
 
 	//set buffersize
-	if(afe_currentPacket!=10){
+	if(afe_currentPacket!=(AFE_DMA_BLOCKS-1)){
 		afe_struct.DMA_BufferSize = AFE_DMA_BLOCKSIZE;
 	} else {
 		afe_struct.DMA_BufferSize = AFE_DMA_LASTPACKET;
@@ -184,7 +252,7 @@ afe_read(void){
 
 	afe_struct.DMA_Channel = AFE_DMA_TX_DMAChannel;
 	afe_struct.DMA_DIR = AFE_DMA_TX_DIR;
-	afe_struct.DMA_Memory0BaseAddr = (uint32_t)(afe_DMA_TX_Buffer);
+	afe_struct.DMA_Memory0BaseAddr = (uint32_t)&(afe_DMA_TX_Buffer[afe_currentPacket][0]);
 	//DMA_Cmd(AFE_DMA_TX_DMAStream, DISABLE);
 	while (AFE_DMA_TX_DMAStream->CR & DMA_SxCR_EN);
 	DMA_Init(AFE_DMA_TX_DMAStream, &afe_struct);
@@ -193,7 +261,7 @@ afe_read(void){
 		// buffersize already set
 	afe_struct.DMA_Channel = AFE_DMA_RX_DMAChannel;
 	afe_struct.DMA_DIR = AFE_DMA_RX_DIR;
-	afe_struct.DMA_Memory0BaseAddr = (uint32_t)(afe_DMA_RX_Buffer);
+	afe_struct.DMA_Memory0BaseAddr = (uint32_t)&(afe_DMA_RX_Buffer[afe_currentCaptureTransmission][afe_currentPacket][0]);
 	//DMA_Cmd(AFE_DMA_RX_DMAStream, DISABLE);
 	while (AFE_DMA_RX_DMAStream->CR & DMA_SxCR_EN);
 	DMA_Init(AFE_DMA_RX_DMAStream, &afe_struct);
@@ -205,8 +273,8 @@ afe_read(void){
 	SPI_I2S_DMACmd(AFE_SPI, SPI_I2S_DMAReq_Rx, ENABLE);
 
 
-	DMA_ITConfig(AFE_DMA_TX_DMAStream, DMA_IT_TC | DMA_IT_HT, ENABLE);
-	DMA_ITConfig(AFE_DMA_RX_DMAStream, DMA_IT_TC | DMA_IT_HT, ENABLE);
+	DMA_ITConfig(AFE_DMA_TX_DMAStream, DMA_IT_TC, ENABLE);
+	DMA_ITConfig(AFE_DMA_RX_DMAStream, DMA_IT_TC, ENABLE);
 
 //	SPI_I2S_ClearFlag(AFE_SPI, SPI_I2S_FLAG_TXE);
 //	SPI_I2S_ClearFlag(AFE_SPI, SPI_I2S_FLAG_RXNE);
@@ -221,13 +289,20 @@ afe_read(void){
 	/* Enable the SPI peripheral */
 
 	SPI_Cmd(AFE_SPI, ENABLE);
-	delay_milli(1);
+
+	if(afe_currentPacket == 0x00){
+		AFE_INT_PORT->ODR |= (1<<AFE_INT_PIN);
+	}
+
+
+
+	//delay_milli(1);
 
 	//GPIO_WriteBit(AFE_CS_PORT, AFE_CS_PIN, Bit_RESET);
-#ifdef AFE_DUMMY_SMALL
-	AFE_INT_PORT->ODR ^= (1<<AFE_INT_PIN);
-#elif defined(AFE_DUMMY_BIG)
-	AFE_INT_PORT->ODR |= (1<<AFE_INT_PIN);
-#endif
+//#ifdef AFE_DUMMY_SMALL
+//	AFE_INT_PORT->ODR ^= (1<<AFE_INT_PIN);
+//#elif defined(AFE_DUMMY_BIG)
+//	AFE_INT_PORT->ODR |= (1<<AFE_INT_PIN);
+//#endif
 
 }

@@ -16,6 +16,7 @@ FATFS fs32;
 SD_CardInfo cardInfo;
 uint8_t sd_busy;
 char* path;
+uint8_t sd_writeAFE;
 
 
 char *dec32(unsigned long i)
@@ -60,9 +61,7 @@ if (res != FR_OK)
 	printf("res = %d f_mount\r\n", res);
 #endif
 
-	for (int var = 0; var < 8; ++var) {
 		sdio_test();
-	}
 
 }
 
@@ -74,7 +73,6 @@ sdio_test(void){
 	}
 
 	sd_busy = 0x01;
-
 
 	memset(&fil, 0, sizeof(FIL));
 

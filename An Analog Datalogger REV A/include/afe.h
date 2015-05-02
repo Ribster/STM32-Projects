@@ -23,12 +23,16 @@
 
 #include <stdio.h>
 
-extern volatile uint8_t afe_DMA_RX_Buffer[AFE_DMA_BLOCKSIZE][AFE_DMA_BLOCKS][AFE_DMA_CAPTURES];
-extern volatile uint8_t afe_DMA_TX_Buffer[AFE_DMA_BLOCKSIZE][AFE_DMA_BLOCKS];
+extern volatile uint8_t afe_DMA_RX_Buffer[AFE_DMA_CAPTURES][AFE_DMA_BLOCKS][AFE_DMA_BLOCKSIZE];
+extern volatile uint8_t afe_DMA_TX_Buffer[AFE_DMA_BLOCKS][AFE_DMA_BLOCKSIZE];
 
 extern volatile uint8_t afe_busy;
 extern volatile uint8_t afe_currentPacket;
+extern volatile uint8_t afe_currentCaptureTransmission;
+extern volatile uint8_t afe_currentCaptureLogging;
+
 extern DMA_InitTypeDef afe_struct;
+
 
 // prototypes
 void
@@ -39,5 +43,11 @@ afe_read(void);
 
 void
 afe_startReadout(void);
+
+void
+afe_endReadout(void);
+
+void
+afe_fileWrite(void);
 
 #endif /* AFE_H_ */

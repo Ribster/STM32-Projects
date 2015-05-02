@@ -30,7 +30,7 @@ typedef struct xycorners_t{
 
 
 // Project version
-#define PROJVER "0.1.00"
+#define PROJVER "0.1.01"
 
 #define DBG
 //#define DBGIO
@@ -264,14 +264,14 @@ typedef struct xycorners_t{
 #ifdef AFE_DUMMY_SMALL
 	#define AFE_DMA_BLOCKS 1
 #elif defined(AFE_DUMMY_BIG)
-#define AFE_DMA_BLOCKS 10
+#define AFE_DMA_BLOCKS 5
 #endif
 
 #ifdef AFE_DUMMY_BIG
 	#define AFE_DMA_CAPTURES 20
 	#define AFE_DMA_DATABYTES 4800
 	#define AFE_DMA_CLOCKCRCBYTES 72
-	#define AFE_DMA_LASTPACKET 264
+	#define AFE_DMA_LASTPACKET 353
 #elif defined(AFE_DUMMY_SMALL)
 	#define AFE_DMA_CAPTURES 20
 	#define AFE_DMA_DATABYTES 4800
@@ -328,10 +328,10 @@ typedef struct xycorners_t{
 	#define AFE_INT_PORT GPIOC
 	#define AFE_INT_PIN 4
 	#define AFE_INT_MODE GPIO_Mode_OUT
-	#define AFE_INT_PULL GPIO_PuPd_DOWN
+	#define AFE_INT_PULL GPIO_PuPd_NOPULL
 	#define AFE_INT_OTYPE GPIO_OType_PP
 	#define AFE_INT_SPEED GPIO_Speed_100MHz
-	#define AFE_INT_INITSTATE Bit_RESET
+	//#define AFE_INT_INITSTATE Bit_RESET
 	// CHIPSELECT PIN
 	#define AFE_CS_PORT GPIOA
 	#define AFE_CS_PIN 4
@@ -378,7 +378,7 @@ typedef struct xycorners_t{
 	#define AFE_SYNC2_PULL GPIO_PuPd_NOPULL
 	#define AFE_SYNC2_OTYPE GPIO_OType_PP
 	#define AFE_SYNC2_SPEED GPIO_Speed_100MHz
-	#define AFE_SYNC2_EXTI_Line (1<<AFE_SYNC2_PIN)
+	//#define AFE_SYNC2_EXTI_Line (1<<AFE_SYNC2_PIN)
 	// SYNC3 PIN
 	#define AFE_SYNC3_PORT GPIOB
 	#define AFE_SYNC3_PIN 1
@@ -386,7 +386,7 @@ typedef struct xycorners_t{
 	#define AFE_SYNC3_PULL GPIO_PuPd_NOPULL
 	#define AFE_SYNC3_OTYPE GPIO_OType_PP
 	#define AFE_SYNC3_SPEED GPIO_Speed_100MHz
-	#define AFE_SYNC3_EXTI_Line (1<<AFE_SYNC3_PIN)
+	//#define AFE_SYNC3_EXTI_Line (1<<AFE_SYNC3_PIN)
 	// EXTERNAL SYNC PIN
 	#define AFE_EXT_SYNC_PORT GPIOE
 	#define AFE_EXT_SYNC_PIN 7

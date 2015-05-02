@@ -22,6 +22,8 @@
 #include "diskio.h"
 #include "ff.h"
 
+extern uint8_t sd_writeAFE;
+
 typedef enum
 {
 /**

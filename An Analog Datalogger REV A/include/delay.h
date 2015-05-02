@@ -12,6 +12,7 @@
 
 #include "rtc.h"
 #include "gpio.h"
+#include "ssd1306.h"
 
 // constants
 #define SYSTICK_FREQUENCY_HZ	1000
