@@ -16,44 +16,37 @@ FATFS fs32;
 SD_CardInfo cardInfo;
 uint8_t sd_busy;
 char* path;
-uint8_t sd_writeAFE;
 
-
-char *dec32(unsigned long i)
-{
-  static char str[16];
-  char *s = str + sizeof(str);
-
-  *--s = 0;
-
-  do
-  {
-    *--s = '0' + (char)(i % 10);
-    i /= 10;
-  }
-  while(i);
-
-  return(s);
-}
+// sd global variables
+volatile uint8_t sd_writeAFE;
+volatile char sd_biggestFolderString[13];
 
 void
 initialize_SDIO(void){
 	/* Configure the NVIC Preemption Priority Bits */
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
 
+	// clear the folder string
+	memset((uint8_t*)sd_biggestFolderString, 0, sizeof(sd_biggestFolderString));
+
+	// latch the interrupts
 	nvic_initInterrupt(
 		  SDIO_IRQn,
 		  1,
 		  0);
 
+	// clear the filesystem pointer
 	memset(&fs32, 0, sizeof(FATFS));
 
+	// mount the card to drive 0
 	res = f_mount(0, &fs32);
 
+	// initialize the card
 	SD_InitializeCards();
+	// get the card info
 	SD_GetCardInfo(&cardInfo);
 
-#ifdef DBG
+#ifdef DBGIO
 if (res != FR_OK)
 	memset(&fs32, 0, sizeof(FATFS));
 
@@ -61,7 +54,8 @@ if (res != FR_OK)
 	printf("res = %d f_mount\r\n", res);
 #endif
 
-		sdio_test();
+	// test the SDIO
+	sdio_test();
 
 }
 
@@ -86,11 +80,13 @@ sdio_test(void){
 
     if (res == FR_OK)
     {
-      UINT BytesWritten;
+		UINT BytesWritten;
 
-  		path = "";
+		// set to root path
+		path = "";
 
-  		res = f_opendir(&dir, path);
+		// open the directory
+		res = f_opendir(&dir, path);
 
   #ifdef DBG
   		if (res != FR_OK)
@@ -101,20 +97,33 @@ sdio_test(void){
   		{
   			while(1)
   			{
-          char str[256];
-          char *s = str;
-  				char *fn;
+  				// variables for the loop
+				char str[256];
+				char *s = str;
+				char *fn;
 
+				// read out the directory in sequence
   				res = f_readdir(&dir, &fno);
 
   #ifdef DBG
+  				// print out an error
   				if (res != FR_OK)
   					printf("res = %d f_readdir\r\n", res);
   #endif
 
+  				// break the loop if the filename is empty or if there is an error
   				if ((res != FR_OK) || (fno.fname[0] == 0))
   					break;
 
+  				// check the folders and set the last written folder name
+  				if(fno.fattrib & AM_DIR){
+  	  				if(strcmp(fno.fname, (char*)sd_biggestFolderString) >0){
+  	  					strcpy((char*)sd_biggestFolderString, fno.fname);
+  	  				}
+  				}
+
+  				// assign the pointer from the filename to another pointer
+  				// check for use of the 8.3 notation or long names
   #if _USE_LFN
   				fn = *fno.lfname ? fno.lfname : fno.fname;
   #else
@@ -122,54 +131,72 @@ sdio_test(void){
   #endif
 
   #ifdef DBG
+  				// print the flag fields of the file
   				printf("%c%c%c%c ",
   					((fno.fattrib & AM_DIR) ? 'D' : '-'),
   					((fno.fattrib & AM_RDO) ? 'R' : '-'),
   					((fno.fattrib & AM_SYS) ? 'S' : '-'),
   					((fno.fattrib & AM_HID) ? 'H' : '-') );
-
+  				// print the size of the file
   				printf("%10ld ", (unsigned long)fno.fsize);
 
+  				// print the path && file name out
   				printf("%s/%s\r\n", path, fn);
   #endif
 
-  		  	*s++ = ((fno.fattrib & AM_DIR) ? 'D' : '-');
-  				*s++ = ((fno.fattrib & AM_RDO) ? 'R' : '-');
-    			*s++ = ((fno.fattrib & AM_SYS) ? 'S' : '-');
-  	  		*s++ = ((fno.fattrib & AM_HID) ? 'H' : '-');
+  				// fill the temporary buffer with the file flags
+				*s++ = ((fno.fattrib & AM_DIR) ? 'D' : '-');
+				*s++ = ((fno.fattrib & AM_RDO) ? 'R' : '-');
+				*s++ = ((fno.fattrib & AM_SYS) ? 'S' : '-');
+				*s++ = ((fno.fattrib & AM_HID) ? 'H' : '-');
 
-          *s++ = ' ';
+				// add a space
+				*s++ = ' ';
 
-          strcpy(s, dec32(fno.fsize));
-          s += strlen(s);
+				// add the file size
+				strcpy(s, general_dec32(fno.fsize));
+				s += strlen(s);
 
-          *s++ = ' ';
+				// add a space
+				*s++ = ' ';
 
-          strcpy(s, path);
-          s += strlen(s);
+				// add the pathname
+				strcpy(s, path);
+				s += strlen(s);
 
-          *s++ = '/';
+				// add a dash
+				*s++ = '/';
 
-          strcpy(s, fn);
-          s += strlen(s);
+				// aff the filename
+				strcpy(s, fn);
+				s += strlen(s);
 
-          *s++ = 0x0D;
-          *s++ = 0x0A;
-          *s++ = 0;
+				// add some hex stuff (\r\n?) and endbyte
+				*s++ = 0x0D;
+				*s++ = 0x0A;
+				*s++ = 0;
 
-          res = f_write(&fil, str, strlen(str), &BytesWritten);
-          res = f_sync(&fil);
+				// write the total string to the file
+				res = f_write(&fil, str, strlen(str), &BytesWritten);
+				// synchronize the file
+				res = f_sync(&fil);
   			}
   		}
-
+  		// close the opened file
     	res = f_close(&fil); // DIR.TXT
 
-  #ifdef DBG
+  #ifdef DBGIO
+    	// print an error when it failed closing
    		if (res != FR_OK)
     		printf("res = %d f_close DIR.TXT\r\n", res);
   #endif
     }
 
+#ifdef DBG
+    printf("Biggest folder string: %s\r\n", sd_biggestFolderString);
+#endif
+
+    // free the SD busy flag
 	sd_busy = 0x00;
 }
 
@@ -229,16 +256,16 @@ sdio_printCardInfo(SD_CardInfo* cardInfo){
 
 void
 sdio_printCardStatus(SD_CardStatus* cardStatus){
-	printf(": %ld\r\n", cardStatus->AU_SIZE);
-	printf(": %ld\r\n", cardStatus->DAT_BUS_WIDTH);
-	printf(": %ld\r\n", cardStatus->ERASE_OFFSET);
-	printf(": %ld\r\n", cardStatus->ERASE_SIZE);
-	printf(": %ld\r\n", cardStatus->ERASE_TIMEOUT);
-	printf(": %ld\r\n", cardStatus->PERFORMANCE_MOVE);
-	printf(": %ld\r\n", cardStatus->SD_CARD_TYPE);
-	printf(": %ld\r\n", cardStatus->SECURED_MODE);
+	printf(": %d\r\n", cardStatus->AU_SIZE);
+	printf(": %d\r\n", cardStatus->DAT_BUS_WIDTH);
+	printf(": %d\r\n", cardStatus->ERASE_OFFSET);
+	printf(": %d\r\n", cardStatus->ERASE_SIZE);
+	printf(": %d\r\n", cardStatus->ERASE_TIMEOUT);
+	printf(": %d\r\n", cardStatus->PERFORMANCE_MOVE);
+	printf(": %d\r\n", cardStatus->SD_CARD_TYPE);
+	printf(": %d\r\n", cardStatus->SECURED_MODE);
 	printf(": %ld\r\n", cardStatus->SIZE_OF_PROTECTED_AREA);
-	printf(": %ld\r\n", cardStatus->SPEED_CLASS);
+	printf(": %d\r\n", cardStatus->SPEED_CLASS);
 }
 
 /**

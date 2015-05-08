@@ -3,9 +3,9 @@
 
 ###__Application development__
 
-- [ ] SD card detection on startup
-- [ ] General file menu
-- [ ] SD file menu
+- [x] SD card detection on startup
+- [x] General file menu
+- [x] SD file menu
 - [ ] Menu scrolling sideways on selected item
 - [x] Init list peripherals on startup
 - [x] Initialization on OLED

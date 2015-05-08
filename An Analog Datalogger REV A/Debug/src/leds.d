@@ -30,8 +30,8 @@ src/leds.o: ../src/leds.c ../include/leds.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
  ../include/delay.h ../include/rtc.h ../include/rcc.h \
- ../include/ssd1306.h ../include/gpio.h ../include/nvic.h \
- ../include/leds.h ../include/dma.h \
+ ../include/ssd1306.h ../include/general.h ../include/gpio.h \
+ ../include/nvic.h ../include/leds.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/spi.h \
  ../include/fonts/smallfonts.h ../libs/usb/usb_lib/otg/inc/usb_defines.h \
  ../libs/usb/usb_conf/inc/usb_conf.h ../include/encoders.h \
@@ -133,6 +133,8 @@ src/leds.o: ../src/leds.c ../include/leds.h \
 ../include/rcc.h:
 
 ../include/ssd1306.h:
+
+../include/general.h:
 
 ../include/gpio.h:
 

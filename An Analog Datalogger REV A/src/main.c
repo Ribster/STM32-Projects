@@ -7,7 +7,6 @@
 
 // std lib
 	#include "stm32f4xx.h"
-
 // arm-none-eabi
 	#include <stdio.h>
 // project files
@@ -48,18 +47,7 @@
 				// increment the loopcounter
 				counter++;
 
-				// 2 Start interrupt possibilities
-					// RTC interrupt every second
-
-					// External interrupt
-
-				// Upon interrupt, read out AFE
-
-				// Write data from AFE to SD card
-
-				// Write the loopcounter
-					// make a loopcounter with RTC clock displayed
-				if(counter%1000 == 0){
+/*				if(counter%3000 == 0){
 					#define printLength 11
 					char nr[printLength];
 					xypair_t tmp = ssd1306_getScreenDimensions();
@@ -68,17 +56,16 @@
 					sprintf(nr, "%010ld",counter);
 					ssd1306_clearArea(0,tmp.y-stringHeigth, stringWidth, tmp.y);
 					ssd1306_setString(0,tmp.y-stringHeigth-1,nr,Font_System5x8);
+				}*/
+
+				if(sd_writeAFE == 0x01){
+					//sdio_test();
+					afe_fileWrite();
+					sd_writeAFE = 0x00;
 				}
 
-
-
-					if(sd_writeAFE == 0x01){
-						sdio_test();
-						sd_writeAFE = 0x00;
-					}
-
-					//printf(" -- loop nr %ld \r\n", counter);
-					//delay_milli(5000);
+				//printf(" -- loop nr %ld \r\n", counter);
+				//delay_milli(5000);
 			}
 
 
@@ -132,12 +119,6 @@
 						VCP_put_char(theByte);
 					}
 				#endif
-	//
-
-
-
-
-
 
 			}
 	}

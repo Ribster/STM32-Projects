@@ -9,12 +9,10 @@
 #define SSD1306_H_
 
 #include "stm32f4xx.h"
-#include "stm32f4xx_gpio.h"
-#include "stm32f4xx_dma.h"
-#include "stm32f4xx_spi.h"
-#include "stm32f4xx_rng.h"
 
 #include "projectconfig.h"
+#include "general.h"
+
 #include "gpio.h"
 #include "leds.h"
 #include "delay.h"
@@ -24,17 +22,17 @@
 
 #include "fonts/smallfonts.h"
 
-#include "usb_defines.h"
+#include "usb_defines.h"	// this is for the MIN macro, that this header already has
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 
-//#define MIN(a,b) (((a)<(b))?(a):(b))
-#define MAX(a,b) (((a)>(b))?(a):(b))
 
-extern volatile uint8_t ssd1306_updateLater;
+
+extern volatile uint8_t ssd1306_updateLater_100ms;
+extern volatile uint8_t ssd1306_updateLater_1s;
 
 // enumerations // commands // structs
 
@@ -268,7 +266,7 @@ typedef struct stringPointerTree_t{
 	ssd1306_setStringBelowPreviousDifferentFont(xypair_t xy, uint8_t spacing, const char* str, struct FONT_DEF previousFont, struct FONT_DEF currentFont);
 	xypair_t
 	ssd1306_clearString(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font);
-	void
+	xypair_t
 	ssd1306_setStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);
 	void
 	ssd1306_clearStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding);

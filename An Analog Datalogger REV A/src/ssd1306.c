@@ -12,7 +12,8 @@
 	static SSD1306_OLED_t ssd1306_parameters; // stores the local variables of the ssd1306
 
 
-	volatile uint8_t ssd1306_updateLater;
+	volatile uint8_t ssd1306_updateLater_100ms;
+	volatile uint8_t ssd1306_updateLater_1s;
 
 // local prototypes
 	// first initialization routine
@@ -671,12 +672,12 @@ ssd1306_alterStringBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF
 		ssd1306_alterLine(x+stringWidth+padding, y-padding, x+stringWidth+padding, y+stringHeight+padding, newVal);	// right line
 		ssd1306_alterLine(x-padding, y+padding+stringHeight, x+padding+stringWidth, y+stringHeight+padding, newVal);	// top line
 }
-void
+xypair_t
 ssd1306_setStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding){
 	// set border
-	ssd1306_alterStringBorder(x,y,str,font,padding,Bit_SET);
+	ssd1306_alterStringBorder(x,y+1,str,font,padding,Bit_SET);
 	// set string
-	ssd1306_alterString(x,y,str,font,Bit_SET);
+	return ssd1306_alterString(x,y,str,font,Bit_SET);
 }
 void
 ssd1306_clearStringWithBorder(uint8_t x, uint8_t y, const char* str, struct FONT_DEF font, uint8_t padding){
@@ -726,7 +727,6 @@ ssd1306_setTextBlock(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const char*
 		  for(l = 1; l < maxLines+1; l++){
 			  for (c = 0; c < maxColumns; c++)
 			  {
-				  // TODO: interpret text with \r or \n
 				  if (str[i] == '\n'){
 					  c=maxColumns;
 					  i++;
@@ -930,7 +930,7 @@ ssd1306_firstInit(void){
 
 		// Steps are taken from UG-2864HMBEG01 OLED screen.
 		// Reference: http://www.sunrom.com/media/files/p/648/4199_Datasheet.pdf
-		// Altered the steps to squeeze in my orientation function.
+		// Altered the steps to squeeze in existing functions from library
 
 		/* STEP 1 */
 			// display off
@@ -1039,8 +1039,8 @@ ssd1306_firstInit(void){
 
 		rcc_setTIMClock(OLED_TIMER, ENABLE);
 		/* Time base configuration */
-		tmp.TIM_Period = 20000 - 1; // 1 MHz down to 50Hz (20 ms)
-		tmp.TIM_Prescaler = 84 - 1; // 84 MHz Clock down to 1 MHz (adjust per your clock)
+		tmp.TIM_Period = 20000 - 1; // 1 MHz down to 50Hz (20 ms -> 50Hz)
+		tmp.TIM_Prescaler = 84 - 1; // 84 MHz Clock down to 1 MHz
 		tmp.TIM_ClockDivision = 0;
 		tmp.TIM_CounterMode = TIM_CounterMode_Up;
 		TIM_TimeBaseInit(OLED_TIMER, &tmp);
@@ -1119,4 +1119,3 @@ ssd1306_adjustCoordinate(uint8_t x, uint8_t y){
 	tmp.y = y;
 	return tmp;
 }
-

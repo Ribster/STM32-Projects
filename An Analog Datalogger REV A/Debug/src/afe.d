@@ -31,8 +31,8 @@ src/afe.o: ../src/afe.c ../include/afe.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
  ../include/gpio.h ../include/rcc.h ../include/nvic.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/delay.h \
- ../include/rtc.h ../include/ssd1306.h ../include/leds.h \
- ../include/encoders.h ../include/menustructure.h \
+ ../include/rtc.h ../include/ssd1306.h ../include/general.h \
+ ../include/leds.h ../include/encoders.h ../include/menustructure.h \
  ../include/initialization.h ../include/uart.h ../include/pushbuttons.h \
  ../include/rng.h ../include/sdio.h ../libs/fatfs/inc/diskio.h \
  ../libs/fatfs/inc/integer.h ../libs/fatfs/inc/ff.h \
@@ -142,6 +142,8 @@ src/afe.o: ../src/afe.c ../include/afe.h \
 ../include/rtc.h:
 
 ../include/ssd1306.h:
+
+../include/general.h:
 
 ../include/leds.h:
 

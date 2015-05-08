@@ -9,14 +9,19 @@
 
 static volatile uint32_t uwAsynchPrediv = 0;
 static volatile uint32_t uwSynchPrediv = 0;
-static RTC_TimeTypeDef  RTC_TimeStructure;
-static RTC_DateTypeDef RTC_DateStructure;
+
+RTC_TimeTypeDef  RTC_TimeStructure;
+RTC_DateTypeDef RTC_DateStructure;
+RTC_TimeTypeDef  RTC_TimeStructure_new;
+RTC_DateTypeDef RTC_DateStructure_new;
 
 void
 initialize_RTC(void){
 
 	RTC_InitTypeDef  RTC_InitStructure;
+#if defined(RTC_CLOCK_SOURCE_LSE)
 	uint32_t trying = 0;
+#endif
 	//RTC_AlarmTypeDef RTC_AlarmStructure;
 
 
@@ -87,7 +92,9 @@ initialize_RTC(void){
 	  uwAsynchPrediv = 0x7F;
 	#endif /*defined(RTC_CLOCK_SOURCE_XX)*/
 
+#if defined(RTC_CLOCK_SOURCE_LSE)
 escape_LSE:
+#endif
 
 	  /* Enable the RTC Clock */
 	  RCC_RTCCLKCmd(ENABLE);
@@ -133,7 +140,6 @@ escape_LSE:
 	  RTC_TimeStructure.RTC_Hours   = 0x16;
 	  RTC_TimeStructure.RTC_Minutes = 0x10;
 	  RTC_TimeStructure.RTC_Seconds = 0x00;
-
 	  RTC_SetTime(RTC_Format_BCD, &RTC_TimeStructure);
 }
 
@@ -156,4 +162,70 @@ rtc_setTimeToOLED(void){
 #endif
 	ssd1306_clearArea(tmp.x-stringWidth-1,tmp.y-stringHeigth, tmp.x-1, tmp.y);
 	ssd1306_setString(tmp.x-stringWidth-1,tmp.y-stringHeigth-1,time,Font_System5x8);
+}
+
+void
+rtc_setTimestructure(timeRegistration_t* timeStructure,
+		uint32_t timeInSeconds){
+	// make it empty
+	memset(timeStructure, 0, sizeof(timeRegistration_t));
+	// fill it in
+	timeStructure->seconds = timeInSeconds%60;
+	timeInSeconds /= 60;
+	timeStructure->minutes = timeInSeconds%60;
+	timeInSeconds /= 60;
+	timeStructure->hours = timeInSeconds%60;
+	timeInSeconds /= 24;
+	timeStructure->days = timeInSeconds%24;
+	timeInSeconds /= 7;
+	timeStructure->weeks = timeInSeconds;
+}
+
+char*
+rtc_getTimestructureString(timeRegistration_t* timeStructure){
+	// create buffer
+	char* tmp_returnVal = calloc((5*3) +1, sizeof(char));
+	// error catching
+	if(tmp_returnVal == 0x00){
+		return 0x00;
+	}
+	// assign temp writepointer
+	char* tmp_ptr = tmp_returnVal;
+	// weeks, days, hours, minutes, seconds allocation
+	// 2 digits per category, 1 letter as indication
+
+	if(timeStructure->weeks > 0){
+		// print the string to the buffer
+		sprintf(tmp_ptr,"%02dW", timeStructure->weeks);
+		// move the write pointer
+		tmp_ptr += 3;
+	}
+
+	if(timeStructure->days > 0){
+		// print the string to the buffer
+		sprintf(tmp_ptr,"%02dD", timeStructure->days);
+		// move the write pointer
+		tmp_ptr += 3;
+	}
+
+	if(timeStructure->hours > 0){
+		// print the string to the buffer
+		sprintf(tmp_ptr,"%02dH", timeStructure->hours);
+		// move the write pointer
+		tmp_ptr += 3;
+	}
+
+	if(timeStructure->minutes > 0){
+		// print the string to the buffer
+		sprintf(tmp_ptr,"%02dM", timeStructure->minutes);
+		// move the write pointer
+		tmp_ptr += 3;
+	}
+
+	if(timeStructure->seconds > 0){
+		// print the string to the buffer
+		sprintf(tmp_ptr,"%02dS", timeStructure->seconds);
+	}
+
+	return tmp_returnVal;
 }

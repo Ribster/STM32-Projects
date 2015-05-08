@@ -31,8 +31,8 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
  ../include/initialization.h ../include/delay.h ../include/rtc.h \
  ../include/projectconfig.h ../include/rcc.h ../include/ssd1306.h \
- ../include/gpio.h ../include/nvic.h ../include/leds.h \
- ../include/encoders.h ../include/menustructure.h \
+ ../include/general.h ../include/gpio.h ../include/nvic.h \
+ ../include/leds.h ../include/encoders.h ../include/menustructure.h \
  ../include/initialization.h ../include/sdio.h ../libs/fatfs/inc/diskio.h \
  ../libs/fatfs/inc/integer.h ../libs/fatfs/inc/ff.h \
  ../libs/fatfs/inc/ffconf.h ../include/fonts/smallfonts.h \
@@ -140,6 +140,8 @@ src/main.o: ../src/main.c ../libs/cmsis/include/stm32f4xx.h \
 ../include/rcc.h:
 
 ../include/ssd1306.h:
+
+../include/general.h:
 
 ../include/gpio.h:
 

@@ -32,10 +32,10 @@ libs/fatfs/src/diskio.o: ../libs/fatfs/src/diskio.c \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/sdio.h \
  ../include/projectconfig.h ../include/gpio.h ../include/rcc.h \
  ../include/nvic.h ../include/delay.h ../include/rtc.h \
- ../include/ssd1306.h ../include/leds.h ../include/encoders.h \
- ../include/menustructure.h ../include/initialization.h ../include/uart.h \
- ../include/pushbuttons.h ../include/rng.h ../include/sdio.h \
- ../include/afe.h ../include/dma.h \
+ ../include/ssd1306.h ../include/general.h ../include/leds.h \
+ ../include/encoders.h ../include/menustructure.h \
+ ../include/initialization.h ../include/uart.h ../include/pushbuttons.h \
+ ../include/rng.h ../include/sdio.h ../include/afe.h ../include/dma.h \
  ../libs/StdPeriph/include/stm32f4xx_dma2d.h ../include/usb.h \
  ../libs/usb/usb_lib/cdc/inc/usbd_cdc_core.h \
  ../libs/usb/usb_lib/core/inc/usbd_ioreq.h \
@@ -142,6 +142,8 @@ libs/fatfs/src/diskio.o: ../libs/fatfs/src/diskio.c \
 ../include/rtc.h:
 
 ../include/ssd1306.h:
+
+../include/general.h:
 
 ../include/leds.h:
 

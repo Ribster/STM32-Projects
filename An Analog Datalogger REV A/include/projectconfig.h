@@ -9,24 +9,10 @@
 #define PROJECTCONFIG_PROJECT_H_
 
 #include "stm32f4xx.h"
-#include "stm32f4xx_gpio.h"
-#include "stm32f4xx_rcc.h"
 
 // general macro's
 
 // general structs
-
-typedef struct xypair_t{
-	uint8_t x;
-	uint8_t y;
-}xypair_t;
-
-typedef struct xycorners_t{
-	xypair_t topLeft;
-	xypair_t topRight;
-	xypair_t bottomLeft;
-	xypair_t bottomRight;
-}xycorners_t;
 
 
 // Project version
@@ -264,14 +250,14 @@ typedef struct xycorners_t{
 #ifdef AFE_DUMMY_SMALL
 	#define AFE_DMA_BLOCKS 1
 #elif defined(AFE_DUMMY_BIG)
-#define AFE_DMA_BLOCKS 5
+#define AFE_DMA_BLOCKS 10
 #endif
 
 #ifdef AFE_DUMMY_BIG
 	#define AFE_DMA_CAPTURES 20
 	#define AFE_DMA_DATABYTES 4800
 	#define AFE_DMA_CLOCKCRCBYTES 72
-	#define AFE_DMA_LASTPACKET 353
+	#define AFE_DMA_LASTPACKET 273
 #elif defined(AFE_DUMMY_SMALL)
 	#define AFE_DMA_CAPTURES 20
 	#define AFE_DMA_DATABYTES 4800
@@ -289,7 +275,7 @@ typedef struct xycorners_t{
 		#define AFE_SPI_CPOL SPI_CPOL_Low
 		#define AFE_SPI_CPHA SPI_CPHA_1Edge
 		#define AFE_SPI_NSS SPI_NSS_Soft
-		#define AFE_SPI_BaudRatePrescaler SPI_BaudRatePrescaler_16
+		#define AFE_SPI_BaudRatePrescaler SPI_BaudRatePrescaler_32
 		#define AFE_SPI_FirstBit SPI_FirstBit_MSB
 		#define AFE_SPI_CRCPolynomial 7
 	// DMA SPI from Memory 2 Peripheral

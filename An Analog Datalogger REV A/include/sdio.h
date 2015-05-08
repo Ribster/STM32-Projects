@@ -22,7 +22,8 @@
 #include "diskio.h"
 #include "ff.h"
 
-extern uint8_t sd_writeAFE;
+extern volatile uint8_t sd_writeAFE;
+extern volatile char sd_biggestFolderString[13];
 
 typedef enum
 {
@@ -208,8 +209,6 @@ void
 sdio_printCardStatus(SD_CardStatus* cardStatus);
 
 // Prototypes
-char*
-dec32(unsigned long i);
 void
 SD_LowLevel_DeInit(void);
 void

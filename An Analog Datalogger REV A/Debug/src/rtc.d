@@ -30,8 +30,8 @@ src/rtc.o: ../src/rtc.c ../include/rtc.h \
  ../libs/StdPeriph/include/stm32f4xx_dcmi.h \
  ../libs/StdPeriph/include/stm32f4xx_fsmc.h ../include/projectconfig.h \
  ../include/rcc.h ../include/delay.h ../include/rtc.h ../include/gpio.h \
- ../include/nvic.h ../include/ssd1306.h ../include/leds.h \
- ../include/encoders.h ../include/menustructure.h \
+ ../include/nvic.h ../include/ssd1306.h ../include/general.h \
+ ../include/leds.h ../include/encoders.h ../include/menustructure.h \
  ../include/initialization.h ../include/uart.h ../include/pushbuttons.h \
  ../include/rng.h ../include/sdio.h ../libs/fatfs/inc/diskio.h \
  ../libs/fatfs/inc/integer.h ../libs/fatfs/inc/ff.h \
@@ -138,6 +138,8 @@ src/rtc.o: ../src/rtc.c ../include/rtc.h \
 ../include/nvic.h:
 
 ../include/ssd1306.h:
+
+../include/general.h:
 
 ../include/leds.h:
 

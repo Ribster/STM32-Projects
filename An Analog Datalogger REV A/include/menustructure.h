@@ -13,9 +13,10 @@
 
 #include "stm32f4xx.h"
 
-
+#include <string.h>
 
 #include "projectconfig.h"
+#include "general.h"
 
 #include "ssd1306.h"
 #include "initialization.h"

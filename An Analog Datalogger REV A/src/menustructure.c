@@ -284,6 +284,8 @@ menustructure_stepMenu(uint8_t direction){
 				// check if the functionpointer is filled in
 				if((menu_currentRef->fptr) == (menustructure_menuFunction_SD_Filestructure)){
 					menustructure_file_stepMenu(direction);
+				} else if ( ((menu_currentRef->fptr) == (menustructure_menuFunction_AFE_Record)) && afe_enableRecording!=0x00 ){
+					// do nothing
 				} else {
 					// look for the item that is selected
 					// set that item as the parent menu item
@@ -326,6 +328,12 @@ menustructure_stepMenu(uint8_t direction){
 				// check if the functionpointer is filled in
 				if((menu_currentRef->fptr) == (menustructure_menuFunction_SD_Filestructure)){
 					menustructure_file_stepMenu(direction);
+				} else if((menu_currentRef->fptr) == (menustructure_menuFunction_AFE_Record)){
+					if(afe_enableRecording!=0x00){
+						afe_stopRecording();
+					} else {
+						afe_startRecording();
+					}
 				}
 
 			}
@@ -405,7 +413,6 @@ fileStructure_t* tmp = file_currentRef;
 	}
 	menu_enable = 0x01;
 }
-
 
 fileStructure_t*
 menustructure_file_addItem(fileStructure_t* upperFileItem, char* label,
@@ -515,7 +522,7 @@ menustructure_file_showMenuItem(fileStructure_t* fileItem, uint8_t y, uint8_t x0
 		tmp.x += 6;
 		tmp = ssd1306_setString(tmp.x, y, fileItem->label, font);
 		tmp.x += 3;
-		tmp = ssd1306_setString(tmp.x, y, dec32(fileItem->size), font);
+		tmp = ssd1306_setString(tmp.x, y, general_dec32(fileItem->size), font);
 		y = tmp.y;
 		y -= font.u8Height+1;
 	} else {
@@ -532,7 +539,7 @@ menustructure_file_showMenuItem(fileStructure_t* fileItem, uint8_t y, uint8_t x0
 		tmp.x += 6;
 		tmp = ssd1306_setStringInverted(tmp.x, y, fileItem->label, font, 0);
 		tmp.x += 3;
-		tmp = ssd1306_setStringInverted(tmp.x, y, dec32(fileItem->size), font, 0);
+		tmp = ssd1306_setStringInverted(tmp.x, y, general_dec32(fileItem->size), font, 0);
 		y = tmp.y;
 		y -= font.u8Height+1;
 	}
@@ -702,9 +709,10 @@ menustructure_menuFunction_SD_Cardinfo(void){
 		// show sd card size
 			// print the subitem
 			tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
-			tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			tmp = ssd1306_setStringBelowPreviousDifferentFont(tmp,
 					OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
 					"CARD SIZE: ",
+					OLED_SUBMENUWRITING_HEADER_FONT,
 					OLED_SUBMENUWRITING_SUBITEMS_FONT);
 			// print the size
 			uint64_t cc = cardInfo.SD_csd.DeviceSize/(1024/cardInfo.CardBlockSize);
@@ -717,7 +725,7 @@ menustructure_menuFunction_SD_Cardinfo(void){
 			char mib[] = "MB";
 			char gib[] = "GB";
 
-			tmp = ssd1306_setString(tmp.x,tmp.y,dec32(total), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			tmp = ssd1306_setString(tmp.x,tmp.y,general_dec32(total), OLED_SUBMENUWRITING_SUBITEMS_FONT);
 			switch(pow){
 			case 1: tmp = ssd1306_setString(tmp.x,tmp.y,mib, OLED_SUBMENUWRITING_SUBITEMS_FONT); break;
 			case 2: tmp = ssd1306_setString(tmp.x,tmp.y,gib, OLED_SUBMENUWRITING_SUBITEMS_FONT); break;
@@ -729,7 +737,7 @@ menustructure_menuFunction_SD_Cardinfo(void){
 					OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
 					"BLOCK SIZE: ",
 					OLED_SUBMENUWRITING_SUBITEMS_FONT);
-			tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.CardBlockSize), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+			tmp = ssd1306_setString(tmp.x,tmp.y,general_dec32(cardInfo.CardBlockSize), OLED_SUBMENUWRITING_SUBITEMS_FONT);
 
 		// show sd card mounted
 		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
@@ -771,7 +779,7 @@ menustructure_menuFunction_SD_Cardinfo(void){
 				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
 				"SER. NR: ",
 				OLED_SUBMENUWRITING_SUBITEMS_FONT);
-		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.SD_cid.ProdSN), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y,general_dec32(cardInfo.SD_cid.ProdSN), OLED_SUBMENUWRITING_SUBITEMS_FONT);
 
 		// show sd card drive number
 		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
@@ -779,7 +787,7 @@ menustructure_menuFunction_SD_Cardinfo(void){
 				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
 				"MAX. FREQ: ",
 				OLED_SUBMENUWRITING_SUBITEMS_FONT);
-		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.SD_csd.MaxBusClkFrec), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y,general_dec32(cardInfo.SD_csd.MaxBusClkFrec), OLED_SUBMENUWRITING_SUBITEMS_FONT);
 		tmp = ssd1306_setString(tmp.x,tmp.y," MHZ", OLED_SUBMENUWRITING_SUBITEMS_FONT);
 
 
@@ -791,7 +799,7 @@ menustructure_menuFunction_SD_Cardinfo(void){
 				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
 				"MAX. W. BLOCK: ",
 				OLED_SUBMENUWRITING_SUBITEMS_FONT);
-		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.SD_csd.MaxWrBlockLen), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y,general_dec32(cardInfo.SD_csd.MaxWrBlockLen), OLED_SUBMENUWRITING_SUBITEMS_FONT);
 
 		// show sd card drive number
 		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X+66;
@@ -799,7 +807,7 @@ menustructure_menuFunction_SD_Cardinfo(void){
 				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
 				"MAX. R. BLOCK: ",
 				OLED_SUBMENUWRITING_SUBITEMS_FONT);
-		tmp = ssd1306_setString(tmp.x,tmp.y,dec32(cardInfo.SD_csd.RdBlockLen), OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		tmp = ssd1306_setString(tmp.x,tmp.y,general_dec32(cardInfo.SD_csd.RdBlockLen), OLED_SUBMENUWRITING_SUBITEMS_FONT);
 	} else {
 		// print error message
 		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
@@ -814,7 +822,7 @@ menustructure_menuFunction_SD_Cardinfo(void){
 void
 menustructure_menuFunction_SD_Filestructure(void){
 	if(sd_busy != 0x00){
-		ssd1306_updateLater = 0x01;
+		ssd1306_updateLater_100ms = 0x01;
 		return;
 	}
 	// clear the screen
@@ -871,18 +879,95 @@ menustructure_menuFunction_RTC_Rtcinfo(void){
 			OLED_TEXTBLOCK_RIGHTUP_X,
 			"RTC INFO",
 			OLED_SUBMENUWRITING_HEADER_FONT);
+
+	// subseconds
+	// sync prediv
+	// asynch prediv
+	// alarms set
+	// clocksource
 }
 
 void
 menustructure_menuFunction_RTC_Adjustrtc(void){
 	xypair_t tmp;
+	char rtc_date[10+1];
+	char rtc_time[8+1];
 	// clear the screen
 	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
+
+	// print the header
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
 			"ADJUST RTC",
 			OLED_SUBMENUWRITING_HEADER_FONT);
+
+	// current DATE
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousDifferentFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"CURRENT DATE: ",
+			OLED_SUBMENUWRITING_HEADER_FONT,
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+
+	RTC_GetDate(RTC_Format_BIN, &RTC_DateStructure);
+	sprintf(rtc_date,"%02d/%02d/%04d",RTC_DateStructure.RTC_Date, RTC_DateStructure.RTC_Month, RTC_DateStructure.RTC_Year);
+
+	tmp = ssd1306_setString(tmp.x,
+			tmp.y,
+			rtc_date,
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	// current TIME
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"CURRENT TIME: ",
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+
+	RTC_GetTime(RTC_Format_BIN, &RTC_TimeStructure);
+	sprintf(rtc_time, "%02d:%02d:%02d",RTC_TimeStructure.RTC_Hours, RTC_TimeStructure.RTC_Minutes, RTC_TimeStructure.RTC_Seconds);
+
+	tmp = ssd1306_setString(tmp.x,
+			tmp.y,
+			rtc_time,
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	// new DATE
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousDifferentFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"NEW DATE: ",
+			OLED_SUBMENUWRITING_HEADER_FONT,
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+
+	RTC_GetDate(RTC_Format_BIN, &RTC_DateStructure_new);
+	sprintf(rtc_date,"%02d/%02d/%04d",RTC_DateStructure.RTC_Date, RTC_DateStructure.RTC_Month, RTC_DateStructure.RTC_Year);
+
+	tmp = ssd1306_setString(tmp.x,
+			tmp.y,
+			rtc_date,
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	// new TIME
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"NEW TIME: ",
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+
+	RTC_GetTime(RTC_Format_BIN, &RTC_TimeStructure_new);
+	sprintf(rtc_time, "%02d:%02d:%02d",RTC_TimeStructure.RTC_Hours, RTC_TimeStructure.RTC_Minutes, RTC_TimeStructure.RTC_Seconds);
+
+	tmp = ssd1306_setString(tmp.x,
+			tmp.y,
+			rtc_time,
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
 }
 
 void
@@ -963,11 +1048,85 @@ menustructure_menuFunction_AFE_Record(void){
 	xypair_t tmp;
 	// clear the screen
 	ssd1306_clearArea(OLED_MENUWRITING_START, OLED_MENUWRITING_END);
+
+	// write the header
 	tmp = ssd1306_setStringCentered(OLED_TEXTBLOCK_RIGHTUP_Y-OLED_SUBMENUWRITING_HEADER_FONT.u8Height-1,
 			OLED_TEXTBLOCK_LEFTDOWN_X,
 			OLED_TEXTBLOCK_RIGHTUP_X,
 			"AFE RECORDING",
 			OLED_SUBMENUWRITING_HEADER_FONT);
+
+	// change recording setting
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp.y -= 11;
+
+	tmp = ssd1306_setStringWithBorder(17,
+			tmp.y,
+			(afe_enableRecording!=0x00)?("STOP RECORDING"):("START RECORDING"),
+			OLED_MENUWRITING_FONT,
+			2);
+	tmp.y -= 3;
+
+	// current status
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"CURRENT STATUS: ",
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	tmp = ssd1306_setString(tmp.x,
+			tmp.y,
+			(afe_enableRecording!=0x00)?("RECORDING"):((afe_enableRecording!=0x01)?("IDLE"):("FINISHED")),
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	// folder name
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"FOLDERNAME ON SD: ",
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	tmp = ssd1306_setString(tmp.x,
+			tmp.y,
+			(char*)afe_writingFolderString,
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	tmp.y -= OLED_SUBMENUWRITING_SUBITEMS_FONT.u8Height+2;
+
+	// captured packets
+	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+			"CAPTURED PACKETS: ",
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	tmp = ssd1306_setString(tmp.x,
+			tmp.y,
+			general_dec32(afe_recordingPacketCount),
+			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+	// capture time
+		tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
+		tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
+				OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
+				"CAPTURE TIME: ",
+				OLED_SUBMENUWRITING_SUBITEMS_FONT);
+
+		// empty the time structure and chop it up
+		rtc_setTimestructure((timeRegistration_t*)&afe_recordedTime, afe_recordingTime);
+		// concatenate the correct time ; be aware that this function creates space. needs to be freed
+		char* tmp_holdingString = rtc_getTimestructureString((timeRegistration_t*)&afe_recordedTime);
+		// set it to the display
+		tmp = ssd1306_setString(tmp.x,
+				tmp.y,
+				tmp_holdingString,
+				OLED_SUBMENUWRITING_SUBITEMS_FONT);
+		// empty the buffer
+		free(tmp_holdingString);
+		// update the screen every second if it's in writing mode
+		if(ssd1306_updateLater_1s == 0x00 && afe_enableRecording != 0x00){
+			ssd1306_updateLater_1s = 0x01;
+		}
 }
 
 // TERMINAL ROUTINES
