@@ -178,10 +178,10 @@ sdio_test(void){
 
 				// write the total string to the file
 				res = f_write(&fil, str, strlen(str), &BytesWritten);
-				// synchronize the file
-				res = f_sync(&fil);
   			}
   		}
+		// synchronize the file
+		res = f_sync(&fil);
   		// close the opened file
     	res = f_close(&fil); // DIR.TXT
 

@@ -236,7 +236,7 @@ DMA2_Stream3_IRQHandler(void){
 
 void OTG_FS_IRQHandler(void)
 {
-	printf("OTG interrupt! \r\n");
+	//printf("OTG interrupt! \r\n");
   USBD_OTG_ISR_Handler (&USB_OTG_dev);
 }
 

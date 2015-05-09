@@ -28,17 +28,18 @@
 extern volatile uint8_t afe_DMA_RX_Buffer[AFE_DMA_CAPTURES][AFE_DMA_BLOCKS][AFE_DMA_BLOCKSIZE];
 extern volatile uint8_t afe_DMA_TX_Buffer[AFE_DMA_BLOCKS][AFE_DMA_BLOCKSIZE];
 
-extern volatile uint8_t afe_busy;
-extern volatile uint8_t afe_enableRecording;
-extern volatile uint32_t afe_recordingTime;
-extern volatile timeRegistration_t afe_recordedTime;
-extern volatile uint32_t afe_recordingPacketCount;
-extern volatile uint8_t afe_currentPacket;
-extern volatile uint8_t afe_currentCapture;
-extern volatile uint8_t afe_timeStorage[4];
-extern volatile char afe_writingFolderString[13];
-
-extern DMA_InitTypeDef afe_struct;
+extern volatile uint8_t afe_busy;	// flag for AFE that it is busy
+extern volatile uint8_t afe_enableRecording;	// recording option is enabled
+extern volatile uint32_t afe_recordingTime;		// recording time in seconds
+extern volatile timeRegistration_t afe_recordedTime;	// recording time in a time structure
+extern volatile uint32_t afe_recordingPacketCount;		// recording packetcount
+extern volatile uint8_t afe_currentPacket;		// current packet for DMA
+extern volatile uint8_t afe_currentCapture;		// current capture for DMA
+extern volatile uint8_t afe_loggingCapture;		// current capture for SD write
+extern volatile uint8_t afe_timeStorage[4];		// writing stamp SD write
+extern volatile char afe_writingFolderString[13];		// folder for SD write
+extern volatile char afe_writingFileString[13];		// file for SD write
+extern DMA_InitTypeDef afe_struct;	// structure for setting DMA options
 
 // prototypes
 void

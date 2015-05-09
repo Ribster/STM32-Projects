@@ -15,4 +15,6 @@ initialize_USB(void){
 	            &USR_desc,
 	            &USBD_CDC_cb,
 	            &USR_cb);
+	VCP_send_str("Testing USB terminal!!!\r\n");
+	VCP_send_str("And testing the newline...\r\n");
 }

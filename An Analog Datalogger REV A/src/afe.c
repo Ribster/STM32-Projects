@@ -19,8 +19,10 @@ volatile timeRegistration_t afe_recordedTime;
 volatile uint32_t afe_recordingPacketCount;
 volatile uint8_t afe_currentPacket;
 volatile uint8_t afe_currentCapture;
+volatile uint8_t afe_loggingCapture;		// current capture for SD write
 volatile uint8_t afe_timeStorage[4];
 volatile char afe_writingFolderString[13];
+volatile char afe_writingFileString[13];
 
 // DMA settings
 DMA_InitTypeDef afe_struct;
@@ -30,6 +32,7 @@ initialize_AFE(void){
 	// clear buffers
 	memset(afe_DMA_RX_Buffer, 0, AFE_DMA_CAPTURES*AFE_DMA_BLOCKS*AFE_DMA_BLOCKSIZE);
 
+	// set transmit buffers
 	for (uint32_t i = 0; i < AFE_DMA_BLOCKS; ++i) {
 		for (uint32_t j = 0; j < AFE_DMA_BLOCKSIZE; ++j) {
 			afe_DMA_TX_Buffer[i][j] = j%256;
@@ -185,11 +188,11 @@ afe_startRecording(void){
 	// reset the recording packet count
 	afe_recordingPacketCount = 0x01;
 	// determine the new folder name
-	afe_getNewFolderName();
+	//afe_getNewFolderName();
 	// create a new folder with this name
-	afe_createNewFolder();
+	//afe_createNewFolder();
 	// write the info.txt file
-	afe_writeInfoHeader();
+	//afe_writeInfoHeader();
 	// set the enable recording bit for the AFE as last
 	afe_enableRecording = 0x01;
 }
@@ -199,7 +202,7 @@ afe_stopRecording(void){
 	// testing
 	printf("Stopping with recording!!\r\n");
 	// write the information to the info.txt file
-	afe_writeInfoFooter();
+	//afe_writeInfoFooter();
 	// disable the recording
 	afe_enableRecording = 0x00;
 }
@@ -211,7 +214,7 @@ afe_startReadout(void){
 	afe_currentPacket = 0x00;
 
 	// reset transmission capture block
-	if(afe_currentCapture >= (AFE_DMA_BLOCKS*2)){
+	if(afe_currentCapture >= (AFE_DMA_CAPTURES)){
 		afe_currentCapture = 0x0;
 	}
 
@@ -240,6 +243,7 @@ afe_endReadout(void){
 		printf("Read packet %d done\r\n", afe_currentPacket);
 #endif
 
+
 		// increment the capture packet
 		afe_currentCapture++;
 		// increment the total packet count
@@ -249,21 +253,36 @@ afe_endReadout(void){
 		printf("Current capture %d\r\n", afe_currentCapture);
 #endif
 
-		// add time stamp to blocks
-		for(uint8_t i; i<AFE_DMA_BLOCKS; i++){
-			memcpy((uint8_t*)&(afe_DMA_RX_Buffer[afe_currentCapture][i][0]), (uint8_t*)afe_timeStorage, sizeof(afe_timeStorage));
-		}
+
 
 		// logging
-		if(afe_currentCapture==AFE_DMA_BLOCKS || afe_currentCapture == (AFE_DMA_BLOCKS*2)){
+		if(afe_currentCapture==AFE_DMA_SINGLEFILE || afe_currentCapture == (AFE_DMA_CAPTURES)){
+			// add time stamp to blocks
+			for(uint8_t i=0; i<AFE_DMA_SINGLEFILE; i++){
+				if(afe_currentCapture == AFE_DMA_SINGLEFILE){
+					afe_DMA_RX_Buffer[0+i][0][0] = afe_timeStorage[0];
+					afe_DMA_RX_Buffer[0+i][0][1] = afe_timeStorage[1];
+					afe_DMA_RX_Buffer[0+i][0][2] = afe_timeStorage[2];
+					afe_DMA_RX_Buffer[0+i][0][3] = afe_timeStorage[3];
+				} else {
+					afe_DMA_RX_Buffer[AFE_DMA_SINGLEFILE+i][0][0] = afe_timeStorage[0];
+					afe_DMA_RX_Buffer[AFE_DMA_SINGLEFILE+i][0][1] = afe_timeStorage[1];
+					afe_DMA_RX_Buffer[AFE_DMA_SINGLEFILE+i][0][2] = afe_timeStorage[2];
+					afe_DMA_RX_Buffer[AFE_DMA_SINGLEFILE+i][0][3] = afe_timeStorage[3];
+				}
+
+			}
+
 			// set the logging bit high.
 			// writing gets done in the main loop
 			// if not, interrupt time will be too long and problems will arrive.
+			if(afe_currentCapture == AFE_DMA_SINGLEFILE){
+				afe_loggingCapture = 0;
+			} else {
+				afe_loggingCapture = AFE_DMA_SINGLEFILE;
+			}
 			sd_writeAFE = 0x01;
 		}
-
-
-
 	} else {
 		// read the AFE
 		// perpetual loop until the packet count is met
@@ -346,6 +365,7 @@ afe_read(void){
 		afe_timeStorage[0] = RTC_TimeStructure.RTC_Hours;
 		afe_timeStorage[1] = RTC_TimeStructure.RTC_Minutes;
 		afe_timeStorage[2] = RTC_TimeStructure.RTC_Seconds;
+		afe_timeStorage[3] = 3;
 
 		// set the sync pin high
 		AFE_INT_PORT->ODR |= (1<<AFE_INT_PIN);
@@ -357,8 +377,45 @@ afe_fileWrite(void){
 #ifdef DBGIO
 	printf("Logging captures %d to %d\r\n", afe_currentCapture-AFE_DMA_BLOCKS, afe_currentCapture);
 #endif
+	if(sd_busy != 0x00){
+		return;
+	}
+	sd_busy = 0x01;
 	// set to AFE directory
+		//path = (char*)afe_writingFolderString;
+		path = "";
+		res = f_opendir(&dir, path);
+		// error handling
+		if(res != FR_OK){
+			return;
+		}
 
+	// create file
+		char tmp_fileName[13];
+		strcpy(tmp_fileName, general_dec32( (afe_recordingPacketCount/AFE_DMA_SINGLEFILE)));
+		strcat(tmp_fileName, ".EMS");
+
+		res = f_open(&fil, tmp_fileName, FA_CREATE_ALWAYS | FA_WRITE);
+		// error handling
+		if(res != FR_OK){
+			return;
+		}
+
+	// write to file
+		UINT BytesWritten;
+		// write the total string to the file
+		for(uint8_t i=0; i<AFE_DMA_SINGLEFILE; i++){
+			res = f_write(&fil, (void*)&(afe_DMA_RX_Buffer[afe_loggingCapture+i][0][0]), AFE_DMA_BLOCKSIZE*AFE_DMA_BLOCKS, &BytesWritten);
+		}
+
+		// synchronize the file
+		res = f_sync(&fil);
+		// close the file
+		res = f_close(&fil);
+
+	sd_busy = 0x00;
+	printf("Written file %s\r\n", tmp_fileName);
+	strcpy((char*)afe_writingFileString, tmp_fileName);
 }
 
 void
@@ -439,6 +496,7 @@ afe_incrementFolderName(void){
 	} else {
 		uint8_t tmp_size = strlen((char*)afe_writingFolderString);
 		if(afe_writingFolderString[tmp_size-1]=='Z'){
+			afe_writingFolderString[tmp_size-1]='A';
 			strcat((char*)afe_writingFolderString, "A");
 		} else {
 			afe_writingFolderString[tmp_size-1] ++;
@@ -449,8 +507,14 @@ afe_incrementFolderName(void){
 
 void
 afe_createNewFolder(void){
+	// set to root path
+	path = "";
+
+	// open the directory
+	res = f_opendir(&dir, path);
+
 	// create new directory
-	f_mkdir((char*)afe_writingFolderString);
+	//
 }
 
 void
@@ -486,28 +550,37 @@ afe_writeInfoHeader(void){
 			RTC_TimeStructure.RTC_Seconds);
 
 	// create info.txt file
-	path = (char*)afe_writingFolderString;
+	//path = (char*)afe_writingFolderString;
+	path = "";
 	res = f_opendir(&dir, path);
 	// error handling
+	// error handling
 	if(res != FR_OK){
+		printf("could not open directory\r\n");
 		return;
 	}
-
+	memset(&fil, 0, sizeof(FIL));
 	res = f_open(&fil, "info.txt", FA_CREATE_ALWAYS | FA_WRITE);
 	// error handling
 	if(res != FR_OK){
+		printf("could not open file\r\n");
 		return;
 	}
 
 	// write the information for recording
 		UINT BytesWritten;
 		// write the total string to the file
-		res = f_write(&fil, tmp_writeString, strlen(tmp_writeString), &BytesWritten);
-		// synchronize the file
-		res = f_sync(&fil);
+		res = f_write(&fil, tmp_writeString, strlen(tmp_writeString)+1, &BytesWritten);
+		// error handling
+		if(res != FR_OK){
+			printf("could not write file\r\n");
+			return;
+		}
 #ifdef DBGIO
 		printf("Written %d bytes to the sd card\r\n", BytesWritten);
 #endif
+		// synchronize the file
+		res = f_sync(&fil);
 		res = f_close(&fil);
 	// free the allocated area
 	free(tmp_writeString);
@@ -521,13 +594,13 @@ afe_writeInfoFooter(void){
 	 * Start packet: XXXXX
 	 * End packet: XXXXX
 	 */
-/*	char tmp_prefix[] = "End: ";
+	char tmp_prefix[] = "End: ";
 	char tmp_midfix1[] = "\nPacket count: ";
 	char tmp_midfix2[] = "\nStart packet: ";
 	char tmp_midfix3[] = "\nEnd packet: ";
 	char tmp_time[8 + 1];
 	char* tmp_writeString = calloc(
-			strlen(tmp_prefix)+strlen(tmp_midfix)+strlen(tmp_date)+strlen(tmp_time)+1,
+			strlen(tmp_prefix)+strlen(tmp_midfix1)+strlen(tmp_midfix2)+strlen(tmp_midfix3)+strlen(tmp_time)+1,
 			sizeof(char));
 	// error handling
 	if(tmp_writeString == 0x00){
@@ -537,27 +610,32 @@ afe_writeInfoFooter(void){
 	RTC_GetTime(RTC_Format_BIN, &RTC_TimeStructure);
 
 	// create total string
-	sprintf(tmp_writeString, "%s%02d/%02d/%02d%s%02d:%02d:%02d",
+	sprintf(tmp_writeString, "%s%02d:%02d:%02d%s%ld%s%d.ems%s%ld.ems",
 			tmp_prefix,
-			RTC_DateStructure.RTC_Date,
-			RTC_DateStructure.RTC_Month,
-			RTC_DateStructure.RTC_Year,
-			tmp_midfix,
 			RTC_TimeStructure.RTC_Hours,
 			RTC_TimeStructure.RTC_Minutes,
-			RTC_TimeStructure.RTC_Seconds);
+			RTC_TimeStructure.RTC_Seconds,
+			tmp_midfix1,
+			afe_recordingPacketCount,
+			tmp_midfix2,
+			1,
+			tmp_midfix3,
+			afe_recordingPacketCount);
 
-	// create info.txt file
-	path = (char*)afe_writingFolderString;
+	// open info.txt file
+	//path = (char*)afe_writingFolderString;
+	path = "";
 	res = f_opendir(&dir, path);
 	// error handling
 	if(res != FR_OK){
+		printf("could not open directory\r\n");
 		return;
 	}
-
-	res = f_open(&fil, "info.txt", FA_CREATE_ALWAYS | FA_WRITE);
+	memset(&fil, 0, sizeof(FIL));
+	res = f_open(&fil, "info.txt", FA_OPEN_EXISTING | FA_WRITE);
 	// error handling
 	if(res != FR_OK){
+		printf("could not open file\r\n");
 		return;
 	}
 
@@ -565,11 +643,16 @@ afe_writeInfoFooter(void){
 		UINT BytesWritten;
 		// write the total string to the file
 		res = f_write(&fil, tmp_writeString, strlen(tmp_writeString), &BytesWritten);
-		// synchronize the file
-		res = f_sync(&fil);
+		// error handling
+		if(res != FR_OK){
+			printf("could not write file\r\n");
+			return;
+		}
 #ifdef DBGIO
 		printf("Written %d bytes to the sd card\r\n", BytesWritten);
 #endif
-		res = f_close(&fil);*/
+		// synchronize the file
+		res = f_sync(&fil);
+		res = f_close(&fil);
 
 }

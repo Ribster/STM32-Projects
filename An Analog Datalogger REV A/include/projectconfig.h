@@ -16,7 +16,7 @@
 
 
 // Project version
-#define PROJVER "0.1.01"
+#define PROJVER "0.1.03"
 
 #define DBG
 //#define DBGIO
@@ -254,7 +254,8 @@
 #endif
 
 #ifdef AFE_DUMMY_BIG
-	#define AFE_DMA_CAPTURES 20
+	#define AFE_DMA_CAPTURES 14
+	#define AFE_DMA_SINGLEFILE (AFE_DMA_CAPTURES/2)
 	#define AFE_DMA_DATABYTES 4800
 	#define AFE_DMA_CLOCKCRCBYTES 72
 	#define AFE_DMA_LASTPACKET 273

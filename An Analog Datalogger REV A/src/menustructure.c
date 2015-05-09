@@ -583,10 +583,15 @@ menustructure_file_fillMenu(void){
 
   		res = f_opendir(&dir, path);
 
-  #ifdef DBG
-  		if (res != FR_OK)
+
+  		if (res != FR_OK){
+#ifdef DBG
   			printf("res = %d f_opendir\r\n", res);
-  #endif
+#endif
+  			return;
+  		}
+
+
 
   		if (res == FR_OK)
   		{
@@ -596,10 +601,13 @@ menustructure_file_fillMenu(void){
 
   				res = f_readdir(&dir, &fno);
 
-  #ifdef DBG
-  				if (res != FR_OK)
+
+  				if (res != FR_OK){
+#ifdef DBG
   					printf("res = %d f_readdir\r\n", res);
-  #endif
+#endif
+  					return;
+  				}
 
   				if ((res != FR_OK) || (fno.fname[0] == 0))
   					break;
@@ -1083,15 +1091,17 @@ menustructure_menuFunction_AFE_Record(void){
 	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;
 	tmp = ssd1306_setStringBelowPreviousSameFont(tmp,
 			OLED_SUBMENUWRITING_SPACINGPIXELS_FROMSUBITEMS,
-			"FOLDERNAME ON SD: ",
+			"LAST FILENAME: ",
 			OLED_SUBMENUWRITING_SUBITEMS_FONT);
 
 	tmp = ssd1306_setString(tmp.x,
 			tmp.y,
-			(char*)afe_writingFolderString,
+			(char*)afe_writingFileString,
 			OLED_SUBMENUWRITING_SUBITEMS_FONT);
+	if(strcmp((char*)afe_writingFileString, "") == 0){
+		tmp.y -= OLED_SUBMENUWRITING_SUBITEMS_FONT.u8Height+2;
+	}
 
-	tmp.y -= OLED_SUBMENUWRITING_SUBITEMS_FONT.u8Height+2;
 
 	// captured packets
 	tmp.x = OLED_TEXTBLOCK_LEFTDOWN_X;

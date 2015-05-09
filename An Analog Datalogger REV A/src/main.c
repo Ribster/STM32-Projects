@@ -63,6 +63,13 @@
 					afe_fileWrite();
 					sd_writeAFE = 0x00;
 				}
+				uint8_t theByte;
+				if (VCP_get_char(&theByte))
+				{
+					VCP_put_char(theByte);
+					VCP_put_char('\r');
+					VCP_put_char('\n');
+				}
 
 				//printf(" -- loop nr %ld \r\n", counter);
 				//delay_milli(5000);
@@ -117,10 +124,17 @@
 					if (VCP_get_char(&theByte))
 					{
 						VCP_put_char(theByte);
+						VCP_put_char('\r');
+						VCP_put_char('\n');
 					}
 				#endif
 
 			}
+
+
+
+
+
 	}
 
 
