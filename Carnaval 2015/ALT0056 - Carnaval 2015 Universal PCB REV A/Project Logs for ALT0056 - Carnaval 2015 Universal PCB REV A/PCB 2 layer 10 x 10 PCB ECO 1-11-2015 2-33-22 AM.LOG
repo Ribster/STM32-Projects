@@ -1,0 +1,82 @@
+Added Pin To Net: NetName=IRLIN1 Pin=U1A-1
+Added Pin To Net: NetName=IRLIN2 Pin=U1A-2
+Added Pin To Net: NetName=IRLIN3 Pin=U1A-3
+Added Pin To Net: NetName=IRLIN4 Pin=U1A-4
+Added Pin To Net: NetName=IRLIN5 Pin=U1A-5
+Added Pin To Net: NetName=IRLIN6 Pin=U1A-6
+Added Pin To Net: NetName=IRLIN7 Pin=U1A-7
+Added Pin To Net: NetName=IRLIN0 Pin=U1A-15
+Added Pin To Net: NetName=DIN1 Pin=U1B-1
+Added Pin To Net: NetName=DIN2 Pin=U1B-2
+Added Pin To Net: NetName=DIN3 Pin=U1B-3
+Added Pin To Net: NetName=DIN4 Pin=U1B-4
+Added Pin To Net: NetName=DIN5 Pin=U1B-5
+Added Pin To Net: NetName=DIN6 Pin=U1B-6
+Added Pin To Net: NetName=DIN7 Pin=U1B-7
+Added Pin To Net: NetName=DIN0 Pin=U1B-15
+Change Net Name : Old Net Name=AA New Net Name=RTC_LED
+Change Net Name : Old Net Name=AB New Net Name=IR_LED
+Change Net Name : Old Net Name=AC New Net Name=NRF24L01+_LED
+Change Net Name : Old Net Name=AD New Net Name=OLED_LD
+Change Net Name : Old Net Name=AI New Net Name=LED
+Change Net Name : Old Net Name=AIN2A New Net Name=IRBUFFERED_15
+Change Net Name : Old Net Name=NRST New Net Name=NRST_14
+Change Net Name : Old Net Name=PB0 New Net Name=PB0_13
+Change Net Name : Old Net Name=PB1 New Net Name=PB1_13
+Change Net Name : Old Net Name=PB2 New Net Name=PB2_13
+Change Net Name : Old Net Name=PB3 New Net Name=PB3_13
+Change Net Name : Old Net Name=PB4 New Net Name=PB4_13
+Change Net Name : Old Net Name=PUB0 New Net Name=PUB0_14
+Change Net Name : Old Net Name=PUB1 New Net Name=PUB1_14
+Change Net Name : Old Net Name=PUB2 New Net Name=PUB2_14
+Change Net Name : Old Net Name=PUB3 New Net Name=PUB3_14
+Change Net Name : Old Net Name=PUB4 New Net Name=PUB4_14
+Change Net Name : Old Net Name=SWCLK New Net Name=SWCLK_14
+Change Net Name : Old Net Name=SWDIO New Net Name=SWDIO_14
+Added Pin To Net: NetName=NetK3_7 Pin=K3-7
+Added Net: Name=NetK3_7
+Added Pin To Net: NetName=NetK3_16 Pin=K3-16
+Added Net: Name=NetK3_16
+Added Pin To Net: NetName=NetK3_17 Pin=K3-17
+Added Net: Name=NetK3_17
+Added Pin To Net: NetName=NetK3_20 Pin=K3-20
+Added Net: Name=NetK3_20
+Added Pin To Net: NetName=NetK3_21 Pin=K3-21
+Added Net: Name=NetK3_21
+Added Pin To Net: NetName=NetK3_22 Pin=K3-22
+Added Net: Name=NetK3_22
+Added Pin To Net: NetName=NetK3_23 Pin=K3-23
+Added Net: Name=NetK3_23
+Added Pin To Net: NetName=NetK3_24 Pin=K3-24
+Added Net: Name=NetK3_24
+Added Pin To Net: NetName=NetK3_25 Pin=K3-25
+Added Net: Name=NetK3_25
+Added Pin To Net: NetName=NetK8_1 Pin=K8-1
+Added Net: Name=NetK8_1
+Added Pin To Net: NetName=NetK8_8 Pin=K8-8
+Added Net: Name=NetK8_8
+Added Pin To Net: NetName=NetK12_4 Pin=K12-4
+Added Net: Name=NetK12_4
+Added Pin To Net: NetName=NetU2A_1 Pin=U2A-1
+Added Net: Name=NetU2A_1
+Added Pin To Net: NetName=NetU2B_1 Pin=U2B-1
+Added Net: Name=NetU2B_1
+Added Pin To Net: NetName=NetU4_1 Pin=U4-1
+Added Net: Name=NetU4_1
+Added Pin To Net: NetName=NetU4_2 Pin=U4-2
+Added Net: Name=NetU4_2
+Added Pin To Net: NetName=NetU4_9 Pin=U4-9
+Added Net: Name=NetU4_9
+Added Pin To Net: NetName=NetU4_11 Pin=U4-11
+Added Net: Name=NetU4_11
+Added Pin To Net: NetName=NetU4_12 Pin=U4-12
+Added Net: Name=NetU4_12
+Added Pin To Net: NetName=NetU4_23 Pin=U4-23
+Added Net: Name=NetU4_23
+Added Pin To Net: NetName=NetU4_24 Pin=U4-24
+Added Net: Name=NetU4_24
+Added Pin To Net: NetName=NetU4_27 Pin=U4-27
+Added Net: Name=NetU4_27
+Added Pin To Net: NetName=NetU4_28 Pin=U4-28
+Added Net: Name=NetU4_28
+Added Class: Name=DIN[0..7]

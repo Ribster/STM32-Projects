@@ -1,0 +1,88 @@
+Removed Pin From Net: NetName=3V3 Pin=K1-1
+Removed Pin From Net: NetName=GND Pin=K1-5
+Removed Member From Class: ClassName=General Overview Member=U2
+Change Component Designator: OldDesignator=K2 NewDesignator=K1
+Change Component Designator: OldDesignator=U1 NewDesignator=VR1
+Change Component Designator: OldDesignator=U2 NewDesignator=U1
+Added Component: Designator=C2(2412C+_TANTAL-33u25V)
+Added Component: Designator=C3(0402C-TBD)
+Added Component: Designator=C4(0402C-TBD)
+Added Component: Designator=C5(0402C-TBD)
+Added Component: Designator=C6(0402C-TBD)
+Added Component: Designator=C7(0603C-TBD)
+Added Component: Designator=K2(HEADER-1X5)
+Added Component: Designator=K?(PRKR2-DET)
+Added Component: Designator=SW1(SW-PB-SMD)
+Added Pin To Net: NetName=3V3 Pin=C2-1
+Added Pin To Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=3V3 Pin=C3-1
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Pin To Net: NetName=3V3 Pin=C4-1
+Added Pin To Net: NetName=GND Pin=C4-2
+Added Pin To Net: NetName=3V3 Pin=C5-1
+Added Pin To Net: NetName=GND Pin=C5-2
+Added Pin To Net: NetName=3V3 Pin=C6-1
+Added Pin To Net: NetName=GND Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=3V3 Pin=K2-1
+Added Pin To Net: NetName=GND Pin=K2-5
+Added Pin To Net: NetName=NetD1_2 Pin=K?-1
+Added Pin To Net: NetName=GND Pin=K?-2
+Added Pin To Net: NetName=GND Pin=SW1-2
+Change Net Name : Old Net Name=NetU2_2 New Net Name=NetU1_2
+Change Net Name : Old Net Name=NetU2_3 New Net Name=NetU1_3
+Change Net Name : Old Net Name=NetU2_4 New Net Name=NetU1_4
+Change Net Name : Old Net Name=NetU2_5 New Net Name=NetU1_5
+Change Net Name : Old Net Name=NetU2_6 New Net Name=NetU1_6
+Change Net Name : Old Net Name=NetU2_10 New Net Name=NetU1_10
+Change Net Name : Old Net Name=NetU2_11 New Net Name=NetU1_11
+Change Net Name : Old Net Name=NetU2_12 New Net Name=NetU1_12
+Change Net Name : Old Net Name=NetU2_13 New Net Name=NetU1_13
+Change Net Name : Old Net Name=NetU2_14 New Net Name=NetU1_14
+Change Net Name : Old Net Name=NetU2_15 New Net Name=NetU1_15
+Change Net Name : Old Net Name=NetU2_16 New Net Name=NetU1_16
+Change Net Name : Old Net Name=NetU2_17 New Net Name=NetU1_17
+Change Net Name : Old Net Name=NetU2_18 New Net Name=NetU1_18
+Change Net Name : Old Net Name=NetU2_19 New Net Name=NetU1_19
+Change Net Name : Old Net Name=NetU2_20 New Net Name=NetU1_20
+Change Net Name : Old Net Name=NetU2_21 New Net Name=NetU1_21
+Change Net Name : Old Net Name=NetU2_22 New Net Name=NetU1_22
+Change Net Name : Old Net Name=NetU2_25 New Net Name=NetU1_25
+Change Net Name : Old Net Name=NetU2_26 New Net Name=NetU1_26
+Change Net Name : Old Net Name=NetU2_27 New Net Name=NetU1_27
+Change Net Name : Old Net Name=NetU2_28 New Net Name=NetU1_28
+Change Net Name : Old Net Name=NetU2_29 New Net Name=NetU1_29
+Change Net Name : Old Net Name=NetU2_30 New Net Name=NetU1_30
+Change Net Name : Old Net Name=NetU2_31 New Net Name=NetU1_31
+Change Net Name : Old Net Name=NetU2_32 New Net Name=NetU1_32
+Change Net Name : Old Net Name=NetU2_33 New Net Name=NetU1_33
+Change Net Name : Old Net Name=NetU2_35 New Net Name=NetU1_35
+Change Net Name : Old Net Name=NetU2_36 New Net Name=NetU1_36
+Change Net Name : Old Net Name=NetU2_38 New Net Name=NetU1_38
+Change Net Name : Old Net Name=NetU2_39 New Net Name=NetU1_39
+Change Net Name : Old Net Name=NetU2_40 New Net Name=NetU1_40
+Change Net Name : Old Net Name=NetU2_41 New Net Name=NetU1_41
+Change Net Name : Old Net Name=NetU2_42 New Net Name=NetU1_42
+Change Net Name : Old Net Name=NetU2_43 New Net Name=NetU1_43
+Change Net Name : Old Net Name=NetU2_45 New Net Name=NetU1_45
+Change Net Name : Old Net Name=NetU2_46 New Net Name=NetU1_46
+Added Pin To Net: NetName=NetC7_1 Pin=C7-1
+Added Pin To Net: NetName=NetC7_1 Pin=K2-4
+Added Pin To Net: NetName=NetC7_1 Pin=SW1-1
+Added Pin To Net: NetName=NetC7_1 Pin=U1-7
+Added Net: Name=NetC7_1
+Added Pin To Net: NetName=NetK2_2 Pin=K2-2
+Added Pin To Net: NetName=NetK2_2 Pin=U1-34
+Added Net: Name=NetK2_2
+Added Pin To Net: NetName=NetK2_3 Pin=K2-3
+Added Pin To Net: NetName=NetK2_3 Pin=U1-37
+Added Net: Name=NetK2_3
+Added Member To Class: ClassName=General Overview Member=Component C2 2412 33u25V TANT
+Added Member To Class: ClassName=General Overview Member=Component C3 0402
+Added Member To Class: ClassName=General Overview Member=Component C4 0402
+Added Member To Class: ClassName=General Overview Member=Component C5 0402
+Added Member To Class: ClassName=General Overview Member=Component C6 0402
+Added Member To Class: ClassName=General Overview Member=Component C7 0603-100nF
+Added Member To Class: ClassName=General Overview Member=Component K? Screwterminal
+Added Member To Class: ClassName=General Overview Member=Component SW1 SW-PB-BLACK-SMD
+Added Member To Class: ClassName=General Overview Member=Component VR1 LD1117-SOT223

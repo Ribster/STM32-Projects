@@ -1,0 +1,75 @@
+Bill of Material for 
+On 1/13/2015 at 9:16:44 AM
+
+ Comment             Pattern     Quantity  Components
+------------------------------------------------------------------------------
+ 0402                0402C-TBD        5    C6, C34, C35, C36, C37       CAPACITOR 0402 CERAMIC 
+ 0603-100nF          0603C-TBD        1    C33                          CAPACITOR 0603 CERAMIC VALUE TO BE DETERMINED 
+ 0603D RD GN Bicolor LED 0606LED BiCOLOR    1    D1                           Bicolor 0603 LED     
+ 0603R-1K5           0603R-1k5       14    R3A, R3B, R3C, R3D, R3E, R3F GENERIC RESISTOR 0603 
+                                           R3G, R3H, R3I, R8, R9, R10
+                                           R21A, R21B
+ 0805                0805LED         14    D2A, D2B, D2C, D2D, D2E, D2F                      
+                                           D2G, D2H, D2I, D7, D8, D9
+                                           D10A, D10B
+ 10K                 0603R-10K        5    R11, R12, R13, R14, R15      GENERIC RESISTOR 0603 
+ 10uF                0603C-GENERIC    1    C20                          CAPACITOR 0603 CERAMIC 
+ 1K                  0603R-1k         6    R1, R2, R6A, R6B, R7A, R7B   GENERIC RESISTOR 0603 
+ 1K                  0805R-1K         8    R20A, R20B, R20C, R20D, R20E RESISTOR 0805 1/4 WATT THIN FILM 
+                                           R20F, R20G, R20H
+ 1K2                 0603R-GENERIC    2    R5A, R5B                     GENERIC RESISTOR 0603 
+ 1uF                 0603C-GENERIC    4    C10, C11, C12, C13           CAPACITOR 0603 CERAMIC 
+ 220R                0805R-220       16    R17A, R17B, R17C, R17D, R17E RESISTOR 0805 1/4 WATT THIN FILM 
+                                           R17F, R17G, R17H, R18A, R18B
+                                           R18C, R18D, R18E, R18F, R18G
+                                           R18H
+ 22pF                0603C-GENERIC    2    C3, C4                       CAPACITOR 0603 CERAMIC 
+ 2412 33u25V TANT    2412C+_TANTAL-33u25V    2    C8, C21                                           
+ 2n2                 0603C-GENERIC    1    C14                          CAPACITOR 0603 CERAMIC 
+ 330K                0603R-330K       1    R4                           GENERIC RESISTOR 0603 
+ 330R                0805R-330       16    R16A, R16B, R16C, R16D, R16E RESISTOR 0805 1/4 WATT THIN FILM 
+                                           R16F, R16G, R16H, R19A, R19B
+                                           R19C, R19D, R19E, R19F, R19G
+                                           R19H
+ 4n7                 0603C-TBD        8    C25A, C25B, C28, C29, C30    CAPACITOR 0603 CERAMIC 
+                                           C31, C32, C39
+ 6035                XTAL 6035        1    Y2                                                
+ 6n8                 0603C-GENERIC    2    C1, C2                       CAPACITOR 0603 CERAMIC 
+ 74132               SO14             2    U7A, U7B                     QUAD 2-IN POS NAND SCH 
+ 74595               SO16             2    U1A, U1B                     8-BIT SFT REG WIRTH OUTPUT LCH 
+ 74LVC1G17           SOT-353          3    U3A, U3B, U6                 Single buffer        
+ ADC_028             ADC-028          2    K4, K7                       5.5mm SMD            
+ AMS1117-5V0-SOT223  SOT223           1    VR1                                               
+ BC847B              SOT23-BCE       16    QT1A, QT1B, QT1C, QT1D, QT1E BC847 SMALL SIGNAL NPN TRANSISTOR 
+                                           QT1F, QT1G, QT1H, QT2A, QT2B
+                                           QT2C, QT2D, QT2E, QT2F, QT2G
+                                           QT2H
+ BSS138              SOT23-GDS       12    Q1A, Q1B, Q2A, Q2B, QF1A     N CHANNEL MOSFET BSS138 SOT23 
+                                           QF1B, QF1C, QF1D, QF1E, QF1F
+                                           QF1G, QF1H
+ Communication_ISM_nRF24L01+ nRF24L01+_SMD    1    K2                           nRF24L01+            
+ Connector_Terminal_THT_KF235-5.0-2p KF235-5.0-2p     1    K16                                               
+ Connector_Terminal_THT_KF235-5.0-6p KF235-5.0-6p     2    K9, K14                                           
+ Connector_Terminal_THT_PRKR2 - Detachable PRKR2-DET        3    K5, K11A, K11B                                    
+ CP2102              QFN-28           1    U4                           CP2102               
+ Diode               SMB              4    D3, D4, D5, D6               Default Diode        
+ Header_M_SMD_5x2    Header_Male_2.54 5x2    1    K15                          SMD Header 5x2       
+ Header_M_SMD_8x2    Header_Male_2.54 8x2    1    K17                          SMD Header 8x2       
+ HEADER-1X2          HEADER-1X2      11    K1A, K1B, K1C, K1D, K1E, K1F                      
+                                           K1G, K1H, K1I, K10A, K10B
+ LD1117-SOT223       SOT223           1    VR3                                               
+ LD2985              SOT23-5          1    VR2                          Low Noise Low Drop Voltage Regulator  with Inhibit 
+ SCHD3A0100          SCHD3A0100       1    K8                                                
+ Screwterminal       PRKR2-DET        1    K6                                                
+ SSD1306_128x64_OLED SSD1306_128x64_OLED    1    K3                           SSD1306 OLED 128x64  
+ STM32F051C8T6       LQFP48_N         1    U5                                                
+ SWD-1X5             HEADER-1X5       1    K13                          SWD PINHEADER 1X5    
+ SW-PB-BLACK-SMD     SW-PB-SMD        6    SW1, SW2, SW3, SW4, SW5, SW6 PUSHBUTTON SWITCH 6MM SMD 
+ TBD                 1210C-GENERIC   18    C5A, C5B, C7, C9, C15, C16   CAPACITOR 1210 CERAMIC VALUE TO BE DETERMINED 
+                                           C17, C18, C19, C22, C23, C24A
+                                           C24B, C26, C27, C38, C40A
+                                           C40B
+ TESTPOINT           TESTPOINT        4    TP1A, TP1B, TP2, TP3         TESTPOINT SCOPE GRABBER 
+ TP4056              SO8_N            2    U2A, U2B                                          
+ USB_F_MINI          USB_F_MINI       1    K12                          MINI USB B FEMALE    
+ XTAL                R38              1    Y1                           Crystal Oscillator   

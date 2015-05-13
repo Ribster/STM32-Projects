@@ -1,0 +1,16 @@
+Change Class Name : Old Net Name=CHRGA New Net Name=CHRG1
+Change Class Name : Old Net Name=CHRGB New Net Name=CHRG2
+Change Class Name : Old Net Name=LDA New Net Name=LD1
+Change Class Name : Old Net Name=LDB New Net Name=LD2
+Change Class Name : Old Net Name=LDC New Net Name=LD3
+Change Class Name : Old Net Name=LDD New Net Name=LD4
+Change Class Name : Old Net Name=STBYA New Net Name=STBY1
+Change Class Name : Old Net Name=STBYB New Net Name=STBY2
+Added Room: Name=CHRG1
+Added Room: Name=CHRG2
+Added Room: Name=LD1
+Added Room: Name=LD2
+Added Room: Name=LD3
+Added Room: Name=LD4
+Added Room: Name=STBY1
+Added Room: Name=STBY2

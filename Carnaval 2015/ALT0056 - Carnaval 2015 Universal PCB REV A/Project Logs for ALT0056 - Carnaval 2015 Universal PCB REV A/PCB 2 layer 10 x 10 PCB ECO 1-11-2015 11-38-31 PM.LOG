@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=AOUTA Pin=R18A-1
+Removed Pin From Net: NetName=BOUTA Pin=R18B-1
+Added Pin To Net: NetName=BOUTA Pin=R18A-1
+Added Pin To Net: NetName=AOUTA Pin=R18B-1

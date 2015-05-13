@@ -1,0 +1,53 @@
+Removed Pin From Net: NetName=GND Pin=R5A-2
+Removed Pin From Net: NetName=GND Pin=R5B-2
+Removed Member From Class: ClassName=PB Member=R8
+Removed Member From Class: ClassName=PB Member=R9
+Removed Member From Class: ClassName=PB Member=R10
+Change Component DesignItemId : Designator=R5A Old DesignItemId=0805R-1K2 New DesignItemId=0603R-1K2
+Change Component DesignItemId : Designator=R5B Old DesignItemId=0805R-1K2 New DesignItemId=0603R-1K2
+Change Component Footprint: Designator=R5A Old Footprint=0805R-1K2 New Footprint=0603R-GENERIC
+Change Component Footprint: Designator=R5B Old Footprint=0805R-1K2 New Footprint=0603R-GENERIC
+Added Component: Designator=R6A(0603R-1k)
+Added Component: Designator=R6B(0603R-1k)
+Added Component: Designator=R7A(0603R-1k)
+Added Component: Designator=R7B(0603R-1k)
+Added Component: Designator=R11(0603R-10K)
+Added Component: Designator=R12(0603R-10K)
+Added Component: Designator=R13(0603R-10K)
+Added Component: Designator=R14(0603R-10K)
+Added Component: Designator=R15(0603R-10K)
+Added Pin To Net: NetName=GND Pin=R5A-1
+Added Pin To Net: NetName=GND Pin=R5B-1
+Added Pin To Net: NetName=3V3 Pin=R6A-1
+Added Pin To Net: NetName=NetQ1A_D Pin=R6A-2
+Added Pin To Net: NetName=3V3 Pin=R6B-1
+Added Pin To Net: NetName=NetQ1B_D Pin=R6B-2
+Added Pin To Net: NetName=5V0 Pin=R7A-1
+Added Pin To Net: NetName=WSOUTA Pin=R7A-2
+Added Pin To Net: NetName=5V0 Pin=R7B-1
+Added Pin To Net: NetName=WSOUTB Pin=R7B-2
+Added Pin To Net: NetName=PB0_13 Pin=R11-1
+Added Pin To Net: NetName=GND Pin=R11-2
+Added Pin To Net: NetName=PB1_13 Pin=R12-1
+Added Pin To Net: NetName=GND Pin=R12-2
+Added Pin To Net: NetName=PB2_13 Pin=R13-1
+Added Pin To Net: NetName=GND Pin=R13-2
+Added Pin To Net: NetName=PB3_13 Pin=R14-1
+Added Pin To Net: NetName=GND Pin=R14-2
+Added Pin To Net: NetName=PB4_13 Pin=R15-1
+Added Pin To Net: NetName=GND Pin=R15-2
+Added Pin To Net: NetName=NetR5A_2 Pin=R5A-2
+Added Pin To Net: NetName=NetR5A_2 Pin=U2A-2
+Added Net: Name=NetR5A_2
+Added Pin To Net: NetName=NetR5B_2 Pin=R5B-2
+Added Pin To Net: NetName=NetR5B_2 Pin=U2B-2
+Added Net: Name=NetR5B_2
+Added Member To Class: ClassName=CH1 Member=Component R6A (R6) 1K
+Added Member To Class: ClassName=CH2 Member=Component R6B (R6) 1K
+Added Member To Class: ClassName=CH1 Member=Component R7A (R7) 1K
+Added Member To Class: ClassName=CH2 Member=Component R7B (R7) 1K
+Added Member To Class: ClassName=PB Member=Component R11 10K
+Added Member To Class: ClassName=PB Member=Component R12 10K
+Added Member To Class: ClassName=PB Member=Component R13 10K
+Added Member To Class: ClassName=PB Member=Component R14 10K
+Added Member To Class: ClassName=PB Member=Component R15 10K

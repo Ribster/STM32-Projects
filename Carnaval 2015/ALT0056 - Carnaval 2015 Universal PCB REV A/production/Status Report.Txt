@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [ALT0056 - Carnaval 2015 Universal PCB REV A.PrjPCB]
+   Generated File[PCB 2 layer 10 x 10.TXT]
+   Generated File[PCB 2 layer 10 x 10.LDP]
+   Generated File[PCB 2 layer 10 x 10.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 5:51:57 PM On 1/12/2015

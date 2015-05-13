@@ -1,0 +1,50 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~ALT0056 - Carnaval 2015 Universal PCB REV A.PrjPCB|ReportField=ProjectFullPath~Z:\iCloud Drive\PROJECTS\ALTIUM\ALT0056 - Carnaval 2015 Universal PCB REV A\ALT0056 - Carnaval 2015 Universal PCB REV A.PrjPCB|ReportField=Title~Bill of Materials For Project [ALT0056 - Carnaval 2015 Universal PCB REV A.PrjPCB] (No PCB Document Selected)|ReportField=TotalQuantity~212|ReportField=ReportTime~6:13:42 AM|ReportField=ReportDate~1/13/2015|ReportField=ReportDateTime~1/13/2015 6:13:42 AM|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~Robbe Van Assche|ReportField=Address2~Belgium|ReportField=Address3~2013|ReportField=Address4~SE - Carnaval kleding REV B|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=ConfigurationParameters~|ReportField=ConfiguratorName~|ReportField=CurrentDate~1/13/2015|ReportField=CurrentTime~6:13:23 AM|ReportField=Date~|ReportField=DocumentFullPathAndName~Z:\iCloud Drive\PROJECTS\ALTIUM\ALT0056 - Carnaval 2015 Universal PCB REV A\General Overview.SchDoc|ReportField=DocumentName~General Overview.SchDoc|ReportField=DocumentNumber~1|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=IsUserConfigurable~|ReportField=ModifiedDate~1/12/2015|ReportField=Organization~Overload, Inc.|ReportField=PageSetup~Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.72|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9|ReportField=ProjectName~ALT0056 - Carnaval 2015 Universal PCB REV A.PrjPCB|ReportField=Revision~B|ReportField=Rule~|ReportField=SheetNumber~ALT0056|ReportField=SheetTotal~21|ReportField=Time~|ReportField=Title~Sheetname|ReportField=VersionControl_RevNumber~|ReportField=DataSourceFileName~ALT0056 - Carnaval 2015 Universal PCB REV A.PrjPCB|ReportField=DataSourceFullPath~Z:\iCloud Drive\PROJECTS\ALTIUM\ALT0056 - Carnaval 2015 Universal PCB REV A\ALT0056 - Carnaval 2015 Universal PCB REV A.PrjPCB
+6n8|CAPACITOR 0603 CERAMIC|C1, C2|0603C-GENERIC|0603C-6N850V-X7R-MUR|2
+22pF|CAPACITOR 0603 CERAMIC|C3, C4|0603C-GENERIC|0603C-22PF-50V-C0G-PAN|2
+TBD|CAPACITOR 1210 CERAMIC VALUE TO BE DETERMINED|C5A, C5B, C7, C9, C15, C16, C17, C18, C19, C22, C23, C24A, C24B, C26, C27, C38, C40A, C40B|1210C-GENERIC|Passives_Capacitors_1210_1210C-TBD|18
+0402|CAPACITOR 0402 CERAMIC|C6, C34, C35, C36, C37|0402C-TBD|0402C-TBD|5
+2412 33u25V TANT||C8, C21|2412C+_TANTAL-33u25V|2412C-TANTAL SIZE C-33u25V|2
+1uF|CAPACITOR 0603 CERAMIC|C10, C11, C12, C13|0603C-GENERIC|0603C-1UF-35V-X5R-TAY|4
+2n2|CAPACITOR 0603 CERAMIC|C14|0603C-GENERIC|0603C-2N2-50V-C0G-MUR|1
+10uF|CAPACITOR 0603 CERAMIC|C20|0603C-GENERIC|0603C-10UF-10V-X5R-TDK|1
+4n7|CAPACITOR 0603 CERAMIC|C25A, C25B, C28, C29, C30, C31, C32, C39|0603C-TBD|0603C-4N7|8
+0603-100nF|CAPACITOR 0603 CERAMIC VALUE TO BE DETERMINED|C33|0603C-TBD|0603C-TBD|1
+0603D RD GN Bicolor LED|Bicolor 0603 LED|D1|0606LED BiCOLOR|0603D RD GN Bicolor LED|1
+0805||D2A, D2B, D2C, D2D, D2E, D2F, D2G, D2H, D2I, D7, D8, D9, D10A, D10B|0805LED|0805_LED|14
+Diode|Default Diode|D3, D4, D5, D6|SMB|Diode|4
+HEADER-1X2||K1A, K1B, K1C, K1D, K1E, K1F, K1G, K1H, K1I, K10A, K10B|HEADER-1X2|HEADER-1X2|11
+Communication_ISM_nRF24L01+|nRF24L01+|K2|nRF24L01+_SMD|Communication_ISM_nRF24L01+|1
+SSD1306_128x64_OLED|SSD1306 OLED 128x64|K3|SSD1306_128x64_OLED|SSD1306_128x64_OLED|1
+ADC_028|5.5mm SMD|K4, K7|ADC-028|ADC_028|2
+Connector_Terminal_THT_PRKR2 - Detachable||K5, K11A, K11B|PRKR2-DET|Connector_Terminal_THT_PRKR2 - Detachable|3
+Screwterminal||K6|PRKR2-DET|Connector_Terminal_THT_PRKR2 - Detachable|1
+SCHD3A0100||K8|SCHD3A0100|SCHD3A0100|1
+Connector_Terminal_THT_KF235-5.0-6p||K9, K14|KF235-5.0-6p|Connector_Terminal_THT_KF235-5.0-6p|2
+USB_F_MINI|MINI USB B FEMALE|K12|USB_F_MINI|USB_F_MINI|1
+SWD-1X5|SWD PINHEADER 1X5|K13|HEADER-1X5|SWD-1X5|1
+Header_M_SMD_5x2|SMD Header 5x2|K15|Header_Male_2.54 5x2|Header_M_SMD_5x2|1
+Connector_Terminal_THT_KF235-5.0-2p||K16|KF235-5.0-2p|Connector_Terminal_THT_KF235-5.0-2p|1
+Header_M_SMD_8x2|SMD Header 8x2|K17|Header_Male_2.54 8x2|Header_M_SMD_8x2|1
+BSS138|N CHANNEL MOSFET BSS138 SOT23|Q1A, Q1B, Q2A, Q2B, QF1A, QF1B, QF1C, QF1D, QF1E, QF1F, QF1G, QF1H|SOT23-GDS|BSS138-SOT23|12
+BC847B|BC847 SMALL SIGNAL NPN TRANSISTOR|QT1A, QT1B, QT1C, QT1D, QT1E, QT1F, QT1G, QT1H, QT2A, QT2B, QT2C, QT2D, QT2E, QT2F, QT2G, QT2H|SOT23-BCE|BC847|16
+1K|GENERIC RESISTOR 0603|R1, R2, R6A, R6B, R7A, R7B|0603R-1k|0603R-1K|6
+0603R-1K5|GENERIC RESISTOR 0603|R3A, R3B, R3C, R3D, R3E, R3F, R3G, R3H, R3I, R8, R9, R10, R21A, R21B|0603R-1k5|0603R-1K5|14
+330K|GENERIC RESISTOR 0603|R4|0603R-330K|0603R-330K|1
+1K2|GENERIC RESISTOR 0603|R5A, R5B|0603R-GENERIC|0603R-1K2|2
+10K|GENERIC RESISTOR 0603|R11, R12, R13, R14, R15|0603R-10K|0603R-10K|5
+330R|RESISTOR 0805 1/4 WATT THIN FILM|R16A, R16B, R16C, R16D, R16E, R16F, R16G, R16H, R19A, R19B, R19C, R19D, R19E, R19F, R19G, R19H|0805R-330|0805R-330|16
+220R|RESISTOR 0805 1/4 WATT THIN FILM|R17A, R17B, R17C, R17D, R17E, R17F, R17G, R17H, R18A, R18B, R18C, R18D, R18E, R18F, R18G, R18H|0805R-220|0805R-220|16
+1K|RESISTOR 0805 1/4 WATT THIN FILM|R20A, R20B, R20C, R20D, R20E, R20F, R20G, R20H|0805R-1K|0805R-1K|8
+SW-PB-BLACK-SMD|PUSHBUTTON SWITCH 6MM SMD|SW1, SW2, SW3, SW4, SW5, SW6|SW-PB-SMD|SW-PB-BLACK-SMD|6
+TESTPOINT|TESTPOINT SCOPE GRABBER|TP1A, TP1B, TP2, TP3|TESTPOINT|TESTPOINT|4
+74595|8-BIT SFT REG WIRTH OUTPUT LCH|U1A, U1B|SO16|74595|2
+TP4056||U2A, U2B|SO8_N|TP4056|2
+74LVC1G17|Single buffer|U3A, U3B, U6|SOT-353|74LVC1G17|3
+CP2102|CP2102|U4|QFN-28|CP2102|1
+STM32F051C8T6||U5|LQFP48_N|STM32F051C8T6|1
+74132|QUAD 2-IN POS NAND SCH|U7A, U7B|SO14|74132|2
+AMS1117-5V0-SOT223||VR1|SOT223|LD1117-SOT223|1
+LD2985|Low Noise Low Drop Voltage Regulator  with Inhibit|VR2|SOT23-5|LD2985|1
+LD1117-SOT223||VR3|SOT223|LD1117-SOT223|1
+XTAL|Crystal Oscillator|Y1|R38|XTAL|1
+6035||Y2|XTAL 6035|6035 Quartz|1

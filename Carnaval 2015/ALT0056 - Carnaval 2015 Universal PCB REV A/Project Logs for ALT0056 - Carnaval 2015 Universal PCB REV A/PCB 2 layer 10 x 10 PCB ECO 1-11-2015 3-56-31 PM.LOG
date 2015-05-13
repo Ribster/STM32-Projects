@@ -1,0 +1,20 @@
+Added Component: Designator=D?A(0805LED)
+Added Component: Designator=D?B(0805LED)
+Added Component: Designator=R?A(0603R-1k5)
+Added Component: Designator=R?B(0603R-1k5)
+Added Pin To Net: NetName=GND Pin=D?A-K
+Added Pin To Net: NetName=GND Pin=D?B-K
+Added Pin To Net: NetName=3V3 Pin=R?A-2
+Added Pin To Net: NetName=5V0 Pin=R?B-2
+Added Pin To Net: NetName=NetD?A_A Pin=D?A-A
+Added Pin To Net: NetName=NetD?A_A Pin=R?A-1
+Added Net: Name=NetD?A_A
+Added Pin To Net: NetName=NetD?B_A Pin=D?B-A
+Added Pin To Net: NetName=NetD?B_A Pin=R?B-1
+Added Net: Name=NetD?B_A
+Added Class: Name=3V30
+Added Class: Name=5V00
+Added Class: Name=LEDs 0805
+Added Room: Name=3V30
+Added Room: Name=5V00
+Added Room: Name=PS

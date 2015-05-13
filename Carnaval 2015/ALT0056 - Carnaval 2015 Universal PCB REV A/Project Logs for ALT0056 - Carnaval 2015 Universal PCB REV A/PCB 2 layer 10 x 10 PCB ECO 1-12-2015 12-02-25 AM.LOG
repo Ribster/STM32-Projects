@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=IRLIN0 Pin=U7A-1
+Removed Pin From Net: NetName=IRLIN1 Pin=U7A-4
+Added Pin To Net: NetName=IRLIN1 Pin=U7A-1
+Added Pin To Net: NetName=IRLIN0 Pin=U7A-4

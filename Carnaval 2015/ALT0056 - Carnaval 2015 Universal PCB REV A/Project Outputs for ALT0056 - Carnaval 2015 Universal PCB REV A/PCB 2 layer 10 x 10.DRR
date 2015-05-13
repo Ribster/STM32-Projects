@@ -1,0 +1,23 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: PCB 2 layer 10 x 10.PcbDoc   2/5/2015  7:47:59 PM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : PCB 2 layer 10 x 10.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        13.8mil (0.35052mm)      Round          513              81.83 Inch (2078.48 mm)
+T2        27.6mil (0.70104mm)      Round          2                0.12 Inch (3.10 mm)
+T3        30mil (0.762mm)          Round          24               14.13 Inch (359.01 mm)
+T4        35.4mil (0.89916mm)      Round          28               6.73 Inch (170.82 mm)
+T5        40mil (1.016mm)          Round          27               9.13 Inch (231.86 mm)
+T6        59.3mil (1.50622mm)      Round          8                3.95 Inch (100.41 mm)
+T7        65mil (1.651mm)          Round          4                3.01 Inch (76.51 mm)
+T8        66.9mil (1.69926mm)      Round          4                1.00 Inch (25.33 mm)
+T9        122mil (3.0988mm)        Round          4                12.37 Inch (314.11 mm)
+T10       35.4mil (0.89916mm)      Round          2         NPTH   0.17 Inch (4.40 mm)
+---------------------------------------------------------------------------
+Totals                                            616              132.44 Inch (3364.03 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:01

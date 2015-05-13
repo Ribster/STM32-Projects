@@ -1,0 +1,32 @@
+Added Component: Designator=C25B(0603C-TBD)
+Added Component: Designator=Q1B(SOT23-GDS)
+Added Component: Designator=Q2B(SOT23-GDS)
+Added Component: Designator=R6B(0603R-1k)
+Added Component: Designator=R7B(0603R-1k)
+Added Component: Designator=TP1B(TESTPOINT)
+Added Component: Designator=U3B(SOT-353)
+Added Pin To Net: NetName=3V3 Pin=C25B-1
+Added Pin To Net: NetName=GND Pin=C25B-2
+Added Pin To Net: NetName=NetQ1B_D Pin=Q1B-D
+Added Pin To Net: NetName=3V3 Pin=Q1B-G
+Added Pin To Net: NetName=NetQ1B_S Pin=Q1B-S
+Added Pin To Net: NetName=WSOUTB Pin=Q2B-D
+Added Pin To Net: NetName=5V0 Pin=Q2B-G
+Added Pin To Net: NetName=NetQ1B_S Pin=Q2B-S
+Added Pin To Net: NetName=3V3 Pin=R6B-1
+Added Pin To Net: NetName=NetQ1B_D Pin=R6B-2
+Added Pin To Net: NetName=5V0 Pin=R7B-1
+Added Pin To Net: NetName=WSOUTB Pin=R7B-2
+Added Pin To Net: NetName=NetQ1B_D Pin=TP1B-1
+Added Pin To Net: NetName=CH2_IN Pin=U3B-2
+Added Pin To Net: NetName=GND Pin=U3B-3
+Added Pin To Net: NetName=NetQ1B_D Pin=U3B-4
+Added Pin To Net: NetName=3V3 Pin=U3B-5
+Added Member To Class: ClassName=CH2 Member=Component C25B (C25) 4n7
+Added Member To Class: ClassName=CH2 Member=Component Q1B (Q1) BSS138
+Added Member To Class: ClassName=CH2 Member=Component Q2B (Q2) BSS138
+Added Member To Class: ClassName=CH2 Member=Component R6B (R6) 1K
+Added Member To Class: ClassName=CH2 Member=Component R7B (R7) 1K
+Added Member To Class: ClassName=CH2 Member=Component TP1B (TP1) TESTPOINT
+Added Member To Class: ClassName=CH2 Member=Component U3B (U3) 74LVC1G17
+Added Room: Name=CH2

@@ -1,0 +1,11 @@
+Change Class Name : Old Net Name=LD1 New Net Name=IRLED
+Change Class Name : Old Net Name=LD2 New Net Name=nRFLED
+Change Class Name : Old Net Name=LD3 New Net Name=OLEDLED
+Change Class Name : Old Net Name=LD4 New Net Name=SDLED
+Change Class Name : Old Net Name=RTC New Net Name=RTCLED
+Added Room: Name=IRLED
+Added Room: Name=nRFLED
+Added Room: Name=OLEDLED
+Added Room: Name=RTCLED
+Added Room: Name=SD
+Added Room: Name=SDLED
