@@ -285,7 +285,7 @@
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Debug">
-			<resource resourceType="PROJECT" workspacePath="/ECS0013 - STM32F0 - Test project STM32F030F4"/>
+			<resource resourceType="PROJECT" workspacePath="/ECS0014 - STM32F0 - Blinky STM32F030F4"/>
 		</configuration>
 		<configuration configurationName="Release">
 			<resource resourceType="PROJECT" workspacePath="/ECS0013 - STM32F0 - Test project STM32F030F4"/>

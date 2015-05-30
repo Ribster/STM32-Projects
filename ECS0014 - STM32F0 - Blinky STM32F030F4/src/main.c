@@ -50,31 +50,21 @@ main(void)
 	  /* Use SysTick as reference for the timer */
 	  SysTick_Config(SystemCoreClock / SYSTICK_FREQUENCY_HZ);
 
-	  /* GPIO Periph clock enable */
-	  RCC_AHBPeriphClockCmd(BLINK_RCC_BIT, ENABLE);
+	  RCC->AHBENR |= RCC_AHBENR_GPIOFEN; /* (1) */
+	   GPIOF->MODER = (GPIOC->MODER & ~(GPIO_MODER_MODER0|GPIO_MODER_MODER1)) \
+	                | (GPIO_MODER_MODER0_0|GPIO_MODER_MODER1_0);
 
-	  GPIO_InitTypeDef GPIO_InitStructure;
-
-	  /* Configure pin in output push/pull mode */
-	  GPIO_InitStructure.GPIO_Pin = (1 << BLINK_PIN);
-	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-	  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-	  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-	  GPIO_Init(BLINK_PORT, &GPIO_InitStructure);
 
 	  int seconds = 0;
 
 	while(1){
-	      /* Assume the LED is active low */
-
-	      /* Turn on led by setting the pin low */
-	      GPIO_ResetBits(BLINK_PORT, (1 << BLINK_PIN));
+			GPIOF->ODR |= (1<<0);
+			GPIOF->ODR &= ~(1<<1);
 
 	      Delay(BLINK_TICKS);
 
-	      /* Turn off led by setting the pin high */
-	      GPIO_SetBits(BLINK_PORT, (1 << BLINK_PIN));
+			GPIOF->ODR &= ~(1<<0);
+			GPIOF->ODR |= (1<<1);
 
 	      Delay(BLINK_TICKS);
 
