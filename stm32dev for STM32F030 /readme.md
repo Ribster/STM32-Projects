@@ -1,4 +1,7 @@
 #Full overview of the STM32F030 examples#
+The purpose of this directory is to make simple examples that don't rely on the STM32FxDiscovery boards.
+
+These examples are based on the ALT0062 project.
 
 ##RCC##
 * ECS00xx - STM32F0 - 
