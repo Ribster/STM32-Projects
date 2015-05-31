@@ -1,8 +1,8 @@
-Version project: 0.0.1
+Version project: __V0.0.1__
 
-Version stdlib F0: 1.2.1
+Version stdlib F0: __V1.2.1__
 
-Version gcc: gcc-arm-none-eabi_
+Version gcc: __gcc-arm-none-eabi__
 
 ##Description##
 Toggling some LEDs
