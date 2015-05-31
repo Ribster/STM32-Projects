@@ -1,4 +1,3 @@
-##Description##
 Example of toggling some LEDs
 
 __SWD:__
