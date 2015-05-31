@@ -1,8 +1,10 @@
-Version project: __V0.0.1__
-
-Version stdlib F0: __V1.2.1__
-
-Version gcc: __gcc-arm-none-eabi__
-
 ##Description##
-Toggling some LEDs
+Example of toggling some LEDs
+
+__SWD:__
+* PA14: SWDIO
+* PA15: SWCLK
+
+__Pinout:__
+* PF0: LED
+* PF1: LED
