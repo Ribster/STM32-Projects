@@ -30,9 +30,7 @@ These examples are based on __ALT0062 - STM32F030 breakout__
 ##COMBINATORAL
 * ECS00xx - STM32F0 - 
   * Example of full duplex UART with LEDs 
-  * __GPIO__
-  * __UART__
+  * __GPIO, UART__
 * ECS00xx - STM32F0 - 
   * Example of full duplex UART with LEDs - __no stdlib dependency__
-  * __GPIO__
-  * __UART__
+  * __GPIO, UART__
