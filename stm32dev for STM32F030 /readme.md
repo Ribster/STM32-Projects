@@ -7,3 +7,7 @@ Overview:
 ##TIM##
 * ECS00xx - STM32F0 - 
   * PWM example fading LEDs 
+
+##UART##
+* ECS00xx - STM32F0 - 
+  * UART example full duplex 
