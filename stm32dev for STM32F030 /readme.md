@@ -19,7 +19,7 @@ These examples are based on __ALT0062 - STM32F030 breakout__
 * ECS0015 - STM32F0 - VF blinky STM32F030F4
   * Variable Frequency example fading LEDs 
 *  xx
-  * PWM example fading LEDs - __no stdlib dependency__
+  * Variable Frequency example fading LEDs - __no stdlib dependency__
 * ECS0016 - STM32F0 - PWM blinky STM32F030F4
   * PWM example fading LEDs 
 *  xx
