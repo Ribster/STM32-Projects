@@ -31,7 +31,7 @@ These examples are based on __ALT0062 - STM32F030 breakout__
 * xx
   * UART example full duplex - __no stdlib dependency__
 
-##COMBINATORAL
+##COMBINED
 * ECS00xx - STM32F0 - 
   * Example of full duplex UART with LEDs 
   * __GPIO, UART__
