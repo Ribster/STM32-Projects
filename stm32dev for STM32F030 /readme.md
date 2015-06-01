@@ -18,11 +18,9 @@ These examples are based on:
 * ECS0015 - STM32F0 - VF blinky STM32F030F4 _stdlib
   * Variable Frequency example fading LEDs 
   
-* xx
-* xx
+* ECS0016 - STM32F0 - PWM blinky STM32F030F4 _stdlib
   * PWM example fading LEDs
 
 ##UART##
-* xx
 * xx
   * UART example full duplex
