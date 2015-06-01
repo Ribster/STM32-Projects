@@ -15,8 +15,7 @@ These examples are based on:
   * GPIO example of toggling LEDs
 
 ##TIM##
-* xx
-* xx
+* ECS0015 - STM32F0 - VF blinky STM32F030F4 _stdlib
   * Variable Frequency example fading LEDs 
   
 * xx
