@@ -1,13 +1,14 @@
 #include "stm32f0xx.h"
 #include <stdio.h>
 
-#define PROJECTNAME "ECS0013 _nolib"
+#define PROJECTNAME "ECS0014 _nolib"
 #define VERSION "V0.0.2"
+#define TESTED "2015/06/01"
 
 /*
 SWD:
-PA14: SWDIO
-PA15: SWCLK
+PA14: SWCLK
+PA15: SWDIO
 
 Pinout:
 PF0: LED ORANGE

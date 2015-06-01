@@ -3177,16 +3177,16 @@ END GROUP
  .debug_frame   0x00000000000001cc       0xb8 ./libs/CMSIS/src/vectors_stm32f0xx.o
  .debug_frame   0x0000000000000284       0x20 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/libgcc.a(_udivsi3.o)
 
-.debug_str      0x0000000000000000    0x2e3c8
+.debug_str      0x0000000000000000    0x2e3c2
  *(.debug_str)
- .debug_str     0x0000000000000000      0x199 ./src/main.o
- .debug_str     0x0000000000000199     0x335a ./libs/CMSIS/src/startup_cm.o
+ .debug_str     0x0000000000000000      0x193 ./src/main.o
+ .debug_str     0x0000000000000193     0x335a ./libs/CMSIS/src/startup_cm.o
                                        0x3471 (size before relaxing)
- .debug_str     0x00000000000034f3    0x2ad0b ./libs/CMSIS/src/startup_stm32f0xx.o
+ .debug_str     0x00000000000034ed    0x2ad0b ./libs/CMSIS/src/startup_stm32f0xx.o
                                       0x2d3a3 (size before relaxing)
- .debug_str     0x000000000002e1fe      0x146 ./libs/CMSIS/src/system_stm32f0xx.o
+ .debug_str     0x000000000002e1f8      0x146 ./libs/CMSIS/src/system_stm32f0xx.o
                                       0x2d4dc (size before relaxing)
- .debug_str     0x000000000002e344       0x84 ./libs/CMSIS/src/vectors_stm32f0xx.o
+ .debug_str     0x000000000002e33e       0x84 ./libs/CMSIS/src/vectors_stm32f0xx.o
                                        0x244e (size before relaxing)
 
 .debug_loc
