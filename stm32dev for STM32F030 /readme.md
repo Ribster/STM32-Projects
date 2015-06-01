@@ -17,7 +17,6 @@ These examples are based on:
 ##TIM##
 * ECS0015 - STM32F0 - VF blinky STM32F030F4 _stdlib
   * Variable Frequency example fading LEDs 
-  
 * ECS0016 - STM32F0 - PWM blinky STM32F030F4 _stdlib
   * PWM example fading LEDs
 
