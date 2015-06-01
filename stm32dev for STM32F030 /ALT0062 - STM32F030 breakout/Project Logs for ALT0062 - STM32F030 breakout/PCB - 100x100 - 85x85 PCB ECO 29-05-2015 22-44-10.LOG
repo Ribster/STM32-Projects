@@ -1,0 +1,6 @@
+Removed Member From Class: ClassName=General Overview Member=R4
+Change Component Designator: OldDesignator=R1 NewDesignator=R2
+Change Component Designator: OldDesignator=R2 NewDesignator=R3
+Change Component Designator: OldDesignator=R4 NewDesignator=R1
+Added Pin To Net: NetName=3V3 Pin=U2-5
+Added Member To Class: ClassName=General Overview Member=Component R3 120R

@@ -1,0 +1,13 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [ALT0062 - STM32F030 breakout.PrjPCB]
+   Generated File[PCB - 100x100 - 85x85.GTL]
+   Generated File[PCB - 100x100 - 85x85.RUL]
+   Generated File[PCB - 100x100 - 85x85.EXTREP]
+   Generated File[PCB - 100x100 - 85x85.REP]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 23:18:15 On 29/05/2015
