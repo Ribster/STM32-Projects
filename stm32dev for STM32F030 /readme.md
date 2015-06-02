@@ -21,5 +21,5 @@ These examples are based on:
   * PWM example fading LEDs
 
 ##UART##
-* xx
-  * UART example full duplex
+* ECS0018 - STM32F0 - UART reflection example STM32F030F4 _stdlib
+  * UART example full duplex reflecting everything that comes in. After \r is received, buffer is transmitted
