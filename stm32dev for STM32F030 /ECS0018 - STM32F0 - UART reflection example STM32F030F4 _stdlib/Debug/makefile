@@ -31,38 +31,38 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 SECONDARY_FLASH += \
-ECS0013\ -\ STM32F0\ -\ Test\ project\ STM32F030F4\ _stdlib.hex \
+ECS0018\ -\ STM32F0\ -\ UART\ reflection\ example\ STM32F030F4\ _stdlib.hex \
 
 SECONDARY_SIZE += \
-ECS0013\ -\ STM32F0\ -\ Test\ project\ STM32F030F4\ _stdlib.siz \
+ECS0018\ -\ STM32F0\ -\ UART\ reflection\ example\ STM32F030F4\ _stdlib.siz \
 
 
 # All Target
-all: ECS0013\ -\ STM32F0\ -\ Test\ project\ STM32F030F4\ _stdlib.elf secondary-outputs
+all: ECS0018\ -\ STM32F0\ -\ UART\ reflection\ example\ STM32F030F4\ _stdlib.elf secondary-outputs
 
 # Tool invocations
-ECS0013\ -\ STM32F0\ -\ Test\ project\ STM32F030F4\ _stdlib.elf: $(OBJS) $(USER_OBJS)
+ECS0018\ -\ STM32F0\ -\ UART\ reflection\ example\ STM32F030F4\ _stdlib.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -O3 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"ECS0013 - STM32F0 - Test project STM32F030F4 _stdlib.map" -o "ECS0013 - STM32F0 - Test project STM32F030F4 _stdlib.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -O3 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"ECS0018 - STM32F0 - UART reflection example STM32F030F4 _stdlib.map" -o "ECS0018 - STM32F0 - UART reflection example STM32F030F4 _stdlib.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-ECS0013\ -\ STM32F0\ -\ Test\ project\ STM32F030F4\ _stdlib.hex: ECS0013\ -\ STM32F0\ -\ Test\ project\ STM32F030F4\ _stdlib.elf
+ECS0018\ -\ STM32F0\ -\ UART\ reflection\ example\ STM32F030F4\ _stdlib.hex: ECS0018\ -\ STM32F0\ -\ UART\ reflection\ example\ STM32F030F4\ _stdlib.elf
 	@echo 'Invoking: Cross ARM GNU Create Flash Image'
-	arm-none-eabi-objcopy -O ihex "ECS0013 - STM32F0 - Test project STM32F030F4 _stdlib.elf"  "ECS0013 - STM32F0 - Test project STM32F030F4 _stdlib.hex"
+	arm-none-eabi-objcopy -O ihex "ECS0018 - STM32F0 - UART reflection example STM32F030F4 _stdlib.elf"  "ECS0018 - STM32F0 - UART reflection example STM32F030F4 _stdlib.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-ECS0013\ -\ STM32F0\ -\ Test\ project\ STM32F030F4\ _stdlib.siz: ECS0013\ -\ STM32F0\ -\ Test\ project\ STM32F030F4\ _stdlib.elf
+ECS0018\ -\ STM32F0\ -\ UART\ reflection\ example\ STM32F030F4\ _stdlib.siz: ECS0018\ -\ STM32F0\ -\ UART\ reflection\ example\ STM32F030F4\ _stdlib.elf
 	@echo 'Invoking: Cross ARM GNU Print Size'
-	arm-none-eabi-size --format=sysv --totals -x "ECS0013 - STM32F0 - Test project STM32F030F4 _stdlib.elf"
+	arm-none-eabi-size --format=sysv --totals -x "ECS0018 - STM32F0 - UART reflection example STM32F030F4 _stdlib.elf"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(SECONDARY_FLASH)$(SECONDARY_SIZE)$(ASM_DEPS)$(S_UPPER_DEPS)$(C_DEPS) "ECS0013 - STM32F0 - Test project STM32F030F4 _stdlib.elf"
+	-$(RM) $(OBJS)$(SECONDARY_FLASH)$(SECONDARY_SIZE)$(ASM_DEPS)$(S_UPPER_DEPS)$(C_DEPS) "ECS0018 - STM32F0 - UART reflection example STM32F030F4 _stdlib.elf"
 	-@echo ' '
 
 secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_SIZE)

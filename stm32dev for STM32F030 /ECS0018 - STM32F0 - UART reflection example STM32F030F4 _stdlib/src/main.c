@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #define PROJECTNAME "ECS0018 _stdlib"
-#define VERSION "V0.0.1"
+#define VERSION "V0.0.2"
 #define TESTED "2015/06/02"
 
 /*
@@ -47,6 +47,14 @@ PA3: USART1_RX
 	uart_init(void);
 	void
 	uart_sendString(char* str);
+	char*
+	uart_getDec(uint64_t dec);
+	void
+	uart_sendDec(uint64_t dec);
+	char*
+	uart_getDecSigned(int64_t dec);
+	void
+	uart_sendDecSigned(int64_t dec);
 
 	// interrupts
 	void
@@ -198,6 +206,61 @@ uart_sendString(char* str){
 		str++;
 	}
 	GPIO_ResetBits(GPIOF, GPIO_Pin_0);
+}
+// convert base 2 to base 10 ASCII
+char*
+uart_getDec(uint64_t dec){
+	  static char str[16];
+	  char *s = str + sizeof(str);
+
+	  *--s = 0;
+
+	  do
+	  {
+	    *--s = '0' + (char)(dec % 10);
+	    dec /= 10;
+	  }
+	  while(dec);
+
+	  return(s);
+}
+void
+uart_sendDec(uint64_t dec){
+	  uart_sendString(uart_getDec(dec));
+}
+char*
+uart_getDecSigned(int64_t dec){
+	  static char str[16];
+	  char *s = str + sizeof(str);
+	  // convert 2's complement to unsigned
+	  uint64_t b;
+	  if(dec <= -1){
+		  b = (~dec)+1;
+	  } else {
+		  b = dec;
+	  }
+
+
+	  *--s = 0;
+
+	  do
+	  {
+	    *--s = '0' + (char)(b % 10);
+	    b /= 10;
+	  }
+	  while(b);
+
+
+	  if(dec <= -1){
+		  // negative
+		  *--s = '-';
+	  }
+
+	  return(s);
+}
+void
+uart_sendDecSigned(int64_t dec){
+	uart_sendString(uart_getDecSigned(dec));
 }
 
 // interrupts
