@@ -1,7 +1,7 @@
 #Full overview of the STM32F030 examples#
 The purpose of this directory is to make simple examples that don't rely on the STM32FxDiscovery boards.
 I'm using every resource that i can to make this possible.
-Made an upgrade to the STM32F0xx SPL v1.5.0, so it's up to the lastest lib.
+Made an upgrade to the STM32F0xx SPL v1.5.0, so it's up to the latest lib.
 Resources used:
  * STM32F0xx_Snippets_Package_V1.1.1
  * STM32F0xx_StdPeriph_Lib_V1.5.0
