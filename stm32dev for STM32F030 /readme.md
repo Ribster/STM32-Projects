@@ -32,3 +32,9 @@ These examples are based on:
 ##UART##
 * ECS0018 - STM32F0 - UART reflection example STM32F030F4 _stdlib
   * UART example full duplex reflecting everything that comes in. After \r is received, buffer is transmitted
+
+##I2C##
+* ECS0019 - STM32F0 - I2C drivers STM32F030F4 _stdlib
+  * I2C drivers using stdlib. simply backup of uart functions, example does actually use I2C to do anything
+* ECS0020 - STM32F0 - BMP180 example STM32F030F4 _stdlib
+  * BPM180 I2C sensor readout example. Prints pressure and temperatures to the uart.
