@@ -22,6 +22,10 @@ These examples are based on:
 * ECS0014 - STM32F0 - Blinky STM32F030F4 _stdlib
 * ECS0014 - STM32F0 - Blinky STM32F030F4 _nolib
   * GPIO example of toggling LEDs
+  
+##EXTI##
+* ECS0021 - STM32F0 - EXTI example STM32F030F4 _stdlib
+  * EXTI example of a falling edge
 
 ##TIM##
 * ECS0015 - STM32F0 - VF blinky STM32F030F4 _stdlib
