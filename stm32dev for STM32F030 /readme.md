@@ -9,6 +9,8 @@ Resources used:
   * Mostly the HSI routine and the concept idea
  * https://github.com/LonelyWolf/stm32
   * BMP180 structure used 
+ * https://my.st.com/public/STe2ecommunities/mcu/Lists/cortex_mx_stm32/Flat.aspx?RootFolder=/public/STe2ecommunities/mcu/Lists/cortex_mx_stm32/STM32F0%20ADC-DMA%20touble&FolderCTID=0x01200200770978C69A1141439FE559EB459D7580009C4E14902C3CDE46A77F0FFD06506F5B&currentviews=35
+   * clive's example used for multichannel logging
 
 These examples are based on:
 * __ALT0062 - STM32F030 breakout__
@@ -42,3 +44,9 @@ These examples are based on:
   * I2C drivers using stdlib. simply backup of uart functions, example doesn't actually use I2C to do anything
 * ECS0020 - STM32F0 - BMP180 example STM32F030F4 _stdlib
   * BPM180 I2C sensor readout example. Prints pressure and temperatures to the uart.
+
+##ADC##
+* ECS0023 - STM32F0 - ADC example STM32F030F4 _stdlib
+  * Simple ADC example of converting one analog value
+* ECS0022 - STM32F0 - Analog Joystick Example STM32F030F4 _stdlib
+  * Converting 2 analog values using TIM and DMA
