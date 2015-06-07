@@ -31,6 +31,7 @@
 - [ ] nRF24L01+ receiver + transmitter example
 - [ ] Make thermocouple example
 - [ ] Make ACS712 example (current sensor 30A)
+- [ ] Make SSD1306 OLED example
 
 ##IDEA LIST##
 * Make general c library of the examples, with static variables per .c file.
