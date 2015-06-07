@@ -29,6 +29,7 @@
 - [ ] Make NEC IR Receiver example with VS1838b decoder
 - [ ] Make RC5 IR Receiver example with VS1838b decoder
 - [ ] nRF24L01+ receiver + transmitter example
+- [ ] Make thermocouple example
 
 ##IDEA LIST##
 * Make general c library of the examples, with static variables per .c file.
