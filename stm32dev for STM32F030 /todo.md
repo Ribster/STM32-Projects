@@ -1,5 +1,4 @@
 ##TO DO LIST##
-- [ ] Make 2 layer breakout of 2xHC595 + HS-3461B
 - [ ] Finish example of HS-3461B
 - [ ] Make HC595 example
 - [ ] Make HMC5883 example (Magneto meter)
@@ -32,6 +31,11 @@
 - [ ] Make thermocouple example
 - [ ] Make ACS712 example (current sensor 30A)
 - [ ] Make SSD1306 OLED example
+
+##Breakouts to make##
+- [ ] 2 layer breakout of 2xHC595 + HS-3461B
+- [ ] 2 layer OLED SSD1306 128x64 breakout
+- [ ] 2 layer CH340G breakout
 
 ##IDEA LIST##
 * Make general c library of the examples, with static variables per .c file.
