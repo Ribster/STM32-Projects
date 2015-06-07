@@ -12,8 +12,11 @@ Resources used:
  * https://my.st.com/public/STe2ecommunities/mcu/Lists/cortex_mx_stm32/Flat.aspx?RootFolder=/public/STe2ecommunities/mcu/Lists/cortex_mx_stm32/STM32F0%20ADC-DMA%20touble&FolderCTID=0x01200200770978C69A1141439FE559EB459D7580009C4E14902C3CDE46A77F0FFD06506F5B&currentviews=35
    * clive's example used for multichannel logging
 
-These examples are based on:
-* __ALT0062 - STM32F030 breakout__
+__STM32F030 breakout:__
+* ALT0062 - STM32F030 breakout
+
+__Expansion breakout:__
+* ALT0063 - HC595 7seg breakout
 
 ##RCC##
 * ECS0017 - STM32F0 - HSI example STM32F030F4 _stdlib
@@ -50,3 +53,9 @@ These examples are based on:
   * Simple ADC example of converting one analog value
 * ECS0022 - STM32F0 - Analog Joystick Example STM32F030F4 _stdlib
   * Converting 2 analog values using TIM and DMA
+
+##HC595##
+* xxx
+  * Simple HC595 example for testing x outputs
+* xxx
+  * Example for 4 digit 7 segment display HS-3461B on breakout ALT0063
