@@ -16,6 +16,9 @@
 - [ ] Make DHT11 example (Humidity & temperature sensor)
 - [ ] Make HC-SR04 example (Ultrasonic range sensor)
 - [ ] Make A4988 example (stepper motor driver)
+- [ ] Make passive piezo example
+- [ ] Make WS2812B example (Asynchronous RGB led driver)
+- [ ] Make WS2801 example (Synchronous PWM CC driver)
 
 ##IDEA LIST##
 * Make general c library of the examples, with static variables per .c file.
