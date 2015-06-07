@@ -30,6 +30,7 @@
 - [ ] Make RC5 IR Receiver example with VS1838b decoder
 - [ ] nRF24L01+ receiver + transmitter example
 - [ ] Make thermocouple example
+- [ ] Make ACS712 example (current sensor 30A)
 
 ##IDEA LIST##
 * Make general c library of the examples, with static variables per .c file.
