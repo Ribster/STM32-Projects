@@ -19,6 +19,15 @@
 - [ ] Make passive piezo example
 - [ ] Make WS2812B example (Asynchronous RGB led driver)
 - [ ] Make WS2801 example (Synchronous PWM CC driver)
+- [ ] Make HC-SR501 PIR example (PIR sensor)
+- [ ] Make DS18B20 example (temperature example)
+- [ ] Make LM75 example (Temperature sensor)
+- [ ] Make quadrature encoder example
+- [ ] Make LDR example (light dependent resistor)
+- [ ] Make NEC IR example
+- [ ] Make RC5 IR example
+- [ ] Make NEC IR Receiver example with VS1838b decoder
+- [ ] Make RC5 IR Receiver example with VS1838b decoder
 
 ##IDEA LIST##
 * Make general c library of the examples, with static variables per .c file.
