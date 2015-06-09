@@ -1,0 +1,13 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [ALT0063 - HC595 7seg breakout.PrjPCB]
+   Generated File[PCB - 100x100 - 85x85.GTL]
+   Generated File[PCB - 100x100 - 85x85.RUL]
+   Generated File[PCB - 100x100 - 85x85.EXTREP]
+   Generated File[PCB - 100x100 - 85x85.REP]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 20:26:08 On 5/06/2015

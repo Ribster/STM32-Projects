@@ -1,0 +1,192 @@
+Added Component: Designator=C1(1210C-GENERIC)
+Added Component: Designator=C2(0805C-TBD)
+Added Component: Designator=C3(0805C-TBD)
+Added Component: Designator=D1(HS3461)
+Added Component: Designator=D2(0805LED)
+Added Component: Designator=D3(0805LED)
+Added Component: Designator=D4(0805LED)
+Added Component: Designator=D5(0805LED)
+Added Component: Designator=K1(Header_Male_2.54 5x2)
+Added Component: Designator=Q1(SOT23-GDS)
+Added Component: Designator=Q2(SOT23-GDS)
+Added Component: Designator=Q3(SOT23-GDS)
+Added Component: Designator=Q4(SOT23-GDS)
+Added Component: Designator=R1(0805R-180)
+Added Component: Designator=R2(0805R-180)
+Added Component: Designator=R3(0805R-180)
+Added Component: Designator=R4(0805R-180)
+Added Component: Designator=R5(0805R-180)
+Added Component: Designator=R6(0805R-180)
+Added Component: Designator=R7(0805R-180)
+Added Component: Designator=R8(0805R-180)
+Added Component: Designator=R9(0805R-180)
+Added Component: Designator=R10(0805R-180)
+Added Component: Designator=R11(0805R-180)
+Added Component: Designator=R12(0805R-180)
+Added Component: Designator=U1(SO16)
+Added Component: Designator=U2(SO16)
+Added Pin To Net: NetName=3V3 Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C1-2
+Added Pin To Net: NetName=3V3 Pin=C2-1
+Added Pin To Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=3V3 Pin=C3-1
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Pin To Net: NetName=NetD1_2 Pin=D1-2
+Added Pin To Net: NetName=GND Pin=D2-K
+Added Pin To Net: NetName=GND Pin=D3-K
+Added Pin To Net: NetName=GND Pin=D4-K
+Added Pin To Net: NetName=GND Pin=D5-K
+Added Pin To Net: NetName=GND Pin=K1-1
+Added Pin To Net: NetName=GND Pin=K1-2
+Added Pin To Net: NetName=3V3 Pin=K1-3
+Added Pin To Net: NetName=3V3 Pin=K1-4
+Added Pin To Net: NetName=3V3 Pin=Q1-S
+Added Pin To Net: NetName=3V3 Pin=Q2-S
+Added Pin To Net: NetName=3V3 Pin=Q3-S
+Added Pin To Net: NetName=3V3 Pin=Q4-S
+Added Pin To Net: NetName=NetD1_2 Pin=R3-2
+Added Pin To Net: NetName=GND Pin=U1-8
+Added Pin To Net: NetName=3V3 Pin=U1-10
+Added Pin To Net: NetName=GND Pin=U1-13
+Added Pin To Net: NetName=3V3 Pin=U1-16
+Added Pin To Net: NetName=GND Pin=U2-8
+Added Pin To Net: NetName=3V3 Pin=U2-10
+Added Pin To Net: NetName=GND Pin=U2-13
+Added Pin To Net: NetName=3V3 Pin=U2-16
+Added Pin To Net: NetName=CLKIN Pin=K1-7
+Added Pin To Net: NetName=CLKIN Pin=K1-8
+Added Pin To Net: NetName=CLKIN Pin=U1-11
+Added Pin To Net: NetName=CLKIN Pin=U2-11
+Added Net: Name=CLKIN
+Added Pin To Net: NetName=DIG1 Pin=D1-12
+Added Pin To Net: NetName=DIG1 Pin=Q4-D
+Added Net: Name=DIG1
+Added Pin To Net: NetName=DIG2 Pin=D1-9
+Added Pin To Net: NetName=DIG2 Pin=Q3-D
+Added Net: Name=DIG2
+Added Pin To Net: NetName=DIG3 Pin=D1-8
+Added Pin To Net: NetName=DIG3 Pin=Q2-D
+Added Net: Name=DIG3
+Added Pin To Net: NetName=DIG4 Pin=D1-6
+Added Pin To Net: NetName=DIG4 Pin=Q1-D
+Added Net: Name=DIG4
+Added Pin To Net: NetName=DIN Pin=K1-9
+Added Pin To Net: NetName=DIN Pin=K1-10
+Added Pin To Net: NetName=DIN Pin=U1-14
+Added Net: Name=DIN
+Added Pin To Net: NetName=HC1_O1 Pin=R1-1
+Added Pin To Net: NetName=HC1_O1 Pin=U1-15
+Added Net: Name=HC1_O1
+Added Pin To Net: NetName=HC1_O2 Pin=R3-1
+Added Pin To Net: NetName=HC1_O2 Pin=U1-1
+Added Net: Name=HC1_O2
+Added Pin To Net: NetName=HC1_O3 Pin=R5-1
+Added Pin To Net: NetName=HC1_O3 Pin=U1-2
+Added Net: Name=HC1_O3
+Added Pin To Net: NetName=HC1_O4 Pin=R7-1
+Added Pin To Net: NetName=HC1_O4 Pin=U1-3
+Added Net: Name=HC1_O4
+Added Pin To Net: NetName=HC1_O5 Pin=R8-1
+Added Pin To Net: NetName=HC1_O5 Pin=U1-4
+Added Net: Name=HC1_O5
+Added Pin To Net: NetName=HC1_O6 Pin=Q1-G
+Added Pin To Net: NetName=HC1_O6 Pin=U1-5
+Added Net: Name=HC1_O6
+Added Pin To Net: NetName=HC1_O7 Pin=R2-2
+Added Pin To Net: NetName=HC1_O7 Pin=U1-6
+Added Net: Name=HC1_O7
+Added Pin To Net: NetName=HC1_O8 Pin=Q2-G
+Added Pin To Net: NetName=HC1_O8 Pin=U1-7
+Added Net: Name=HC1_O8
+Added Pin To Net: NetName=HC2_O1 Pin=Q3-G
+Added Pin To Net: NetName=HC2_O1 Pin=U2-15
+Added Net: Name=HC2_O1
+Added Pin To Net: NetName=HC2_O2 Pin=R4-2
+Added Pin To Net: NetName=HC2_O2 Pin=U2-1
+Added Net: Name=HC2_O2
+Added Pin To Net: NetName=HC2_O3 Pin=R6-2
+Added Pin To Net: NetName=HC2_O3 Pin=U2-2
+Added Net: Name=HC2_O3
+Added Pin To Net: NetName=HC2_O4 Pin=Q4-G
+Added Pin To Net: NetName=HC2_O4 Pin=U2-3
+Added Net: Name=HC2_O4
+Added Pin To Net: NetName=HC2_O5 Pin=R9-1
+Added Pin To Net: NetName=HC2_O5 Pin=U2-4
+Added Net: Name=HC2_O5
+Added Pin To Net: NetName=HC2_O6 Pin=R10-1
+Added Pin To Net: NetName=HC2_O6 Pin=U2-5
+Added Net: Name=HC2_O6
+Added Pin To Net: NetName=HC2_O7 Pin=R11-1
+Added Pin To Net: NetName=HC2_O7 Pin=U2-6
+Added Net: Name=HC2_O7
+Added Pin To Net: NetName=HC2_O8 Pin=R12-1
+Added Pin To Net: NetName=HC2_O8 Pin=U2-7
+Added Net: Name=HC2_O8
+Added Pin To Net: NetName=LATCH Pin=K1-5
+Added Pin To Net: NetName=LATCH Pin=K1-6
+Added Pin To Net: NetName=LATCH Pin=U1-12
+Added Pin To Net: NetName=LATCH Pin=U2-12
+Added Net: Name=LATCH
+Added Pin To Net: NetName=NetD1_1 Pin=D1-1
+Added Pin To Net: NetName=NetD1_1 Pin=R1-2
+Added Net: Name=NetD1_1
+Added Pin To Net: NetName=NetD1_3 Pin=D1-3
+Added Pin To Net: NetName=NetD1_3 Pin=R5-2
+Added Net: Name=NetD1_3
+Added Pin To Net: NetName=NetD1_4 Pin=D1-4
+Added Pin To Net: NetName=NetD1_4 Pin=R7-2
+Added Net: Name=NetD1_4
+Added Pin To Net: NetName=NetD1_5 Pin=D1-5
+Added Pin To Net: NetName=NetD1_5 Pin=R8-2
+Added Net: Name=NetD1_5
+Added Pin To Net: NetName=NetD1_7 Pin=D1-7
+Added Pin To Net: NetName=NetD1_7 Pin=R2-1
+Added Net: Name=NetD1_7
+Added Pin To Net: NetName=NetD1_10 Pin=D1-10
+Added Pin To Net: NetName=NetD1_10 Pin=R4-1
+Added Net: Name=NetD1_10
+Added Pin To Net: NetName=NetD1_11 Pin=D1-11
+Added Pin To Net: NetName=NetD1_11 Pin=R6-1
+Added Net: Name=NetD1_11
+Added Pin To Net: NetName=NetD2_A Pin=D2-A
+Added Pin To Net: NetName=NetD2_A Pin=R9-2
+Added Net: Name=NetD2_A
+Added Pin To Net: NetName=NetD3_A Pin=D3-A
+Added Pin To Net: NetName=NetD3_A Pin=R10-2
+Added Net: Name=NetD3_A
+Added Pin To Net: NetName=NetD4_A Pin=D4-A
+Added Pin To Net: NetName=NetD4_A Pin=R11-2
+Added Net: Name=NetD4_A
+Added Pin To Net: NetName=NetD5_A Pin=D5-A
+Added Pin To Net: NetName=NetD5_A Pin=R12-2
+Added Net: Name=NetD5_A
+Added Pin To Net: NetName=NetU1_9 Pin=U1-9
+Added Pin To Net: NetName=NetU1_9 Pin=U2-14
+Added Net: Name=NetU1_9
+Added Member To Class: ClassName=General Overview Member=Component C1 1210
+Added Member To Class: ClassName=General Overview Member=Component C2 100nF
+Added Member To Class: ClassName=General Overview Member=Component C3 100nF
+Added Member To Class: ClassName=General Overview Member=Component D1 LED_7Segment_HS-3461B
+Added Member To Class: ClassName=General Overview Member=Component D2 0805
+Added Member To Class: ClassName=General Overview Member=Component D3 0805
+Added Member To Class: ClassName=General Overview Member=Component D4 0805
+Added Member To Class: ClassName=General Overview Member=Component D5 0805
+Added Member To Class: ClassName=General Overview Member=Component K1 Connector_Headers_SMD_M_5x2
+Added Member To Class: ClassName=General Overview Member=Component Q1 2N7002
+Added Member To Class: ClassName=General Overview Member=Component Q2 2N7002
+Added Member To Class: ClassName=General Overview Member=Component Q3 2N7002
+Added Member To Class: ClassName=General Overview Member=Component Q4 2N7002
+Added Member To Class: ClassName=General Overview Member=Component R1 180R
+Added Member To Class: ClassName=General Overview Member=Component R2 180R
+Added Member To Class: ClassName=General Overview Member=Component R3 180R
+Added Member To Class: ClassName=General Overview Member=Component R4 180R
+Added Member To Class: ClassName=General Overview Member=Component R5 180R
+Added Member To Class: ClassName=General Overview Member=Component R6 180R
+Added Member To Class: ClassName=General Overview Member=Component R7 180R
+Added Member To Class: ClassName=General Overview Member=Component R8 180R
+Added Member To Class: ClassName=General Overview Member=Component R9 180R
+Added Member To Class: ClassName=General Overview Member=Component R10 180R
+Added Member To Class: ClassName=General Overview Member=Component R11 180R
+Added Member To Class: ClassName=General Overview Member=Component R12 180R
+Added Member To Class: ClassName=General Overview Member=Component U1 74HC_SIPO_SMD_74595
+Added Member To Class: ClassName=General Overview Member=Component U2 74HC_SIPO_SMD_74595
