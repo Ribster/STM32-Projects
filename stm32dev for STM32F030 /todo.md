@@ -20,7 +20,6 @@
 - [ ] Make DS18B20 example (temperature example)
 - [ ] Make LM75 example (Temperature sensor)
 - [ ] Make quadrature encoder example
-- [ ] Make LDR example (light dependent resistor)
 - [ ] Make NEC IR example
 - [ ] Make RC5 IR example
 - [ ] Make NEC IR Receiver example with VS1838b decoder
@@ -43,3 +42,4 @@
 ##DONE LIST##
 - [x] Finish example of HS-3461B
 - [x] Make HC595 example
+- [x] Make LDR example (light dependent resistor)
