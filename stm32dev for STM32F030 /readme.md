@@ -59,3 +59,7 @@ __Expansion breakout:__
   * Simple HC595 example for testing x outputs
 * ECS0025 - STM32F0 - HS-3461B HC595 example STM32F030F4 _stdlib
   * Example for 4 digit 7 segment display HS-3461B on breakout ALT0063
+
+## ADC + HC595##
+* ECS0026 - STM32F0 - Light sensor example STM32F030F4 _stdlib
+  * Example of resistive light sensor and 4 digit 7 segment display. Using moving average.
