@@ -1,6 +1,4 @@
 ##TO DO LIST##
-- [ ] Finish example of HS-3461B
-- [ ] Make HC595 example
 - [ ] Make HMC5883 example (Magneto meter)
 - [ ] Make TEA5767 example (FM module)
 - [ ] Make 74HC165 example (PISO)
@@ -40,3 +38,7 @@
 ##IDEA LIST##
 * Make general c library of the examples, with static variables per .c file.
   This way, it's possible to assign pins and ports
+
+##DONE LIST##
+- [x] Finish example of HS-3461B
+- [x] Make HC595 example
