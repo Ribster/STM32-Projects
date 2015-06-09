@@ -34,6 +34,7 @@
 - [ ] 2 layer breakout of 2xHC595 + HS-3461B
 - [ ] 2 layer OLED SSD1306 128x64 breakout
 - [ ] 2 layer CH340G breakout
+- [ ] 2 layer STM32F030F4 dev breakout
 
 ##IDEA LIST##
 * Make general c library of the examples, with static variables per .c file.
