@@ -55,7 +55,7 @@ __Expansion breakout:__
   * Converting 2 analog values using TIM and DMA
 
 ##HC595##
-* xxx
+* ECS0024 - STM32F0 - HC595 example STM32F030F4 _stdlib
   * Simple HC595 example for testing x outputs
-* xxx
+* ECS0025 - STM32F0 - HS-3461B HC595 example STM32F030F4 _stdlib
   * Example for 4 digit 7 segment display HS-3461B on breakout ALT0063
