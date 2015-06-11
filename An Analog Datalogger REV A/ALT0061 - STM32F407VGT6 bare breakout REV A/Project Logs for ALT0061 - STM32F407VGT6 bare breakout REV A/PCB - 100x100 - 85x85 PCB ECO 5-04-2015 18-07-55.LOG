@@ -1,7 +1,0 @@
-Added Pin To Net: NetName=AFE_INT Pin=K16-1
-Added Pin To Net: NetName=AFE_CS Pin=K16-2
-Added Pin To Net: NetName=AFE_MOSI Pin=K16-4
-Added Pin To Net: NetName=AFE_MISO Pin=K16-6
-Added Pin To Net: NetName=AFE_SCK Pin=K16-8
-Added Pin To Net: NetName=GND Pin=K16-10
-Added Pin To Net: NetName=3V3 Pin=K16-12

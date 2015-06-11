@@ -1,4 +1,0 @@
-Added Component: Designator=R39(0805R-GENERIC)
-Added Pin To Net: NetName=PMOD_INT Pin=R39-1
-Added Pin To Net: NetName=PMOD_INT Pin=R39-2
-Added Member To Class: ClassName=General Overview Member=Component R39 0805-0R

@@ -1,3 +1,0 @@
-Change Component DesignItemId : Designator=K16 Old DesignItemId=Connector_Headers_SMD_M_4x2 New DesignItemId=Connector_Headers_SMD_M_6x2
-Change Component Footprint: Designator=K16 Old Footprint=Header_Male_2.54 4x2 New Footprint=Header_Male_2.54 6x2
-Change Component Comment : Designator=K16 Old Comment=Connector_Headers_SMD_M_4x2 New Comment=Connector_Headers_SMD_M_6x2

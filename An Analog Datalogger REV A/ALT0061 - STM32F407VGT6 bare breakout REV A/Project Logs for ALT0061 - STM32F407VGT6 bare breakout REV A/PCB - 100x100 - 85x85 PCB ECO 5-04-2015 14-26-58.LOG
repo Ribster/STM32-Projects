@@ -1,9 +1,0 @@
-Added Component: Designator=R15(0805R-GENERIC)
-Added Component: Designator=R28(0805R-GENERIC)
-Added Pin To Net: NetName=USB_ID Pin=R15-1
-Added Pin To Net: NetName=USB_ID Pin=R15-2
-Added Pin To Net: NetName=USB_ID Pin=R28-1
-Added Pin To Net: NetName=USB_ID Pin=R28-2
-Added Member To Class: ClassName=General Overview Member=Component R15 0805-0R
-Added Member To Class: ClassName=General Overview Member=Component R22 0805-0R
-Added Member To Class: ClassName=General Overview Member=Component R28 0805-0R

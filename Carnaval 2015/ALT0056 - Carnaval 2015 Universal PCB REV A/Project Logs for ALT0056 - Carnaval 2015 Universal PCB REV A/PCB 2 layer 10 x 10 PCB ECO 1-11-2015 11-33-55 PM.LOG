@@ -1,6 +1,0 @@
-Removed Pin From Net: NetName=DOUTB Pin=R18D-1
-Removed Pin From Net: NetName=DOUTA Pin=R18H-1
-Change Component Footprint: Designator=U7A Old Footprint=SSOP14 New Footprint=SO14
-Change Component Footprint: Designator=U7B Old Footprint=SSOP14 New Footprint=SO14
-Added Pin To Net: NetName=DOUTA Pin=R18D-1
-Added Pin To Net: NetName=DOUTB Pin=R18H-1

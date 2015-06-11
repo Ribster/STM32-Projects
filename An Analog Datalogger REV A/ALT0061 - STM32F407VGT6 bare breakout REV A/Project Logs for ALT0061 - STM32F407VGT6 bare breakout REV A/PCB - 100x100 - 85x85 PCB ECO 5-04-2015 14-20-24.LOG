@@ -1,6 +1,0 @@
-Removed Pin From Net: NetName=NRF_SS Pin=R22-1
-Removed Pin From Net: NetName=NRF_SS Pin=R22-2
-Removed Member From Class: ClassName=General Overview Member=R22
-Change Component Designator: OldDesignator=R15 NewDesignator=R22
-Added Pin To Net: NetName=NRF_SS Pin=R22-1
-Added Pin To Net: NetName=NRF_SS Pin=R22-2

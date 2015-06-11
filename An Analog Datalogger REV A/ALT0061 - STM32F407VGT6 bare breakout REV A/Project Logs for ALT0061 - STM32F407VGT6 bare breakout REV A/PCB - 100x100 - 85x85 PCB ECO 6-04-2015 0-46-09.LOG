@@ -1,4 +1,0 @@
-Added Component: Designator=R70(0805R-GENERIC)
-Added Pin To Net: NetName=3V3 Pin=R70-1
-Added Pin To Net: NetName=3V3 Pin=R70-2
-Added Member To Class: ClassName=General Overview Member=Component R70 0805-0R

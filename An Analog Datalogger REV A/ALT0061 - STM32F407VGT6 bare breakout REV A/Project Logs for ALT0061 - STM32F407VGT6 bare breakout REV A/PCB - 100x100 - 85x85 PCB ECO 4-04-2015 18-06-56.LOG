@@ -1,9 +1,0 @@
-Removed Pin From Net: NetName=EXT_SYNC Pin=U2-35
-Removed Pin From Net: NetName=AFE_SYNC2 Pin=U2-63
-Removed Pin From Net: NetName=AFE_SYNC3 Pin=U2-64
-Added Pin To Net: NetName=AFE_SYNC2 Pin=U2-35
-Added Pin To Net: NetName=AFE_SYNC3 Pin=U2-36
-Added Pin To Net: NetName=EXT_SYNC Pin=U2-38
-Added Member To Class: ClassName=General Overview Member=Component R11 0805-0R
-Added Member To Class: ClassName=General Overview Member=Component R12 0805-0R
-Added Member To Class: ClassName=General Overview Member=Component R15 0805-0R

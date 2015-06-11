@@ -1,3 +1,0 @@
-Removed Pin From Net: NetName=OLED_SS Pin=U2-77
-Removed Member From Class: ClassName=General Overview Member=TP5
-Added Pin To Net: NetName=OLED_SS Pin=U2-95
