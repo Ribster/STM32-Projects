@@ -742,7 +742,7 @@ Discarded input sections
  .debug_aranges
                 0x0000000000000000       0xa0 ./system/src/stm32f4xx/stm32f4xx_hal_pwr.o
  .debug_ranges  0x0000000000000000       0x90 ./system/src/stm32f4xx/stm32f4xx_hal_pwr.o
- .debug_line    0x0000000000000000      0x337 ./system/src/stm32f4xx/stm32f4xx_hal_pwr.o
+ .debug_line    0x0000000000000000      0x334 ./system/src/stm32f4xx/stm32f4xx_hal_pwr.o
  .debug_str     0x0000000000000000      0x5a0 ./system/src/stm32f4xx/stm32f4xx_hal_pwr.o
  .comment       0x0000000000000000       0x71 ./system/src/stm32f4xx/stm32f4xx_hal_pwr.o
  .debug_frame   0x0000000000000000      0x128 ./system/src/stm32f4xx/stm32f4xx_hal_pwr.o
@@ -1020,7 +1020,7 @@ Discarded input sections
                 0x0000000000000000        0x4 ./system/src/stm32f4xx/stm32f4xx_hal_spi.o
  .debug_info    0x0000000000000000     0x175d ./system/src/stm32f4xx/stm32f4xx_hal_spi.o
  .debug_abbrev  0x0000000000000000      0x350 ./system/src/stm32f4xx/stm32f4xx_hal_spi.o
- .debug_loc     0x0000000000000000     0x125d ./system/src/stm32f4xx/stm32f4xx_hal_spi.o
+ .debug_loc     0x0000000000000000     0x126b ./system/src/stm32f4xx/stm32f4xx_hal_spi.o
  .debug_aranges
                 0x0000000000000000      0x150 ./system/src/stm32f4xx/stm32f4xx_hal_spi.o
  .debug_ranges  0x0000000000000000      0x158 ./system/src/stm32f4xx/stm32f4xx_hal_spi.o
@@ -2044,23 +2044,23 @@ END GROUP
  .debug_abbrev  0x00000000000012f7      0x389 ./src/stm32f4_discovery.o
  .debug_abbrev  0x0000000000001680       0xd2 ./src/stm32f4xx_it.o
 
-.debug_line     0x0000000000000000     0x2211
+.debug_line     0x0000000000000000     0x2215
  *(.debug_line)
- .debug_line    0x0000000000000000      0x367 ./system/src/stm32f4xx/stm32f4xx_hal.o
- .debug_line    0x0000000000000367      0x31d ./system/src/stm32f4xx/stm32f4xx_hal_cortex.o
- .debug_line    0x0000000000000684      0x36f ./system/src/stm32f4xx/stm32f4xx_hal_gpio.o
- .debug_line    0x00000000000009f3      0x11f ./system/src/stm32f4xx/stm32f4xx_hal_msp_template.o
- .debug_line    0x0000000000000b12      0x54d ./system/src/stm32f4xx/stm32f4xx_hal_rcc.o
- .debug_line    0x000000000000105f      0x12b ./system/src/newlib/_exit.o
- .debug_line    0x000000000000118a      0x17e ./system/src/newlib/_startup.o
- .debug_line    0x0000000000001308      0x12a ./system/src/newlib/_syscalls.o
- .debug_line    0x0000000000001432      0x10e ./system/src/cortexm/_initialize_hardware.o
- .debug_line    0x0000000000001540      0x1ce ./system/src/cortexm/exception_handlers.o
- .debug_line    0x000000000000170e       0x88 ./system/src/cmsis/startup_stm32f407xx.o
- .debug_line    0x0000000000001796      0x184 ./system/src/cmsis/system_stm32f4xx.o
- .debug_line    0x000000000000191a      0x26a ./src/main.o
- .debug_line    0x0000000000001b84      0x46e ./src/stm32f4_discovery.o
- .debug_line    0x0000000000001ff2      0x21f ./src/stm32f4xx_it.o
+ .debug_line    0x0000000000000000      0x36b ./system/src/stm32f4xx/stm32f4xx_hal.o
+ .debug_line    0x000000000000036b      0x31d ./system/src/stm32f4xx/stm32f4xx_hal_cortex.o
+ .debug_line    0x0000000000000688      0x36f ./system/src/stm32f4xx/stm32f4xx_hal_gpio.o
+ .debug_line    0x00000000000009f7      0x11f ./system/src/stm32f4xx/stm32f4xx_hal_msp_template.o
+ .debug_line    0x0000000000000b16      0x54d ./system/src/stm32f4xx/stm32f4xx_hal_rcc.o
+ .debug_line    0x0000000000001063      0x12b ./system/src/newlib/_exit.o
+ .debug_line    0x000000000000118e      0x17e ./system/src/newlib/_startup.o
+ .debug_line    0x000000000000130c      0x12a ./system/src/newlib/_syscalls.o
+ .debug_line    0x0000000000001436      0x10e ./system/src/cortexm/_initialize_hardware.o
+ .debug_line    0x0000000000001544      0x1ce ./system/src/cortexm/exception_handlers.o
+ .debug_line    0x0000000000001712       0x88 ./system/src/cmsis/startup_stm32f407xx.o
+ .debug_line    0x000000000000179a      0x184 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_line    0x000000000000191e      0x26a ./src/main.o
+ .debug_line    0x0000000000001b88      0x46e ./src/stm32f4_discovery.o
+ .debug_line    0x0000000000001ff6      0x21f ./src/stm32f4xx_it.o
 
 .debug_frame    0x0000000000000000      0xa54
  *(.debug_frame)

@@ -17,7 +17,7 @@ Archive member included because of file (symbol)
 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2015q2/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/libg_nano.a(lib_a-impure.o)
                               /Developer/Eclipse/gcc-arm-none-eabi-4_9-2015q2/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/libg_nano.a(lib_a-errno.o) (_impure_ptr)
 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2015q2/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/libg_nano.a(lib_a-init.o)
-                              ./system/include/cmsis/startup_stm32f051x8.o (__libc_init_array)
+                              ./system/src/cmsis/startup_stm32f051x8.o (__libc_init_array)
 /Developer/Eclipse/gcc-arm-none-eabi-4_9-2015q2/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m/libg_nano.a(lib_a-memcpy.o)
                               ./system/src/stm32f0xx/stm32f0xx_hal_rcc.o (memcpy)
 
@@ -736,14 +736,14 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./system/src/cortexm/exception_handlers.o
  .data          0x0000000000000000        0x0 ./system/src/cortexm/exception_handlers.o
  .bss           0x0000000000000000        0x0 ./system/src/cortexm/exception_handlers.o
+ .text          0x0000000000000000       0x14 ./system/src/cmsis/startup_stm32f051x8.o
+ .data          0x0000000000000000        0x0 ./system/src/cmsis/startup_stm32f051x8.o
+ .bss           0x0000000000000000        0x0 ./system/src/cmsis/startup_stm32f051x8.o
+ .text.Reset_Handler
+                0x0000000000000000       0x50 ./system/src/cmsis/startup_stm32f051x8.o
  .text          0x0000000000000000        0x0 ./system/src/cmsis/system_stm32f0xx.o
  .data          0x0000000000000000        0x0 ./system/src/cmsis/system_stm32f0xx.o
  .bss           0x0000000000000000        0x0 ./system/src/cmsis/system_stm32f0xx.o
- .text          0x0000000000000000       0x14 ./system/include/cmsis/startup_stm32f051x8.o
- .data          0x0000000000000000        0x0 ./system/include/cmsis/startup_stm32f051x8.o
- .bss           0x0000000000000000        0x0 ./system/include/cmsis/startup_stm32f051x8.o
- .text.Reset_Handler
-                0x0000000000000000       0x50 ./system/include/cmsis/startup_stm32f051x8.o
  .text          0x0000000000000000        0x0 ./src/_write.o
  .data          0x0000000000000000        0x0 ./src/_write.o
  .bss           0x0000000000000000        0x0 ./src/_write.o
@@ -926,8 +926,8 @@ LOAD ./system/src/diag/trace_impl.o
 LOAD ./system/src/cortexm/_initialize_hardware.o
 LOAD ./system/src/cortexm/_reset_hardware.o
 LOAD ./system/src/cortexm/exception_handlers.o
+LOAD ./system/src/cmsis/startup_stm32f051x8.o
 LOAD ./system/src/cmsis/system_stm32f0xx.o
-LOAD ./system/include/cmsis/startup_stm32f051x8.o
 LOAD ./src/_write.o
 LOAD ./src/main.o
 LOAD ./src/stm32f0xx_it.o
@@ -956,7 +956,7 @@ END GROUP
 .isr_vector     0x0000000008000000      0x204
                 0x0000000008000000                . = ALIGN (0x4)
  *(.isr_vector)
- .isr_vector    0x0000000008000000       0xc0 ./system/include/cmsis/startup_stm32f051x8.o
+ .isr_vector    0x0000000008000000       0xc0 ./system/src/cmsis/startup_stm32f051x8.o
                 0x0000000008000000                g_pfnVectors
  *(.cfmconfig)
  *(.after_vectors .after_vectors.*)
@@ -1054,45 +1054,45 @@ END GROUP
  .text.__initialize_hardware
                 0x0000000008000ab8        0x8 ./system/src/cortexm/_initialize_hardware.o
                 0x0000000008000ab8                __initialize_hardware
- .text.SystemInit
-                0x0000000008000ac0       0x60 ./system/src/cmsis/system_stm32f0xx.o
-                0x0000000008000ac0                SystemInit
- .text.SystemCoreClockUpdate
-                0x0000000008000b20       0x64 ./system/src/cmsis/system_stm32f0xx.o
-                0x0000000008000b20                SystemCoreClockUpdate
  .text.Default_Handler
-                0x0000000008000b84        0x2 ./system/include/cmsis/startup_stm32f051x8.o
-                0x0000000008000b84                TIM1_BRK_UP_TRG_COM_IRQHandler
-                0x0000000008000b84                TSC_IRQHandler
-                0x0000000008000b84                ADC1_COMP_IRQHandler
-                0x0000000008000b84                PVD_IRQHandler
-                0x0000000008000b84                I2C1_IRQHandler
-                0x0000000008000b84                RCC_CRS_IRQHandler
-                0x0000000008000b84                SPI1_IRQHandler
-                0x0000000008000b84                TIM6_DAC_IRQHandler
-                0x0000000008000b84                EXTI2_3_IRQHandler
-                0x0000000008000b84                I2C2_IRQHandler
-                0x0000000008000b84                TIM17_IRQHandler
-                0x0000000008000b84                CEC_CAN_IRQHandler
-                0x0000000008000b84                RTC_IRQHandler
-                0x0000000008000b84                TIM16_IRQHandler
-                0x0000000008000b84                TIM3_IRQHandler
-                0x0000000008000b84                EXTI4_15_IRQHandler
-                0x0000000008000b84                DMA1_Channel1_IRQHandler
-                0x0000000008000b84                Default_Handler
-                0x0000000008000b84                TIM14_IRQHandler
-                0x0000000008000b84                DMA1_Channel4_5_IRQHandler
-                0x0000000008000b84                TIM15_IRQHandler
-                0x0000000008000b84                EXTI0_1_IRQHandler
-                0x0000000008000b84                SPI2_IRQHandler
-                0x0000000008000b84                WWDG_IRQHandler
-                0x0000000008000b84                TIM2_IRQHandler
-                0x0000000008000b84                DMA1_Channel2_3_IRQHandler
-                0x0000000008000b84                USART2_IRQHandler
-                0x0000000008000b84                FLASH_IRQHandler
-                0x0000000008000b84                USART1_IRQHandler
-                0x0000000008000b84                TIM1_CC_IRQHandler
- *fill*         0x0000000008000b86        0x2 
+                0x0000000008000ac0        0x2 ./system/src/cmsis/startup_stm32f051x8.o
+                0x0000000008000ac0                TIM1_BRK_UP_TRG_COM_IRQHandler
+                0x0000000008000ac0                TSC_IRQHandler
+                0x0000000008000ac0                ADC1_COMP_IRQHandler
+                0x0000000008000ac0                PVD_IRQHandler
+                0x0000000008000ac0                I2C1_IRQHandler
+                0x0000000008000ac0                RCC_CRS_IRQHandler
+                0x0000000008000ac0                SPI1_IRQHandler
+                0x0000000008000ac0                TIM6_DAC_IRQHandler
+                0x0000000008000ac0                EXTI2_3_IRQHandler
+                0x0000000008000ac0                I2C2_IRQHandler
+                0x0000000008000ac0                TIM17_IRQHandler
+                0x0000000008000ac0                CEC_CAN_IRQHandler
+                0x0000000008000ac0                RTC_IRQHandler
+                0x0000000008000ac0                TIM16_IRQHandler
+                0x0000000008000ac0                TIM3_IRQHandler
+                0x0000000008000ac0                EXTI4_15_IRQHandler
+                0x0000000008000ac0                DMA1_Channel1_IRQHandler
+                0x0000000008000ac0                Default_Handler
+                0x0000000008000ac0                TIM14_IRQHandler
+                0x0000000008000ac0                DMA1_Channel4_5_IRQHandler
+                0x0000000008000ac0                TIM15_IRQHandler
+                0x0000000008000ac0                EXTI0_1_IRQHandler
+                0x0000000008000ac0                SPI2_IRQHandler
+                0x0000000008000ac0                WWDG_IRQHandler
+                0x0000000008000ac0                TIM2_IRQHandler
+                0x0000000008000ac0                DMA1_Channel2_3_IRQHandler
+                0x0000000008000ac0                USART2_IRQHandler
+                0x0000000008000ac0                FLASH_IRQHandler
+                0x0000000008000ac0                USART1_IRQHandler
+                0x0000000008000ac0                TIM1_CC_IRQHandler
+ *fill*         0x0000000008000ac2        0x2 
+ .text.SystemInit
+                0x0000000008000ac4       0x60 ./system/src/cmsis/system_stm32f0xx.o
+                0x0000000008000ac4                SystemInit
+ .text.SystemCoreClockUpdate
+                0x0000000008000b24       0x64 ./system/src/cmsis/system_stm32f0xx.o
+                0x0000000008000b24                SystemCoreClockUpdate
  .text.startup.main
                 0x0000000008000b88       0x88 ./src/main.o
                 0x0000000008000b88                main
@@ -1303,9 +1303,9 @@ END GROUP
  .ARM.attributes
                 0x00000000000001b9       0x31 ./system/src/cortexm/exception_handlers.o
  .ARM.attributes
-                0x00000000000001ea       0x31 ./system/src/cmsis/system_stm32f0xx.o
+                0x00000000000001ea       0x21 ./system/src/cmsis/startup_stm32f051x8.o
  .ARM.attributes
-                0x000000000000021b       0x21 ./system/include/cmsis/startup_stm32f051x8.o
+                0x000000000000020b       0x31 ./system/src/cmsis/system_stm32f0xx.o
  .ARM.attributes
                 0x000000000000023c       0x31 ./src/main.o
  .ARM.attributes
@@ -1352,9 +1352,9 @@ END GROUP
  .debug_aranges
                 0x00000000000002e8       0x50 ./system/src/cortexm/exception_handlers.o
  .debug_aranges
-                0x0000000000000338       0x28 ./system/src/cmsis/system_stm32f0xx.o
+                0x0000000000000338       0x28 ./system/src/cmsis/startup_stm32f051x8.o
  .debug_aranges
-                0x0000000000000360       0x28 ./system/include/cmsis/startup_stm32f051x8.o
+                0x0000000000000360       0x28 ./system/src/cmsis/system_stm32f0xx.o
  .debug_aranges
                 0x0000000000000388       0x20 ./src/main.o
  .debug_aranges
@@ -1363,7 +1363,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x2fed
+.debug_info     0x0000000000000000     0x2fe9
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x5cb ./system/src/stm32f0xx/stm32f0xx_hal.o
  .debug_info    0x00000000000005cb      0x77a ./system/src/stm32f0xx/stm32f0xx_hal_cortex.o
@@ -1375,10 +1375,10 @@ END GROUP
  .debug_info    0x00000000000022df      0x1a5 ./system/src/newlib/_syscalls.o
  .debug_info    0x0000000000002484       0xbf ./system/src/cortexm/_initialize_hardware.o
  .debug_info    0x0000000000002543      0x1bc ./system/src/cortexm/exception_handlers.o
- .debug_info    0x00000000000026ff      0x1fd ./system/src/cmsis/system_stm32f0xx.o
- .debug_info    0x00000000000028fc       0x99 ./system/include/cmsis/startup_stm32f051x8.o
- .debug_info    0x0000000000002995      0x56c ./src/main.o
- .debug_info    0x0000000000002f01       0xec ./src/stm32f0xx_it.o
+ .debug_info    0x00000000000026ff       0x95 ./system/src/cmsis/startup_stm32f051x8.o
+ .debug_info    0x0000000000002794      0x1fd ./system/src/cmsis/system_stm32f0xx.o
+ .debug_info    0x0000000000002991      0x56c ./src/main.o
+ .debug_info    0x0000000000002efd       0xec ./src/stm32f0xx_it.o
 
 .debug_abbrev   0x0000000000000000     0x10f9
  *(.debug_abbrev)
@@ -1392,12 +1392,12 @@ END GROUP
  .debug_abbrev  0x0000000000000b69       0xe4 ./system/src/newlib/_syscalls.o
  .debug_abbrev  0x0000000000000c4d       0x60 ./system/src/cortexm/_initialize_hardware.o
  .debug_abbrev  0x0000000000000cad       0xfa ./system/src/cortexm/exception_handlers.o
- .debug_abbrev  0x0000000000000da7       0xf0 ./system/src/cmsis/system_stm32f0xx.o
- .debug_abbrev  0x0000000000000e97       0x12 ./system/include/cmsis/startup_stm32f051x8.o
+ .debug_abbrev  0x0000000000000da7       0x12 ./system/src/cmsis/startup_stm32f051x8.o
+ .debug_abbrev  0x0000000000000db9       0xf0 ./system/src/cmsis/system_stm32f0xx.o
  .debug_abbrev  0x0000000000000ea9      0x1d8 ./src/main.o
  .debug_abbrev  0x0000000000001081       0x78 ./src/stm32f0xx_it.o
 
-.debug_line     0x0000000000000000     0x1891
+.debug_line     0x0000000000000000     0x188d
  *(.debug_line)
  .debug_line    0x0000000000000000      0x304 ./system/src/stm32f0xx/stm32f0xx_hal.o
  .debug_line    0x0000000000000304      0x2e3 ./system/src/stm32f0xx/stm32f0xx_hal_cortex.o
@@ -1409,10 +1409,10 @@ END GROUP
  .debug_line    0x00000000000010fd      0x12d ./system/src/newlib/_syscalls.o
  .debug_line    0x000000000000122a       0xa0 ./system/src/cortexm/_initialize_hardware.o
  .debug_line    0x00000000000012ca      0x181 ./system/src/cortexm/exception_handlers.o
- .debug_line    0x000000000000144b      0x122 ./system/src/cmsis/system_stm32f0xx.o
- .debug_line    0x000000000000156d       0x90 ./system/include/cmsis/startup_stm32f051x8.o
- .debug_line    0x00000000000015fd      0x1d5 ./src/main.o
- .debug_line    0x00000000000017d2       0xbf ./src/stm32f0xx_it.o
+ .debug_line    0x000000000000144b       0x8c ./system/src/cmsis/startup_stm32f051x8.o
+ .debug_line    0x00000000000014d7      0x122 ./system/src/cmsis/system_stm32f0xx.o
+ .debug_line    0x00000000000015f9      0x1d5 ./src/main.o
+ .debug_line    0x00000000000017ce       0xbf ./src/stm32f0xx_it.o
 
 .debug_frame    0x0000000000000000      0x764
  *(.debug_frame)
@@ -1498,7 +1498,7 @@ OUTPUT(F0 hal test.elf elf32-littlearm)
  .debug_ranges  0x0000000000000300       0x20 ./system/src/newlib/_syscalls.o
  .debug_ranges  0x0000000000000320       0x18 ./system/src/cortexm/_initialize_hardware.o
  .debug_ranges  0x0000000000000338       0x40 ./system/src/cortexm/exception_handlers.o
- .debug_ranges  0x0000000000000378       0x18 ./system/src/cmsis/system_stm32f0xx.o
- .debug_ranges  0x0000000000000390       0x20 ./system/include/cmsis/startup_stm32f051x8.o
+ .debug_ranges  0x0000000000000378       0x20 ./system/src/cmsis/startup_stm32f051x8.o
+ .debug_ranges  0x0000000000000398       0x18 ./system/src/cmsis/system_stm32f0xx.o
  .debug_ranges  0x00000000000003b0       0x30 ./src/main.o
  .debug_ranges  0x00000000000003e0       0x30 ./src/stm32f0xx_it.o
