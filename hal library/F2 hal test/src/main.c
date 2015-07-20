@@ -1,76 +1,203 @@
-//
-// This file is part of the GNU ARM Eclipse Plug-ins project.
-// Copyright (c) 2014 Liviu Ionescu.
-//
+/**
+  ******************************************************************************
+  * @file    GPIO/GPIO_IOToggle/Src/main.c 
+  * @author  MCD Application Team
+  * @version V1.1.0
+  * @date    13-March-2014
+  * @brief   This example describes how to configure and use GPIOs through 
+  *          the STM32F2xx HAL API.
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
+  *
+  * Redistribution and use in source and binary forms, with or without modification,
+  * are permitted provided that the following conditions are met:
+  *   1. Redistributions of source code must retain the above copyright notice,
+  *      this list of conditions and the following disclaimer.
+  *   2. Redistributions in binary form must reproduce the above copyright notice,
+  *      this list of conditions and the following disclaimer in the documentation
+  *      and/or other materials provided with the distribution.
+  *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  *      may be used to endorse or promote products derived from this software
+  *      without specific prior written permission.
+  *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  *
+  ******************************************************************************
+  */
 
-// ----------------------------------------------------------------------------
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
 
-#include <stdio.h>
-#include <stdlib.h>
+/** @addtogroup STM32F2xx_HAL_Examples
+  * @{
+  */
 
-#include "diag/Trace.h"
-#include "Timer.h"
+/** @addtogroup GPIO_IOToggle
+  * @{
+  */ 
 
-// ----------------------------------------------------------------------------
-//
-// Print a greeting message on the trace device and enter a loop
-// to count seconds.
-//
-// Trace support is enabled by adding the TRACE macro definition.
-// By default the trace messages are forwarded to the NONE output,
-// but can be rerouted to any device or completely suppressed, by
-// changing the definitions required in system/src/diag/trace_impl.c
-// (currently OS_USE_TRACE_ITM, OS_USE_TRACE_SEMIHOSTING_DEBUG/_STDOUT).
-//
-// ----------------------------------------------------------------------------
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+static GPIO_InitTypeDef  GPIO_InitStruct;
 
-// Sample pragmas to cope with warnings. Please note the related line at
-// the end of this function, used to pop the compiler diagnostics status.
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#pragma GCC diagnostic ignored "-Wmissing-declarations"
-#pragma GCC diagnostic ignored "-Wreturn-type"
+/* Private function prototypes -----------------------------------------------*/
+static void SystemClock_Config(void);
 
-int
-main (int argc, char* argv[])
+/* Private functions ---------------------------------------------------------*/
+
+/**
+  * @brief  Main program
+  * @param  None
+  * @retval None
+  */
+int main(void)
 {
-  // Normally at this stage most of the microcontroller subsystems, including
-  // the clock, were initialised by the CMSIS SystemInit() function invoked
-  // from the startup file, before calling main().
-  // (see system/src/cortexm/_initialize_hardware.c)
-  // If further initialisations are required, customise __initialize_hardware()
-  // or add the additional initialisation here, for example:
-  //
-  // HAL_Init();
+ /* This sample code shows how to use STM32F2xx GPIO HAL API to toggle PG6, PG7,
+    PG10, and PG12 IOs (connected to LED1, LED2, LED3 and LED4 on STM322xG-EVAL board) 
+    in an infinite loop.
+    To proceed, 3 steps are required: */
+  
+  /* STM32F2xx HAL library initialization:
+       - Configure the Flash prefetch, instruction and Data caches
+       - Configure the Systick to generate an interrupt each 1 msec
+       - Set NVIC Group Priority to 4
+       - Global MSP (MCU Support Package) initialization
+     */
+  HAL_Init();
+  /* Configure the system clock */
+  SystemClock_Config();
+  
+  /* -1- Enable GPIOG, GPIOC and GPIOI Clock (to be able to program the configuration registers) */
+  __GPIOG_CLK_ENABLE();
+  __GPIOC_CLK_ENABLE();
+  __GPIOI_CLK_ENABLE();
 
-  // In this sample the SystemInit() function is just a placeholder,
-  // if you do not add the real one, the clock will remain configured with
-  // the reset value, usually a relatively low speed RC clock (8-12MHz).
+  /* -2- Configure PG.6, PG.8, PI.9 and PC.7 IOs in output push-pull mode to
+         drive external LEDs */
+  GPIO_InitStruct.Pin = (GPIO_PIN_6 | GPIO_PIN_8);
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+  
+  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+  
+  GPIO_InitStruct.Pin = GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+  
+  HAL_GPIO_Init(GPIOI, &GPIO_InitStruct); 
+  
+  GPIO_InitStruct.Pin = GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+  
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct); 
 
-  // Send a greeting to the trace device (skipped on Release).
-  trace_puts("Hello ARM World!");
-
-  // At this stage the system clock should have already been configured
-  // at high speed.
-  trace_printf("System clock: %uHz\n", SystemCoreClock);
-
-  timer_start ();
-
-  int seconds = 0;
-
-  // Infinite loop
+  /* -3- Toggle PG.6, PG.8, PI.9 and PC.7 IOs in an infinite loop */  
   while (1)
-    {
-      timer_sleep (TIMER_FREQUENCY_HZ);
-
-      ++seconds;
-
-      // Count seconds on the trace device.
-      trace_printf ("Second %d\n", seconds);
-    }
-  // Infinite loop, never return.
+  {
+    HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_6);
+    /* Insert delay 100 ms */
+    HAL_Delay(100);
+    HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_8);
+    /* Insert delay 100 ms */
+    HAL_Delay(100);
+    HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_9);
+    /* Insert delay 100 ms */
+    HAL_Delay(100);
+    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_7);
+    /* Insert delay 100 ms */
+    HAL_Delay(100);
+  }
 }
 
-#pragma GCC diagnostic pop
+/**
+  * @brief  System Clock Configuration
+  *         The system Clock is configured as follow : 
+  *            System Clock source            = PLL (HSE)
+  *            SYSCLK(Hz)                     = 120000000
+  *            HCLK(Hz)                       = 120000000
+  *            AHB Prescaler                  = 1
+  *            APB1 Prescaler                 = 4
+  *            APB2 Prescaler                 = 2
+  *            HSE Frequency(Hz)              = 25000000
+  *            PLL_M                          = 25
+  *            PLL_N                          = 240
+  *            PLL_P                          = 2
+  *            PLL_Q                          = 5
+  *            VDD(V)                         = 3.3
+  *            Flash Latency(WS)              = 3
+  * @param  None
+  * @retval None
+  */
+static void SystemClock_Config(void)
+{
+  RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  RCC_OscInitTypeDef RCC_OscInitStruct;
 
-// ----------------------------------------------------------------------------
+  /* Enable HSE Oscillator and activate PLL with HSE as source */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLM = 25;
+  RCC_OscInitStruct.PLL.PLLN = 240;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+  RCC_OscInitStruct.PLL.PLLQ = 5;
+  HAL_RCC_OscConfig(&RCC_OscInitStruct);
+  
+  /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 
+     clocks dividers */
+  RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3);
+}
+
+#ifdef  USE_FULL_ASSERT
+
+/**
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
+void assert_failed(uint8_t* file, uint32_t line)
+{ 
+  /* User can add his own implementation to report the file name and line number,
+     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+
+  /* Infinite loop */
+  while (1)
+  {
+  }
+}
+#endif
+
+/**
+  * @}
+  */ 
+
+/**
+  * @}
+  */ 
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
