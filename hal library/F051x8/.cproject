@@ -148,7 +148,11 @@
 		<project id="F0 hal test.ilg.gnuarmeclipse.managedbuild.cross.target.elf.669881585" name="Executable" projectType="ilg.gnuarmeclipse.managedbuild.cross.target.elf"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/F051x8"/>
+		</configuration>
+	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1562660601;ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1562660601.;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.4920764;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.2106765033">
