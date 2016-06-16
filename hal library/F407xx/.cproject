@@ -150,7 +150,7 @@
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/F4 hal test"/>
+			<resource resourceType="PROJECT" workspacePath="/F407xx"/>
 		</configuration>
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">

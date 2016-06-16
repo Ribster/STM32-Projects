@@ -48,38 +48,38 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 SECONDARY_FLASH += \
-F4_hal_test.hex \
+F407xx.hex \
 
 SECONDARY_SIZE += \
-F4_hal_test.siz \
+F407xx.siz \
 
 
 # All Target
-all: F4_hal_test.elf secondary-outputs
+all: F407xx.elf secondary-outputs
 
 # Tool invocations
-F4_hal_test.elf: $(OBJS) $(USER_OBJS)
+F407xx.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -O3 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -Wall -Wextra  -g1 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"F4_hal_test.map" --specs=nano.specs -o "F4_hal_test.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -O3 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -Wall -Wextra  -g1 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"F407xx.map" --specs=nano.specs -o "F407xx.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-F4_hal_test.hex: F4_hal_test.elf
+F407xx.hex: F407xx.elf
 	@echo 'Invoking: Cross ARM GNU Create Flash Image'
-	arm-none-eabi-objcopy -O ihex "F4_hal_test.elf"  "F4_hal_test.hex"
+	arm-none-eabi-objcopy -O ihex "F407xx.elf"  "F407xx.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-F4_hal_test.siz: F4_hal_test.elf
+F407xx.siz: F407xx.elf
 	@echo 'Invoking: Cross ARM GNU Print Size'
-	arm-none-eabi-size --format=berkeley "F4_hal_test.elf"
+	arm-none-eabi-size --format=berkeley "F407xx.elf"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(OBJS)$(C_UPPER_DEPS)$(CXX_DEPS)$(SECONDARY_FLASH)$(SECONDARY_SIZE)$(ASM_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(CPP_DEPS) F4_hal_test.elf
+	-$(RM) $(CC_DEPS)$(C++_DEPS)$(OBJS)$(C_UPPER_DEPS)$(CXX_DEPS)$(SECONDARY_FLASH)$(SECONDARY_SIZE)$(ASM_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(CPP_DEPS) F407xx.elf
 	-@echo ' '
 
 secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_SIZE)
